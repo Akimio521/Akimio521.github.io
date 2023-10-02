@@ -1,0 +1,528 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>Armbian手把手玩机指南01-系统刷入并安装可视化桌面 | 秋澪的博客</title><meta name="author" content="秋澪"><meta name="copyright" content="秋澪"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="本文是一篇关于如何使用Armbian系统将空闲电视盒子打造成服务器的教程。Armbian系统是一种专门用于ARM芯片的轻量级Linux系统，可以安全稳定地运行在TF&#x2F;SD&#x2F;USB及设备的eMMC里。文章介绍了如何下载对应机型的镜像，将镜像写入U盘或者TF卡中，然后将其插入电视盒子中，跑代码等步骤。同时，文章还详细介绍了如何安装图形化桌面，以及如何自行安装Linux软件等。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Armbian手把手玩机指南01-系统刷入并安装可视化桌面">
+<meta property="og:url" content="https://blog.akimio.top/posts/1021/index.html">
+<meta property="og:site_name" content="秋澪的博客">
+<meta property="og:description" content="本文是一篇关于如何使用Armbian系统将空闲电视盒子打造成服务器的教程。Armbian系统是一种专门用于ARM芯片的轻量级Linux系统，可以安全稳定地运行在TF&#x2F;SD&#x2F;USB及设备的eMMC里。文章介绍了如何下载对应机型的镜像，将镜像写入U盘或者TF卡中，然后将其插入电视盒子中，跑代码等步骤。同时，文章还详细介绍了如何安装图形化桌面，以及如何自行安装Linux软件等。">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://img.akimio.top/avatar/akimio.png">
+<meta property="article:published_time" content="2023-06-03T15:23:29.000Z">
+<meta property="article:modified_time" content="2023-10-01T00:03:13.736Z">
+<meta property="article:author" content="秋澪">
+<meta property="article:tag" content="Arbiam">
+<meta property="article:tag" content="教程">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://img.akimio.top/avatar/akimio.png"><link rel="shortcut icon" href="https://img.akimio.top/avatar/akimio.png"><link rel="canonical" href="https://blog.akimio.top/posts/1021/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: {"appId":"BYPCZSYOJI","apiKey":"6af2e592cfa13577928c34a0b6129069","indexName":"akimio","hits":{"per_page":6},"languages":{"input_placeholder":"搜索文章","hits_empty":"找不到您查询的内容：${query}","hits_stats":"找到 ${hits} 条结果，用时 ${time} 毫秒"}},
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: {"limitDay":500,"position":"top","messagePrev":"这篇文章已经发布了","messageNext":"天，文章内容可能已经过时"},
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '天',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'mediumZoom',
+  Snackbar: {"chs_to_cht":"你已切换为繁体中文","cht_to_chs":"你已切换为简体中文","day_to_night":"你已切换为深色模式","night_to_day":"你已切换为浅色模式","bgLight":"#284F69","bgDark":"#1f1f1f","position":"bottom-center"},
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: true,
+  },
+  autoDarkmode: true
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'Armbian手把手玩机指南01-系统刷入并安装可视化桌面',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2023-10-01 08:03:13'
+}</script><script>(win=>{
+      win.saveToLocal = {
+        set: (key, value, ttl) => {
+          if (ttl === 0) return
+          const now = Date.now()
+          const expiry = now + ttl * 86400000
+          const item = {
+            value,
+            expiry
+          }
+          localStorage.setItem(key, JSON.stringify(item))
+        },
+      
+        get: key => {
+          const itemStr = localStorage.getItem(key)
+      
+          if (!itemStr) {
+            return undefined
+          }
+          const item = JSON.parse(itemStr)
+          const now = Date.now()
+      
+          if (now > item.expiry) {
+            localStorage.removeItem(key)
+            return undefined
+          }
+          return item.value
+        }
+      }
+    
+      win.getScript = (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        script.onerror = reject
+        script.onload = script.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          script.onload = script.onreadystatechange = null
+          resolve()
+        }
+
+        Object.keys(attr).forEach(key => {
+          script.setAttribute(key, attr[key])
+        })
+
+        document.head.appendChild(script)
+      })
+    
+      win.getCSS = (url, id = false) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onerror = reject
+        link.onload = link.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          link.onload = link.onreadystatechange = null
+          resolve()
+        }
+        document.head.appendChild(link)
+      })
+    
+      win.activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          const isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches
+          const isLightMode = window.matchMedia('(prefers-color-scheme: light)').matches
+          const isNotSpecified = window.matchMedia('(prefers-color-scheme: no-preference)').matches
+          const hasNoSupport = !isDarkMode && !isLightMode && !isNotSpecified
+
+          if (t === undefined) {
+            if (isLightMode) activateLightMode()
+            else if (isDarkMode) activateDarkMode()
+            else if (isNotSpecified || hasNoSupport) {
+              const now = new Date()
+              const hour = now.getHours()
+              const isNight = hour <= 6 || hour >= 18
+              isNight ? activateDarkMode() : activateLightMode()
+            }
+            window.matchMedia('(prefers-color-scheme: dark)').addListener(e => {
+              if (saveToLocal.get('theme') === undefined) {
+                e.matches ? activateDarkMode() : activateLightMode()
+              }
+            })
+          } else if (t === 'light') activateLightMode()
+          else activateDarkMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+      const detectApple = () => {
+        if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+          document.documentElement.classList.add('apple')
+        }
+      }
+      detectApple()
+    })(window)</script><link rel="stylesheet" href="/css/kasumi.css"><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/js-heo@1.0.11/mainColor/heoMainColor.css"><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/js-heo@1.0.11/categoryBar/categoryBar.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/l-lin/font-awesome-animation/dist/font-awesome-animation.min.css"  media="defer" onload="this.media='all'"><link rel="stylesheet" href="/css/banner.css"><link rel="stylesheet" href="/css/essay_page.css"><link rel="stylesheet" href="/css/photo.css"><meta name="generator" content="Hexo 5.4.2"><link rel="alternate" href="/rss2.xml" title="秋澪的博客" type="application/rss+xml">
+</head><body><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="https://img.akimio.top/avatar/akimio.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">32</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">39</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">10</div></a></div><hr class="custom-hr"/><div class="menus_items"><div class="menus_item"><a class="site-page faa-parent animated-hover" href="javascript:void(0);"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-akimio-website"></use></svg><span> 个人站点</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" target="_blank" rel="noopener" href="https://www.akimio.top/"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-akimio-home"></use></svg><span> 个人主页</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-akimio-blog"></use></svg><span> 博客</span></a></li><li><a class="site-page child faa-parent animated-hover" target="_blank" rel="noopener" href="https://chatgpt.akimio.top/"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-akimio-chatgpt"></use></svg><span> ChatGPT</span></a></li><li><a class="site-page child faa-parent animated-hover" target="_blank" rel="noopener" href="https://music.akimio.top/"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-akimio-music"></use></svg><span> 个人音乐站</span></a></li><li><a class="site-page child faa-parent animated-hover" target="_blank" rel="noopener" href="https://um.akimio.top/"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-akimio-um"></use></svg><span> 音乐解锁站</span></a></li><li><a class="site-page child faa-parent animated-hover" target="_blank" rel="noopener" href="https://alist.akimio.top/"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-akimio-alist"></use></svg><span> Alist</span></a></li></ul></div><div class="menus_item"><a class="site-page faa-parent animated-hover" href="javascript:void(0);"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-akimio-article"></use></svg><span> 关于文章</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/categories/"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-akimio-categories"></use></svg><span> 分类</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/tags/"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-akimio-tags"></use></svg><span> 标签</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/archives/"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-akimio-archives"></use></svg><span> 归档</span></a></li></ul></div><div class="menus_item"><a class="site-page faa-parent animated-hover" href="javascript:void(0);"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-akimio-friends"></use></svg><span> 朋友们</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/link/"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-akimio-link"></use></svg><span> 友链</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/fcircle/"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-akimio-fcircle"></use></svg><span> 朋友圈</span></a></li></ul></div><div class="menus_item"><a class="site-page faa-parent animated-hover" href="javascript:void(0);"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-akimio-other"></use></svg><span> 关于我</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/photos/"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-akimio-photo"></use></svg><span> 相册</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/essay/"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-akimio-essay"></use></svg><span> 动态</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/comments/"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-akimio-comments"></use></svg><span> 留言板</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/about/"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-akimio-about"></use></svg><span> 关于本站</span></a></li></ul></div><div class="menus_item"><a class="site-page faa-parent animated-hover" target="_blank" rel="noopener" href="https://www.travellings.cn/go.html"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-akimio-travelling"></use></svg><span> 开往</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://img.akimio.top/Blog/2023/09/1696083844-65182f8492279.webp')"><nav id="nav"><span id="blog-info"><a href="/" title="秋澪的博客"><img class="site-icon" src="https://img.akimio.top/avatar/akimio.png"/><span class="site-name">秋澪的博客</span></a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search" href="javascript:void(0);"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page faa-parent animated-hover" href="javascript:void(0);"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-akimio-website"></use></svg><span> 个人站点</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" target="_blank" rel="noopener" href="https://www.akimio.top/"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-akimio-home"></use></svg><span> 个人主页</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-akimio-blog"></use></svg><span> 博客</span></a></li><li><a class="site-page child faa-parent animated-hover" target="_blank" rel="noopener" href="https://chatgpt.akimio.top/"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-akimio-chatgpt"></use></svg><span> ChatGPT</span></a></li><li><a class="site-page child faa-parent animated-hover" target="_blank" rel="noopener" href="https://music.akimio.top/"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-akimio-music"></use></svg><span> 个人音乐站</span></a></li><li><a class="site-page child faa-parent animated-hover" target="_blank" rel="noopener" href="https://um.akimio.top/"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-akimio-um"></use></svg><span> 音乐解锁站</span></a></li><li><a class="site-page child faa-parent animated-hover" target="_blank" rel="noopener" href="https://alist.akimio.top/"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-akimio-alist"></use></svg><span> Alist</span></a></li></ul></div><div class="menus_item"><a class="site-page faa-parent animated-hover" href="javascript:void(0);"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-akimio-article"></use></svg><span> 关于文章</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/categories/"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-akimio-categories"></use></svg><span> 分类</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/tags/"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-akimio-tags"></use></svg><span> 标签</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/archives/"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-akimio-archives"></use></svg><span> 归档</span></a></li></ul></div><div class="menus_item"><a class="site-page faa-parent animated-hover" href="javascript:void(0);"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-akimio-friends"></use></svg><span> 朋友们</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/link/"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-akimio-link"></use></svg><span> 友链</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/fcircle/"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-akimio-fcircle"></use></svg><span> 朋友圈</span></a></li></ul></div><div class="menus_item"><a class="site-page faa-parent animated-hover" href="javascript:void(0);"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-akimio-other"></use></svg><span> 关于我</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/photos/"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-akimio-photo"></use></svg><span> 相册</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/essay/"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-akimio-essay"></use></svg><span> 动态</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/comments/"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-akimio-comments"></use></svg><span> 留言板</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/about/"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-akimio-about"></use></svg><span> 关于本站</span></a></li></ul></div><div class="menus_item"><a class="site-page faa-parent animated-hover" target="_blank" rel="noopener" href="https://www.travellings.cn/go.html"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-akimio-travelling"></use></svg><span> 开往</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">Armbian手把手玩机指南01-系统刷入并安装可视化桌面</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2023-06-03T15:23:29.000Z" title="发表于 2023-06-03 23:23:29">2023-06-03</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2023-10-01T00:03:13.736Z" title="更新于 2023-10-01 08:03:13">2023-10-01</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/Armbian%E7%B3%BB%E7%BB%9F/">Armbian系统</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">2.5k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>8分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="Armbian手把手玩机指南01-系统刷入并安装可视化桌面"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span><span class="post-meta-separator">|</span><span class="post-meta-commentcount"><i class="far fa-comments fa-fw post-meta-icon"></i><span class="post-meta-label">评论数:</span><a href="/posts/1021/#post-comment"><span class="waline-comment-count" data-path="/posts/1021/"><i class="fa-solid fa-spinner fa-spin"></i></span></a></span></div></div></div><section class="main-hero-waves-area waves-area"><svg class="waves-svg" xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto"><defs><path id="gentle-wave" d="M -160 44 c 30 0 58 -18 88 -18 s 58 18 88 18 s 58 -18 88 -18 s 58 18 88 18 v 44 h -352 Z"></path></defs><g class="parallax"><use href="#gentle-wave" x="48" y="0"></use><use href="#gentle-wave" x="48" y="3"></use><use href="#gentle-wave" x="48" y="5"></use><use href="#gentle-wave" x="48" y="7"></use></g></svg></section></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="Armbian简介"><a href="#Armbian简介" class="headerlink" title="Armbian简介"></a>Armbian简介</h1><blockquote>
+<p>Armbian系统是基于Debian/Ubuntu而构建的专门用于ARM芯片的轻量级Linux系统。Armbian系统精益、干净，并且100%兼容并继承了Debian/Ubuntu系统的功能和丰富的软件生态，可以安全稳定地运行在 TF/SD/USB 及设备的 eMMC 里。</p>
+</blockquote>
+<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>之前买了一个N1盒子玩，想当一个简单的服务器玩玩，但找了很多地方都没找到一个合适的方法，于是只能自己一个人慢慢摸索，本系列教程将基于Armbian，手把手教你玩转空闲的电视盒子。</p>
+<p>不知道你家里是否有空闲的电视盒子、N1盒子、HK1box、我家云、贝壳鱼等晶晨amlogic-s9XXX或者rockship系列产品都是可以适用的，这里附一张ophub大大的适配机型图</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>芯片</th>
+<th>设备</th>
+<th><a target="_blank" rel="noopener" href="https://github.com/ophub/kernel">内核</a></th>
+<th><a target="_blank" rel="noopener" href="https://github.com/ophub/amlogic-s9xxx-armbian/releases">Armbian</a></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>a311d</td>
+<td><a target="_blank" rel="noopener" href="https://github.com/ophub/amlogic-s9xxx-openwrt/issues/99">Khadas-VIM3</a></td>
+<td><a target="_blank" rel="noopener" href="https://github.com/ophub/kernel/releases/tag/kernel_stable">全部</a></td>
+<td>amlogic_a311d.img</td>
+</tr>
+<tr>
+<td>s922x</td>
+<td><a target="_blank" rel="noopener" href="https://github.com/ophub/amlogic-s9xxx-armbian/issues/370">Beelink-GT-King</a>, <a target="_blank" rel="noopener" href="https://github.com/ophub/amlogic-s9xxx-armbian/issues/707">Beelink-GT-King-Pro</a>, <a target="_blank" rel="noopener" href="https://github.com/ophub/amlogic-s9xxx-openwrt/issues/213">Ugoos-AM6-Plus</a>, <a target="_blank" rel="noopener" href="https://github.com/ophub/amlogic-s9xxx-openwrt/issues/201">ODROID-N2</a>, <a target="_blank" rel="noopener" href="https://github.com/ophub/amlogic-s9xxx-armbian/issues/988">X88-King</a>, <a target="_blank" rel="noopener" href="https://github.com/ophub/amlogic-s9xxx-armbian/issues/1150">Ali-CT2000</a></td>
+<td><a target="_blank" rel="noopener" href="https://github.com/ophub/kernel/releases/tag/kernel_stable">全部</a></td>
+<td>amlogic_s922x.img</td>
+</tr>
+<tr>
+<td>s905x3</td>
+<td><a target="_blank" rel="noopener" href="https://github.com/ophub/amlogic-s9xxx-armbian/issues/351">X96-Max+</a>, <a target="_blank" rel="noopener" href="https://github.com/ophub/amlogic-s9xxx-armbian/issues/414">HK1-Box</a>, <a target="_blank" rel="noopener" href="https://github.com/ophub/amlogic-s9xxx-armbian/issues/1006">Vontar-X3</a>, <a target="_blank" rel="noopener" href="https://github.com/ophub/amlogic-s9xxx-armbian/issues/1250">H96-Max-X3</a>, <a target="_blank" rel="noopener" href="https://github.com/ophub/amlogic-s9xxx-armbian/issues/782">Ugoos-X3</a>, <a target="_blank" rel="noopener" href="https://github.com/ophub/amlogic-s9xxx-armbian/issues/644">TX3(QZ)</a>, <a target="_blank" rel="noopener" href="https://github.com/ophub/amlogic-s9xxx-armbian/issues/1077">TX3(BZ)</a>, <a target="_blank" rel="noopener" href="https://github.com/ophub/amlogic-s9xxx-armbian/issues/366">X96-Air</a>, <a target="_blank" rel="noopener" href="https://github.com/ophub/amlogic-s9xxx-armbian/issues/779">X96-Max+_A100</a>, <a target="_blank" rel="noopener" href="https://github.com/ophub/amlogic-s9xxx-armbian/issues/157">A95XF3-Air</a>, <a target="_blank" rel="noopener" href="https://github.com/ophub/amlogic-s9xxx-armbian/issues/506">Tencent-Aurora-3Pro(s905x3-b)</a>, <a target="_blank" rel="noopener" href="https://github.com/ophub/amlogic-s9xxx-armbian/issues/788">X96-Max+Q1</a>, <a target="_blank" rel="noopener" href="https://github.com/ophub/amlogic-s9xxx-armbian/issues/909">X96-Max+100W</a>, <a target="_blank" rel="noopener" href="https://github.com/ophub/amlogic-s9xxx-armbian/issues/1086">X96-Max+_2101</a>, <a target="_blank" rel="noopener" href="https://github.com/ophub/amlogic-s9xxx-armbian/issues/1181">Infinity-B32</a>, <a target="_blank" rel="noopener" href="https://github.com/ophub/amlogic-s9xxx-armbian/issues/1166">Whale</a></td>
+<td><a target="_blank" rel="noopener" href="https://github.com/ophub/kernel/releases/tag/kernel_stable">全部</a></td>
+<td>amlogic_s905x3.img</td>
+</tr>
+<tr>
+<td>s905x2</td>
+<td><a target="_blank" rel="noopener" href="https://github.com/ophub/amlogic-s9xxx-armbian/issues/453">X96Max-4G</a>, <a target="_blank" rel="noopener" href="https://github.com/ophub/amlogic-s9xxx-armbian/issues/95">X96Max-2G</a>, <a target="_blank" rel="noopener" href="https://github.com/ophub/amlogic-s9xxx-armbian/issues/79">MECOOL-KM3-4G</a>, <a target="_blank" rel="noopener" href="https://github.com/ophub/amlogic-s9xxx-openwrt/issues/351">Tanix-Tx5-Max</a>, <a target="_blank" rel="noopener" href="https://github.com/ophub/amlogic-s9xxx-armbian/issues/851">A95X-F2</a></td>
+<td><a target="_blank" rel="noopener" href="https://github.com/ophub/kernel/releases/tag/kernel_stable">全部</a></td>
+<td>amlogic_s905x2.img</td>
+</tr>
+<tr>
+<td>s912</td>
+<td><a target="_blank" rel="noopener" href="https://github.com/ophub/amlogic-s9xxx-armbian/issues/500">Tanix-TX8-Max</a>, <a target="_blank" rel="noopener" href="https://github.com/ophub/amlogic-s9xxx-armbian/issues/315">Tanix-TX9-Pro(3G)</a>, <a target="_blank" rel="noopener" href="https://github.com/ophub/amlogic-s9xxx-armbian/issues/740">Tanix-TX9-Pro(2G)</a>, <a target="_blank" rel="noopener" href="https://github.com/ophub/amlogic-s9xxx-armbian/issues/72#issuecomment-1012790770">Tanix-TX92</a>, <a target="_blank" rel="noopener" href="https://github.com/ophub/amlogic-s9xxx-openwrt/issues/260">Nexbox-A1</a>, <a target="_blank" rel="noopener" href="https://www.cafago.com/en/p-v2979eu-2g.html">Nexbox-A95X-A2</a>,  <a target="_blank" rel="noopener" href="https://github.com/ophub/amlogic-s9xxx-openwrt/issues/260">A95X</a>, <a target="_blank" rel="noopener" href="https://github.com/ophub/amlogic-s9xxx-armbian/issues/72#issuecomment-1013071513">H96-Pro-Plus</a>, <a target="_blank" rel="noopener" href="https://github.com/ophub/amlogic-s9xxx-armbian/issues/72">VORKE-Z6-Plus</a>, <a target="_blank" rel="noopener" href="https://github.com/ophub/amlogic-s9xxx-armbian/issues/158">Mecool-M8S-PRO-L</a>, <a target="_blank" rel="noopener" href="https://github.com/ophub/amlogic-s9xxx-armbian/issues/525">Vontar-X92</a>, <a target="_blank" rel="noopener" href="https://github.com/ophub/amlogic-s9xxx-armbian/issues/668">T95Z-Plus</a>, <a target="_blank" rel="noopener" href="https://github.com/ophub/amlogic-s9xxx-armbian/issues/1020">Octopus-Planet</a>, <a target="_blank" rel="noopener" href="https://github.com/ophub/amlogic-s9xxx-armbian/issues/522">Phicomm-T1</a></td>
+<td><a target="_blank" rel="noopener" href="https://github.com/ophub/kernel/releases/tag/kernel_stable">全部</a></td>
+<td>amlogic_s912.img</td>
+</tr>
+<tr>
+<td>s905d</td>
+<td><a target="_blank" rel="noopener" href="https://github.com/ophub/amlogic-s9xxx-armbian/issues/59">MECOOL-KI-Pro</a>, <a target="_blank" rel="noopener" href="https://github.com/ophub/amlogic-s9xxx-armbian/issues/925">Phicomm-N1</a></td>
+<td><a target="_blank" rel="noopener" href="https://github.com/ophub/kernel/releases/tag/kernel_stable">全部</a></td>
+<td>amlogic_s905d.img</td>
+</tr>
+<tr>
+<td>s905x</td>
+<td><a target="_blank" rel="noopener" href="https://github.com/ophub/amlogic-s9xxx-armbian/issues/368">HG680P</a>, <a target="_blank" rel="noopener" href="https://github.com/ophub/amlogic-s9xxx-armbian/issues/60">B860H</a>, <a target="_blank" rel="noopener" href="https://github.com/ophub/amlogic-s9xxx-armbian/issues/98">TBee-Box</a>, <a target="_blank" rel="noopener" href="https://github.com/ophub/amlogic-s9xxx-armbian/issues/285">T95</a>, <a target="_blank" rel="noopener" href="https://github.com/ophub/amlogic-s9xxx-armbian/issues/645">TX9</a>, <a target="_blank" rel="noopener" href="https://github.com/ophub/amlogic-s9xxx-armbian/issues/1405">XiaoMI-3S</a></td>
+<td><a target="_blank" rel="noopener" href="https://github.com/ophub/kernel/releases/tag/kernel_stable">全部</a></td>
+<td>amlogic_s905x.img</td>
+</tr>
+<tr>
+<td>s905w</td>
+<td><a target="_blank" rel="noopener" href="https://github.com/ophub/amlogic-s9xxx-armbian/issues/621">X96-Mini</a>, <a target="_blank" rel="noopener" href="https://github.com/ophub/amlogic-s9xxx-armbian/issues/1062">TX3-Mini</a>, <a target="_blank" rel="noopener" href="https://github.com/ophub/amlogic-s9xxx-armbian/issues/570">W95</a>, <a target="_blank" rel="noopener" href="https://github.com/ophub/amlogic-s9xxx-armbian/issues/1044">X96W/FunTV</a>, <a target="_blank" rel="noopener" href="https://github.com/ophub/amlogic-s9xxx-armbian/issues/1140">MXQ-Pro-4K</a></td>
+<td><a target="_blank" rel="noopener" href="https://github.com/ophub/kernel/releases/tag/kernel_stable">全部</a></td>
+<td>amlogic_s905w.img</td>
+</tr>
+<tr>
+<td>s905l2</td>
+<td><a target="_blank" rel="noopener" href="https://github.com/ophub/amlogic-s9xxx-armbian/issues/648">MGV2000</a>, <a target="_blank" rel="noopener" href="https://github.com/ophub/amlogic-s9xxx-armbian/issues/921">MGV3000</a>, <a target="_blank" rel="noopener" href="https://github.com/ophub/amlogic-s9xxx-armbian/issues/648">Wojia-TV-IPBS9505</a>, <a target="_blank" rel="noopener" href="https://github.com/ophub/amlogic-s9xxx-openwrt/issues/405">M301A</a>, <a target="_blank" rel="noopener" href="https://github.com/ophub/amlogic-s9xxx-armbian/issues/1278">E900v21E</a></td>
+<td><a target="_blank" rel="noopener" href="https://github.com/ophub/kernel/releases/tag/kernel_stable">全部</a></td>
+<td>amlogic_s905l2.img</td>
+</tr>
+<tr>
+<td>s905l3</td>
+<td><a target="_blank" rel="noopener" href="https://github.com/ophub/amlogic-s9xxx-armbian/issues/1318">CM211-1</a>, <a target="_blank" rel="noopener" href="https://github.com/ophub/amlogic-s9xxx-armbian/issues/763">CM311-1</a>, <a target="_blank" rel="noopener" href="https://github.com/ophub/amlogic-s9xxx-armbian/issues/978">HG680-LC</a>, <a target="_blank" rel="noopener" href="https://github.com/ophub/amlogic-s9xxx-armbian/issues/921#issuecomment-1453143251">M401A</a>, <a target="_blank" rel="noopener" href="https://github.com/ophub/amlogic-s9xxx-armbian/issues/1277">UNT400G1</a></td>
+<td><a target="_blank" rel="noopener" href="https://github.com/ophub/kernel/releases/tag/kernel_stable">全部</a></td>
+<td>amlogic_s905l3.img</td>
+</tr>
+<tr>
+<td>s905l3a</td>
+<td><a target="_blank" rel="noopener" href="https://github.com/Calmact/e900v22c">E900V22C/D</a>, <a target="_blank" rel="noopener" href="https://github.com/ophub/amlogic-s9xxx-armbian/issues/517">CM311-1a-YST</a>, <a target="_blank" rel="noopener" href="https://github.com/ophub/amlogic-s9xxx-armbian/issues/732">M401A</a>, <a target="_blank" rel="noopener" href="https://github.com/ophub/amlogic-s9xxx-armbian/issues/517">M411A</a>, <a target="_blank" rel="noopener" href="https://github.com/ophub/amlogic-s9xxx-armbian/issues/970">UNT403A</a>, <a target="_blank" rel="noopener" href="https://github.com/ophub/amlogic-s9xxx-armbian/issues/970">UNT413A</a>, <a target="_blank" rel="noopener" href="https://github.com/ophub/amlogic-s9xxx-armbian/issues/741">ZTE-B863AV3.2-M</a></td>
+<td><a target="_blank" rel="noopener" href="https://github.com/ophub/kernel/releases/tag/kernel_stable">全部</a></td>
+<td>amlogic_s905l3a.img</td>
+</tr>
+<tr>
+<td>s905l3b</td>
+<td><a target="_blank" rel="noopener" href="https://github.com/ophub/amlogic-s9xxx-armbian/issues/1180">CM211-1</a>, <a target="_blank" rel="noopener" href="https://github.com/ophub/amlogic-s9xxx-armbian/issues/1268">CM311-1</a>, <a target="_blank" rel="noopener" href="https://github.com/ophub/amlogic-s9xxx-armbian/issues/1256">E900V22D</a>, <a target="_blank" rel="noopener" href="https://github.com/ophub/amlogic-s9xxx-armbian/issues/939">E900V22E</a>, <a target="_blank" rel="noopener" href="https://github.com/ophub/amlogic-s9xxx-armbian/pull/615">M302A/M304A</a>, <a target="_blank" rel="noopener" href="https://github.com/ophub/amlogic-s9xxx-armbian/issues/1154">Hisense-IP103H</a>, <a target="_blank" rel="noopener" href="https://github.com/ophub/amlogic-s9xxx-armbian/issues/1332">TY1608</a></td>
+<td><a target="_blank" rel="noopener" href="https://github.com/ophub/kernel/releases/tag/kernel_stable">全部</a></td>
+<td>amlogic_s905l3b.img</td>
+</tr>
+<tr>
+<td>s905lb</td>
+<td><a target="_blank" rel="noopener" href="https://github.com/ophub/amlogic-s9xxx-armbian/issues/734">Q96-mini</a>, <a target="_blank" rel="noopener" href="https://github.com/ophub/amlogic-s9xxx-armbian/pull/993">BesTV-R3300L</a>, <a target="_blank" rel="noopener" href="https://github.com/ophub/amlogic-s9xxx-armbian/issues/1190">SumaVision-Q7</a></td>
+<td><a target="_blank" rel="noopener" href="https://github.com/ophub/kernel/releases/tag/kernel_stable">全部</a></td>
+<td>amlogic_s905lb.img</td>
+</tr>
+<tr>
+<td>s905</td>
+<td><a target="_blank" rel="noopener" href="https://github.com/ophub/amlogic-s9xxx-armbian/issues/127">Beelink-Mini-MX-2G</a>, <a target="_blank" rel="noopener" href="https://github.com/ophub/amlogic-s9xxx-openwrt/issues/337">Sunvell-T95M</a>, <a target="_blank" rel="noopener" href="https://github.com/ophub/amlogic-s9xxx-armbian/issues/715">MXQ-Pro+4K</a>, <a target="_blank" rel="noopener" href="https://github.com/ophub/amlogic-s9xxx-armbian/issues/1175">SumaVision-Q5</a></td>
+<td><a target="_blank" rel="noopener" href="https://github.com/ophub/kernel/releases/tag/kernel_stable">全部</a></td>
+<td>amlogic_s905.img</td>
+</tr>
+<tr>
+<td>rk3588</td>
+<td><a target="_blank" rel="noopener" href="https://github.com/ophub/amlogic-s9xxx-armbian/issues/1240">Radxa-Rock5B</a>, <a target="_blank" rel="noopener" href="http://www.hinlink.com/index.php?id=138">HinLink-H88K</a>, <a target="_blank" rel="noopener" href="https://github.com/ophub/amlogic-s9xxx-openwrt/issues/415">Beelink-IPC-R</a></td>
+<td><a target="_blank" rel="noopener" href="https://github.com/ophub/kernel/releases/tag/kernel_rk3588">rk3588</a></td>
+<td>rockchip_boxname.img</td>
+</tr>
+<tr>
+<td>rk3568</td>
+<td><a target="_blank" rel="noopener" href="https://github.com/ophub/amlogic-s9xxx-armbian/issues/1061">FastRhino-R66S</a>, <a target="_blank" rel="noopener" href="https://github.com/ophub/amlogic-s9xxx-armbian/issues/774">FastRhino-R68S</a>, <a target="_blank" rel="noopener" href="http://www.hinlink.com/index.php?id=137">HinLink-H66K</a>, <a target="_blank" rel="noopener" href="http://www.hinlink.com/index.php?id=119">HinLink-H68K</a>, <a target="_blank" rel="noopener" href="https://wiki.radxa.com/Rock3/CM/CM3I/E25">Radxa-E25</a>, <a target="_blank" rel="noopener" href="https://github.com/ophub/amlogic-s9xxx-armbian/pull/1217">NanoPi-R5S</a></td>
+<td><a target="_blank" rel="noopener" href="https://github.com/ophub/kernel/releases/tag/kernel_stable">6.x.y</a></td>
+<td>rockchip_boxname.img</td>
+</tr>
+<tr>
+<td>rk3566</td>
+<td><a target="_blank" rel="noopener" href="https://github.com/ophub/amlogic-s9xxx-armbian/issues/1319">Panther-X2</a></td>
+<td><a target="_blank" rel="noopener" href="https://github.com/ophub/kernel/releases/tag/kernel_stable">6.x.y</a></td>
+<td>rockchip_boxname.img</td>
+</tr>
+<tr>
+<td>rk3399</td>
+<td><a target="_blank" rel="noopener" href="https://github.com/ophub/amlogic-s9xxx-armbian/pull/991">EAIDK-610</a>, <a target="_blank" rel="noopener" href="https://github.com/ophub/amlogic-s9xxx-armbian/pull/1080">King3399</a>, <a target="_blank" rel="noopener" href="https://github.com/ophub/amlogic-s9xxx-armbian/pull/1094">TN3399</a>, <a target="_blank" rel="noopener" href="https://github.com/ophub/amlogic-s9xxx-armbian/pull/1132">Kylin3399</a>, <a target="_blank" rel="noopener" href="https://github.com/ophub/amlogic-s9xxx-armbian/pull/1247">ZCube1-Max</a>, <a target="_blank" rel="noopener" href="https://github.com/ophub/amlogic-s9xxx-armbian/issues/1280">CRRC</a>, <a target="_blank" rel="noopener" href="https://github.com/ophub/amlogic-s9xxx-armbian/issues/1317">SMART-AM40</a>, <a target="_blank" rel="noopener" href="https://github.com/ophub/amlogic-s9xxx-armbian/issues/1326">SW799</a>, <a target="_blank" rel="noopener" href="https://github.com/ophub/amlogic-s9xxx-armbian/issues/1380">ZYSJ</a></td>
+<td><a target="_blank" rel="noopener" href="https://github.com/ophub/kernel/releases/tag/kernel_stable">6.x.y</a></td>
+<td>rockchip_boxname.img</td>
+</tr>
+<tr>
+<td>rk3328</td>
+<td><a target="_blank" rel="noopener" href="https://github.com/ophub/amlogic-s9xxx-armbian/issues/852">BeikeYun</a>, <a target="_blank" rel="noopener" href="https://github.com/ophub/amlogic-s9xxx-armbian/issues/1007">L1-Pro</a>, <a target="_blank" rel="noopener" href="https://github.com/ophub/amlogic-s9xxx-armbian/issues/1313">Station-M1</a>, <a target="_blank" rel="noopener" href="https://github.com/ophub/amlogic-s9xxx-armbian/issues/1313">Bqeel-MVR9</a></td>
+<td><a target="_blank" rel="noopener" href="https://github.com/ophub/kernel/releases/tag/kernel_stable">全部</a></td>
+<td>rockchip_boxname.img</td>
+</tr>
+<tr>
+<td>h6</td>
+<td><a target="_blank" rel="noopener" href="https://github.com/ophub/amlogic-s9xxx-armbian/issues/1100">Vplus</a>, <a target="_blank" rel="noopener" href="https://github.com/ophub/amlogic-s9xxx-armbian/issues/1120">Tanix-TX6</a></td>
+<td><a target="_blank" rel="noopener" href="https://github.com/ophub/kernel/releases/tag/kernel_stable">全部</a></td>
+<td>allwinner_boxname.img</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><a target="_blank" rel="noopener" href="https://github.com/ophub/amlogic-s9xxx-armbian">Github仓库</a><br>大家可以自行去releases界面下载对应镜像，如果动手能力较强的也可以自行利用Github Actions编译一副专属的镜像文件。<br>我以N1盒子5.15.90内核版本作为演示<br><strong>由于每个盒子开启U盘启动的方法不同，这里就不教了，大家自行搜索，默认大家已经开启了U盘启动</strong></p>
+<h1 id="准备"><a href="#准备" class="headerlink" title="准备"></a>准备</h1><ul>
+<li>电视盒子（没有盒子进来干嘛）</li>
+<li>大于4G的U盘/TF卡</li>
+<li>一台电脑（这里以windows举例示范）</li>
+<li>一把可以链接盒子的键盘</li>
+<li>显示器</li>
+<li>各种链接线材</li>
+</ul>
+<h1 id="教程"><a href="#教程" class="headerlink" title="教程"></a>教程</h1><h2 id="烧录镜像"><a href="#烧录镜像" class="headerlink" title="烧录镜像"></a>烧录镜像</h2><p>（下面是晶晨amlogic系列产品安装方法，如果是rockship请跳转至文末寻找ophub大大写的使用方法链接）<br>下载对应机型的镜像，可以对照我发的机型表下载，GitHub国内访问环境不稳定，推荐在国外进行访问<br>下载镜像后解压，再利用电脑将镜像写入U盘或者TF卡中，这里我以balenaEtcher为例<br><img src="https://img.akimio.top/Blog/2023/09/1696083883-65182fab0ceb8.webp" alt="balenaEtcher"></p>
+<h2 id="刷入系统"><a href="#刷入系统" class="headerlink" title="刷入系统"></a>刷入系统</h2><p>依次选择刚解压好的<code>镜像文件</code>、<code>U盘/TF卡</code>、再点击<code>烧录</code>，然后静候等待烧录完成。他有两个进度条，先出现紫色的烧录，再出现绿色验证进度条，一定要等到验证完成后再拔出U盘/TF卡。<br>然后将烧录好的U盘/TF卡插入盒子中，并插入键盘，显示器以及电源。<br>不出意外的话，此时屏幕上会出现跑代码的画面（有些机型可能会出先现安卓的开机界面，不用理会），稍做等候跑完代码即可<br><img src="https://img.akimio.top/Blog/2023/09/1696083907-65182fc388606.webp" alt="创建root用户密码"></p>
+<p>出现password就代表跑完了，输入默认密码<code>1234</code>然后会让你输入一个新的密码，第二次是确认密码，<strong>Linux系统下是输入密码是看不到的，但确实是已经输入了</strong>（新版本好像直接让你更改一个新的密码，就不需要输入1234了，并且可以看到密码位数，这里大家根据系统提示操作就好）<br>我这里是直接让我输入一个新的密码作为root的密码，我输入了<code>1234</code>，提示弱密码，不用管他，然后让你选择默默的系统命令，这里我选择bash就输入1，如果你喜欢用zsh就输入2，什么都不懂就跟着我选择bash<br><img src="https://img.akimio.top/Blog/2023/09/1696083934-65182fde72968.webp" alt="选择默认系统命令"></p>
+<p>然后会让你创建一个User用户，有需要的可以自行创建，根据系统提示就好，只需要用到root用户（用户名是root，密码是刚刚自己改的那个）的话就ctrl+c就可以退出创建User用户的界面了<br><img src="https://img.akimio.top/Blog/2023/09/1696083972-65183004b0965.webp" alt="跳过创建User用户"></p>
+<p>如果你觉得机身自带的硬盘空间太小，不想将系统写入到内置硬盘的话可以跳过下面一步，这样的好处是物理保留了双系统，但是U盘/TF卡就不能拔下来了，不过也获得来更大的存储空间，推荐自带TF卡槽的机型使用。</p>
+<p>下面是写入内置emmc教程，命令：<br><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">armbian-install</span><br></pre></td></tr></table></figure><br>选择对应机型的DTB，DTB相当于驱动文件，可以自行更/移植改达到适配更多机型的目的，详细可以查看ophub大大的GitHub说明，因为我是N1且不需要流控（DMA-thresh是流控版本）就输入101<br><img src="https://img.akimio.top/Blog/2023/09/1696083992-6518301862e6c.webp" alt="选择对应DTB"></p>
+<p>然后选择卷格式，这边我选择更为常见的ext4，就输入1<br><img src="https://img.akimio.top/Blog/2023/09/1696084013-6518302dec947.webp" alt="选择卷格式"></p>
+<p>然后就是跑代码时间，后面success字样就是写入内置emmc成功了<br><img src="https://img.akimio.top/Blog/2023/09/1696084035-65183043d8dda.webp" alt="系统写入内置emmc成功"></p>
+<p>接着就输入重启命令：<br><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">reboot</span><br></pre></td></tr></table></figure><br>等待代码跑完，屏幕变黑就拔掉U盘/TF卡，然后等待盒子重启就好了<br>出现armbian login就是重启到内置的emmc里系统成功了，输入账号root，密码则为之前修改（创建）的，并且密码不可见，输完后直接回车就好<br><img src="https://img.akimio.top/Blog/2023/09/1696084057-6518305913936.webp" alt="emmc内置系统开机成功"></p>
+<p>登入成功应该是这个样子的，大家可以确认一下自己的硬盘大小，内存大小也没有问题（如果安装在U盘/TF卡中，硬盘大小应该是U盘/TF卡的大小）<br><img src="https://img.akimio.top/Blog/2023/09/1696084077-6518306d01123.webp" alt="系统登入成功"></p>
+<h2 id="配置无线网络（可选）"><a href="#配置无线网络（可选）" class="headerlink" title="配置无线网络（可选）"></a>配置无线网络（可选）</h2><p>接下来是连接Wi-Fi，如果使用网线连接就跳过这一步<br>输入命令：<br><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">armbian-config</span><br></pre></td></tr></table></figure><br>如果像我一样出现了Warning报错，就直接回车就好<br><img src="https://img.akimio.top/Blog/2023/09/1696084107-6518308bb341e.webp" alt="Warning报错"></p>
+<p>然后就会进入到一个设置界面<br><img src="https://img.akimio.top/Blog/2023/09/1696084127-6518309f54a21.webp" alt="进入系统设置界面"></p>
+<p>依次选择<code>network</code>-&gt;<code>wifi</code>-&gt;<code>找到wifi名</code>，输入密码连接即可，连接成功后，Wi-Fi名前面会有一个星号，然后用上下左右键依次选择<code>quit</code>-&gt;<code>back</code>-&gt;<code>exit</code>（反正都是在右下角，也可以按几次<code>esc</code>），然后就可以回到命令行界面了，这里就可以去路由器后台看看有没有分配到ip，如果分配到ip就可以使用ssh进行远程连接了，如果你是作为服务器的话以后就不需要屏幕</p>
+<h2 id="安装图形化界面"><a href="#安装图形化界面" class="headerlink" title="安装图形化界面"></a>安装图形化界面</h2><p>接来下讲如何安装图形化桌面，作为一个小主机使用<br>在命令行下，输入命令：<br><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">armbian-software</span><br></pre></td></tr></table></figure><br>如果是第一次使用这个命了，会自动连接ubuntu下载目录，稍作等待即可<br>看到这个列表就说明成功执行<code>armbian-software</code>命令了<br><img src="https://img.akimio.top/Blog/2023/09/1696084164-651830c434748.webp" alt="armbian-software列表"></p>
+<p>然后输入<code>201</code>进行安装图形化桌面<br><img src="https://img.akimio.top/Blog/2023/09/1696084180-651830d46d89b.webp" alt="可视化图形桌面安装"></p>
+<p>如果你前面也像我一样跳过了User用户的注册，这里会让你重新注册一个非root用户供可视化图像界面用户使用，这里我注册了一个叫<code>abc</code>的账户，密码为<code>1234</code>，也是看不见，输完回车就好，然后会让你重复确认一遍密码<br>之后就是用户信息，你可以安装需求填写，也可以直接像我一样按回车跳过直到这个Y/n<br>这里讲一个Linux知识点，这里就是一个选择，可以输入y或者n（就是yes或者or），如果他有大写的就是默认选项，例如这里是Y/n，默认就是y，直接按回车和输入y按回车的效果是一样的，y/N同理<br><img src="https://img.akimio.top/Blog/2023/09/1696084198-651830e6ee411.webp" alt="非root用户创建"></p>
+<p>然后就是下载，我这里的下载速度大概只有0.1M/s，如果你的下载环境比较慢的话，建议更换网络环境<br>下载完后就有一个图形管理框架选择界面，因为我用过ubuntu，就选择gdm3，XUbuntu默认的是lightdm，看个人喜好<br><img src="https://img.akimio.top/Blog/2023/09/1696084223-651830ff38d9d.webp" alt="图形管理框架选择"></p>
+<p>然后就是跑完代码，出现success就基本成功了，然后就是选择是否安装中文支持，我选了y，后面就是跑代码了<br><img src="https://img.akimio.top/Blog/2023/09/1696084241-65183111c7bf9.webp" alt="安装桌面中文支持"></p>
+<p>跑完代码就会自动重启，重启后再跑一段代码就进入可视化桌面系统了，选择账户输入密码后就进入桌面了<br><img src="https://img.akimio.top/Blog/2023/09/1696084258-65183122b17f8.webp" alt="选择用户"></p>
+<p>进入可视化桌面<br>后面就是自行安装Linux软件了，就不再过多介绍了</p>
+<h1 id="尾声"><a href="#尾声" class="headerlink" title="尾声"></a>尾声</h1><p>如果大家对ophub大大的armbian系统感兴趣，建议自行查看大大写的说明书并且给大大一个star，这相当于给开源大佬的一键三连<br><a target="_blank" rel="noopener" href="https://github.com/ophub/amlogic-s9xxx-armbian/blob/main/build-armbian/documents/README.cn.md">中文说明书地址</a><br>里面详细说明了定制专属固件教程，各种命令的用法，包括armbian-updata（更新内核），armbian-tf（手动更改分区情况），如果后面遇到我会慢慢介绍</p>
+<p>感谢你的观看，本系列教程会持续更新，手把手教你把废弃的电视打造成迷你主机+应用服务器+影音库+软路由+下载器+博客服务器+签到机and so on…..<br>如果有什么想看的也可以在评论区留言，若文章有疏漏，感谢斧正</p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="https://blog.akimio.top">秋澪</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="https://blog.akimio.top/posts/1021/">https://blog.akimio.top/posts/1021/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://blog.akimio.top" target="_blank">秋澪的博客</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/Arbiam/">Arbiam</a><a class="post-meta__tags" href="/tags/%E6%95%99%E7%A8%8B/">教程</a></div><div class="post_share"><div class="social-share" data-image="https://img.akimio.top/Blog/2023/09/1696083844-65182f8492279.webp" data-sites="wechat,qq,weibo,facebook,twitter"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/posts/1022/" title="免费的云数据库推荐"><img class="cover" src="https://img.akimio.top/Blog/2023/10/1696091022-65184b8edbb94.webp" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">免费的云数据库推荐</div></div></a></div><div class="next-post pull-right"><a href="/posts/1020/" title="使用BetterNCM美化网易云"><img class="cover" src="https://img.akimio.top/Blog/2023/09/1696086038-65183816473c5.webp" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">使用BetterNCM美化网易云</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/posts/1011/" title="Docker命令大全"><img class="cover" src="https://img.akimio.top/Blog/2023/09/1696084647-651832a7552c1.webp" alt="cover"><div class="content is-center"><div class="date"><i class="fas fa-history fa-fw"></i> 2023-10-01</div><div class="title">Docker命令大全</div></div></a></div><div><a href="/posts/1009/" title="Nginx-Proxy-Manager问题补充：DNSPod证书申请错误、NPM端口丢失"><img class="cover" src="https://img.akimio.top/Blog/2023/09/1696084798-6518333e6266f.webp" alt="cover"><div class="content is-center"><div class="date"><i class="fas fa-history fa-fw"></i> 2023-09-10</div><div class="title">Nginx-Proxy-Manager问题补充：DNSPod证书申请错误、NPM端口丢失</div></div></a></div><div><a href="/posts/1002/" title="利用FRP和Nginx-Proxy-Manager为内网设备提供内外穿透服务"><img class="cover" src="https://img.akimio.top/Blog/2023/09/1696084462-651831eeb8897.webp" alt="cover"><div class="content is-center"><div class="date"><i class="fas fa-history fa-fw"></i> 2023-04-10</div><div class="title">利用FRP和Nginx-Proxy-Manager为内网设备提供内外穿透服务</div></div></a></div><div><a href="/posts/1015/" title="Hexo重装记录"><img class="cover" src="https://img.akimio.top/Blog/2023/09/1696084993-6518340135d0e.webp" alt="cover"><div class="content is-center"><div class="date"><i class="fas fa-history fa-fw"></i> 2023-10-01</div><div class="title">Hexo重装记录</div></div></a></div><div><a href="/posts/1024/" title="为Hexo博客添加后台管理系统"><img class="cover" src="https://img.akimio.top/Blog/2023/09/1696085047-6518343797886.webp" alt="cover"><div class="content is-center"><div class="date"><i class="fas fa-history fa-fw"></i> 2023-10-01</div><div class="title">为Hexo博客添加后台管理系统</div></div></a></div><div><a href="/posts/1027/" title="将M.2固态硬盘设为群晖存储池"><img class="cover" src="https://img.akimio.top/Blog/2023/09/1696085815-65183737cc4cf.webp" alt="cover"><div class="content is-center"><div class="date"><i class="fas fa-history fa-fw"></i> 2023-10-01</div><div class="title">将M.2固态硬盘设为群晖存储池</div></div></a></div></div></div><hr class="custom-hr"/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div id="waline-wrap"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content is-expand"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Armbian%E7%AE%80%E4%BB%8B"><span class="toc-number">1.</span> <span class="toc-text">Armbian简介</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-number">2.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%87%86%E5%A4%87"><span class="toc-number">3.</span> <span class="toc-text">准备</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%95%99%E7%A8%8B"><span class="toc-number">4.</span> <span class="toc-text">教程</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%83%A7%E5%BD%95%E9%95%9C%E5%83%8F"><span class="toc-number">4.1.</span> <span class="toc-text">烧录镜像</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%B7%E5%85%A5%E7%B3%BB%E7%BB%9F"><span class="toc-number">4.2.</span> <span class="toc-text">刷入系统</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%85%8D%E7%BD%AE%E6%97%A0%E7%BA%BF%E7%BD%91%E7%BB%9C%EF%BC%88%E5%8F%AF%E9%80%89%EF%BC%89"><span class="toc-number">4.3.</span> <span class="toc-text">配置无线网络（可选）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%89%E8%A3%85%E5%9B%BE%E5%BD%A2%E5%8C%96%E7%95%8C%E9%9D%A2"><span class="toc-number">4.4.</span> <span class="toc-text">安装图形化界面</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%B0%BE%E5%A3%B0"><span class="toc-number">5.</span> <span class="toc-text">尾声</span></a></li></ol></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2023 By 秋澪</div><div class="footer_custom_text">欢迎来到Akimio的博客</div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/medium-zoom/dist/medium-zoom.min.js"></script><script src="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.js"></script><div class="js-pjax"><script>(() => {
+  const initWaline = () => {
+    const waline = Waline.init(Object.assign({
+      el: '#waline-wrap',
+      serverURL: 'https://waline.akimio.top/',
+      pageview: false,
+      dark: 'html[data-theme="dark"]',
+      path: window.location.pathname,
+      comment: true,
+    }, null))
+  }
+
+  const loadWaline = async () => {
+    if (typeof Waline === 'object') initWaline()
+    else {
+      await getCSS('https://cdn.jsdelivr.net/npm/@waline/client/dist/waline.min.css')
+      await getScript('https://cdn.jsdelivr.net/npm/@waline/client/dist/waline.min.js')
+      initWaline()
+    }
+  }
+
+  if ('Waline' === 'Waline' || !false) {
+    if (false) btf.loadComment(document.getElementById('waline-wrap'),loadWaline)
+    else setTimeout(loadWaline, 0)
+  } else {
+    window.loadOtherComment = loadWaline
+  }
+})()</script></div><script>window.addEventListener('load', () => {
+  const changeContent = content => {
+    if (content === '') return content
+
+    content = content.replace(/<img.*?src="(.*?)"?[^\>]+>/ig, '[图片]') // replace image link
+    content = content.replace(/<a[^>]+?href=["']?([^"']+)["']?[^>]*>([^<]+)<\/a>/gi, '[链接]') // replace url
+    content = content.replace(/<pre><code>.*?<\/pre>/gi, '[代码]') // replace code
+    content = content.replace(/<[^>]+>/g,"") // remove html tag
+
+    if (content.length > 150) {
+      content = content.substring(0,150) + '...'
+    }
+    return content
+  }
+
+  const generateHtml = array => {
+    let result = ''
+
+    if (array.length) {
+      for (let i = 0; i < array.length; i++) {
+        result += '<div class=\'aside-list-item\'>'
+
+        if (true) {
+          const name = 'src'
+          result += `<a href='${array[i].url}' class='thumbnail'><img ${name}='${array[i].avatar}' alt='${array[i].nick}'></a>`
+        }
+
+        result += `<div class='content'>
+        <a class='comment' href='${array[i].url}' title='${array[i].content}'>${array[i].content}</a>
+        <div class='name'><span>${array[i].nick} / </span><time datetime="${array[i].date}">${btf.diffDate(array[i].date, true)}</time></div>
+        </div></div>`
+      }
+    } else {
+      result += '没有评论'
+    }
+
+    let $dom = document.querySelector('#card-newest-comments .aside-list')
+    $dom.innerHTML= result
+    window.lazyLoadInstance && window.lazyLoadInstance.update()
+    window.pjax && window.pjax.refresh($dom)
+  }
+
+  const getComment = async () => {
+    try {
+      const res = await fetch('https://waline.akimio.top/api/comment?type=recent&count=6', { method: 'GET' })
+      const result = await res.json()
+      const walineArray = result.data.map(e => {
+        return {
+          'content': changeContent(e.comment),
+          'avatar': e.avatar,
+          'nick': e.nick,
+          'url': e.url + '#' + e.objectId,
+          'date': e.time || e.insertedAt
+        }
+      })
+      saveToLocal.set('waline-newest-comments', JSON.stringify(walineArray), 10/(60*24))
+      generateHtml(walineArray)
+    } catch (err) {
+      console.error(err)
+      const $dom = document.querySelector('#card-newest-comments .aside-list')
+      $dom.textContent= "无法获取评论，请确认相关配置是否正确"
+    }
+  }
+
+  const newestCommentInit = () => {
+    if (document.querySelector('#card-newest-comments .aside-list')) {
+      const data = saveToLocal.get('waline-newest-comments')
+      if (data) {
+        generateHtml(JSON.parse(data))
+      } else {
+        getComment()
+      }
+    }
+  }
+
+  newestCommentInit()
+  document.addEventListener('pjax:complete', newestCommentInit)
+})</script><script async src="https://cdn.jsdelivr.net/npm/js-heo@1.0.11/categoryBar/categoryBar.js"></script><script async src="/js/ali_icon.js"></script><script async data-pjax src="/js/custom.js"></script><script async data-pjax src="/js/waterfall.js"></script><script async data-pjax src="/js/photo.js"></script><script src="https://cdn.jsdelivr.net/npm/pjax/pjax.min.js"></script><script>let pjaxSelectors = ["head > title","#config-diff","#body-wrap","#rightside-config-hide","#rightside-config-show",".js-pjax"]
+
+var pjax = new Pjax({
+  elements: 'a:not([target="_blank"])',
+  selectors: pjaxSelectors,
+  cacheBust: false,
+  analytics: false,
+  scrollRestoration: false
+})
+
+document.addEventListener('pjax:send', function () {
+
+  // removeEventListener
+  btf.removeGlobalFnEvent('pjax')
+  btf.removeGlobalFnEvent('themeChange')
+
+  document.getElementById('rightside').classList.remove('rightside-show')
+  
+  if (window.aplayers) {
+    for (let i = 0; i < window.aplayers.length; i++) {
+      if (!window.aplayers[i].options.fixed) {
+        window.aplayers[i].destroy()
+      }
+    }
+  }
+
+  typeof typed === 'object' && typed.destroy()
+
+  //reset readmode
+  const $bodyClassList = document.body.classList
+  $bodyClassList.contains('read-mode') && $bodyClassList.remove('read-mode')
+
+  typeof disqusjs === 'object' && disqusjs.destroy()
+})
+
+document.addEventListener('pjax:complete', function () {
+  window.refreshFn()
+
+  document.querySelectorAll('script[data-pjax]').forEach(item => {
+    const newScript = document.createElement('script')
+    const content = item.text || item.textContent || item.innerHTML || ""
+    Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+    newScript.appendChild(document.createTextNode(content))
+    item.parentNode.replaceChild(newScript, item)
+  })
+
+  GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
+
+  typeof panguInit === 'function' && panguInit()
+
+  // google analytics
+  typeof gtag === 'function' && gtag('config', '', {'page_path': window.location.pathname});
+
+  // baidu analytics
+  typeof _hmt === 'object' && _hmt.push(['_trackPageview',window.location.pathname]);
+
+  typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
+
+  // prismjs
+  typeof Prism === 'object' && Prism.highlightAll()
+})
+
+document.addEventListener('pjax:error', e => {
+  if (e.request.status === 404) {
+    pjax.loadUrl('/404.html')
+  }
+})</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><div id="algolia-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="search-wrap"><div id="algolia-search-input"></div><hr/><div id="algolia-search-results"><div id="algolia-hits"></div><div id="algolia-pagination"></div><div id="algolia-info"><div class="algolia-stats"></div><div class="algolia-poweredBy"></div></div></div></div></div><div id="search-mask"></div><script src="https://cdn.jsdelivr.net/npm/algoliasearch/dist/algoliasearch-lite.umd.min.js"></script><script src="https://cdn.jsdelivr.net/npm/instantsearch.js/dist/instantsearch.production.min.js"></script><script src="/js/search/algolia.js"></script></div></div><!-- hexo injector body_end start --><script>
+    // 全局变量声明区域
+    var fdata = {
+      apiurl: 'https://fcircle.akimio.top/',
+      initnumber: 30, //【可选】页面初始化展示文章数量
+      stepnumber: 30, //【可选】每次加载增加的篇数
+      error_img: 'https://npm.elemecdn.com/akilar-candyassets/image/404.gif' //【可选，头像图片加载失败时的默认头像】
+    }
+    //存入本地存储
+    localStorage.setItem("fdatalist",JSON.stringify(fdata))
+    </script>
+    <script data-pjax src="https://npm.elemecdn.com/hexo-filter-fcircle-anzhiyu@1.1.2/assets/js/fetch.js"></script><script data-pjax src="https://npm.elemecdn.com/hexo-filter-fcircle-anzhiyu@1.1.2/assets/js/random-friends-post.js"></script><!-- hexo injector body_end end --></body></html>

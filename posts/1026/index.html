@@ -1,0 +1,477 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>Git快速上手指南 | 秋澪的博客</title><meta name="author" content="秋澪"><meta name="copyright" content="秋澪"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="Git入门什么是GitGit是一种分布式版本控制系统。假设有一个文件夹，随之时间的变化文件夹中文件的内容随时间变化，无论是是删除或增加文件夹的内容还是修改文件夹中的某个文件的内容，都能称为一个“版本”，而Git可以记录每个版本之间的区别并快速回滚到某个版本。简单来说，Git就像是是游戏的进度存档，可以快速回档 Git可以清楚地记录每个文件是谁在什么时候加进来的，什么时候修改的，修改的内容有哪些 无">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Git快速上手指南">
+<meta property="og:url" content="https://blog.akimio.top/posts/1026/index.html">
+<meta property="og:site_name" content="秋澪的博客">
+<meta property="og:description" content="Git入门什么是GitGit是一种分布式版本控制系统。假设有一个文件夹，随之时间的变化文件夹中文件的内容随时间变化，无论是是删除或增加文件夹的内容还是修改文件夹中的某个文件的内容，都能称为一个“版本”，而Git可以记录每个版本之间的区别并快速回滚到某个版本。简单来说，Git就像是是游戏的进度存档，可以快速回档 Git可以清楚地记录每个文件是谁在什么时候加进来的，什么时候修改的，修改的内容有哪些 无">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://img.akimio.top/avatar/akimio.png">
+<meta property="article:published_time" content="2023-07-01T08:54:32.000Z">
+<meta property="article:modified_time" content="2023-08-05T10:11:32.000Z">
+<meta property="article:author" content="秋澪">
+<meta property="article:tag" content="教程">
+<meta property="article:tag" content="备忘录">
+<meta property="article:tag" content="Git">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://img.akimio.top/avatar/akimio.png"><link rel="shortcut icon" href="https://img.akimio.top/avatar/akimio.png"><link rel="canonical" href="https://blog.akimio.top/posts/1026/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: {"appId":"BYPCZSYOJI","apiKey":"6af2e592cfa13577928c34a0b6129069","indexName":"akimio","hits":{"per_page":6},"languages":{"input_placeholder":"搜索文章","hits_empty":"找不到您查询的内容：${query}","hits_stats":"找到 ${hits} 条结果，用时 ${time} 毫秒"}},
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: {"limitDay":500,"position":"top","messagePrev":"这篇文章已经发布了","messageNext":"天，文章内容可能已经过时"},
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '天',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'mediumZoom',
+  Snackbar: {"chs_to_cht":"你已切换为繁体中文","cht_to_chs":"你已切换为简体中文","day_to_night":"你已切换为深色模式","night_to_day":"你已切换为浅色模式","bgLight":"#284F69","bgDark":"#1f1f1f","position":"bottom-center"},
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: true,
+  },
+  autoDarkmode: true
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'Git快速上手指南',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2023-08-05 18:11:32'
+}</script><script>(win=>{
+      win.saveToLocal = {
+        set: (key, value, ttl) => {
+          if (ttl === 0) return
+          const now = Date.now()
+          const expiry = now + ttl * 86400000
+          const item = {
+            value,
+            expiry
+          }
+          localStorage.setItem(key, JSON.stringify(item))
+        },
+      
+        get: key => {
+          const itemStr = localStorage.getItem(key)
+      
+          if (!itemStr) {
+            return undefined
+          }
+          const item = JSON.parse(itemStr)
+          const now = Date.now()
+      
+          if (now > item.expiry) {
+            localStorage.removeItem(key)
+            return undefined
+          }
+          return item.value
+        }
+      }
+    
+      win.getScript = (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        script.onerror = reject
+        script.onload = script.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          script.onload = script.onreadystatechange = null
+          resolve()
+        }
+
+        Object.keys(attr).forEach(key => {
+          script.setAttribute(key, attr[key])
+        })
+
+        document.head.appendChild(script)
+      })
+    
+      win.getCSS = (url, id = false) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onerror = reject
+        link.onload = link.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          link.onload = link.onreadystatechange = null
+          resolve()
+        }
+        document.head.appendChild(link)
+      })
+    
+      win.activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          const isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches
+          const isLightMode = window.matchMedia('(prefers-color-scheme: light)').matches
+          const isNotSpecified = window.matchMedia('(prefers-color-scheme: no-preference)').matches
+          const hasNoSupport = !isDarkMode && !isLightMode && !isNotSpecified
+
+          if (t === undefined) {
+            if (isLightMode) activateLightMode()
+            else if (isDarkMode) activateDarkMode()
+            else if (isNotSpecified || hasNoSupport) {
+              const now = new Date()
+              const hour = now.getHours()
+              const isNight = hour <= 6 || hour >= 18
+              isNight ? activateDarkMode() : activateLightMode()
+            }
+            window.matchMedia('(prefers-color-scheme: dark)').addListener(e => {
+              if (saveToLocal.get('theme') === undefined) {
+                e.matches ? activateDarkMode() : activateLightMode()
+              }
+            })
+          } else if (t === 'light') activateLightMode()
+          else activateDarkMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+      const detectApple = () => {
+        if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+          document.documentElement.classList.add('apple')
+        }
+      }
+      detectApple()
+    })(window)</script><link rel="stylesheet" href="/css/kasumi.css"><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/js-heo@1.0.11/mainColor/heoMainColor.css"><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/js-heo@1.0.11/categoryBar/categoryBar.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/l-lin/font-awesome-animation/dist/font-awesome-animation.min.css"  media="defer" onload="this.media='all'"><link rel="stylesheet" href="/css/banner.css"><link rel="stylesheet" href="/css/essay_page.css"><link rel="stylesheet" href="/css/photo.css"><meta name="generator" content="Hexo 5.4.2"><link rel="alternate" href="/rss2.xml" title="秋澪的博客" type="application/rss+xml">
+</head><body><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="https://img.akimio.top/avatar/akimio.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">32</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">39</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">10</div></a></div><hr class="custom-hr"/><div class="menus_items"><div class="menus_item"><a class="site-page faa-parent animated-hover" href="javascript:void(0);"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-akimio-website"></use></svg><span> 个人站点</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" target="_blank" rel="noopener" href="https://www.akimio.top/"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-akimio-home"></use></svg><span> 个人主页</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-akimio-blog"></use></svg><span> 博客</span></a></li><li><a class="site-page child faa-parent animated-hover" target="_blank" rel="noopener" href="https://chatgpt.akimio.top/"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-akimio-chatgpt"></use></svg><span> ChatGPT</span></a></li><li><a class="site-page child faa-parent animated-hover" target="_blank" rel="noopener" href="https://music.akimio.top/"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-akimio-music"></use></svg><span> 个人音乐站</span></a></li><li><a class="site-page child faa-parent animated-hover" target="_blank" rel="noopener" href="https://um.akimio.top/"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-akimio-um"></use></svg><span> 音乐解锁站</span></a></li><li><a class="site-page child faa-parent animated-hover" target="_blank" rel="noopener" href="https://alist.akimio.top/"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-akimio-alist"></use></svg><span> Alist</span></a></li></ul></div><div class="menus_item"><a class="site-page faa-parent animated-hover" href="javascript:void(0);"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-akimio-article"></use></svg><span> 关于文章</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/categories/"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-akimio-categories"></use></svg><span> 分类</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/tags/"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-akimio-tags"></use></svg><span> 标签</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/archives/"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-akimio-archives"></use></svg><span> 归档</span></a></li></ul></div><div class="menus_item"><a class="site-page faa-parent animated-hover" href="javascript:void(0);"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-akimio-friends"></use></svg><span> 朋友们</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/link/"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-akimio-link"></use></svg><span> 友链</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/fcircle/"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-akimio-fcircle"></use></svg><span> 朋友圈</span></a></li></ul></div><div class="menus_item"><a class="site-page faa-parent animated-hover" href="javascript:void(0);"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-akimio-other"></use></svg><span> 关于我</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/photos/"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-akimio-photo"></use></svg><span> 相册</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/essay/"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-akimio-essay"></use></svg><span> 动态</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/comments/"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-akimio-comments"></use></svg><span> 留言板</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/about/"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-akimio-about"></use></svg><span> 关于本站</span></a></li></ul></div><div class="menus_item"><a class="site-page faa-parent animated-hover" target="_blank" rel="noopener" href="https://www.travellings.cn/go.html"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-akimio-travelling"></use></svg><span> 开往</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://img.akimio.top/Blog/2023/09/1696087818-65183f0a92ed5.webp')"><nav id="nav"><span id="blog-info"><a href="/" title="秋澪的博客"><img class="site-icon" src="https://img.akimio.top/avatar/akimio.png"/><span class="site-name">秋澪的博客</span></a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search" href="javascript:void(0);"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page faa-parent animated-hover" href="javascript:void(0);"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-akimio-website"></use></svg><span> 个人站点</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" target="_blank" rel="noopener" href="https://www.akimio.top/"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-akimio-home"></use></svg><span> 个人主页</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-akimio-blog"></use></svg><span> 博客</span></a></li><li><a class="site-page child faa-parent animated-hover" target="_blank" rel="noopener" href="https://chatgpt.akimio.top/"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-akimio-chatgpt"></use></svg><span> ChatGPT</span></a></li><li><a class="site-page child faa-parent animated-hover" target="_blank" rel="noopener" href="https://music.akimio.top/"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-akimio-music"></use></svg><span> 个人音乐站</span></a></li><li><a class="site-page child faa-parent animated-hover" target="_blank" rel="noopener" href="https://um.akimio.top/"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-akimio-um"></use></svg><span> 音乐解锁站</span></a></li><li><a class="site-page child faa-parent animated-hover" target="_blank" rel="noopener" href="https://alist.akimio.top/"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-akimio-alist"></use></svg><span> Alist</span></a></li></ul></div><div class="menus_item"><a class="site-page faa-parent animated-hover" href="javascript:void(0);"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-akimio-article"></use></svg><span> 关于文章</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/categories/"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-akimio-categories"></use></svg><span> 分类</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/tags/"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-akimio-tags"></use></svg><span> 标签</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/archives/"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-akimio-archives"></use></svg><span> 归档</span></a></li></ul></div><div class="menus_item"><a class="site-page faa-parent animated-hover" href="javascript:void(0);"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-akimio-friends"></use></svg><span> 朋友们</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/link/"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-akimio-link"></use></svg><span> 友链</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/fcircle/"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-akimio-fcircle"></use></svg><span> 朋友圈</span></a></li></ul></div><div class="menus_item"><a class="site-page faa-parent animated-hover" href="javascript:void(0);"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-akimio-other"></use></svg><span> 关于我</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/photos/"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-akimio-photo"></use></svg><span> 相册</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/essay/"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-akimio-essay"></use></svg><span> 动态</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/comments/"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-akimio-comments"></use></svg><span> 留言板</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/about/"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-akimio-about"></use></svg><span> 关于本站</span></a></li></ul></div><div class="menus_item"><a class="site-page faa-parent animated-hover" target="_blank" rel="noopener" href="https://www.travellings.cn/go.html"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-akimio-travelling"></use></svg><span> 开往</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">Git快速上手指南</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2023-07-01T08:54:32.000Z" title="发表于 2023-07-01 16:54:32">2023-07-01</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2023-08-05T10:11:32.000Z" title="更新于 2023-08-05 18:11:32">2023-08-05</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E5%A4%87%E5%BF%98%E5%BD%95/">备忘录</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">6.2k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>21分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="Git快速上手指南"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span><span class="post-meta-separator">|</span><span class="post-meta-commentcount"><i class="far fa-comments fa-fw post-meta-icon"></i><span class="post-meta-label">评论数:</span><a href="/posts/1026/#post-comment"><span class="waline-comment-count" data-path="/posts/1026/"><i class="fa-solid fa-spinner fa-spin"></i></span></a></span></div></div></div><section class="main-hero-waves-area waves-area"><svg class="waves-svg" xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto"><defs><path id="gentle-wave" d="M -160 44 c 30 0 58 -18 88 -18 s 58 18 88 18 s 58 -18 88 -18 s 58 18 88 18 v 44 h -352 Z"></path></defs><g class="parallax"><use href="#gentle-wave" x="48" y="0"></use><use href="#gentle-wave" x="48" y="3"></use><use href="#gentle-wave" x="48" y="5"></use><use href="#gentle-wave" x="48" y="7"></use></g></svg></section></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="Git入门"><a href="#Git入门" class="headerlink" title="Git入门"></a>Git入门</h1><h2 id="什么是Git"><a href="#什么是Git" class="headerlink" title="什么是Git"></a>什么是Git</h2><p>Git是一种分布式版本控制系统。假设有一个文件夹，随之时间的变化文件夹中文件的内容随时间变化，无论是是删除或增加文件夹的内容还是修改文件夹中的某个文件的内容，都能称为一个“版本”，而Git可以记录每个版本之间的区别并快速回滚到某个版本。简单来说，Git就像是是游戏的进度存档，可以快速回档</p>
+<p>Git可以清楚地记录每个文件是谁在什么时候加进来的，什么时候修改的，修改的内容有哪些</p>
+<p>无论做什么工作，如果有Git帮你保留这些历史记录和证据，那么发生意外情况的时候你就能知道是从什么时候开始有问题，以及该找谁负责了</p>
+<h2 id="Git的优点"><a href="#Git的优点" class="headerlink" title="Git的优点"></a>Git的优点</h2><h3 id="速度块，占用体积小"><a href="#速度块，占用体积小" class="headerlink" title="速度块，占用体积小"></a>速度块，占用体积小</h3><p>如果你也有按照时间顺序备份文件的习惯，或许一个两个小文件还好，但是一旦涉及到大型文件夹，一次备份就会占用大量的空间，并且没有办法记录各个版本之间的差异</p>
+<h3 id="分布式系统"><a href="#分布式系统" class="headerlink" title="分布式系统"></a>分布式系统</h3><p>Git通常会有一服共同的服务器，所有文件都保存在这台服务器之上，即使在没有网络的环境下，在个人电脑上依然可以使用Git进行版本控制，待网络恢复后，再将个人电脑的数据同步（Push）到这台服务器上去。而个人电脑的数量可以有很多，每个人都可以将自己的修改后的文件同步到这台服务器上，大大提高了工作效率。这台服务器最著名的就有免费的Github，或者国内的Gitee，还可以是自建的Gitlab</p>
+<h2 id="Git的缺点"><a href="#Git的缺点" class="headerlink" title="Git的缺点"></a>Git的缺点</h2><h3 id="易学难精"><a href="#易学难精" class="headerlink" title="易学难精"></a>易学难精</h3><p>Git的指令有非常多，但常用的却不多。约20%的指令就可以胜任80%的工作。但好在有许多实用的图形界面供新手学习使用（如SourceTree）</p>
+<h3 id="二进制文件的无奈"><a href="#二进制文件的无奈" class="headerlink" title="二进制文件的无奈"></a>二进制文件的无奈</h3><p>Git只关心文件的内容，每次版本的更新都会逐行对比文本文件（如md、txt）的差异并予以记录。但像是Photoshop的psd、Office的docx、ppt等文件是二进制文件，并不能像常规文本一样一行行查询，也就无法精确地查看不同版本的差异。但总体来说Git还是可以帮的上忙的，版本回溯的功能依然可以使用，至少当文件不小心被覆盖或者被删除的时候依然可以找回旧版本的文件</p>
+<h1 id="环境安装"><a href="#环境安装" class="headerlink" title="环境安装"></a>环境安装</h1><h2 id="Windows"><a href="#Windows" class="headerlink" title="Windows"></a>Windows</h2><p><a target="_blank" rel="noopener" href="https://git-scm.com/download/win">Git官方下载地址</a><br>里面提供的32位和64位、安装版和便携版共4种组合供大家选择，选择适合的版本就好</p>
+<h2 id="Mac"><a href="#Mac" class="headerlink" title="Mac"></a>Mac</h2><p><a target="_blank" rel="noopener" href="https://git-scm.com/download/mac">Git官方下载地址</a><br>在macOS上安装Git有几个选项：Homebrew、MacPorts、Xcode、Binary installer、Building from Source、Installing git-gui</p>
+<h2 id="Linux"><a href="#Linux" class="headerlink" title="Linux"></a>Linux</h2><p>在Linux上安装是最简单的，只需要在终端中输入apt-get命令安装即可<br><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">apt-get install git</span><br><span class="line"># 如果提示权限不足可以尝试以下命令</span><br><span class="line"># sudo apt-get install git</span><br></pre></td></tr></table></figure></p>
+<h2 id="测试Git是否成功安装"><a href="#测试Git是否成功安装" class="headerlink" title="测试Git是否成功安装"></a>测试Git是否成功安装</h2><p>打开终端，输入命令<br><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git -v</span><br></pre></td></tr></table></figure><br>如果返回版本号则代表Git已经正确安装</p>
+<h2 id="图像界面工具"><a href="#图像界面工具" class="headerlink" title="图像界面工具"></a>图像界面工具</h2><p>一开始接触Git，特别是没有Linux基础的人比较习惯图形界面工具，对终端及Git指令操作相对不熟悉，可以使用GUI工具辅助学习使用<br>在<a target="_blank" rel="noopener" href="https://git-scm.com/downloads/guis">Git官方网站</a>中提供了多款GUI工具，有的是商业付费软件，有的是免费软件<br>其中SourceTree和Github Desktop这款两工具使用于Windows和macOS，并且功能都较为完善，也可以免费使用<br>如果在Linux上使用，SourceTree没有Linux的版本，但是可以使用gitk，可以使用下面命令安装<br><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install gitk</span><br></pre></td></tr></table></figure></p>
+<h1 id="设置Git"><a href="#设置Git" class="headerlink" title="设置Git"></a>设置Git</h1><h2 id="用户设置"><a href="#用户设置" class="headerlink" title="用户设置"></a>用户设置</h2><p>使用Git首先先要设置用户的邮箱和用户名<br><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git config --global user.name &quot;Zuilang&quot;</span><br><span class="line">git config --global user.email &quot;zl@zuilang.tk&quot;</span><br></pre></td></tr></table></figure><br>完成后可以输入以下命令检查当前配置<br><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git config --list</span><br></pre></td></tr></table></figure></p>
+<h2 id="单个项目用户设置"><a href="#单个项目用户设置" class="headerlink" title="单个项目用户设置"></a>单个项目用户设置</h2><p>前面在设置用户时多加了一个<code>--global</code>的参数，其含义是进行全局（Global）设置，为默认的使用的账户，但要是在某一项目使用不同的作者则可以在该目录的终端中进行设置<br><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git config --local user.name &quot;Zuilang&quot;</span><br><span class="line">git config --local user.email &quot;zl@zuilang.tk&quot;</span><br></pre></td></tr></table></figure></p>
+<h2 id="其他方便设置"><a href="#其他方便设置" class="headerlink" title="其他方便设置"></a>其他方便设置</h2><h3 id="更换编辑器"><a href="#更换编辑器" class="headerlink" title="更换编辑器"></a>更换编辑器</h3><p>Git默认使用Vim编辑器，这里以更换为Emacs编辑器为例<br><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git config --global core.editor emacs</span><br></pre></td></tr></table></figure><br>除Emacs之外，Git还可以使用Sublime Text、Atom、VS Code等比较现代的文字编辑器，只需了解如果从终端启用这些编辑器，然后就可以利用同样的方法进行替换</p>
+<h3 id="设置缩写"><a href="#设置缩写" class="headerlink" title="设置缩写"></a>设置缩写</h3><p>虽然Git的命令并不长，但是有时候懒得打太多字，或者是经常打错，就可以设置缩写<br><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git config --global alias.co checkout</span><br><span class="line">git config --global alias.br branch</span><br><span class="line">git config --global alias.st status</span><br></pre></td></tr></table></figure><br>设置之后输入<code>git co</code>就和输入<code>git checkout</code>的效果一致，其他同理<br>Git中有些命令需要填入一些参数，同样也可以通过Alisa设置缩写<br><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git config --global alias.l &quot;log --oneline -- graph&quot;</span><br></pre></td></tr></table></figure><br>设置之后输入<code>git l</code>就和输入<code>git log --oneline -- graph</code>的效果一致<br>甚至还可以设置得更复杂一些<br><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git config --global alias.ls &#x27;log -- graph --pretty=format:&quot;%h &lt;%an&gt; %ar %s&quot;&#x27;</span><br><span class="line"># 输入日志时显示提交Commit的人与时间</span><br></pre></td></tr></table></figure><br>除了在终端中修改，也可以直接在配置文件中修改，在<code>~/.gitconfig</code>中可以查看之前的修改：<br><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">co = checkout br = branch</span><br><span class="line">st = status</span><br><span class="line">l = log --oneline --graph</span><br><span class="line">ls = log --graph --pretty=format:&quot;%h &lt;%an&gt; %ar %s&quot;</span><br></pre></td></tr></table></figure><br>你也可以仿照这种格式直接修改<br>虽然只是少打了几个字母，但是长期积累，减少的输入量还是十分惊人的</p>
+<h1 id="初始化仓库（Repository）"><a href="#初始化仓库（Repository）" class="headerlink" title="初始化仓库（Repository）"></a>初始化仓库（Repository）</h1><h2 id="新的开始"><a href="#新的开始" class="headerlink" title="新的开始"></a>新的开始</h2><p>如果是第一次使用Git，那么就从建立一个全新的文件夹开始吧<br><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">cd /tep # 切换至绝对路径/tmp，Windows用户可以直接进入文件夹中右键空白处选择打开终端</span><br><span class="line">mkdir test # 在/tmp文件夹中创建一个名为test的文件夹</span><br><span class="line">cd test # 进入test文件夹</span><br><span class="line">git init # 初始化这个文件夹，并让Git对这个文件夹开始版本控制</span><br></pre></td></tr></table></figure></p>
+<h2 id="把文件交给Git管控"><a href="#把文件交给Git管控" class="headerlink" title="把文件交给Git管控"></a>把文件交给Git管控</h2><h3 id="创建文件交给Git"><a href="#创建文件交给Git" class="headerlink" title="创建文件交给Git"></a>创建文件交给Git</h3><p>现在在这个test文件夹中只有一个<code>.git</code>的隐藏文件夹，并没有其他的文件，所以我们创建一个文件<br><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">echo &quot;Hello,Git&quot; &gt; welcome.html # 将Hello,Git添加到welcome.html中，因为我们文件夹中并没有welcome.html，所以系统会为我们创建一个welcome.html</span><br></pre></td></tr></table></figure><br>输入以下命令查看Git状态<br><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git status</span><br></pre></td></tr></table></figure><br>在终端就会显示（井号后面为含义）：<br><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">On branch master # 在master分支（branch）中</span><br><span class="line">No commits yet # 没有任何提交（commit）</span><br><span class="line">Untracked files: # 未追踪文件（刚刚添加到文件夹中，还未commit）</span><br><span class="line">  (use &quot;git add &lt;file&gt;...&quot; to include in what will be committed) # 使用git命令进行提交（后面会讲到）</span><br><span class="line">        welcome.html   # 列出未被追踪的文件， 这里我们就是新建的welcome.html</span><br><span class="line">nothing added to commit but untracked files present (use &quot;git add&quot; to track)</span><br></pre></td></tr></table></figure></p>
+<h3 id="把文件交给Git"><a href="#把文件交给Git" class="headerlink" title="把文件交给Git"></a>把文件交给Git</h3><p>使用的命令是<code>git add</code>后面加上空格和文件名：<br><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git add welcome.html</span><br></pre></td></tr></table></figure><br>再次查看Git状态：<br><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">On branch master</span><br><span class="line">No commits yet</span><br><span class="line">Changes to be committed:</span><br><span class="line">  (use &quot;git rm --cached &lt;file&gt;...&quot; to unstage)</span><br><span class="line">        new file:   welcome.html</span><br></pre></td></tr></table></figure><br>从以上的信息可以看出，<code>welcome.html</code>的状态已经从<code>untracked</code>变成<code>new file</code>，表明该文件已经被提交到缓存区中<br>如果觉得一个一个提交git太麻烦，也可以尝试使用以下命令<br><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git add *.html # *代表通配符，意思是提交所有后缀名为html的文件</span><br><span class="line">git add . # 将所有文件提交至缓存区，在Git 1.x中，git add --all和git add .有区别，但在Git 2.x中，两者含义一致</span><br></pre></td></tr></table></figure></p>
+<h3 id="git-add后又对文件内容进行改动"><a href="#git-add后又对文件内容进行改动" class="headerlink" title="git add后又对文件内容进行改动"></a>git add后又对文件内容进行改动</h3><p>设想一下这种情况：</p>
+<ol>
+<li>新增了一个文件abc.txt</li>
+<li>执行git add abc.txt命令，将文件提交到缓存区，但是并没有提交（commit）</li>
+<li>编辑abc.txt文件<br>此时查看一下Git状态<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">git status</span><br><span class="line"></span><br><span class="line">On branch master</span><br><span class="line">No commits yet</span><br><span class="line">Changes to be committed:</span><br><span class="line">  (use &quot;git rm --cached &lt;file&gt;...&quot; to unstage)</span><br><span class="line">        new file:   abc.txt</span><br><span class="line">        new file:   welcome.html</span><br><span class="line">Changes not staged for commit:</span><br><span class="line">  (use &quot;git add &lt;file&gt;...&quot; to update what will be committed)</span><br><span class="line">  (use &quot;git restore &lt;file&gt;...&quot; to discard changes in working directory)</span><br><span class="line">        modified:   abc.txt</span><br></pre></td></tr></table></figure>
+可以发现，<code>abc.txt</code>变成了两个。因为步骤2中把txt提交到缓存区后，步骤3又编辑了该文件，对于Git来说，编辑的新内容并没有提交到缓存区中，所以缓存区的内容还是步骤2中加进来的那个文件。如果你确定步骤3的这个改动是你想要的，就可以再次执行<code>git add abc.txt</code>，将abc.txt添加到缓存区中</li>
+</ol>
+<h3 id="把暂存区内容提交到仓库存档"><a href="#把暂存区内容提交到仓库存档" class="headerlink" title="把暂存区内容提交到仓库存档"></a>把暂存区内容提交到仓库存档</h3><p> 如果仅仅是通过<code>gti add</code>命令把异动文件添加到缓存区，还不算是完成整个流程，还需要将缓存区的文件提交到仓库中永久保存：<br> <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git commit -m&quot;第一次提交&quot; </span><br></pre></td></tr></table></figure><br>这里双引号中的内容代表提交的说明，最主要的目的就是告诉自建和别人这次改动做了什么，下面右键建议：</p>
+<ol>
+<li>中文、英文都可以</li>
+<li>用简洁的语言表达</li>
+<li>尽量不要用Fix bug等模糊的表述，因为没人知道你修复了什么BUG<br>在提交（commit）后会显示有什么做了修改<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[master (root-commit) 5df35a7] 第一次提交</span><br><span class="line"> 2 files changed, 0 insertions(+), 0 deletions(-)</span><br><span class="line"> create mode 100644 abc.txt</span><br><span class="line"> create mode 100644 welcome.html</span><br></pre></td></tr></table></figure>
+这里很清楚地可以看到新增了<code>abc.txt</code>、<code>welcome.html</code>两个文件</li>
+</ol>
+<h3 id="查看记录"><a href="#查看记录" class="headerlink" title="查看记录"></a>查看记录</h3><h4 id="使用Git命令查看记录"><a href="#使用Git命令查看记录" class="headerlink" title="使用Git命令查看记录"></a>使用Git命令查看记录</h4><p>因为目前只提交（Commit）了一次，不好比较，所以我们再创建一个新的文件提交一次<br><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">echo &quot;test2.1&quot; &gt; test2.txt</span><br><span class="line">git add .</span><br><span class="line">git commit -m&quot;第二次提交&quot;</span><br></pre></td></tr></table></figure><br>然后输入以下命令查看提交记录<br><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git log</span><br></pre></td></tr></table></figure><br>下面是返回的信息:<br><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">commit a291b22f6fed953f2cd869fa6baacf301934a027 (HEAD -&gt; master)</span><br><span class="line">Author: zuilang &lt;zl@zuilang.tk&gt;</span><br><span class="line">Date:   Sat Jul 1 17:25:48 2023 +0800</span><br><span class="line"></span><br><span class="line">    第二次提交</span><br><span class="line"></span><br><span class="line">commit 5df35a76b35bd217655a6df64375b6c47b7542ef</span><br><span class="line">Author: zuilang &lt;zl@zuilang.tk&gt;</span><br><span class="line">Date:   Sat Jul 1 17:18:38 2023 +0800</span><br><span class="line"></span><br><span class="line">    第一次提交</span><br></pre></td></tr></table></figure><br>越在上面说明内容约新，通过这个命令大致就可以看出是谁在什么时候提交的内容，提交了什么内容，其中<code>第一次提交</code>和<code>第二次提交</code>都是commit的说明，所以大家要清楚的写下自己修改了说明内容，方便日后查询记录。其中<code>a291b22f6fed953f2cd869fa6baacf301934a027</code>是一个哈希值，其重复的概率非常低，每一次提交（Commit）都有这么一个哈希值，可以当作提交（Commit）的唯一身份识别码</p>
+<h4 id="使用Git命令查看记录时常见问题"><a href="#使用Git命令查看记录时常见问题" class="headerlink" title="使用Git命令查看记录时常见问题"></a>使用Git命令查看记录时常见问题</h4><h5 id="查找某个人或某些人的提交记录"><a href="#查找某个人或某些人的提交记录" class="headerlink" title="查找某个人或某些人的提交记录"></a>查找某个人或某些人的提交记录</h5><p>例如查找一位叫Akimio的提交记录可以使用以下命令：<br><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git log --oneline --author=&quot;Akimio&quot;</span><br></pre></td></tr></table></figure><br>如果需要查找Akimio和zuilang的提交记录，就可以使用：<br><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git log --oneline --author=&quot;Akimio\|zuilang&quot;</span><br></pre></td></tr></table></figure><br>其中<code>\</code>是转义字符，如果输入<code>git log --oneline --author=&quot;Akimio|zuilang&quot;</code>，则会查找一个名字为<code>Akimio|zuilang</code>的提交记录</p>
+<h5 id="通过提交说明查找提交记录"><a href="#通过提交说明查找提交记录" class="headerlink" title="通过提交说明查找提交记录"></a>通过提交说明查找提交记录</h5><p>使用<code>--grep</code>参数可以在所以提交的记录中查找关键字，例如搜索<code>Blog</code><br><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git log --oneline --grep=&quot;Blog&quot;</span><br></pre></td></tr></table></figure></p>
+<h5 id="在提交文件中找到Ruby"><a href="#在提交文件中找到Ruby" class="headerlink" title="在提交文件中找到Ruby"></a>在提交文件中找到Ruby</h5><p>使用<code>-S</code>参数可以在所以提交的记录中进行搜索，找到那些符合特定条件的内容<br><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git log --oneline -S &quot;Ruby&quot;</span><br></pre></td></tr></table></figure></p>
+<h5 id="查找某一时间段内的提交记录"><a href="#查找某一时间段内的提交记录" class="headerlink" title="查找某一时间段内的提交记录"></a>查找某一时间段内的提交记录</h5><p>在查看历史记录时，可以搭配<code>--since</code>和<code>--until</code>这两个参数使用<br>查找今天早上9点到下午6点所以的提交记录：<br><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git log --oneline --since=&quot;9am&quot; --until=&quot;6pm&quot;</span><br></pre></td></tr></table></figure><br><code>还可以搭配--after</code>这个参数<br>查找自2023年6月往后每天早上9点到下午6点所以的提交记录：<br><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git log --oneline --since=&quot;9am&quot; --until=&quot;6pm&quot; --after=&quot;2023-06&quot;</span><br></pre></td></tr></table></figure></p>
+<h3 id="在Git中删除文件或更改文件名"><a href="#在Git中删除文件或更改文件名" class="headerlink" title="在Git中删除文件或更改文件名"></a>在Git中删除文件或更改文件名</h3><p>论是删除还是更改文件名，对Git来说都是一种改动</p>
+<h4 id="删除文件"><a href="#删除文件" class="headerlink" title="删除文件"></a>删除文件</h4><h5 id="直接删除"><a href="#直接删除" class="headerlink" title="直接删除"></a>直接删除</h5><p>可以使用系统命令或者是直接在资源管理器等图形化界面工具直接删除文件：<br><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rm welcome.html</span><br></pre></td></tr></table></figure><br>此时在文件夹中已经找不到<code>welcome.html</code>这个文件了<br>查看一下Git的状态<br><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">git status</span><br><span class="line"></span><br><span class="line">On branch master</span><br><span class="line">Changes not staged for commit:</span><br><span class="line">  (use &quot;git add/rm &lt;file&gt;...&quot; to update what will be committed)</span><br><span class="line">  (use &quot;git restore &lt;file&gt;...&quot; to discard changes in working directory)</span><br><span class="line">        deleted:    welcome.html</span><br><span class="line"></span><br><span class="line">no changes added to commit (use &quot;git add&quot; and/or &quot;git commit -a&quot;)</span><br></pre></td></tr></table></figure><br>可以看到<code>welcome.html</code>这个文件当前状态是<code>deleted</code>，如果你确定是你想做的，就可以把改动添加到缓冲区：<br><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">On branch master</span><br><span class="line">Changes to be committed:</span><br><span class="line">  (use &quot;git restore --staged &lt;file&gt;...&quot; to unstage)</span><br><span class="line">        deleted:    welcome.html</span><br></pre></td></tr></table></figure><br><code>welcome.html</code>当前状态是<code>deleted</code>而且已经被添加到缓冲区，接下来就可以提交（Commit）了：<br><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git commit -m &quot;删除welcome.html&quot;</span><br></pre></td></tr></table></figure><br>然后可以查看一下提交记录<br><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">$ git log</span><br><span class="line"></span><br><span class="line">commit b1165419ec336243647c003723e5d7d089337006 (HEAD -&gt; master)</span><br><span class="line">Author: zuilang &lt;zl@zuilang.tk&gt;</span><br><span class="line">Date:   Sat Jul 1 18:03:26 2023 +0800</span><br><span class="line"></span><br><span class="line">    删除welcome.html</span><br><span class="line"></span><br><span class="line">commit a291b22f6fed953f2cd869fa6baacf301934a027</span><br><span class="line">Author: zuilang &lt;zl@zuilang.tk&gt;</span><br><span class="line">Date:   Sat Jul 1 17:25:48 2023 +0800</span><br><span class="line"></span><br><span class="line">    第二次提交</span><br><span class="line"></span><br><span class="line">commit 5df35a76b35bd217655a6df64375b6c47b7542ef</span><br><span class="line">Author: zuilang &lt;zl@zuilang.tk&gt;</span><br><span class="line">Date:   Sat Jul 1 17:18:38 2023 +0800</span><br><span class="line"></span><br><span class="line">    第一次提交</span><br></pre></td></tr></table></figure></p>
+<h5 id="使用Git删除"><a href="#使用Git删除" class="headerlink" title="使用Git删除"></a>使用Git删除</h5><p>输入命令：<br><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ git rm test2.txt</span><br><span class="line">rm &#x27;test2.txt&#x27;</span><br></pre></td></tr></table></figure><br>这时候查看状态：<br><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$ git status</span><br><span class="line">On branch master</span><br><span class="line">Changes to be committed:</span><br><span class="line">  (use &quot;git restore --staged &lt;file&gt;...&quot; to unstage)</span><br><span class="line">        deleted:    test2.txt</span><br></pre></td></tr></table></figure><br>他就直接在缓冲区，就不再需要<code>git add</code>了，可以少一个步骤</p>
+<h5 id="加上—cached参数"><a href="#加上—cached参数" class="headerlink" title="加上—cached参数"></a>加上—cached参数</h5><p>无论是执行<code>rm</code>还是<code>git rm</code>命令都会真的把这个文件从文件夹中删除，如果只是像让这个文件不再被Git控制则可以加上<code>--cached</code>这个参数<br><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ git rm abc.txt --cached</span><br><span class="line">rm &#x27;abc.txt&#x27;</span><br></pre></td></tr></table></figure><br>在文件夹中查看，<code>abc.txt</code>依然在文件夹中<br>此时查看Git状态<br><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">$ git status</span><br><span class="line">On branch master</span><br><span class="line">Changes to be committed:</span><br><span class="line">  (use &quot;git restore --staged &lt;file&gt;...&quot; to unstage)</span><br><span class="line">        deleted:    abc.txt</span><br><span class="line">        deleted:    test2.txt</span><br><span class="line"></span><br><span class="line">Untracked files:</span><br><span class="line">  (use &quot;git add &lt;file&gt;...&quot; to include in what will be committed)</span><br><span class="line">        abc.txt</span><br></pre></td></tr></table></figure><br>可以看到文件<code>abc.txt</code>的状态是<code>deleted</code>且文件夹中有一个文件<code>abc.txt</code>未被追踪，由于之前删除<code>test2.txt</code>未提交，所以我们看到<code>test2.txt</code>的状态是<code>deleted</code></p>
+<h4 id="更改文件名"><a href="#更改文件名" class="headerlink" title="更改文件名"></a>更改文件名</h4><p>更改文件名和删除文件类似，这里不再赘述其中过程，只给出命令</p>
+<h5 id="直接改名"><a href="#直接改名" class="headerlink" title="直接改名"></a>直接改名</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mv welcome.html hello.html # 把welcome.htm改成hello.html</span><br></pre></td></tr></table></figure>
+<h5 id="使用Git删除-1"><a href="#使用Git删除-1" class="headerlink" title="使用Git删除"></a>使用Git删除</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git mv welcome.html hello.html # 把welcome.htm改成hello.html</span><br></pre></td></tr></table></figure>
+<h4 id="修改Commit记录"><a href="#修改Commit记录" class="headerlink" title="修改Commit记录"></a>修改Commit记录</h4><h5 id="改动最后一次的Commit信息"><a href="#改动最后一次的Commit信息" class="headerlink" title="改动最后一次的Commit信息"></a>改动最后一次的Commit信息</h5><p>只需要增加参数<code>--amend</code>即可<br><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git commit --amend -m &quot;新的Commit信息&quot;</span><br></pre></td></tr></table></figure></p>
+<h5 id="改动更早的Commit信息"><a href="#改动更早的Commit信息" class="headerlink" title="改动更早的Commit信息"></a>改动更早的Commit信息</h5><p>参数<code>--amend</code>只能出来最后一次的Commit，想要改动更早的记录需要使用到命令：<code>Rebase</code>，详细使用方法可以参考后面的内容。</p>
+<h4 id="追加文件到最后一次Commit"><a href="#追加文件到最后一次Commit" class="headerlink" title="追加文件到最后一次Commit"></a>追加文件到最后一次Commit</h4><p>刚刚提交了Commit但是突然发现有一个文件忘记加上了，虽然可以为了这个文件单独加送一次Commit，但是看上去没那么优雅，可以采用下面两种方式来完成：</p>
+<ul>
+<li>先使用<code>git reset</code>删除最后一次Commit，将文件加入后再重新提交Commit</li>
+<li>使用—amend参数进行Commit<br>这里先介绍第二种方式，第一种方式会在后续章节讲解<br>例如，这里有一个名为<code>cinderella.html</code>的文件要把它加入最近一次的Commit。先使用<code>git status</code>命令查看<code>cinderella.html</code>的状态是<code>Untracked</code>，先将其加入缓冲区：<code>git add cinderella.html</code>，然后再提交Commit：<code>git commit --amend --no-edit</code>其中<code>--no-edit</code>参数的意思是不编辑Commit信息，这样就把文件添加到最近一次的Commit了</li>
+</ul>
+<h4 id="新增文件夹"><a href="#新增文件夹" class="headerlink" title="新增文件夹"></a>新增文件夹</h4><p>刚刚添加了一个新的的文件夹<code>image</code>，但是查看Git状态却提示没有任何改动，<strong>这是因为Git在计算时是根据”文件内容“进行计算的，所以新增一个空文件夹是无法直接添加到git中的</strong><br>解决方法其实也很简单，可以在文件夹中添加一个<code>.kepp</code>或<code>.gitkeep</code>的空文件让Git监测到这个文件夹，可以通过以下命令创建空文件：<br><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">touch image/.keep </span><br></pre></td></tr></table></figure><br>然后再依次提交到缓冲区、提交Commit就好了</p>
+<h3 id="有些文件夹不想放在Git中"><a href="#有些文件夹不想放在Git中" class="headerlink" title="有些文件夹不想放在Git中"></a>有些文件夹不想放在Git中</h3><p>有些比较机密的文件不想放在Git文件夹中一起备份或者是一些程序编译产生的中间文件抑或是缓存文件</p>
+<h5 id="添加-gitignore"><a href="#添加-gitignore" class="headerlink" title="添加.gitignore"></a>添加.gitignore</h5><p>使用命令在Git命令下创建一个<code>.gitignore</code>文件<br><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">touch .gitignore</span><br></pre></td></tr></table></figure><br>然后编辑文件内容<br><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"># 文件名.gitingore</span><br><span class="line"></span><br><span class="line">secret.yml  // 忽略secret.yml文件</span><br><span class="line">config/database.yml // 忽略config文件夹下的database.yml文件</span><br><span class="line">db/*.sqlite3  // 忽略db文件夹下所有后缀名是sqlite3的文件</span><br><span class="line">*.tmp  // 忽略所有后缀名是tmp的文件</span><br><span class="line"></span><br><span class="line"># 也可以忽略.gitignore这个文件，但一般不会这么做</span><br><span class="line"># .gitignore</span><br></pre></td></tr></table></figure><br><strong>如果不清楚自己所用的工具或程序语语言通常会忽略哪些文件，可以在这里查看：</strong><a target="_blank" rel="noopener" href="https://github.com/github/gitignore">传送门</a></p>
+<h5 id="忽略这个忽略"><a href="#忽略这个忽略" class="headerlink" title="忽略这个忽略"></a>忽略这个忽略</h5><p>虽然<code>.gitignore</code>列出了一些忽略规则，但其实还是可以忽略这些忽略规则的，只需要在将文件提交到缓冲区时添加一个参数：<br><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git add -f 文件名称</span><br></pre></td></tr></table></figure></p>
+<h5 id="忽略失效"><a href="#忽略失效" class="headerlink" title="忽略失效"></a>忽略失效</h5><p>添加忽略规则后发现Git依然在追踪一些应被忽视的文件，是因为这些文件在创建<code>.gitignore</code>的时候就已经存在了，如果依然想要这些文件套用忽视规则可以使用以下命令：<br><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git rm --cached</span><br></pre></td></tr></table></figure></p>
+<h5 id="清除忽略的文件"><a href="#清除忽略的文件" class="headerlink" title="清除忽略的文件"></a>清除忽略的文件</h5><p>如果像清除那些已经被忽略的文件，可以使用<code>git clean</code>命令配合<code>-X</code>参数：<br><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git clean -fX</span><br></pre></td></tr></table></figure><br>其中那个额外加上的参数<code>-f</code>是指强制删除</p>
+<h3 id="查看特定文件的Commit记录"><a href="#查看特定文件的Commit记录" class="headerlink" title="查看特定文件的Commit记录"></a>查看特定文件的Commit记录</h3><p>使用<code>git log</code>就可以查看整个Git项目所有的Commit，如果想查看某个文件所有的Commit可以使用<code>-p</code>参数：<br><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git log -p welcome.html # 查看welcome.html所有的Commit</span><br></pre></td></tr></table></figure><br><code>+++</code>表示某次commit中新增加的行；<code>---</code>表示删除的行</p>
+<h3 id="查看某个文件中某行代码是谁写的"><a href="#查看某个文件中某行代码是谁写的" class="headerlink" title="查看某个文件中某行代码是谁写的"></a>查看某个文件中某行代码是谁写的</h3><p>如果想查看某个文件中某行的代码是是谁写的，可以使用<code>git blame</code>:<br><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git blame index.html</span><br></pre></td></tr></table></figure><br>然后git就可以详细地列出index.html这个文件每一行代码是谁在什么时候写的<br>如果文件很大，可以使用<code>-L</code>这个参数：<br><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git blame -L 5,10 index.html # 这样Git只会列出5-10行的信息</span><br></pre></td></tr></table></figure></p>
+<h3 id="恢复删除的文件"><a href="#恢复删除的文件" class="headerlink" title="恢复删除的文件"></a>恢复删除的文件</h3><p>无论是有意还是无意将文件删除，Git都能将文件恢复，为了掩饰，我这里用<code>rm</code>删除所有的后缀为<code>html</code>文件：<br><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rm *.html</span><br></pre></td></tr></table></figure><br>再使用<code>git status</code>查看当前Git状态，可以看到删除的html文件的状态是<code>deleted</code>。假设我想恢复其中的<code>a.html</code>，可以使用以下命令：<br><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git checkout a.html</span><br></pre></td></tr></table></figure><br>然后<code>a.html</code>就恢复了；如果想恢复所有的文件，可以使用：<br><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git checkout .</span><br></pre></td></tr></table></figure><br>然后就可以恢复所有删除的文件了</p>
+<h3 id="将提交的Commit拆掉重做"><a href="#将提交的Commit拆掉重做" class="headerlink" title="将提交的Commit拆掉重做"></a>将提交的Commit拆掉重做</h3><h4 id="拆掉重做"><a href="#拆掉重做" class="headerlink" title="拆掉重做"></a>拆掉重做</h4><p>这种情况很常见，虽然使用的命令<code>git reset</code>很简单，但是不少人误解了Reset的意义，所以导致很多学习Git的人卡在这里</p>
+<h5 id="退一步海阔天空"><a href="#退一步海阔天空" class="headerlink" title="退一步海阔天空"></a>退一步海阔天空</h5><p>先查看以下Git的状态：<br><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">$ git status</span><br><span class="line">e12d8ef  (HEAD -&gt; master ) add database.yml in config folder</span><br><span class="line">85e7e30 add hello.html</span><br><span class="line">657fce7 add container</span><br><span class="line">abb4f43 update index page</span><br><span class="line">ccef6e40 create index page</span><br><span class="line">cc797cd init commit</span><br></pre></td></tr></table></figure><br>拆掉最后一次Commit分为“相对”和“绝对”的做法，下面是“相对”的做法：<br><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git reset e12d8ef^</span><br></pre></td></tr></table></figure><br><code>^</code>代表的是“前一次”，所以<code>e12d8ef^</code>指的就是e12d8ef的前一次Commit也就是<code>85e7e30</code>这个Commit。如果是前两次就是<code>e12d8ef^^</code>，以此类推，但是如果要退回到前五此一般不会用<code>e12d8ef^^^^^</code>而是用<code>e12d8ef~5</code><br>因为正好HEAD与master当前都是指向e12d8ef这个Commit，而且一般这些哈希值不好记，所以会用以下这两个命令替代：<br><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git reset master^</span><br><span class="line">git reset HEAD^</span><br></pre></td></tr></table></figure><br>以上是“相对的”方式，如果你很清楚要回到那个Commit，可以直接指明：<br><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git reset 85e7e30</span><br></pre></td></tr></table></figure><br>然后就可以直接切换到85e7e30这个Commit的状态，因为<code>85e7e30</code>刚好就是<code>e12d8ef</code>的前一次Commit，所以也能达到“拆掉最后一次的Commit”这个效果</p>
+<h5 id="Reset模式"><a href="#Reset模式" class="headerlink" title="Reset模式"></a>Reset模式</h5><p><code>git reset</code>这个命令可以搭配三个参数使用，分别是<code>—mixd</code>、<code>—soft</code>、<code>—hard</code>。搭配不同的参数，执行结果会有些许差别</p>
+<h6 id="mixed模式"><a href="#mixed模式" class="headerlink" title="mixed模式"></a>mixed模式</h6><p><code>—mixd</code>是默认参数，如果没有另外加参数，<code>git reset</code>将会使用<code>—mixd</code>模式<br>在<code>—mixd</code>模式下，会把缓冲区的文件删除，但不会影响工作目录的文件。也就是说，Commit拆出来的文件会留在工作目录，但不会留在暂缓区</p>
+<h6 id="soft模式"><a href="#soft模式" class="headerlink" title="soft模式"></a>soft模式</h6><p>在这种模式下，其工作目录与缓冲区的文件都不会被删除，所以看起来就只有HEAD的移动而已。因此，Commit拆出来的文件会直接放在缓冲区</p>
+<h6 id="HARD模式"><a href="#HARD模式" class="headerlink" title="HARD模式"></a>HARD模式</h6><p>在这种模式下，无论是工作目录还是缓冲区的文件，都会直接被删除</p>
+<h6 id="三种模式的比较"><a href="#三种模式的比较" class="headerlink" title="三种模式的比较"></a>三种模式的比较</h6><div class="table-container">
+<table>
+<thead>
+<tr>
+<th>模式</th>
+<th>mixed</th>
+<th>soft</th>
+<th>hard</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>工作目录</td>
+<td>不变</td>
+<td>不变</td>
+<td>被删除</td>
+</tr>
+<tr>
+<td>缓冲区</td>
+<td>被删除</td>
+<td>不变</td>
+<td>被删除</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>模式</th>
+<th>mixed</th>
+<th>soft</th>
+<th>hard</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Commit拆出来的文件</td>
+<td>放回工作目录</td>
+<td>放回缓冲区</td>
+<td>直接删除</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h3 id="恢复不小心被hard-reset的文件"><a href="#恢复不小心被hard-reset的文件" class="headerlink" title="恢复不小心被hard reset的文件"></a>恢复不小心被hard reset的文件</h3><h4 id="退回到Reset前"><a href="#退回到Reset前" class="headerlink" title="退回到Reset前"></a>退回到Reset前</h4><p>还是使用之前的例子：<br><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">$ git status</span><br><span class="line">e12d8ef  (HEAD -&gt; master ) add database.yml in config folder</span><br><span class="line">85e7e30 add hello.html</span><br><span class="line">657fce7 add container</span><br><span class="line">abb4f43 update index page</span><br><span class="line">ccef6e40 create index page</span><br><span class="line">cc797cd init commit</span><br></pre></td></tr></table></figure><br>这里一共有6个Commit，我们假设倒退两步：<br><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git reset HEAD~2</span><br></pre></td></tr></table></figure><br>然后再次查看Git状态：<br><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$ git status</span><br><span class="line">657fce7 (HEAD -&gt; master ) add container</span><br><span class="line">abb4f43 update index page</span><br><span class="line">ccef6e40 create index page</span><br><span class="line">cc797cd init commit</span><br></pre></td></tr></table></figure><br>会发现最后两次Commit都不见了，但最后两次的Commit其实是依旧存在的，只是没有列出，假设我想要恢复到执行执行<code>git reset HEAD~2</code>命令之前的状态，只需要执行这个命令：<br><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git reset e12d8ef --hard # e12d8ef为执行reset前的那个Commit的SHA-1值</span><br></pre></td></tr></table></figure><br>这里使用了<code>--hard</code>这个参数可以强迫放弃Reset之后改动的文件</p>
+<h4 id="使用Reflog"><a href="#使用Reflog" class="headerlink" title="使用Reflog"></a>使用Reflog</h4><p>如果一开始没有记录Commit的SHA-1值也没有关系，可以使用下面的方法恢复<br>方法演示前，我们先reset一下我们的git仓库：<br><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git reset HEAD~2 --hard # 与上面的例子不同的是这里使用了hard模式进行reset</span><br></pre></td></tr></table></figure><br>这样不仅Commit不见了，文件也消失了。然后可以使用Reflog命令来查看一下记录：<br><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ git reflog</span><br><span class="line">657fce7 (HEAD -&gt; master) HEAD@&#123;0&#125;: moving to HEAD~2</span><br><span class="line">e12d8ef (origin/master,origin/HEAD,cat) HEAD@&#123;1&#125;:checkout : moving from cat to master</span><br><span class="line">e12d8ef (origin/master,origin/HEAD,cat) HEAD@&#123;2&#125;:checkout : moving from master to cat</span><br></pre></td></tr></table></figure><br>当HEAD移动时（如切换分支或者Reset都会造成HEAD移动），Git就会在Reflog中留下一条记录。从上面的三条记录中，可以大致猜出最近3次HEAD的移动，最后一次的动作就是Reset。如果想要取消这次Reset，只需要Reset到它Reset前的那个Commit即可：<br><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git reset e12d8ef --hard</span><br></pre></td></tr></table></figure></p>
+<h3 id="HEAD是什么"><a href="#HEAD是什么" class="headerlink" title="HEAD是什么"></a>HEAD是什么</h3><h4 id="HEAD简介"><a href="#HEAD简介" class="headerlink" title="HEAD简介"></a>HEAD简介</h4><p>HEAD是一个指标，指向了某个分支，通常可以把他当作<code>当前所在分支</code>来看待。在<code>.git</code>目录中有一个名为<code>HEAD</code>的文件，其中记录的就是HEAD的内容，可以来看看他长什么样：<br><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ cat .git/HEAD</span><br><span class="line">ref: ref/heads/master</span><br></pre></td></tr></table></figure><br>从这个文件就看也看出，HEAD当前正指向master分支，可以在深入看一下master：<br><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ cat ./refs/heads/master</span><br><span class="line">e12d8ef0eb9deae8bf1115c5ce51dbc2e09c8904</span><br></pre></td></tr></table></figure><br>可以看到所谓的master分支其实也只是一个40个字节的文件罢了</p>
+<h4 id="切换分支"><a href="#切换分支" class="headerlink" title="切换分支"></a>切换分支</h4><p>假设当前项目一共有三个分支，当前在master分支上：<br><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ git branch</span><br><span class="line">main</span><br><span class="line">dev</span><br><span class="line">* master</span><br></pre></td></tr></table></figure><br>接下来尝试切换到<code>dev</code>分支上：<br><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ git checkout dev</span><br><span class="line">Switch to branch &#x27;dev&#x27;</span><br></pre></td></tr></table></figure><br>这时再看一下HEAD文件：<br><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ cat .git/HEAD</span><br><span class="line">ref: refs/heads/dev</span><br></pre></td></tr></table></figure><br>就可以看到HEAD现在指向<code>dev</code>分支了，我们再尝试切换到<code>main</code>分支：<br><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ git checkout main</span><br><span class="line">Switch to branch &#x27;main&#x27;</span><br></pre></td></tr></table></figure><br>这时再确认一下HEAD：<br><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ cat .git/HEAD</span><br><span class="line">ref: refs/heads/main</span><br></pre></td></tr></table></figure><br>它又指向了<code>main</code>分支。也就是说，HEAD通常会指向当前所在的分支。不过HEAD也不一定总所指向某个分支，当HEAD没有指向某个分支时便会造成<code>detached HEAD</code>状态</p>
+<p><strong>未完待续</strong></p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="https://blog.akimio.top">秋澪</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="https://blog.akimio.top/posts/1026/">https://blog.akimio.top/posts/1026/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://blog.akimio.top" target="_blank">秋澪的博客</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E6%95%99%E7%A8%8B/">教程</a><a class="post-meta__tags" href="/tags/%E5%A4%87%E5%BF%98%E5%BD%95/">备忘录</a><a class="post-meta__tags" href="/tags/Git/">Git</a></div><div class="post_share"><div class="social-share" data-image="https://img.akimio.top/Blog/2023/09/1696087818-65183f0a92ed5.webp" data-sites="wechat,qq,weibo,facebook,twitter"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/posts/1027/" title="将M.2固态硬盘设为群晖存储池"><img class="cover" src="https://img.akimio.top/Blog/2023/09/1696085815-65183737cc4cf.webp" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">将M.2固态硬盘设为群晖存储池</div></div></a></div><div class="next-post pull-right"><a href="/posts/1025/" title="利用Ventoy打造最强硬盘"><img class="cover" src="https://img.akimio.top/Blog/2023/09/1696089522-651845b264984.webp" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">利用Ventoy打造最强硬盘</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/posts/1011/" title="Docker命令大全"><img class="cover" src="https://img.akimio.top/Blog/2023/09/1696084647-651832a7552c1.webp" alt="cover"><div class="content is-center"><div class="date"><i class="fas fa-history fa-fw"></i> 2023-10-01</div><div class="title">Docker命令大全</div></div></a></div><div><a href="/posts/1015/" title="Hexo重装记录"><img class="cover" src="https://img.akimio.top/Blog/2023/09/1696084993-6518340135d0e.webp" alt="cover"><div class="content is-center"><div class="date"><i class="fas fa-history fa-fw"></i> 2023-10-01</div><div class="title">Hexo重装记录</div></div></a></div><div><a href="/posts/1024/" title="为Hexo博客添加后台管理系统"><img class="cover" src="https://img.akimio.top/Blog/2023/09/1696085047-6518343797886.webp" alt="cover"><div class="content is-center"><div class="date"><i class="fas fa-history fa-fw"></i> 2023-10-01</div><div class="title">为Hexo博客添加后台管理系统</div></div></a></div><div><a href="/posts/1027/" title="将M.2固态硬盘设为群晖存储池"><img class="cover" src="https://img.akimio.top/Blog/2023/09/1696085815-65183737cc4cf.webp" alt="cover"><div class="content is-center"><div class="date"><i class="fas fa-history fa-fw"></i> 2023-10-01</div><div class="title">将M.2固态硬盘设为群晖存储池</div></div></a></div><div><a href="/posts/1020/" title="使用BetterNCM美化网易云"><img class="cover" src="https://img.akimio.top/Blog/2023/09/1696086038-65183816473c5.webp" alt="cover"><div class="content is-center"><div class="date"><i class="fas fa-history fa-fw"></i> 2023-10-01</div><div class="title">使用BetterNCM美化网易云</div></div></a></div><div><a href="/posts/1010/" title="MariaDB数据库搭建及基础用指南"><img class="cover" src="https://img.akimio.top/Blog/2023/09/1696088769-651842c1b2bf6.webp" alt="cover"><div class="content is-center"><div class="date"><i class="fas fa-history fa-fw"></i> 2023-10-01</div><div class="title">MariaDB数据库搭建及基础用指南</div></div></a></div></div></div><hr class="custom-hr"/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div id="waline-wrap"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content is-expand"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Git%E5%85%A5%E9%97%A8"><span class="toc-number">1.</span> <span class="toc-text">Git入门</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%80%E4%B9%88%E6%98%AFGit"><span class="toc-number">1.1.</span> <span class="toc-text">什么是Git</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Git%E7%9A%84%E4%BC%98%E7%82%B9"><span class="toc-number">1.2.</span> <span class="toc-text">Git的优点</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%80%9F%E5%BA%A6%E5%9D%97%EF%BC%8C%E5%8D%A0%E7%94%A8%E4%BD%93%E7%A7%AF%E5%B0%8F"><span class="toc-number">1.2.1.</span> <span class="toc-text">速度块，占用体积小</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%86%E5%B8%83%E5%BC%8F%E7%B3%BB%E7%BB%9F"><span class="toc-number">1.2.2.</span> <span class="toc-text">分布式系统</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Git%E7%9A%84%E7%BC%BA%E7%82%B9"><span class="toc-number">1.3.</span> <span class="toc-text">Git的缺点</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%98%93%E5%AD%A6%E9%9A%BE%E7%B2%BE"><span class="toc-number">1.3.1.</span> <span class="toc-text">易学难精</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BA%8C%E8%BF%9B%E5%88%B6%E6%96%87%E4%BB%B6%E7%9A%84%E6%97%A0%E5%A5%88"><span class="toc-number">1.3.2.</span> <span class="toc-text">二进制文件的无奈</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%8E%AF%E5%A2%83%E5%AE%89%E8%A3%85"><span class="toc-number">2.</span> <span class="toc-text">环境安装</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Windows"><span class="toc-number">2.1.</span> <span class="toc-text">Windows</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Mac"><span class="toc-number">2.2.</span> <span class="toc-text">Mac</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Linux"><span class="toc-number">2.3.</span> <span class="toc-text">Linux</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B5%8B%E8%AF%95Git%E6%98%AF%E5%90%A6%E6%88%90%E5%8A%9F%E5%AE%89%E8%A3%85"><span class="toc-number">2.4.</span> <span class="toc-text">测试Git是否成功安装</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9B%BE%E5%83%8F%E7%95%8C%E9%9D%A2%E5%B7%A5%E5%85%B7"><span class="toc-number">2.5.</span> <span class="toc-text">图像界面工具</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%AE%BE%E7%BD%AEGit"><span class="toc-number">3.</span> <span class="toc-text">设置Git</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%94%A8%E6%88%B7%E8%AE%BE%E7%BD%AE"><span class="toc-number">3.1.</span> <span class="toc-text">用户设置</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8D%95%E4%B8%AA%E9%A1%B9%E7%9B%AE%E7%94%A8%E6%88%B7%E8%AE%BE%E7%BD%AE"><span class="toc-number">3.2.</span> <span class="toc-text">单个项目用户设置</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%B6%E4%BB%96%E6%96%B9%E4%BE%BF%E8%AE%BE%E7%BD%AE"><span class="toc-number">3.3.</span> <span class="toc-text">其他方便设置</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9B%B4%E6%8D%A2%E7%BC%96%E8%BE%91%E5%99%A8"><span class="toc-number">3.3.1.</span> <span class="toc-text">更换编辑器</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%AE%BE%E7%BD%AE%E7%BC%A9%E5%86%99"><span class="toc-number">3.3.2.</span> <span class="toc-text">设置缩写</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%88%9D%E5%A7%8B%E5%8C%96%E4%BB%93%E5%BA%93%EF%BC%88Repository%EF%BC%89"><span class="toc-number">4.</span> <span class="toc-text">初始化仓库（Repository）</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%96%B0%E7%9A%84%E5%BC%80%E5%A7%8B"><span class="toc-number">4.1.</span> <span class="toc-text">新的开始</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8A%8A%E6%96%87%E4%BB%B6%E4%BA%A4%E7%BB%99Git%E7%AE%A1%E6%8E%A7"><span class="toc-number">4.2.</span> <span class="toc-text">把文件交给Git管控</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%9B%E5%BB%BA%E6%96%87%E4%BB%B6%E4%BA%A4%E7%BB%99Git"><span class="toc-number">4.2.1.</span> <span class="toc-text">创建文件交给Git</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8A%8A%E6%96%87%E4%BB%B6%E4%BA%A4%E7%BB%99Git"><span class="toc-number">4.2.2.</span> <span class="toc-text">把文件交给Git</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#git-add%E5%90%8E%E5%8F%88%E5%AF%B9%E6%96%87%E4%BB%B6%E5%86%85%E5%AE%B9%E8%BF%9B%E8%A1%8C%E6%94%B9%E5%8A%A8"><span class="toc-number">4.2.3.</span> <span class="toc-text">git add后又对文件内容进行改动</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8A%8A%E6%9A%82%E5%AD%98%E5%8C%BA%E5%86%85%E5%AE%B9%E6%8F%90%E4%BA%A4%E5%88%B0%E4%BB%93%E5%BA%93%E5%AD%98%E6%A1%A3"><span class="toc-number">4.2.4.</span> <span class="toc-text">把暂存区内容提交到仓库存档</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9F%A5%E7%9C%8B%E8%AE%B0%E5%BD%95"><span class="toc-number">4.2.5.</span> <span class="toc-text">查看记录</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8Git%E5%91%BD%E4%BB%A4%E6%9F%A5%E7%9C%8B%E8%AE%B0%E5%BD%95"><span class="toc-number">4.2.5.1.</span> <span class="toc-text">使用Git命令查看记录</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8Git%E5%91%BD%E4%BB%A4%E6%9F%A5%E7%9C%8B%E8%AE%B0%E5%BD%95%E6%97%B6%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98"><span class="toc-number">4.2.5.2.</span> <span class="toc-text">使用Git命令查看记录时常见问题</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E6%9F%A5%E6%89%BE%E6%9F%90%E4%B8%AA%E4%BA%BA%E6%88%96%E6%9F%90%E4%BA%9B%E4%BA%BA%E7%9A%84%E6%8F%90%E4%BA%A4%E8%AE%B0%E5%BD%95"><span class="toc-number">4.2.5.2.1.</span> <span class="toc-text">查找某个人或某些人的提交记录</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E9%80%9A%E8%BF%87%E6%8F%90%E4%BA%A4%E8%AF%B4%E6%98%8E%E6%9F%A5%E6%89%BE%E6%8F%90%E4%BA%A4%E8%AE%B0%E5%BD%95"><span class="toc-number">4.2.5.2.2.</span> <span class="toc-text">通过提交说明查找提交记录</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%9C%A8%E6%8F%90%E4%BA%A4%E6%96%87%E4%BB%B6%E4%B8%AD%E6%89%BE%E5%88%B0Ruby"><span class="toc-number">4.2.5.2.3.</span> <span class="toc-text">在提交文件中找到Ruby</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E6%9F%A5%E6%89%BE%E6%9F%90%E4%B8%80%E6%97%B6%E9%97%B4%E6%AE%B5%E5%86%85%E7%9A%84%E6%8F%90%E4%BA%A4%E8%AE%B0%E5%BD%95"><span class="toc-number">4.2.5.2.4.</span> <span class="toc-text">查找某一时间段内的提交记录</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9C%A8Git%E4%B8%AD%E5%88%A0%E9%99%A4%E6%96%87%E4%BB%B6%E6%88%96%E6%9B%B4%E6%94%B9%E6%96%87%E4%BB%B6%E5%90%8D"><span class="toc-number">4.2.6.</span> <span class="toc-text">在Git中删除文件或更改文件名</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%88%A0%E9%99%A4%E6%96%87%E4%BB%B6"><span class="toc-number">4.2.6.1.</span> <span class="toc-text">删除文件</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E7%9B%B4%E6%8E%A5%E5%88%A0%E9%99%A4"><span class="toc-number">4.2.6.1.1.</span> <span class="toc-text">直接删除</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8Git%E5%88%A0%E9%99%A4"><span class="toc-number">4.2.6.1.2.</span> <span class="toc-text">使用Git删除</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%8A%A0%E4%B8%8A%E2%80%94cached%E5%8F%82%E6%95%B0"><span class="toc-number">4.2.6.1.3.</span> <span class="toc-text">加上—cached参数</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%9B%B4%E6%94%B9%E6%96%87%E4%BB%B6%E5%90%8D"><span class="toc-number">4.2.6.2.</span> <span class="toc-text">更改文件名</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E7%9B%B4%E6%8E%A5%E6%94%B9%E5%90%8D"><span class="toc-number">4.2.6.2.1.</span> <span class="toc-text">直接改名</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8Git%E5%88%A0%E9%99%A4-1"><span class="toc-number">4.2.6.2.2.</span> <span class="toc-text">使用Git删除</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BF%AE%E6%94%B9Commit%E8%AE%B0%E5%BD%95"><span class="toc-number">4.2.6.3.</span> <span class="toc-text">修改Commit记录</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E6%94%B9%E5%8A%A8%E6%9C%80%E5%90%8E%E4%B8%80%E6%AC%A1%E7%9A%84Commit%E4%BF%A1%E6%81%AF"><span class="toc-number">4.2.6.3.1.</span> <span class="toc-text">改动最后一次的Commit信息</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E6%94%B9%E5%8A%A8%E6%9B%B4%E6%97%A9%E7%9A%84Commit%E4%BF%A1%E6%81%AF"><span class="toc-number">4.2.6.3.2.</span> <span class="toc-text">改动更早的Commit信息</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%BF%BD%E5%8A%A0%E6%96%87%E4%BB%B6%E5%88%B0%E6%9C%80%E5%90%8E%E4%B8%80%E6%AC%A1Commit"><span class="toc-number">4.2.6.4.</span> <span class="toc-text">追加文件到最后一次Commit</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%96%B0%E5%A2%9E%E6%96%87%E4%BB%B6%E5%A4%B9"><span class="toc-number">4.2.6.5.</span> <span class="toc-text">新增文件夹</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9C%89%E4%BA%9B%E6%96%87%E4%BB%B6%E5%A4%B9%E4%B8%8D%E6%83%B3%E6%94%BE%E5%9C%A8Git%E4%B8%AD"><span class="toc-number">4.2.7.</span> <span class="toc-text">有些文件夹不想放在Git中</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E6%B7%BB%E5%8A%A0-gitignore"><span class="toc-number">4.2.7.0.1.</span> <span class="toc-text">添加.gitignore</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%BF%BD%E7%95%A5%E8%BF%99%E4%B8%AA%E5%BF%BD%E7%95%A5"><span class="toc-number">4.2.7.0.2.</span> <span class="toc-text">忽略这个忽略</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%BF%BD%E7%95%A5%E5%A4%B1%E6%95%88"><span class="toc-number">4.2.7.0.3.</span> <span class="toc-text">忽略失效</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E6%B8%85%E9%99%A4%E5%BF%BD%E7%95%A5%E7%9A%84%E6%96%87%E4%BB%B6"><span class="toc-number">4.2.7.0.4.</span> <span class="toc-text">清除忽略的文件</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9F%A5%E7%9C%8B%E7%89%B9%E5%AE%9A%E6%96%87%E4%BB%B6%E7%9A%84Commit%E8%AE%B0%E5%BD%95"><span class="toc-number">4.2.8.</span> <span class="toc-text">查看特定文件的Commit记录</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9F%A5%E7%9C%8B%E6%9F%90%E4%B8%AA%E6%96%87%E4%BB%B6%E4%B8%AD%E6%9F%90%E8%A1%8C%E4%BB%A3%E7%A0%81%E6%98%AF%E8%B0%81%E5%86%99%E7%9A%84"><span class="toc-number">4.2.9.</span> <span class="toc-text">查看某个文件中某行代码是谁写的</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%81%A2%E5%A4%8D%E5%88%A0%E9%99%A4%E7%9A%84%E6%96%87%E4%BB%B6"><span class="toc-number">4.2.10.</span> <span class="toc-text">恢复删除的文件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B0%86%E6%8F%90%E4%BA%A4%E7%9A%84Commit%E6%8B%86%E6%8E%89%E9%87%8D%E5%81%9A"><span class="toc-number">4.2.11.</span> <span class="toc-text">将提交的Commit拆掉重做</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%8B%86%E6%8E%89%E9%87%8D%E5%81%9A"><span class="toc-number">4.2.11.1.</span> <span class="toc-text">拆掉重做</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E9%80%80%E4%B8%80%E6%AD%A5%E6%B5%B7%E9%98%94%E5%A4%A9%E7%A9%BA"><span class="toc-number">4.2.11.1.1.</span> <span class="toc-text">退一步海阔天空</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#Reset%E6%A8%A1%E5%BC%8F"><span class="toc-number">4.2.11.1.2.</span> <span class="toc-text">Reset模式</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#mixed%E6%A8%A1%E5%BC%8F"><span class="toc-number">4.2.11.1.2.1.</span> <span class="toc-text">mixed模式</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#soft%E6%A8%A1%E5%BC%8F"><span class="toc-number">4.2.11.1.2.2.</span> <span class="toc-text">soft模式</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#HARD%E6%A8%A1%E5%BC%8F"><span class="toc-number">4.2.11.1.2.3.</span> <span class="toc-text">HARD模式</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#%E4%B8%89%E7%A7%8D%E6%A8%A1%E5%BC%8F%E7%9A%84%E6%AF%94%E8%BE%83"><span class="toc-number">4.2.11.1.2.4.</span> <span class="toc-text">三种模式的比较</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%81%A2%E5%A4%8D%E4%B8%8D%E5%B0%8F%E5%BF%83%E8%A2%ABhard-reset%E7%9A%84%E6%96%87%E4%BB%B6"><span class="toc-number">4.2.12.</span> <span class="toc-text">恢复不小心被hard reset的文件</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%80%80%E5%9B%9E%E5%88%B0Reset%E5%89%8D"><span class="toc-number">4.2.12.1.</span> <span class="toc-text">退回到Reset前</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8Reflog"><span class="toc-number">4.2.12.2.</span> <span class="toc-text">使用Reflog</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#HEAD%E6%98%AF%E4%BB%80%E4%B9%88"><span class="toc-number">4.2.13.</span> <span class="toc-text">HEAD是什么</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#HEAD%E7%AE%80%E4%BB%8B"><span class="toc-number">4.2.13.1.</span> <span class="toc-text">HEAD简介</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%88%87%E6%8D%A2%E5%88%86%E6%94%AF"><span class="toc-number">4.2.13.2.</span> <span class="toc-text">切换分支</span></a></li></ol></li></ol></li></ol></li></ol></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2023 By 秋澪</div><div class="footer_custom_text">欢迎来到Akimio的博客</div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/medium-zoom/dist/medium-zoom.min.js"></script><script src="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.js"></script><div class="js-pjax"><script>(() => {
+  const initWaline = () => {
+    const waline = Waline.init(Object.assign({
+      el: '#waline-wrap',
+      serverURL: 'https://waline.akimio.top/',
+      pageview: false,
+      dark: 'html[data-theme="dark"]',
+      path: window.location.pathname,
+      comment: true,
+    }, null))
+  }
+
+  const loadWaline = async () => {
+    if (typeof Waline === 'object') initWaline()
+    else {
+      await getCSS('https://cdn.jsdelivr.net/npm/@waline/client/dist/waline.min.css')
+      await getScript('https://cdn.jsdelivr.net/npm/@waline/client/dist/waline.min.js')
+      initWaline()
+    }
+  }
+
+  if ('Waline' === 'Waline' || !false) {
+    if (false) btf.loadComment(document.getElementById('waline-wrap'),loadWaline)
+    else setTimeout(loadWaline, 0)
+  } else {
+    window.loadOtherComment = loadWaline
+  }
+})()</script></div><script>window.addEventListener('load', () => {
+  const changeContent = content => {
+    if (content === '') return content
+
+    content = content.replace(/<img.*?src="(.*?)"?[^\>]+>/ig, '[图片]') // replace image link
+    content = content.replace(/<a[^>]+?href=["']?([^"']+)["']?[^>]*>([^<]+)<\/a>/gi, '[链接]') // replace url
+    content = content.replace(/<pre><code>.*?<\/pre>/gi, '[代码]') // replace code
+    content = content.replace(/<[^>]+>/g,"") // remove html tag
+
+    if (content.length > 150) {
+      content = content.substring(0,150) + '...'
+    }
+    return content
+  }
+
+  const generateHtml = array => {
+    let result = ''
+
+    if (array.length) {
+      for (let i = 0; i < array.length; i++) {
+        result += '<div class=\'aside-list-item\'>'
+
+        if (true) {
+          const name = 'src'
+          result += `<a href='${array[i].url}' class='thumbnail'><img ${name}='${array[i].avatar}' alt='${array[i].nick}'></a>`
+        }
+
+        result += `<div class='content'>
+        <a class='comment' href='${array[i].url}' title='${array[i].content}'>${array[i].content}</a>
+        <div class='name'><span>${array[i].nick} / </span><time datetime="${array[i].date}">${btf.diffDate(array[i].date, true)}</time></div>
+        </div></div>`
+      }
+    } else {
+      result += '没有评论'
+    }
+
+    let $dom = document.querySelector('#card-newest-comments .aside-list')
+    $dom.innerHTML= result
+    window.lazyLoadInstance && window.lazyLoadInstance.update()
+    window.pjax && window.pjax.refresh($dom)
+  }
+
+  const getComment = async () => {
+    try {
+      const res = await fetch('https://waline.akimio.top/api/comment?type=recent&count=6', { method: 'GET' })
+      const result = await res.json()
+      const walineArray = result.data.map(e => {
+        return {
+          'content': changeContent(e.comment),
+          'avatar': e.avatar,
+          'nick': e.nick,
+          'url': e.url + '#' + e.objectId,
+          'date': e.time || e.insertedAt
+        }
+      })
+      saveToLocal.set('waline-newest-comments', JSON.stringify(walineArray), 10/(60*24))
+      generateHtml(walineArray)
+    } catch (err) {
+      console.error(err)
+      const $dom = document.querySelector('#card-newest-comments .aside-list')
+      $dom.textContent= "无法获取评论，请确认相关配置是否正确"
+    }
+  }
+
+  const newestCommentInit = () => {
+    if (document.querySelector('#card-newest-comments .aside-list')) {
+      const data = saveToLocal.get('waline-newest-comments')
+      if (data) {
+        generateHtml(JSON.parse(data))
+      } else {
+        getComment()
+      }
+    }
+  }
+
+  newestCommentInit()
+  document.addEventListener('pjax:complete', newestCommentInit)
+})</script><script async src="https://cdn.jsdelivr.net/npm/js-heo@1.0.11/categoryBar/categoryBar.js"></script><script async src="/js/ali_icon.js"></script><script async data-pjax src="/js/custom.js"></script><script async data-pjax src="/js/waterfall.js"></script><script async data-pjax src="/js/photo.js"></script><script src="https://cdn.jsdelivr.net/npm/pjax/pjax.min.js"></script><script>let pjaxSelectors = ["head > title","#config-diff","#body-wrap","#rightside-config-hide","#rightside-config-show",".js-pjax"]
+
+var pjax = new Pjax({
+  elements: 'a:not([target="_blank"])',
+  selectors: pjaxSelectors,
+  cacheBust: false,
+  analytics: false,
+  scrollRestoration: false
+})
+
+document.addEventListener('pjax:send', function () {
+
+  // removeEventListener
+  btf.removeGlobalFnEvent('pjax')
+  btf.removeGlobalFnEvent('themeChange')
+
+  document.getElementById('rightside').classList.remove('rightside-show')
+  
+  if (window.aplayers) {
+    for (let i = 0; i < window.aplayers.length; i++) {
+      if (!window.aplayers[i].options.fixed) {
+        window.aplayers[i].destroy()
+      }
+    }
+  }
+
+  typeof typed === 'object' && typed.destroy()
+
+  //reset readmode
+  const $bodyClassList = document.body.classList
+  $bodyClassList.contains('read-mode') && $bodyClassList.remove('read-mode')
+
+  typeof disqusjs === 'object' && disqusjs.destroy()
+})
+
+document.addEventListener('pjax:complete', function () {
+  window.refreshFn()
+
+  document.querySelectorAll('script[data-pjax]').forEach(item => {
+    const newScript = document.createElement('script')
+    const content = item.text || item.textContent || item.innerHTML || ""
+    Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+    newScript.appendChild(document.createTextNode(content))
+    item.parentNode.replaceChild(newScript, item)
+  })
+
+  GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
+
+  typeof panguInit === 'function' && panguInit()
+
+  // google analytics
+  typeof gtag === 'function' && gtag('config', '', {'page_path': window.location.pathname});
+
+  // baidu analytics
+  typeof _hmt === 'object' && _hmt.push(['_trackPageview',window.location.pathname]);
+
+  typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
+
+  // prismjs
+  typeof Prism === 'object' && Prism.highlightAll()
+})
+
+document.addEventListener('pjax:error', e => {
+  if (e.request.status === 404) {
+    pjax.loadUrl('/404.html')
+  }
+})</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><div id="algolia-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="search-wrap"><div id="algolia-search-input"></div><hr/><div id="algolia-search-results"><div id="algolia-hits"></div><div id="algolia-pagination"></div><div id="algolia-info"><div class="algolia-stats"></div><div class="algolia-poweredBy"></div></div></div></div></div><div id="search-mask"></div><script src="https://cdn.jsdelivr.net/npm/algoliasearch/dist/algoliasearch-lite.umd.min.js"></script><script src="https://cdn.jsdelivr.net/npm/instantsearch.js/dist/instantsearch.production.min.js"></script><script src="/js/search/algolia.js"></script></div></div><!-- hexo injector body_end start --><script>
+    // 全局变量声明区域
+    var fdata = {
+      apiurl: 'https://fcircle.akimio.top/',
+      initnumber: 30, //【可选】页面初始化展示文章数量
+      stepnumber: 30, //【可选】每次加载增加的篇数
+      error_img: 'https://npm.elemecdn.com/akilar-candyassets/image/404.gif' //【可选，头像图片加载失败时的默认头像】
+    }
+    //存入本地存储
+    localStorage.setItem("fdatalist",JSON.stringify(fdata))
+    </script>
+    <script data-pjax src="https://npm.elemecdn.com/hexo-filter-fcircle-anzhiyu@1.1.2/assets/js/fetch.js"></script><script data-pjax src="https://npm.elemecdn.com/hexo-filter-fcircle-anzhiyu@1.1.2/assets/js/random-friends-post.js"></script><!-- hexo injector body_end end --></body></html>

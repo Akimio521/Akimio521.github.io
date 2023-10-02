@@ -1,0 +1,407 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>利用Replit搭建个人博客Halo | 秋澪的博客</title><meta name="author" content="秋澪"><meta name="copyright" content="秋澪"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="这篇文章介绍了如何在Replit上使用Halo搭建个人博客。文章详细介绍了注册账号及账户设置、创建项目、了解Replit项目的大致操作方法、安装Halo、配置管理员账号密码、Halo初运行、使用自己的域名以及Replit项目休眠等操作。同时还分析了使用Replit搭建个人博客的优势和劣势，如操作简单、适合小白上手等优势，以及无法更改更多详细配置、只能使用Halo官方的数据库等劣势。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="利用Replit搭建个人博客Halo">
+<meta property="og:url" content="https://blog.akimio.top/posts/1005/index.html">
+<meta property="og:site_name" content="秋澪的博客">
+<meta property="og:description" content="这篇文章介绍了如何在Replit上使用Halo搭建个人博客。文章详细介绍了注册账号及账户设置、创建项目、了解Replit项目的大致操作方法、安装Halo、配置管理员账号密码、Halo初运行、使用自己的域名以及Replit项目休眠等操作。同时还分析了使用Replit搭建个人博客的优势和劣势，如操作简单、适合小白上手等优势，以及无法更改更多详细配置、只能使用Halo官方的数据库等劣势。">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://img.akimio.top/avatar/akimio.png">
+<meta property="article:published_time" content="2023-04-13T08:26:08.000Z">
+<meta property="article:modified_time" content="2023-04-13T08:36:30.000Z">
+<meta property="article:author" content="秋澪">
+<meta property="article:tag" content="教程">
+<meta property="article:tag" content="博客">
+<meta property="article:tag" content="Replit">
+<meta property="article:tag" content="Halo">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://img.akimio.top/avatar/akimio.png"><link rel="shortcut icon" href="https://img.akimio.top/avatar/akimio.png"><link rel="canonical" href="https://blog.akimio.top/posts/1005/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: {"appId":"BYPCZSYOJI","apiKey":"6af2e592cfa13577928c34a0b6129069","indexName":"akimio","hits":{"per_page":6},"languages":{"input_placeholder":"搜索文章","hits_empty":"找不到您查询的内容：${query}","hits_stats":"找到 ${hits} 条结果，用时 ${time} 毫秒"}},
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: {"limitDay":500,"position":"top","messagePrev":"这篇文章已经发布了","messageNext":"天，文章内容可能已经过时"},
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '天',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'mediumZoom',
+  Snackbar: {"chs_to_cht":"你已切换为繁体中文","cht_to_chs":"你已切换为简体中文","day_to_night":"你已切换为深色模式","night_to_day":"你已切换为浅色模式","bgLight":"#284F69","bgDark":"#1f1f1f","position":"bottom-center"},
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: true,
+  },
+  autoDarkmode: true
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '利用Replit搭建个人博客Halo',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2023-04-13 16:36:30'
+}</script><script>(win=>{
+      win.saveToLocal = {
+        set: (key, value, ttl) => {
+          if (ttl === 0) return
+          const now = Date.now()
+          const expiry = now + ttl * 86400000
+          const item = {
+            value,
+            expiry
+          }
+          localStorage.setItem(key, JSON.stringify(item))
+        },
+      
+        get: key => {
+          const itemStr = localStorage.getItem(key)
+      
+          if (!itemStr) {
+            return undefined
+          }
+          const item = JSON.parse(itemStr)
+          const now = Date.now()
+      
+          if (now > item.expiry) {
+            localStorage.removeItem(key)
+            return undefined
+          }
+          return item.value
+        }
+      }
+    
+      win.getScript = (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        script.onerror = reject
+        script.onload = script.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          script.onload = script.onreadystatechange = null
+          resolve()
+        }
+
+        Object.keys(attr).forEach(key => {
+          script.setAttribute(key, attr[key])
+        })
+
+        document.head.appendChild(script)
+      })
+    
+      win.getCSS = (url, id = false) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onerror = reject
+        link.onload = link.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          link.onload = link.onreadystatechange = null
+          resolve()
+        }
+        document.head.appendChild(link)
+      })
+    
+      win.activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          const isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches
+          const isLightMode = window.matchMedia('(prefers-color-scheme: light)').matches
+          const isNotSpecified = window.matchMedia('(prefers-color-scheme: no-preference)').matches
+          const hasNoSupport = !isDarkMode && !isLightMode && !isNotSpecified
+
+          if (t === undefined) {
+            if (isLightMode) activateLightMode()
+            else if (isDarkMode) activateDarkMode()
+            else if (isNotSpecified || hasNoSupport) {
+              const now = new Date()
+              const hour = now.getHours()
+              const isNight = hour <= 6 || hour >= 18
+              isNight ? activateDarkMode() : activateLightMode()
+            }
+            window.matchMedia('(prefers-color-scheme: dark)').addListener(e => {
+              if (saveToLocal.get('theme') === undefined) {
+                e.matches ? activateDarkMode() : activateLightMode()
+              }
+            })
+          } else if (t === 'light') activateLightMode()
+          else activateDarkMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+      const detectApple = () => {
+        if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+          document.documentElement.classList.add('apple')
+        }
+      }
+      detectApple()
+    })(window)</script><link rel="stylesheet" href="/css/kasumi.css"><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/js-heo@1.0.11/mainColor/heoMainColor.css"><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/js-heo@1.0.11/categoryBar/categoryBar.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/l-lin/font-awesome-animation/dist/font-awesome-animation.min.css"  media="defer" onload="this.media='all'"><link rel="stylesheet" href="/css/banner.css"><link rel="stylesheet" href="/css/essay_page.css"><link rel="stylesheet" href="/css/photo.css"><meta name="generator" content="Hexo 5.4.2"><link rel="alternate" href="/rss2.xml" title="秋澪的博客" type="application/rss+xml">
+</head><body><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="https://img.akimio.top/avatar/akimio.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">32</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">39</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">10</div></a></div><hr class="custom-hr"/><div class="menus_items"><div class="menus_item"><a class="site-page faa-parent animated-hover" href="javascript:void(0);"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-akimio-website"></use></svg><span> 个人站点</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" target="_blank" rel="noopener" href="https://www.akimio.top/"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-akimio-home"></use></svg><span> 个人主页</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-akimio-blog"></use></svg><span> 博客</span></a></li><li><a class="site-page child faa-parent animated-hover" target="_blank" rel="noopener" href="https://chatgpt.akimio.top/"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-akimio-chatgpt"></use></svg><span> ChatGPT</span></a></li><li><a class="site-page child faa-parent animated-hover" target="_blank" rel="noopener" href="https://music.akimio.top/"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-akimio-music"></use></svg><span> 个人音乐站</span></a></li><li><a class="site-page child faa-parent animated-hover" target="_blank" rel="noopener" href="https://um.akimio.top/"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-akimio-um"></use></svg><span> 音乐解锁站</span></a></li><li><a class="site-page child faa-parent animated-hover" target="_blank" rel="noopener" href="https://alist.akimio.top/"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-akimio-alist"></use></svg><span> Alist</span></a></li></ul></div><div class="menus_item"><a class="site-page faa-parent animated-hover" href="javascript:void(0);"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-akimio-article"></use></svg><span> 关于文章</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/categories/"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-akimio-categories"></use></svg><span> 分类</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/tags/"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-akimio-tags"></use></svg><span> 标签</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/archives/"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-akimio-archives"></use></svg><span> 归档</span></a></li></ul></div><div class="menus_item"><a class="site-page faa-parent animated-hover" href="javascript:void(0);"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-akimio-friends"></use></svg><span> 朋友们</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/link/"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-akimio-link"></use></svg><span> 友链</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/fcircle/"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-akimio-fcircle"></use></svg><span> 朋友圈</span></a></li></ul></div><div class="menus_item"><a class="site-page faa-parent animated-hover" href="javascript:void(0);"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-akimio-other"></use></svg><span> 关于我</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/photos/"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-akimio-photo"></use></svg><span> 相册</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/essay/"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-akimio-essay"></use></svg><span> 动态</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/comments/"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-akimio-comments"></use></svg><span> 留言板</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/about/"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-akimio-about"></use></svg><span> 关于本站</span></a></li></ul></div><div class="menus_item"><a class="site-page faa-parent animated-hover" target="_blank" rel="noopener" href="https://www.travellings.cn/go.html"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-akimio-travelling"></use></svg><span> 开往</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://img.akimio.top/Blog/2023/10/1696116638-6518af9e6666a.webp')"><nav id="nav"><span id="blog-info"><a href="/" title="秋澪的博客"><img class="site-icon" src="https://img.akimio.top/avatar/akimio.png"/><span class="site-name">秋澪的博客</span></a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search" href="javascript:void(0);"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page faa-parent animated-hover" href="javascript:void(0);"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-akimio-website"></use></svg><span> 个人站点</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" target="_blank" rel="noopener" href="https://www.akimio.top/"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-akimio-home"></use></svg><span> 个人主页</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-akimio-blog"></use></svg><span> 博客</span></a></li><li><a class="site-page child faa-parent animated-hover" target="_blank" rel="noopener" href="https://chatgpt.akimio.top/"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-akimio-chatgpt"></use></svg><span> ChatGPT</span></a></li><li><a class="site-page child faa-parent animated-hover" target="_blank" rel="noopener" href="https://music.akimio.top/"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-akimio-music"></use></svg><span> 个人音乐站</span></a></li><li><a class="site-page child faa-parent animated-hover" target="_blank" rel="noopener" href="https://um.akimio.top/"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-akimio-um"></use></svg><span> 音乐解锁站</span></a></li><li><a class="site-page child faa-parent animated-hover" target="_blank" rel="noopener" href="https://alist.akimio.top/"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-akimio-alist"></use></svg><span> Alist</span></a></li></ul></div><div class="menus_item"><a class="site-page faa-parent animated-hover" href="javascript:void(0);"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-akimio-article"></use></svg><span> 关于文章</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/categories/"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-akimio-categories"></use></svg><span> 分类</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/tags/"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-akimio-tags"></use></svg><span> 标签</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/archives/"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-akimio-archives"></use></svg><span> 归档</span></a></li></ul></div><div class="menus_item"><a class="site-page faa-parent animated-hover" href="javascript:void(0);"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-akimio-friends"></use></svg><span> 朋友们</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/link/"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-akimio-link"></use></svg><span> 友链</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/fcircle/"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-akimio-fcircle"></use></svg><span> 朋友圈</span></a></li></ul></div><div class="menus_item"><a class="site-page faa-parent animated-hover" href="javascript:void(0);"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-akimio-other"></use></svg><span> 关于我</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/photos/"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-akimio-photo"></use></svg><span> 相册</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/essay/"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-akimio-essay"></use></svg><span> 动态</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/comments/"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-akimio-comments"></use></svg><span> 留言板</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/about/"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-akimio-about"></use></svg><span> 关于本站</span></a></li></ul></div><div class="menus_item"><a class="site-page faa-parent animated-hover" target="_blank" rel="noopener" href="https://www.travellings.cn/go.html"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-akimio-travelling"></use></svg><span> 开往</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">利用Replit搭建个人博客Halo</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2023-04-13T08:26:08.000Z" title="发表于 2023-04-13 16:26:08">2023-04-13</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2023-04-13T08:36:30.000Z" title="更新于 2023-04-13 16:36:30">2023-04-13</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E7%BD%91%E7%BB%9C%E5%9F%BA%E5%BB%BA%E8%AE%A1%E5%88%92/">网络基建计划</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">1.9k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>5分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="利用Replit搭建个人博客Halo"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span><span class="post-meta-separator">|</span><span class="post-meta-commentcount"><i class="far fa-comments fa-fw post-meta-icon"></i><span class="post-meta-label">评论数:</span><a href="/posts/1005/#post-comment"><span class="waline-comment-count" data-path="/posts/1005/"><i class="fa-solid fa-spinner fa-spin"></i></span></a></span></div></div></div><section class="main-hero-waves-area waves-area"><svg class="waves-svg" xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto"><defs><path id="gentle-wave" d="M -160 44 c 30 0 58 -18 88 -18 s 58 18 88 18 s 58 -18 88 -18 s 58 18 88 18 v 44 h -352 Z"></path></defs><g class="parallax"><use href="#gentle-wave" x="48" y="0"></use><use href="#gentle-wave" x="48" y="3"></use><use href="#gentle-wave" x="48" y="5"></use><use href="#gentle-wave" x="48" y="7"></use></g></svg></section></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h1><h2 id="Halo"><a href="#Halo" class="headerlink" title="Halo"></a>Halo</h2><p><a target="_blank" rel="noopener" href="https://halo.run/">Halo</a>是一款个人博客平台，具有可视化界面，易于部署，自带评论系统和附件系统，是小白入门的不二选择</p>
+<h2 id="Replit"><a href="#Replit" class="headerlink" title="Replit"></a>Replit</h2><p><a target="_blank" rel="noopener" href="https://replit.com/">Replit</a>是一个基于浏览器的云端协同开发平台，可用于构建开发环境、实时协作、托管网络应用等。Replit提供可创建动态或者静态网站的容器，并会自动生成免费https域名.这代表着任何人都可以试用Replit的云服务器创建自己的网站，或者是其他的服务，而且这一切，都是免费的</p>
+<h2 id="Halo-on-replit"><a href="#Halo-on-replit" class="headerlink" title="Halo-on-replit"></a>Halo-on-replit</h2><p>Halo官方部署方式是使用Docker安装，但是Replit免费用户只提供了0.5H0.5G的服务器，并不足以安装Docekr，这里需要使用舒夏大佬根据Halo源码编译的jar包，<a target="_blank" rel="noopener" href="https://github.com/sxbai/halo-on-replit">Github项目地址</a>，<a target="_blank" rel="noopener" href="https://blog.sxbai.com/archives/replit-mian-fei-da-jian-halo-bo-ke">舒夏大佬教程博客</a></p>
+<h1 id="准备"><a href="#准备" class="headerlink" title="准备"></a>准备</h1><ul>
+<li>Replit账户</li>
+<li>域名（非必备）</li>
+<li>UptimeRobot（非必须）</li>
+</ul>
+<h1 id="教程"><a href="#教程" class="headerlink" title="教程"></a>教程</h1><h2 id="注册账号及账户设置（如果已经注册过Replit账号可以跳过这一步）"><a href="#注册账号及账户设置（如果已经注册过Replit账号可以跳过这一步）" class="headerlink" title="注册账号及账户设置（如果已经注册过Replit账号可以跳过这一步）"></a>注册账号及账户设置（如果已经注册过Replit账号可以跳过这一步）</h2><p><a target="_blank" rel="noopener" href="https://replit.com/signup">注册地址</a>,可以用GitHub账户/Google账户/邮箱进行注册。（<strong>如果没有自己的域名，那么起名的时候慎重</strong>）<br><img src="https://img.akimio.top/Blog/2023/10/1696116660-6518afb44545d.webp" alt="点击Sign UP创建账户"><br>回到主页，点击左上角的的用户名，选择<code>Account</code><br><img src="https://img.akimio.top/Blog/2023/10/1696116684-6518afccec297.webp" alt="点击这里再选择Account"><br>依次填写<code>First name</code>、<code>Last name</code>以及<code>Bio（简介）</code>，向下滑动，找到<code>Your server location</code><br><img src="https://img.akimio.top/Blog/2023/10/1696116716-6518afec2fefb.webp" alt="选择部署区域"><br>这里有两个位置可以选择，分别是美国和印度，据说美国的带宽只有10m，而印度有50m，但是博客对带宽的需求并不大，可以选择美国，如果你准备在Replit搭建其他对宽带需求高的服务，可以选择印度</p>
+<h2 id="创建项目"><a href="#创建项目" class="headerlink" title="创建项目"></a>创建项目</h2><p><a target="_blank" rel="noopener" href="https://replit.com">返回主页</a>,点击左上角的<code>Create Repl</code><br><img src="https://img.akimio.top/Blog/2023/10/1696116735-6518afffe9997.webp" alt="创建项目"><br>Template选择Bash或者Blank Repl，Tittle随自己喜好填写（如果没有域名，请慎重填写，虽然可以改）<br><img src="https://img.akimio.top/Blog/2023/10/1696116759-6518b0175011a.webp" alt="选择仓库语言"></p>
+<h2 id="了解Replit项目的大致操作方法"><a href="#了解Replit项目的大致操作方法" class="headerlink" title="了解Replit项目的大致操作方法"></a>了解Replit项目的大致操作方法</h2><p>进入项目后，大概分为4栏，最左侧为项目文件导航（下方为工具），中间为文件内容，最左侧为命令行<br>如果你找不到命令行，找到最下角的Tools，找到里面的Console或者Shell就可以找到命令行了<br><img src="https://img.akimio.top/Blog/2023/10/1696116780-6518b02ccfc45.webp" alt=""></p>
+<h2 id="安装Halo"><a href="#安装Halo" class="headerlink" title="安装Halo"></a>安装Halo</h2><p>Halo有两个版本，分别为1.x和2.x，两个版本差异较大，插件主题不可以混用，大家酌情选择，这里以安装2.x为例，1.x的版本也类似。在Console或者Shell命令行输入以下代码:<br>安装1.x版本的Halo</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">bash &lt;(curl -s https://raw.githubusercontent.com/sxbai/halo-on-replit/master/install.sh)</span><br></pre></td></tr></table></figure>
+<p>安装2.x版本的Halo</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">bash &lt;(curl -s https://raw.githubusercontent.com/sxbai/halo-on-replit/master/install2.sh)</span><br></pre></td></tr></table></figure>
+<p>顺便附上2.x版本Halo的更新脚本，<strong>1.x版本的Halo无法使用</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">bash &lt;(curl -s https://raw.githubusercontent.com/sxbai/halo-on-replit/master/update.sh)</span><br></pre></td></tr></table></figure>
+<p>在<code>Console</code>或者<code>Shell</code>粘贴好代码后，回车即可，等待跑完后大概是这个样子的，在项目文件中有两个文件，分别是main.sh（项目启动运行脚本）其中有各种运行参数、halo.jar（舒夏大佬编译的包）有能力的话可以自行根据Halo源码编译，更近一步配置参数<br><img src="https://img.akimio.top/Blog/2023/10/1696116808-6518b048b2fab.webp" alt=""></p>
+<h2 id="配置管理员账号密码"><a href="#配置管理员账号密码" class="headerlink" title="配置管理员账号密码"></a>配置管理员账号密码</h2><p>由于Replit的免费项目是公开的（想要私人Private项目需要购买升级账户），如果直接在main的项目中配置账号密码，可能有博客被篡改的风险，所以需要在Secrets中配置用户密码，观察main.sh中的代码，可以看到有两个参数，${username}和${password}，<del>如果不怕博客被盗可以直接把这两个参数改成自己管理员的账号密码</del><br>在左下角的Tools工具栏中找到Secrets，key中填入username，value填入管理员的账号名，再点击<code>Add new secrets</code>，再在<code>key</code>中填入<code>password</code>，<code>value</code>填入管理员的密码<br><img src="https://img.akimio.top/Blog/2023/10/1696116831-6518b05fc1210.webp" alt="secrets在箭头这里，username和password这两个参数要手动添加"></p>
+<h2 id="Halo初运行"><a href="#Halo初运行" class="headerlink" title="Halo初运行"></a>Halo初运行</h2><p>至此，Halo-on-replit的大部分步骤已经完成，点击上方的<code>RUN</code>即可启动，启动完成后应该会多出一个叫<code>Webvew</code>的窗口，如果没有自动弹出可以找到左下方的Tools工具栏的<code>Webvew</code>应用打开，在Webview的最右侧有个<code>Open in new table</code>的按钮，点击后就可以在浏览器新的标签页中初始化Halo，博客默认的域名是<a target="_blank" rel="noopener" href="https://项目名.用户名.repl.co，所以为什么我说名字很重要，https://项目名.用户名.repl.co/console为Halo的管理后台，进入初始化Halo即可，后面的内容和其他方式部署Halo一致，因此在这不再赘述">https://项目名.用户名.repl.co，所以为什么我说名字很重要，https://项目名.用户名.repl.co/console为Halo的管理后台，进入初始化Halo即可，后面的内容和其他方式部署Halo一致，因此在这不再赘述</a></p>
+<h2 id="使用自己的域名"><a href="#使用自己的域名" class="headerlink" title="使用自己的域名"></a>使用自己的域名</h2><p>回到Replit自己的项目中，在Webview界面选择右侧的按钮Custom domain再点击Create Domain Link<br><img src="https://img.akimio.top/Blog/2023/10/1696116851-6518b0737765c.webp" alt="我这里是已经添加过一个域名了"></p>
+<p>输入自己的域名，如果是一级域名，可以直接使用A记录进行解析，如果是二级及以上的子域名，需要使用Cname的方式域名解析，如果你需要使用Cloudflare等cdn，则需要而外添加一条txt记录，解析完后点击Link Domain等待Replit检测解析生效即可。进入main.sh将halo.external-url的参数修改为自己的域名<br><img src="https://img.akimio.top/Blog/2023/10/1696116876-6518b08c265d6.webp" alt=""><br>之后就可以使用自己的域名访问博客了。需要注意的是Replit不会为第三方域名申请ssl，如果实在是很介意的话可以使用CDN（Cloudflare的免费CDN在国内会被劣化，访问速度下降）Cloudflare在域名DNS开启小黄云（CDN）在SSL/TLS页面将模式更改为模式为灵活，然后就可以使用https访问了</p>
+<h2 id="Replit项目休眠"><a href="#Replit项目休眠" class="headerlink" title="Replit项目休眠"></a>Replit项目休眠</h2><p>Replit在监测到项目长时间无人访问后会自行停止运行（Stop），虽然舒夏大佬在Halo2.4后的版本增加的防止休眠的代码，但是效果不怎么理想，可以使用<a target="_blank" rel="noopener" href="https://uptimerobot.com">UptimeRobot</a>定期访问博客网页以达到阻止休眠的效果</p>
+<h1 id="优劣分析"><a href="#优劣分析" class="headerlink" title="优劣分析"></a>优劣分析</h1><h2 id="优势："><a href="#优势：" class="headerlink" title="优势："></a>优势：</h2><ol>
+<li>Halo作为有图像化界面的个人博客，相比Hexo部署方便，操作简单，适合小白上手</li>
+<li>Replit平台为免费项目。自2023年春，Replit免费账户有10G流量的限制，但至是搭建个人博客足以，并且Replit还为用户提供了免费域名，适合白嫖党</li>
+</ol>
+<h2 id="劣势："><a href="#劣势：" class="headerlink" title="劣势："></a>劣势：</h2><ol>
+<li>在Replit上部署舒夏大佬的编译的jar包，无法更改更多详细配置，如网站的界面会被浏览器判断为英文，会显示翻译按钮</li>
+<li>还是和上一条有关，只能使用Halo官方的数据库，没办法使用自己的数据库，只能使用H2数据库,并且H2数据库是存在于Replit项目内的，任何人都可以Fork你的项目，新增Secrets来访问你博客的源数据并且经本人测试H2在Replit存储Bug，会导致无法修改过去文章的信息。下面是官方对H2数据库的描述：</li>
+</ol>
+<blockquote>
+<p>H2 数据库的运行方式，主要用于体验和测试，在生产环境我们不推荐使用 H2 数据库</p>
+</blockquote>
+<p>（如果你会编译jar，前面三项其实可以自行编译解决）</p>
+<ol>
+<li>自定义域名无SSL证书，只能使用http访问，如使用Cloudflare等免费CDN服务可能会导致访问速度下降，CSS丢包等情况</li>
+<li>项目会自动休眠</li>
+</ol>
+<h1 id="相关链接"><a href="#相关链接" class="headerlink" title="相关链接"></a>相关链接</h1><ul>
+<li><a target="_blank" rel="noopener" href="https://github.com/sxbai/halo-on-replit">Halo-on-Replit的Github项目地址</a></li>
+<li><a target="_blank" rel="noopener" href="https://blog.sxbai.com/archives/replit-mian-fei-da-jian-halo-bo-ke">舒夏大佬的官方博客教程</a></li>
+<li><a target="_blank" rel="noopener" href="https://halo.run">Halo官网</a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/halo-dev/halo">Halo的Github项目地址</a></li>
+<li><a target="_blank" rel="noopener" href="https://replit.com">Replit官网</a></li>
+<li><a target="_blank" rel="noopener" href="https://uptimerobot.com">UptimeRobot官网</a></li>
+</ul>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="https://blog.akimio.top">秋澪</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="https://blog.akimio.top/posts/1005/">https://blog.akimio.top/posts/1005/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://blog.akimio.top" target="_blank">秋澪的博客</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E6%95%99%E7%A8%8B/">教程</a><a class="post-meta__tags" href="/tags/%E5%8D%9A%E5%AE%A2/">博客</a><a class="post-meta__tags" href="/tags/Replit/">Replit</a><a class="post-meta__tags" href="/tags/Halo/">Halo</a></div><div class="post_share"><div class="social-share" data-image="https://img.akimio.top/Blog/2023/10/1696116638-6518af9e6666a.webp" data-sites="wechat,qq,weibo,facebook,twitter"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/posts/1006/" title="个人图床搭建之Github篇"><img class="cover" src="https://img.akimio.top/Blog/2023/10/1696115000-6518a93872482.webp" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">个人图床搭建之Github篇</div></div></a></div><div class="next-post pull-right"><a href="/posts/1004/" title="AI工具网站推荐"><img class="cover" src="https://img.akimio.top/Blog/2023/09/1696087773-65183eddbf4b9.webp" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">AI工具网站推荐</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/posts/1015/" title="Hexo重装记录"><img class="cover" src="https://img.akimio.top/Blog/2023/09/1696084993-6518340135d0e.webp" alt="cover"><div class="content is-center"><div class="date"><i class="fas fa-history fa-fw"></i> 2023-10-01</div><div class="title">Hexo重装记录</div></div></a></div><div><a href="/posts/1024/" title="为Hexo博客添加后台管理系统"><img class="cover" src="https://img.akimio.top/Blog/2023/09/1696085047-6518343797886.webp" alt="cover"><div class="content is-center"><div class="date"><i class="fas fa-history fa-fw"></i> 2023-10-01</div><div class="title">为Hexo博客添加后台管理系统</div></div></a></div><div><a href="/posts/1006/" title="个人图床搭建之Github篇"><img class="cover" src="https://img.akimio.top/Blog/2023/10/1696115000-6518a93872482.webp" alt="cover"><div class="content is-center"><div class="date"><i class="fas fa-history fa-fw"></i> 2023-04-16</div><div class="title">个人图床搭建之Github篇</div></div></a></div><div><a href="/posts/1012/" title="利用Replit搭建Alist"><img class="cover" src="https://img.akimio.top/Blog/2023/10/1696115574-6518ab76cc4b3.webp" alt="cover"><div class="content is-center"><div class="date"><i class="fas fa-history fa-fw"></i> 2023-10-01</div><div class="title">利用Replit搭建Alist</div></div></a></div><div><a href="/posts/1021/" title="Armbian手把手玩机指南01-系统刷入并安装可视化桌面"><img class="cover" src="https://img.akimio.top/Blog/2023/09/1696083844-65182f8492279.webp" alt="cover"><div class="content is-center"><div class="date"><i class="fas fa-history fa-fw"></i> 2023-10-01</div><div class="title">Armbian手把手玩机指南01-系统刷入并安装可视化桌面</div></div></a></div><div><a href="/posts/1011/" title="Docker命令大全"><img class="cover" src="https://img.akimio.top/Blog/2023/09/1696084647-651832a7552c1.webp" alt="cover"><div class="content is-center"><div class="date"><i class="fas fa-history fa-fw"></i> 2023-10-01</div><div class="title">Docker命令大全</div></div></a></div></div></div><hr class="custom-hr"/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div id="waline-wrap"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content is-expand"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%AE%80%E4%BB%8B"><span class="toc-number">1.</span> <span class="toc-text">简介</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Halo"><span class="toc-number">1.1.</span> <span class="toc-text">Halo</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Replit"><span class="toc-number">1.2.</span> <span class="toc-text">Replit</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Halo-on-replit"><span class="toc-number">1.3.</span> <span class="toc-text">Halo-on-replit</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%87%86%E5%A4%87"><span class="toc-number">2.</span> <span class="toc-text">准备</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%95%99%E7%A8%8B"><span class="toc-number">3.</span> <span class="toc-text">教程</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B3%A8%E5%86%8C%E8%B4%A6%E5%8F%B7%E5%8F%8A%E8%B4%A6%E6%88%B7%E8%AE%BE%E7%BD%AE%EF%BC%88%E5%A6%82%E6%9E%9C%E5%B7%B2%E7%BB%8F%E6%B3%A8%E5%86%8C%E8%BF%87Replit%E8%B4%A6%E5%8F%B7%E5%8F%AF%E4%BB%A5%E8%B7%B3%E8%BF%87%E8%BF%99%E4%B8%80%E6%AD%A5%EF%BC%89"><span class="toc-number">3.1.</span> <span class="toc-text">注册账号及账户设置（如果已经注册过Replit账号可以跳过这一步）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%9B%E5%BB%BA%E9%A1%B9%E7%9B%AE"><span class="toc-number">3.2.</span> <span class="toc-text">创建项目</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%86%E8%A7%A3Replit%E9%A1%B9%E7%9B%AE%E7%9A%84%E5%A4%A7%E8%87%B4%E6%93%8D%E4%BD%9C%E6%96%B9%E6%B3%95"><span class="toc-number">3.3.</span> <span class="toc-text">了解Replit项目的大致操作方法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%89%E8%A3%85Halo"><span class="toc-number">3.4.</span> <span class="toc-text">安装Halo</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%85%8D%E7%BD%AE%E7%AE%A1%E7%90%86%E5%91%98%E8%B4%A6%E5%8F%B7%E5%AF%86%E7%A0%81"><span class="toc-number">3.5.</span> <span class="toc-text">配置管理员账号密码</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Halo%E5%88%9D%E8%BF%90%E8%A1%8C"><span class="toc-number">3.6.</span> <span class="toc-text">Halo初运行</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8%E8%87%AA%E5%B7%B1%E7%9A%84%E5%9F%9F%E5%90%8D"><span class="toc-number">3.7.</span> <span class="toc-text">使用自己的域名</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Replit%E9%A1%B9%E7%9B%AE%E4%BC%91%E7%9C%A0"><span class="toc-number">3.8.</span> <span class="toc-text">Replit项目休眠</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BC%98%E5%8A%A3%E5%88%86%E6%9E%90"><span class="toc-number">4.</span> <span class="toc-text">优劣分析</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BC%98%E5%8A%BF%EF%BC%9A"><span class="toc-number">4.1.</span> <span class="toc-text">优势：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8A%A3%E5%8A%BF%EF%BC%9A"><span class="toc-number">4.2.</span> <span class="toc-text">劣势：</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%9B%B8%E5%85%B3%E9%93%BE%E6%8E%A5"><span class="toc-number">5.</span> <span class="toc-text">相关链接</span></a></li></ol></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2023 By 秋澪</div><div class="footer_custom_text">欢迎来到Akimio的博客</div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/medium-zoom/dist/medium-zoom.min.js"></script><script src="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.js"></script><div class="js-pjax"><script>(() => {
+  const initWaline = () => {
+    const waline = Waline.init(Object.assign({
+      el: '#waline-wrap',
+      serverURL: 'https://waline.akimio.top/',
+      pageview: false,
+      dark: 'html[data-theme="dark"]',
+      path: window.location.pathname,
+      comment: true,
+    }, null))
+  }
+
+  const loadWaline = async () => {
+    if (typeof Waline === 'object') initWaline()
+    else {
+      await getCSS('https://cdn.jsdelivr.net/npm/@waline/client/dist/waline.min.css')
+      await getScript('https://cdn.jsdelivr.net/npm/@waline/client/dist/waline.min.js')
+      initWaline()
+    }
+  }
+
+  if ('Waline' === 'Waline' || !false) {
+    if (false) btf.loadComment(document.getElementById('waline-wrap'),loadWaline)
+    else setTimeout(loadWaline, 0)
+  } else {
+    window.loadOtherComment = loadWaline
+  }
+})()</script></div><script>window.addEventListener('load', () => {
+  const changeContent = content => {
+    if (content === '') return content
+
+    content = content.replace(/<img.*?src="(.*?)"?[^\>]+>/ig, '[图片]') // replace image link
+    content = content.replace(/<a[^>]+?href=["']?([^"']+)["']?[^>]*>([^<]+)<\/a>/gi, '[链接]') // replace url
+    content = content.replace(/<pre><code>.*?<\/pre>/gi, '[代码]') // replace code
+    content = content.replace(/<[^>]+>/g,"") // remove html tag
+
+    if (content.length > 150) {
+      content = content.substring(0,150) + '...'
+    }
+    return content
+  }
+
+  const generateHtml = array => {
+    let result = ''
+
+    if (array.length) {
+      for (let i = 0; i < array.length; i++) {
+        result += '<div class=\'aside-list-item\'>'
+
+        if (true) {
+          const name = 'src'
+          result += `<a href='${array[i].url}' class='thumbnail'><img ${name}='${array[i].avatar}' alt='${array[i].nick}'></a>`
+        }
+
+        result += `<div class='content'>
+        <a class='comment' href='${array[i].url}' title='${array[i].content}'>${array[i].content}</a>
+        <div class='name'><span>${array[i].nick} / </span><time datetime="${array[i].date}">${btf.diffDate(array[i].date, true)}</time></div>
+        </div></div>`
+      }
+    } else {
+      result += '没有评论'
+    }
+
+    let $dom = document.querySelector('#card-newest-comments .aside-list')
+    $dom.innerHTML= result
+    window.lazyLoadInstance && window.lazyLoadInstance.update()
+    window.pjax && window.pjax.refresh($dom)
+  }
+
+  const getComment = async () => {
+    try {
+      const res = await fetch('https://waline.akimio.top/api/comment?type=recent&count=6', { method: 'GET' })
+      const result = await res.json()
+      const walineArray = result.data.map(e => {
+        return {
+          'content': changeContent(e.comment),
+          'avatar': e.avatar,
+          'nick': e.nick,
+          'url': e.url + '#' + e.objectId,
+          'date': e.time || e.insertedAt
+        }
+      })
+      saveToLocal.set('waline-newest-comments', JSON.stringify(walineArray), 10/(60*24))
+      generateHtml(walineArray)
+    } catch (err) {
+      console.error(err)
+      const $dom = document.querySelector('#card-newest-comments .aside-list')
+      $dom.textContent= "无法获取评论，请确认相关配置是否正确"
+    }
+  }
+
+  const newestCommentInit = () => {
+    if (document.querySelector('#card-newest-comments .aside-list')) {
+      const data = saveToLocal.get('waline-newest-comments')
+      if (data) {
+        generateHtml(JSON.parse(data))
+      } else {
+        getComment()
+      }
+    }
+  }
+
+  newestCommentInit()
+  document.addEventListener('pjax:complete', newestCommentInit)
+})</script><script async src="https://cdn.jsdelivr.net/npm/js-heo@1.0.11/categoryBar/categoryBar.js"></script><script async src="/js/ali_icon.js"></script><script async data-pjax src="/js/custom.js"></script><script async data-pjax src="/js/waterfall.js"></script><script async data-pjax src="/js/photo.js"></script><script src="https://cdn.jsdelivr.net/npm/pjax/pjax.min.js"></script><script>let pjaxSelectors = ["head > title","#config-diff","#body-wrap","#rightside-config-hide","#rightside-config-show",".js-pjax"]
+
+var pjax = new Pjax({
+  elements: 'a:not([target="_blank"])',
+  selectors: pjaxSelectors,
+  cacheBust: false,
+  analytics: false,
+  scrollRestoration: false
+})
+
+document.addEventListener('pjax:send', function () {
+
+  // removeEventListener
+  btf.removeGlobalFnEvent('pjax')
+  btf.removeGlobalFnEvent('themeChange')
+
+  document.getElementById('rightside').classList.remove('rightside-show')
+  
+  if (window.aplayers) {
+    for (let i = 0; i < window.aplayers.length; i++) {
+      if (!window.aplayers[i].options.fixed) {
+        window.aplayers[i].destroy()
+      }
+    }
+  }
+
+  typeof typed === 'object' && typed.destroy()
+
+  //reset readmode
+  const $bodyClassList = document.body.classList
+  $bodyClassList.contains('read-mode') && $bodyClassList.remove('read-mode')
+
+  typeof disqusjs === 'object' && disqusjs.destroy()
+})
+
+document.addEventListener('pjax:complete', function () {
+  window.refreshFn()
+
+  document.querySelectorAll('script[data-pjax]').forEach(item => {
+    const newScript = document.createElement('script')
+    const content = item.text || item.textContent || item.innerHTML || ""
+    Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+    newScript.appendChild(document.createTextNode(content))
+    item.parentNode.replaceChild(newScript, item)
+  })
+
+  GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
+
+  typeof panguInit === 'function' && panguInit()
+
+  // google analytics
+  typeof gtag === 'function' && gtag('config', '', {'page_path': window.location.pathname});
+
+  // baidu analytics
+  typeof _hmt === 'object' && _hmt.push(['_trackPageview',window.location.pathname]);
+
+  typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
+
+  // prismjs
+  typeof Prism === 'object' && Prism.highlightAll()
+})
+
+document.addEventListener('pjax:error', e => {
+  if (e.request.status === 404) {
+    pjax.loadUrl('/404.html')
+  }
+})</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><div id="algolia-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="search-wrap"><div id="algolia-search-input"></div><hr/><div id="algolia-search-results"><div id="algolia-hits"></div><div id="algolia-pagination"></div><div id="algolia-info"><div class="algolia-stats"></div><div class="algolia-poweredBy"></div></div></div></div></div><div id="search-mask"></div><script src="https://cdn.jsdelivr.net/npm/algoliasearch/dist/algoliasearch-lite.umd.min.js"></script><script src="https://cdn.jsdelivr.net/npm/instantsearch.js/dist/instantsearch.production.min.js"></script><script src="/js/search/algolia.js"></script></div></div><!-- hexo injector body_end start --><script>
+    // 全局变量声明区域
+    var fdata = {
+      apiurl: 'https://fcircle.akimio.top/',
+      initnumber: 30, //【可选】页面初始化展示文章数量
+      stepnumber: 30, //【可选】每次加载增加的篇数
+      error_img: 'https://npm.elemecdn.com/akilar-candyassets/image/404.gif' //【可选，头像图片加载失败时的默认头像】
+    }
+    //存入本地存储
+    localStorage.setItem("fdatalist",JSON.stringify(fdata))
+    </script>
+    <script data-pjax src="https://npm.elemecdn.com/hexo-filter-fcircle-anzhiyu@1.1.2/assets/js/fetch.js"></script><script data-pjax src="https://npm.elemecdn.com/hexo-filter-fcircle-anzhiyu@1.1.2/assets/js/random-friends-post.js"></script><!-- hexo injector body_end end --></body></html>

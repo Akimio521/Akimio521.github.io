@@ -1,0 +1,395 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>推一个自己的小项目——AutoFilm | 秋澪的博客</title><meta name="author" content="秋澪"><meta name="copyright" content="秋澪"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="前言不知道大家家里也没有自己的NAS，我是今年年初的时候入了坑，学习了很多NAS的一些使用方式，感觉我的NAS不仅仅是一个网络硬盘，更多的是一个服务器，上面搭载了很多服务，像是密码管理器—Bitwarden、私人云盘——Nextcloud、网盘集合——Alist以及更为常见的影音媒体库Jellyfin AutoFilm如果大家和我一样属仓鼠的话那么一定很喜欢到处收集电影动漫什么的吧，但是奈何家境贫">
+<meta property="og:type" content="article">
+<meta property="og:title" content="推一个自己的小项目——AutoFilm">
+<meta property="og:url" content="https://blog.akimio.top/posts/1031/index.html">
+<meta property="og:site_name" content="秋澪的博客">
+<meta property="og:description" content="前言不知道大家家里也没有自己的NAS，我是今年年初的时候入了坑，学习了很多NAS的一些使用方式，感觉我的NAS不仅仅是一个网络硬盘，更多的是一个服务器，上面搭载了很多服务，像是密码管理器—Bitwarden、私人云盘——Nextcloud、网盘集合——Alist以及更为常见的影音媒体库Jellyfin AutoFilm如果大家和我一样属仓鼠的话那么一定很喜欢到处收集电影动漫什么的吧，但是奈何家境贫">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://img.akimio.top/avatar/akimio.png">
+<meta property="article:published_time" content="2023-10-02T02:17:05.000Z">
+<meta property="article:modified_time" content="2023-10-02T05:03:59.767Z">
+<meta property="article:author" content="秋澪">
+<meta property="article:tag" content="教程">
+<meta property="article:tag" content="NAS">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://img.akimio.top/avatar/akimio.png"><link rel="shortcut icon" href="https://img.akimio.top/avatar/akimio.png"><link rel="canonical" href="https://blog.akimio.top/posts/1031/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: {"appId":"BYPCZSYOJI","apiKey":"6af2e592cfa13577928c34a0b6129069","indexName":"akimio","hits":{"per_page":6},"languages":{"input_placeholder":"搜索文章","hits_empty":"找不到您查询的内容：${query}","hits_stats":"找到 ${hits} 条结果，用时 ${time} 毫秒"}},
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: {"limitDay":500,"position":"top","messagePrev":"这篇文章已经发布了","messageNext":"天，文章内容可能已经过时"},
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '天',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'mediumZoom',
+  Snackbar: {"chs_to_cht":"你已切换为繁体中文","cht_to_chs":"你已切换为简体中文","day_to_night":"你已切换为深色模式","night_to_day":"你已切换为浅色模式","bgLight":"#284F69","bgDark":"#1f1f1f","position":"bottom-center"},
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: true,
+  },
+  autoDarkmode: true
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '推一个自己的小项目——AutoFilm',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2023-10-02 13:03:59'
+}</script><script>(win=>{
+      win.saveToLocal = {
+        set: (key, value, ttl) => {
+          if (ttl === 0) return
+          const now = Date.now()
+          const expiry = now + ttl * 86400000
+          const item = {
+            value,
+            expiry
+          }
+          localStorage.setItem(key, JSON.stringify(item))
+        },
+      
+        get: key => {
+          const itemStr = localStorage.getItem(key)
+      
+          if (!itemStr) {
+            return undefined
+          }
+          const item = JSON.parse(itemStr)
+          const now = Date.now()
+      
+          if (now > item.expiry) {
+            localStorage.removeItem(key)
+            return undefined
+          }
+          return item.value
+        }
+      }
+    
+      win.getScript = (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        script.onerror = reject
+        script.onload = script.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          script.onload = script.onreadystatechange = null
+          resolve()
+        }
+
+        Object.keys(attr).forEach(key => {
+          script.setAttribute(key, attr[key])
+        })
+
+        document.head.appendChild(script)
+      })
+    
+      win.getCSS = (url, id = false) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onerror = reject
+        link.onload = link.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          link.onload = link.onreadystatechange = null
+          resolve()
+        }
+        document.head.appendChild(link)
+      })
+    
+      win.activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          const isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches
+          const isLightMode = window.matchMedia('(prefers-color-scheme: light)').matches
+          const isNotSpecified = window.matchMedia('(prefers-color-scheme: no-preference)').matches
+          const hasNoSupport = !isDarkMode && !isLightMode && !isNotSpecified
+
+          if (t === undefined) {
+            if (isLightMode) activateLightMode()
+            else if (isDarkMode) activateDarkMode()
+            else if (isNotSpecified || hasNoSupport) {
+              const now = new Date()
+              const hour = now.getHours()
+              const isNight = hour <= 6 || hour >= 18
+              isNight ? activateDarkMode() : activateLightMode()
+            }
+            window.matchMedia('(prefers-color-scheme: dark)').addListener(e => {
+              if (saveToLocal.get('theme') === undefined) {
+                e.matches ? activateDarkMode() : activateLightMode()
+              }
+            })
+          } else if (t === 'light') activateLightMode()
+          else activateDarkMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+      const detectApple = () => {
+        if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+          document.documentElement.classList.add('apple')
+        }
+      }
+      detectApple()
+    })(window)</script><link rel="stylesheet" href="/css/kasumi.css"><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/js-heo@1.0.11/mainColor/heoMainColor.css"><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/js-heo@1.0.11/categoryBar/categoryBar.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/l-lin/font-awesome-animation/dist/font-awesome-animation.min.css"  media="defer" onload="this.media='all'"><link rel="stylesheet" href="/css/banner.css"><link rel="stylesheet" href="/css/essay_page.css"><link rel="stylesheet" href="/css/photo.css"><meta name="generator" content="Hexo 5.4.2"><link rel="alternate" href="/rss2.xml" title="秋澪的博客" type="application/rss+xml">
+</head><body><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="https://img.akimio.top/avatar/akimio.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">32</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">39</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">10</div></a></div><hr class="custom-hr"/><div class="menus_items"><div class="menus_item"><a class="site-page faa-parent animated-hover" href="javascript:void(0);"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-akimio-website"></use></svg><span> 个人站点</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" target="_blank" rel="noopener" href="https://www.akimio.top/"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-akimio-home"></use></svg><span> 个人主页</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-akimio-blog"></use></svg><span> 博客</span></a></li><li><a class="site-page child faa-parent animated-hover" target="_blank" rel="noopener" href="https://chatgpt.akimio.top/"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-akimio-chatgpt"></use></svg><span> ChatGPT</span></a></li><li><a class="site-page child faa-parent animated-hover" target="_blank" rel="noopener" href="https://music.akimio.top/"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-akimio-music"></use></svg><span> 个人音乐站</span></a></li><li><a class="site-page child faa-parent animated-hover" target="_blank" rel="noopener" href="https://um.akimio.top/"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-akimio-um"></use></svg><span> 音乐解锁站</span></a></li><li><a class="site-page child faa-parent animated-hover" target="_blank" rel="noopener" href="https://alist.akimio.top/"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-akimio-alist"></use></svg><span> Alist</span></a></li></ul></div><div class="menus_item"><a class="site-page faa-parent animated-hover" href="javascript:void(0);"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-akimio-article"></use></svg><span> 关于文章</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/categories/"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-akimio-categories"></use></svg><span> 分类</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/tags/"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-akimio-tags"></use></svg><span> 标签</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/archives/"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-akimio-archives"></use></svg><span> 归档</span></a></li></ul></div><div class="menus_item"><a class="site-page faa-parent animated-hover" href="javascript:void(0);"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-akimio-friends"></use></svg><span> 朋友们</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/link/"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-akimio-link"></use></svg><span> 友链</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/fcircle/"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-akimio-fcircle"></use></svg><span> 朋友圈</span></a></li></ul></div><div class="menus_item"><a class="site-page faa-parent animated-hover" href="javascript:void(0);"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-akimio-other"></use></svg><span> 关于我</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/photos/"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-akimio-photo"></use></svg><span> 相册</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/essay/"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-akimio-essay"></use></svg><span> 动态</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/comments/"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-akimio-comments"></use></svg><span> 留言板</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/about/"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-akimio-about"></use></svg><span> 关于本站</span></a></li></ul></div><div class="menus_item"><a class="site-page faa-parent animated-hover" target="_blank" rel="noopener" href="https://www.travellings.cn/go.html"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-akimio-travelling"></use></svg><span> 开往</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://img.akimio.top/Blog/2023/10/1696212996-651a2804a6ebb.webp')"><nav id="nav"><span id="blog-info"><a href="/" title="秋澪的博客"><img class="site-icon" src="https://img.akimio.top/avatar/akimio.png"/><span class="site-name">秋澪的博客</span></a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search" href="javascript:void(0);"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page faa-parent animated-hover" href="javascript:void(0);"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-akimio-website"></use></svg><span> 个人站点</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" target="_blank" rel="noopener" href="https://www.akimio.top/"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-akimio-home"></use></svg><span> 个人主页</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-akimio-blog"></use></svg><span> 博客</span></a></li><li><a class="site-page child faa-parent animated-hover" target="_blank" rel="noopener" href="https://chatgpt.akimio.top/"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-akimio-chatgpt"></use></svg><span> ChatGPT</span></a></li><li><a class="site-page child faa-parent animated-hover" target="_blank" rel="noopener" href="https://music.akimio.top/"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-akimio-music"></use></svg><span> 个人音乐站</span></a></li><li><a class="site-page child faa-parent animated-hover" target="_blank" rel="noopener" href="https://um.akimio.top/"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-akimio-um"></use></svg><span> 音乐解锁站</span></a></li><li><a class="site-page child faa-parent animated-hover" target="_blank" rel="noopener" href="https://alist.akimio.top/"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-akimio-alist"></use></svg><span> Alist</span></a></li></ul></div><div class="menus_item"><a class="site-page faa-parent animated-hover" href="javascript:void(0);"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-akimio-article"></use></svg><span> 关于文章</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/categories/"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-akimio-categories"></use></svg><span> 分类</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/tags/"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-akimio-tags"></use></svg><span> 标签</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/archives/"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-akimio-archives"></use></svg><span> 归档</span></a></li></ul></div><div class="menus_item"><a class="site-page faa-parent animated-hover" href="javascript:void(0);"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-akimio-friends"></use></svg><span> 朋友们</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/link/"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-akimio-link"></use></svg><span> 友链</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/fcircle/"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-akimio-fcircle"></use></svg><span> 朋友圈</span></a></li></ul></div><div class="menus_item"><a class="site-page faa-parent animated-hover" href="javascript:void(0);"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-akimio-other"></use></svg><span> 关于我</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/photos/"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-akimio-photo"></use></svg><span> 相册</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/essay/"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-akimio-essay"></use></svg><span> 动态</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/comments/"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-akimio-comments"></use></svg><span> 留言板</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/about/"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-akimio-about"></use></svg><span> 关于本站</span></a></li></ul></div><div class="menus_item"><a class="site-page faa-parent animated-hover" target="_blank" rel="noopener" href="https://www.travellings.cn/go.html"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-akimio-travelling"></use></svg><span> 开往</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">推一个自己的小项目——AutoFilm</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2023-10-02T02:17:05.000Z" title="发表于 2023-10-02 10:17:05">2023-10-02</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2023-10-02T05:03:59.767Z" title="更新于 2023-10-02 13:03:59">2023-10-02</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E6%96%87%E6%A1%A3/">文档</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">1.7k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>5分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="推一个自己的小项目——AutoFilm"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span><span class="post-meta-separator">|</span><span class="post-meta-commentcount"><i class="far fa-comments fa-fw post-meta-icon"></i><span class="post-meta-label">评论数:</span><a href="/posts/1031/#post-comment"><span class="waline-comment-count" data-path="/posts/1031/"><i class="fa-solid fa-spinner fa-spin"></i></span></a></span></div></div></div><section class="main-hero-waves-area waves-area"><svg class="waves-svg" xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto"><defs><path id="gentle-wave" d="M -160 44 c 30 0 58 -18 88 -18 s 58 18 88 18 s 58 -18 88 -18 s 58 18 88 18 v 44 h -352 Z"></path></defs><g class="parallax"><use href="#gentle-wave" x="48" y="0"></use><use href="#gentle-wave" x="48" y="3"></use><use href="#gentle-wave" x="48" y="5"></use><use href="#gentle-wave" x="48" y="7"></use></g></svg></section></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>不知道大家家里也没有自己的NAS，我是今年年初的时候入了坑，学习了很多NAS的一些使用方式，感觉我的NAS不仅仅是一个网络硬盘，更多的是一个服务器，上面搭载了很多服务，像是密码管理器—Bitwarden、私人云盘——Nextcloud、网盘集合——Alist以及更为常见的影音媒体库Jellyfin</p>
+<h1 id="AutoFilm"><a href="#AutoFilm" class="headerlink" title="AutoFilm"></a>AutoFilm</h1><p>如果大家和我一样属仓鼠的话那么一定很喜欢到处收集电影动漫什么的吧，但是奈何家境贫寒硬盘太小，放不下那么多自己喜欢的电影动漫，但是偶然间发现Emby和Jellyfin支持对远程视频链接的处理，于是自己尝试做了这个小项目</p>
+<h2 id="Github"><a href="#Github" class="headerlink" title="Github"></a>Github</h2><p>正好最近改名了，Github从 <code>zui-lang</code> 改到了 <code>Akimio521</code> 大家不要走错了<br><a target="_blank" rel="noopener" href="https://github.com/Akimio521/AutoFilm">AutoFilm-Github仓库地址</a></p>
+<h2 id="开发历程"><a href="#开发历程" class="headerlink" title="开发历程"></a>开发历程</h2><p>我的NAS上搭建了Alist和Jellyfin两个服务器，我的音乐库在阿里云盘上，最开始是利用Alist挂载阿里云盘然后Rclone到本地挂载到Jellyfin上，但是每次Jellyfin扫库时，NAS的运行压力就会变大，而且观看体验并不好</p>
+<p>在浏览博客间偶然发现Jellyfin可以利用 <code>strm</code> 文件代替视频文件，于是有了这个仓库，Emby会访问 <code>strm</code> 文件，其中有视频源文件的播放地址，Jellyfin服务器就会把这个地址发给客户端让客户端让客户端自行尝试播放</p>
+<p>整个python程序的结构很简单，打开对应的Webdav服务器，遇到<code>MP4</code>,<code>MKV</code>,<code>FLV</code>,<code>AVI</code>视频文件就在对应本地文件夹输出一个同名<code>strm</code>文件，其内容为视频的链接，其中Alist需要关闭签名，关闭签名后，直链需要把URL中的<code>/dav/</code>改为<code>/d/</code>；如果遇到<code>ASS</code>,<code>SRT</code>,<code>SSA</code>字幕文件或<code>JPG</code>刮削图像或<code>NFO</code>视频信息文件就直接下载到对应文件夹中，方便Emby的视频读取</p>
+<p>至此，整个AutoFilm输出文件夹就可以代替原本的Jellyfin视频媒体库了，如果Alist开启了302重定向，Emby客户端会跳转访问阿里云盘的地址，因此访问速度与Alist和Jellyfin服务器完全不相干，如果NAS是采用CloudFlare进行内网穿透的话，播放效果也不再受到影响</p>
+<h2 id="不同影音服务器的不同处理"><a href="#不同影音服务器的不同处理" class="headerlink" title="不同影音服务器的不同处理"></a>不同影音服务器的不同处理</h2><ul>
+<li>Emby：服务器下载直链视频，并提交客户端进行流控，连接速度同时受限于Emby服务器的上下行带宽</li>
+<li>Jellyfin：直接提交给客户端播放器，连接速度不受Jellyfin服务器带宽限制</li>
+<li>Plex：无法识别，处理不了</li>
+</ul>
+<p><a target="_blank" rel="noopener" href="https://emby.media/support/articles/Strm-Files.html">Emby官方文档——Emby对Strm的处理</a><br>可见Jellyfin是最适合这种玩法的，客户端可以直接访问视频源地址，相当于Jellyfin帮助了客户端和视频进行 <code>P2P打洞</code><br>Emby的效果可能会略逊一筹，但好在Emby是服务器获取视频资源，可以对视频进行转码后再推流给客户端，如果说你的视频资源在OneDrive，而影音服务器又搭建在国外的VPS上，使用Emby这种方式就可以让服务器代理访问资源，体验应该比直连OneDrive好一点（前提是VPS的网络要好）</p>
+<h2 id="使用教程"><a href="#使用教程" class="headerlink" title="使用教程"></a>使用教程</h2><p>这里以Windows为例：</p>
+<h3 id="安装Python"><a href="#安装Python" class="headerlink" title="安装Python"></a>安装Python</h3><p>在微软商店搜索<code>python</code>,选择<code>python3</code>（小版本任选）</p>
+<h3 id="安装webdav3-client"><a href="#安装webdav3-client" class="headerlink" title="安装webdav3.client"></a>安装webdav3.client</h3><p>打开命令行输入以下命令：<br><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">pip install webdavclient3</span><br><span class="line"></span><br></pre></td></tr></table></figure></p>
+<h2 id="下载Python文件"><a href="#下载Python文件" class="headerlink" title="下载Python文件"></a>下载Python文件</h2><p>下载仓库的<code>autofil.py</code>文件，并在本地目录打开</p>
+<h2 id="查看使用方法"><a href="#查看使用方法" class="headerlink" title="查看使用方法"></a>查看使用方法</h2><p>在当前目录打开终端（命令行），输入以下命令以查看使用方法：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">python3 .\autofilm.py -h</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h3 id="运行："><a href="#运行：" class="headerlink" title="运行："></a>运行：</h3><p>示例：我的Alist地址为<code>https://alist.example.com:666</code>，我要下载<code>/视频/动漫/</code>里面的视频，下载路径在<code>D盘电影文件夹中的动漫文件夹</code>，我的Alist的访问账号的<code>myAlist</code>，密码是<code>Alistpwd</code><br><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">python3 .\autofilm.py --webdav_url https://alist.example.com:666/dav/视频/动漫/ --username myAlist --password Alistpwd  --output_path D:电影//动漫//</span><br><span class="line"></span><br></pre></td></tr></table></figure></p>
+<h3 id="必要参数"><a href="#必要参数" class="headerlink" title="必要参数"></a>必要参数</h3><ul>
+<li><strong>webdav_url</strong>：webdav服务器地址</li>
+<li><strong>username</strong>：webdav账号</li>
+<li><strong>password</strong>：webdav密码</li>
+</ul>
+<h3 id="非必要参数"><a href="#非必要参数" class="headerlink" title="非必要参数"></a>非必要参数</h3><ul>
+<li><strong>output_path</strong>：输出文件目录，默认为当前文件夹的子目录<code>Media</code></li>
+<li><strong>subtitle</strong>：是否下载字幕文件，默认<code>true</code></li>
+<li><strong>nfo</strong>：是否下载NFO文件，默认<code>false</code></li>
+<li><strong>img</strong>：是否下载JPG和PNG图片文件，默认 <code>false</code></li>
+</ul>
+<h2 id="关于大小"><a href="#关于大小" class="headerlink" title="关于大小"></a>关于大小</h2><p>用七米蓝的动漫库实测，25T的动漫库，默认配置只会占用1G的大小，相当于只需要1G的空间就能放下25T的视频库</p>
+<h2 id="关于Github-Action"><a href="#关于Github-Action" class="headerlink" title="关于Github Action"></a>关于Github Action</h2><p>本来一开始是想让Github Action帮我完成所有资源的下载，但我Python写的是真的烂，再加上七米蓝大佬的仓库实在是太大，目前我发现只有纪录片库是可以完整下载的，其他的仓库由于文件太多，运行时间往往会超过6小时还没完成，Github就会ban掉我的Action，这里也是期待一个小伙伴帮我修改一下我的程序，提高一点运行效率。所以目前大家还是把程序下载下来放到本地或者是VPS上使用吧</p>
+<h2 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h2><p>如大家所见，这个程序对已经规范命名、整理的视频盘的处理比较好，对于所有文件扔一堆的视盘，想刮削的话只能任凭Emby、Jellyfin本事了</p>
+<h3 id="解决方法"><a href="#解决方法" class="headerlink" title="解决方法"></a>解决方法</h3><h3 id="AutoFilm更新"><a href="#AutoFilm更新" class="headerlink" title="AutoFilm更新"></a>AutoFilm更新</h3><p>这个只能说随缘了，有时间我研究一下怎么将视频文件名发给TMDB并规范重命名并刮削视频后保存到本地，但这个计划只能说是遥遥无期，也欢迎有能力的小伙伴提交你的PR。并且我估计如果使用这种方式估计Github Action就可以完全抛弃了（虽然可以设置一个参数是否要去TMDB刮削）</p>
+<h3 id="曲线救国"><a href="#曲线救国" class="headerlink" title="曲线救国"></a>曲线救国</h3><p>可以先找一个大硬盘的机子，可以是主力电脑，先将网盘上的资源下载一部分下来，然后扔给有刮削整理媒体库的程序（例如NasTools）然后再将整理好的文件夹上传回网盘（如果网盘有哈希的话应该会挺快的）最后再利用AutoFilm生成已经完美刮削的Strm媒体库，然后直接给Jellyfin或者Emby就行</p>
+<h1 id="鸣谢"><a href="#鸣谢" class="headerlink" title="鸣谢"></a>鸣谢</h1><p>感谢<a target="_blank" rel="noopener" href="https://github.com/ChirmyRam/ChirmyRam-OneDrive-Repository">七米蓝</a>分享Alist，为本项目的Workflows提供视频源<br><strong>如果有其他小伙伴愿意分享自己整理好的媒体库网盘也欢迎留言</strong></p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="https://blog.akimio.top">秋澪</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="https://blog.akimio.top/posts/1031/">https://blog.akimio.top/posts/1031/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://blog.akimio.top" target="_blank">秋澪的博客</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E6%95%99%E7%A8%8B/">教程</a><a class="post-meta__tags" href="/tags/NAS/">NAS</a></div><div class="post_share"><div class="social-share" data-image="https://img.akimio.top/Blog/2023/10/1696212996-651a2804a6ebb.webp" data-sites="wechat,qq,weibo,facebook,twitter"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="next-post pull-full"><a href="/posts/1030/" title="利用CDN加速并保护站点"><img class="cover" src="https://img.akimio.top/Blog/2023/09/1696089318-651844e6535a8.webp" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">利用CDN加速并保护站点</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/posts/1009/" title="Nginx-Proxy-Manager问题补充：DNSPod证书申请错误、NPM端口丢失"><img class="cover" src="https://img.akimio.top/Blog/2023/09/1696084798-6518333e6266f.webp" alt="cover"><div class="content is-center"><div class="date"><i class="fas fa-history fa-fw"></i> 2023-09-10</div><div class="title">Nginx-Proxy-Manager问题补充：DNSPod证书申请错误、NPM端口丢失</div></div></a></div><div><a href="/posts/1021/" title="Armbian手把手玩机指南01-系统刷入并安装可视化桌面"><img class="cover" src="https://img.akimio.top/Blog/2023/09/1696083844-65182f8492279.webp" alt="cover"><div class="content is-center"><div class="date"><i class="fas fa-history fa-fw"></i> 2023-10-01</div><div class="title">Armbian手把手玩机指南01-系统刷入并安装可视化桌面</div></div></a></div><div><a href="/posts/1011/" title="Docker命令大全"><img class="cover" src="https://img.akimio.top/Blog/2023/09/1696084647-651832a7552c1.webp" alt="cover"><div class="content is-center"><div class="date"><i class="fas fa-history fa-fw"></i> 2023-10-01</div><div class="title">Docker命令大全</div></div></a></div><div><a href="/posts/1002/" title="利用FRP和Nginx-Proxy-Manager为内网设备提供内外穿透服务"><img class="cover" src="https://img.akimio.top/Blog/2023/09/1696084462-651831eeb8897.webp" alt="cover"><div class="content is-center"><div class="date"><i class="fas fa-history fa-fw"></i> 2023-04-10</div><div class="title">利用FRP和Nginx-Proxy-Manager为内网设备提供内外穿透服务</div></div></a></div><div><a href="/posts/1015/" title="Hexo重装记录"><img class="cover" src="https://img.akimio.top/Blog/2023/09/1696084993-6518340135d0e.webp" alt="cover"><div class="content is-center"><div class="date"><i class="fas fa-history fa-fw"></i> 2023-10-01</div><div class="title">Hexo重装记录</div></div></a></div><div><a href="/posts/1024/" title="为Hexo博客添加后台管理系统"><img class="cover" src="https://img.akimio.top/Blog/2023/09/1696085047-6518343797886.webp" alt="cover"><div class="content is-center"><div class="date"><i class="fas fa-history fa-fw"></i> 2023-10-01</div><div class="title">为Hexo博客添加后台管理系统</div></div></a></div></div></div><hr class="custom-hr"/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div id="waline-wrap"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content is-expand"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#AutoFilm"><span class="toc-number">2.</span> <span class="toc-text">AutoFilm</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Github"><span class="toc-number">2.1.</span> <span class="toc-text">Github</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BC%80%E5%8F%91%E5%8E%86%E7%A8%8B"><span class="toc-number">2.2.</span> <span class="toc-text">开发历程</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%8D%E5%90%8C%E5%BD%B1%E9%9F%B3%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%9A%84%E4%B8%8D%E5%90%8C%E5%A4%84%E7%90%86"><span class="toc-number">2.3.</span> <span class="toc-text">不同影音服务器的不同处理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B"><span class="toc-number">2.4.</span> <span class="toc-text">使用教程</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%89%E8%A3%85Python"><span class="toc-number">2.4.1.</span> <span class="toc-text">安装Python</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%89%E8%A3%85webdav3-client"><span class="toc-number">2.4.2.</span> <span class="toc-text">安装webdav3.client</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%8B%E8%BD%BDPython%E6%96%87%E4%BB%B6"><span class="toc-number">2.5.</span> <span class="toc-text">下载Python文件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9F%A5%E7%9C%8B%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95"><span class="toc-number">2.6.</span> <span class="toc-text">查看使用方法</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BF%90%E8%A1%8C%EF%BC%9A"><span class="toc-number">2.6.1.</span> <span class="toc-text">运行：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BF%85%E8%A6%81%E5%8F%82%E6%95%B0"><span class="toc-number">2.6.2.</span> <span class="toc-text">必要参数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%9D%9E%E5%BF%85%E8%A6%81%E5%8F%82%E6%95%B0"><span class="toc-number">2.6.3.</span> <span class="toc-text">非必要参数</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%B3%E4%BA%8E%E5%A4%A7%E5%B0%8F"><span class="toc-number">2.7.</span> <span class="toc-text">关于大小</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%B3%E4%BA%8EGithub-Action"><span class="toc-number">2.8.</span> <span class="toc-text">关于Github Action</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%B6%E4%BB%96"><span class="toc-number">2.9.</span> <span class="toc-text">其他</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95"><span class="toc-number">2.9.1.</span> <span class="toc-text">解决方法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#AutoFilm%E6%9B%B4%E6%96%B0"><span class="toc-number">2.9.2.</span> <span class="toc-text">AutoFilm更新</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9B%B2%E7%BA%BF%E6%95%91%E5%9B%BD"><span class="toc-number">2.9.3.</span> <span class="toc-text">曲线救国</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%B8%A3%E8%B0%A2"><span class="toc-number">3.</span> <span class="toc-text">鸣谢</span></a></li></ol></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2023 By 秋澪</div><div class="footer_custom_text">欢迎来到Akimio的博客</div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/medium-zoom/dist/medium-zoom.min.js"></script><script src="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.js"></script><div class="js-pjax"><script>(() => {
+  const initWaline = () => {
+    const waline = Waline.init(Object.assign({
+      el: '#waline-wrap',
+      serverURL: 'https://waline.akimio.top/',
+      pageview: false,
+      dark: 'html[data-theme="dark"]',
+      path: window.location.pathname,
+      comment: true,
+    }, null))
+  }
+
+  const loadWaline = async () => {
+    if (typeof Waline === 'object') initWaline()
+    else {
+      await getCSS('https://cdn.jsdelivr.net/npm/@waline/client/dist/waline.min.css')
+      await getScript('https://cdn.jsdelivr.net/npm/@waline/client/dist/waline.min.js')
+      initWaline()
+    }
+  }
+
+  if ('Waline' === 'Waline' || !false) {
+    if (false) btf.loadComment(document.getElementById('waline-wrap'),loadWaline)
+    else setTimeout(loadWaline, 0)
+  } else {
+    window.loadOtherComment = loadWaline
+  }
+})()</script></div><script>window.addEventListener('load', () => {
+  const changeContent = content => {
+    if (content === '') return content
+
+    content = content.replace(/<img.*?src="(.*?)"?[^\>]+>/ig, '[图片]') // replace image link
+    content = content.replace(/<a[^>]+?href=["']?([^"']+)["']?[^>]*>([^<]+)<\/a>/gi, '[链接]') // replace url
+    content = content.replace(/<pre><code>.*?<\/pre>/gi, '[代码]') // replace code
+    content = content.replace(/<[^>]+>/g,"") // remove html tag
+
+    if (content.length > 150) {
+      content = content.substring(0,150) + '...'
+    }
+    return content
+  }
+
+  const generateHtml = array => {
+    let result = ''
+
+    if (array.length) {
+      for (let i = 0; i < array.length; i++) {
+        result += '<div class=\'aside-list-item\'>'
+
+        if (true) {
+          const name = 'src'
+          result += `<a href='${array[i].url}' class='thumbnail'><img ${name}='${array[i].avatar}' alt='${array[i].nick}'></a>`
+        }
+
+        result += `<div class='content'>
+        <a class='comment' href='${array[i].url}' title='${array[i].content}'>${array[i].content}</a>
+        <div class='name'><span>${array[i].nick} / </span><time datetime="${array[i].date}">${btf.diffDate(array[i].date, true)}</time></div>
+        </div></div>`
+      }
+    } else {
+      result += '没有评论'
+    }
+
+    let $dom = document.querySelector('#card-newest-comments .aside-list')
+    $dom.innerHTML= result
+    window.lazyLoadInstance && window.lazyLoadInstance.update()
+    window.pjax && window.pjax.refresh($dom)
+  }
+
+  const getComment = async () => {
+    try {
+      const res = await fetch('https://waline.akimio.top/api/comment?type=recent&count=6', { method: 'GET' })
+      const result = await res.json()
+      const walineArray = result.data.map(e => {
+        return {
+          'content': changeContent(e.comment),
+          'avatar': e.avatar,
+          'nick': e.nick,
+          'url': e.url + '#' + e.objectId,
+          'date': e.time || e.insertedAt
+        }
+      })
+      saveToLocal.set('waline-newest-comments', JSON.stringify(walineArray), 10/(60*24))
+      generateHtml(walineArray)
+    } catch (err) {
+      console.error(err)
+      const $dom = document.querySelector('#card-newest-comments .aside-list')
+      $dom.textContent= "无法获取评论，请确认相关配置是否正确"
+    }
+  }
+
+  const newestCommentInit = () => {
+    if (document.querySelector('#card-newest-comments .aside-list')) {
+      const data = saveToLocal.get('waline-newest-comments')
+      if (data) {
+        generateHtml(JSON.parse(data))
+      } else {
+        getComment()
+      }
+    }
+  }
+
+  newestCommentInit()
+  document.addEventListener('pjax:complete', newestCommentInit)
+})</script><script async src="https://cdn.jsdelivr.net/npm/js-heo@1.0.11/categoryBar/categoryBar.js"></script><script async src="/js/ali_icon.js"></script><script async data-pjax src="/js/custom.js"></script><script async data-pjax src="/js/waterfall.js"></script><script async data-pjax src="/js/photo.js"></script><script src="https://cdn.jsdelivr.net/npm/pjax/pjax.min.js"></script><script>let pjaxSelectors = ["head > title","#config-diff","#body-wrap","#rightside-config-hide","#rightside-config-show",".js-pjax"]
+
+var pjax = new Pjax({
+  elements: 'a:not([target="_blank"])',
+  selectors: pjaxSelectors,
+  cacheBust: false,
+  analytics: false,
+  scrollRestoration: false
+})
+
+document.addEventListener('pjax:send', function () {
+
+  // removeEventListener
+  btf.removeGlobalFnEvent('pjax')
+  btf.removeGlobalFnEvent('themeChange')
+
+  document.getElementById('rightside').classList.remove('rightside-show')
+  
+  if (window.aplayers) {
+    for (let i = 0; i < window.aplayers.length; i++) {
+      if (!window.aplayers[i].options.fixed) {
+        window.aplayers[i].destroy()
+      }
+    }
+  }
+
+  typeof typed === 'object' && typed.destroy()
+
+  //reset readmode
+  const $bodyClassList = document.body.classList
+  $bodyClassList.contains('read-mode') && $bodyClassList.remove('read-mode')
+
+  typeof disqusjs === 'object' && disqusjs.destroy()
+})
+
+document.addEventListener('pjax:complete', function () {
+  window.refreshFn()
+
+  document.querySelectorAll('script[data-pjax]').forEach(item => {
+    const newScript = document.createElement('script')
+    const content = item.text || item.textContent || item.innerHTML || ""
+    Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+    newScript.appendChild(document.createTextNode(content))
+    item.parentNode.replaceChild(newScript, item)
+  })
+
+  GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
+
+  typeof panguInit === 'function' && panguInit()
+
+  // google analytics
+  typeof gtag === 'function' && gtag('config', '', {'page_path': window.location.pathname});
+
+  // baidu analytics
+  typeof _hmt === 'object' && _hmt.push(['_trackPageview',window.location.pathname]);
+
+  typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
+
+  // prismjs
+  typeof Prism === 'object' && Prism.highlightAll()
+})
+
+document.addEventListener('pjax:error', e => {
+  if (e.request.status === 404) {
+    pjax.loadUrl('/404.html')
+  }
+})</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><div id="algolia-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="search-wrap"><div id="algolia-search-input"></div><hr/><div id="algolia-search-results"><div id="algolia-hits"></div><div id="algolia-pagination"></div><div id="algolia-info"><div class="algolia-stats"></div><div class="algolia-poweredBy"></div></div></div></div></div><div id="search-mask"></div><script src="https://cdn.jsdelivr.net/npm/algoliasearch/dist/algoliasearch-lite.umd.min.js"></script><script src="https://cdn.jsdelivr.net/npm/instantsearch.js/dist/instantsearch.production.min.js"></script><script src="/js/search/algolia.js"></script></div></div><!-- hexo injector body_end start --><script>
+    // 全局变量声明区域
+    var fdata = {
+      apiurl: 'https://fcircle.akimio.top/',
+      initnumber: 30, //【可选】页面初始化展示文章数量
+      stepnumber: 30, //【可选】每次加载增加的篇数
+      error_img: 'https://npm.elemecdn.com/akilar-candyassets/image/404.gif' //【可选，头像图片加载失败时的默认头像】
+    }
+    //存入本地存储
+    localStorage.setItem("fdatalist",JSON.stringify(fdata))
+    </script>
+    <script data-pjax src="https://npm.elemecdn.com/hexo-filter-fcircle-anzhiyu@1.1.2/assets/js/fetch.js"></script><script data-pjax src="https://npm.elemecdn.com/hexo-filter-fcircle-anzhiyu@1.1.2/assets/js/random-friends-post.js"></script><!-- hexo injector body_end end --></body></html>
