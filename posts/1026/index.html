@@ -13,7 +13,22 @@
 <meta property="article:tag" content="备忘录">
 <meta property="article:tag" content="Git">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://img.akimio.top/avatar/akimio.png"><link rel="shortcut icon" href="https://img.akimio.top/avatar/akimio.png"><link rel="canonical" href="https://blog.akimio.top/posts/1026/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://lf6-cdn-tos.bytecdntp.com/cdn/expire-1-M/font-awesome/6.0.0/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+<meta name="twitter:image" content="https://img.akimio.top/avatar/akimio.png"><link rel="shortcut icon" href="https://img.akimio.top/avatar/akimio.png"><link rel="canonical" href="https://blog.akimio.top/posts/1026/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//www.google-analytics.com" crossorigin=""/><link rel="preconnect" href="//hm.baidu.com"/><link rel="preconnect" href="//static.cloudflareinsights.com"/><link rel="preconnect" href="//www.clarity.ms"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><meta name="google-site-verification" content="Fk7XyGh7jge7BoQY"/><meta name="baidu-site-verification" content="codeva-Ppouj7y5Ib"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://lf6-cdn-tos.bytecdntp.com/cdn/expire-1-M/font-awesome/6.0.0/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.css" media="print" onload="this.media='all'"><script>var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?cd1c6540cdf1dde9419bd102fe51c801";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script><script async="async" src="https://www.googletagmanager.com/gtag/js?id=G-57VL99KBMB"></script><script>window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-57VL99KBMB');
+</script><script defer="defer" data-pjax="data-pjax" src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon="{&quot;token&quot;: &quot;95045dab4a0c4429b93e8f4d03b6d16c&quot;}"></script><script>(function(c,l,a,r,i,t,y){
+    c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+    t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+    y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+})(window, document, "clarity", "script", "j53n31p0hk");</script><script>const GLOBAL_CONFIG = {
   root: '/',
   algolia: {"appId":"BYPCZSYOJI","apiKey":"6af2e592cfa13577928c34a0b6129069","indexName":"akimio","hits":{"per_page":6},"languages":{"input_placeholder":"搜索文章","hits_empty":"找不到您查询的内容：${query}","hits_stats":"找到 ${hits} 条结果，用时 ${time} 毫秒"}},
   localSearch: undefined,
@@ -356,24 +371,7 @@ version
 Docker命令具体的案例：
 docker run：启动一个Docker容器。
 1docker run -it --name my_container ubuntu:latest bash
-此命令将会在容器上启动一个最 ...</div></div></a></div><div><a href="/posts/1015/" title="Hexo重装记录"><img class="cover" src="https://img.akimio.top/Blog/2023/09/1696084993-6518340135d0e.webp" alt="cover"><div class="content is-center"><div class="date"><i class="fas fa-history fa-fw"></i> 2023-10-01</div><div class="title">Hexo重装记录</div><div class="info">准备工作
-安装Hexo
-安装NPM
-安装node.js
-
-重装开始更换淘宝源1npm config set registry http://registry.npmmirror.com
-换回默认源1npm config set registry https://registry.npmjs.org/
-初始化Hexo
-安装Hexo1hexo init Blog_v2
-进入博客文件夹1cd Blog_v2
-初始化git1git init 
-
-
-安装Buterfly主题
-从Github安装稳定版1git clone -b master https://github.com/jerryc127/hexo-theme-butterfly.git themes/butterfly
-进入[Blog_v2]/themes/butterfly，删除[.git]文件夹
-安装pug 以及 stylus 的渲染器1npm install hexo-renderer-pug hexo-renderer-stylus --save
-方便后续升级1cp -rf ./themes/butterfly/_config. ...</div></div></a></div><div><a href="/posts/1024/" title="为Hexo博客添加后台管理系统"><img class="cover" src="https://img.akimio.top/Blog/2023/09/1696085047-6518343797886.webp" alt="cover"><div class="content is-center"><div class="date"><i class="fas fa-history fa-fw"></i> 2023-10-01</div><div class="title">为Hexo博客添加后台管理系统</div><div class="info">前言Hexo是一个静态网站生成器，许多人用其来搭建博客，我的博客就是使用Hexo搭建，相比前之前介绍的Halo（传送门：利用Replit搭建个人博客Halo）搭建成本更加低，因为很多网站都支持了托管静态网站（后面可能会更新一篇静态网站的文章），但Hexo是静态网页，没有后台管理系统，对于想新建一个博客的小白来说难度比Halo大，但是也有许多大佬构建了网页的Hexo后台管理系统，今天给大家介绍两个后台管理系统：Qexo和ESHexoN，并附上搭建方式Hexo的源码需放在Github/Gitlab上
+此命令将会在容器上启动一个最 ...</div></div></a></div><div><a href="/posts/1027/" title="将M.2固态硬盘设为群晖存储池"><img class="cover" src="https://img.akimio.top/Blog/2023/09/1696085815-65183737cc4cf.webp" alt="cover"><div class="content is-center"><div class="date"><i class="fas fa-history fa-fw"></i> 2023-10-01</div><div class="title">将M.2固态硬盘设为群晖存储池</div><div class="info">前言之前我的NAS用的系统是Unraid，但在外省读书时，Unraid启动盘U盘损坏导致无法开机，好在U盘其中的的配置文件还是可以读取的，在视频电话、父母帮助、远程控制下我终于救回了我的NAS，并且没有数据的损失。趁着暑假我将NAS的系统从Unraid换成群晖，一开始我使用Unraid的理由很简单，就是群晖的Linux内核版本太低，无法支持N5095等11代CPU的硬解。但随着半年的使用，我发现硬解并不是我的刚需，所以打算换回群晖（在大佬JIM的开发可以使用SA6400的机型实现硬解，相关博客；但我使用的是arpl-i18n的自动引导编译，编译SA6400的机型会导致Kernel崩溃，与作者讨论后无果，于是改用DS920+的机型，因为我之前也说过硬解对我来说不是刚需）换回群晖的理由还有两点，一点是我的NAS主要是做一个备份服务器，可以同步我设备上的文件就可以了，虽然Unraid可以通过Nextcloud实现，但是Nextcloud一并不是Unraid原生组件，所以没办法把备份的文件在Unraid文件里展示出来（这方面Unraid做的确实不太好），并且我使用Nginx-Proxy-Man ...</div></div></a></div><div><a href="/posts/1024/" title="为Hexo博客添加后台管理系统"><img class="cover" src="https://img.akimio.top/Blog/2023/09/1696085047-6518343797886.webp" alt="cover"><div class="content is-center"><div class="date"><i class="fas fa-history fa-fw"></i> 2023-10-01</div><div class="title">为Hexo博客添加后台管理系统</div><div class="info">前言Hexo是一个静态网站生成器，许多人用其来搭建博客，我的博客就是使用Hexo搭建，相比前之前介绍的Halo（传送门：利用Replit搭建个人博客Halo）搭建成本更加低，因为很多网站都支持了托管静态网站（后面可能会更新一篇静态网站的文章），但Hexo是静态网页，没有后台管理系统，对于想新建一个博客的小白来说难度比Halo大，但是也有许多大佬构建了网页的Hexo后台管理系统，今天给大家介绍两个后台管理系统：Qexo和ESHexoN，并附上搭建方式Hexo的源码需放在Github/Gitlab上
 Qexo Qexo,一个快速、强大、漂亮的在线Hexo编辑器Github仓库、使用文档
 特色：
 
@@ -395,7 +393,24 @@ MySQL
 PostgreSQL
 MongoDB
 
-这次我们使用MongoDB数据库，先去MongoDB官网注册一个账户，这边我已经有账户了就不做演示了因为MongoDB账户每一个项目（Pr ...</div></div></a></div><div><a href="/posts/1027/" title="将M.2固态硬盘设为群晖存储池"><img class="cover" src="https://img.akimio.top/Blog/2023/09/1696085815-65183737cc4cf.webp" alt="cover"><div class="content is-center"><div class="date"><i class="fas fa-history fa-fw"></i> 2023-10-01</div><div class="title">将M.2固态硬盘设为群晖存储池</div><div class="info">前言之前我的NAS用的系统是Unraid，但在外省读书时，Unraid启动盘U盘损坏导致无法开机，好在U盘其中的的配置文件还是可以读取的，在视频电话、父母帮助、远程控制下我终于救回了我的NAS，并且没有数据的损失。趁着暑假我将NAS的系统从Unraid换成群晖，一开始我使用Unraid的理由很简单，就是群晖的Linux内核版本太低，无法支持N5095等11代CPU的硬解。但随着半年的使用，我发现硬解并不是我的刚需，所以打算换回群晖（在大佬JIM的开发可以使用SA6400的机型实现硬解，相关博客；但我使用的是arpl-i18n的自动引导编译，编译SA6400的机型会导致Kernel崩溃，与作者讨论后无果，于是改用DS920+的机型，因为我之前也说过硬解对我来说不是刚需）换回群晖的理由还有两点，一点是我的NAS主要是做一个备份服务器，可以同步我设备上的文件就可以了，虽然Unraid可以通过Nextcloud实现，但是Nextcloud一并不是Unraid原生组件，所以没办法把备份的文件在Unraid文件里展示出来（这方面Unraid做的确实不太好），并且我使用Nginx-Proxy-Man ...</div></div></a></div><div><a href="/posts/1020/" title="使用BetterNCM美化网易云"><img class="cover" src="https://img.akimio.top/Blog/2023/09/1696086038-65183816473c5.webp" alt="cover"><div class="content is-center"><div class="date"><i class="fas fa-history fa-fw"></i> 2023-10-01</div><div class="title">使用BetterNCM美化网易云</div><div class="info">前言最近网易云更新了Windows的3.0测试版本，样式也更加美观简洁，这里附上尝鲜版本：阿里云盘样式比之前的版本好看多了，之前我是搭配BetterNCM进行美化，这篇文章主要是为了记录我的网易云美化方式下面是我美化好的样式插播一个广告
+这次我们使用MongoDB数据库，先去MongoDB官网注册一个账户，这边我已经有账户了就不做演示了因为MongoDB账户每一个项目（Pr ...</div></div></a></div><div><a href="/posts/1015/" title="Hexo重装记录"><img class="cover" src="https://img.akimio.top/Blog/2023/09/1696084993-6518340135d0e.webp" alt="cover"><div class="content is-center"><div class="date"><i class="fas fa-history fa-fw"></i> 2023-10-01</div><div class="title">Hexo重装记录</div><div class="info">准备工作
+安装Hexo
+安装NPM
+安装node.js
+
+重装开始更换淘宝源1npm config set registry http://registry.npmmirror.com
+换回默认源1npm config set registry https://registry.npmjs.org/
+初始化Hexo
+安装Hexo1hexo init Blog_v2
+进入博客文件夹1cd Blog_v2
+初始化git1git init 
+
+
+安装Buterfly主题
+从Github安装稳定版1git clone -b master https://github.com/jerryc127/hexo-theme-butterfly.git themes/butterfly
+进入[Blog_v2]/themes/butterfly，删除[.git]文件夹
+安装pug 以及 stylus 的渲染器1npm install hexo-renderer-pug hexo-renderer-stylus --save
+方便后续升级1cp -rf ./themes/butterfly/_config. ...</div></div></a></div><div><a href="/posts/1020/" title="使用BetterNCM美化网易云"><img class="cover" src="https://img.akimio.top/Blog/2023/09/1696086038-65183816473c5.webp" alt="cover"><div class="content is-center"><div class="date"><i class="fas fa-history fa-fw"></i> 2023-10-01</div><div class="title">使用BetterNCM美化网易云</div><div class="info">前言最近网易云更新了Windows的3.0测试版本，样式也更加美观简洁，这里附上尝鲜版本：阿里云盘样式比之前的版本好看多了，之前我是搭配BetterNCM进行美化，这篇文章主要是为了记录我的网易云美化方式下面是我美化好的样式插播一个广告
 
 欢迎使用我的音乐站，支持网易云音乐登入和灰色音乐解锁
 欢迎使用我的音乐解锁站，支持网易云、QQ、酷狗、酷我加密音乐格式解锁
@@ -548,7 +563,7 @@ var pjax = new Pjax({
   elements: 'a:not([target="_blank"])',
   selectors: pjaxSelectors,
   cacheBust: false,
-  analytics: false,
+  analytics: true,
   scrollRestoration: false
 })
 
@@ -593,7 +608,7 @@ document.addEventListener('pjax:complete', function () {
   typeof panguInit === 'function' && panguInit()
 
   // google analytics
-  typeof gtag === 'function' && gtag('config', '', {'page_path': window.location.pathname});
+  typeof gtag === 'function' && gtag('config', 'G-57VL99KBMB', {'page_path': window.location.pathname});
 
   // baidu analytics
   typeof _hmt === 'object' && _hmt.push(['_trackPageview',window.location.pathname]);

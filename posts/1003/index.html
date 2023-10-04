@@ -11,7 +11,22 @@
 <meta property="article:author" content="秋澪">
 <meta property="article:tag" content="教程">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://img.akimio.top/avatar/akimio.png"><link rel="shortcut icon" href="https://img.akimio.top/avatar/akimio.png"><link rel="canonical" href="https://blog.akimio.top/posts/1003/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://lf6-cdn-tos.bytecdntp.com/cdn/expire-1-M/font-awesome/6.0.0/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+<meta name="twitter:image" content="https://img.akimio.top/avatar/akimio.png"><link rel="shortcut icon" href="https://img.akimio.top/avatar/akimio.png"><link rel="canonical" href="https://blog.akimio.top/posts/1003/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//www.google-analytics.com" crossorigin=""/><link rel="preconnect" href="//hm.baidu.com"/><link rel="preconnect" href="//static.cloudflareinsights.com"/><link rel="preconnect" href="//www.clarity.ms"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><meta name="google-site-verification" content="Fk7XyGh7jge7BoQY"/><meta name="baidu-site-verification" content="codeva-Ppouj7y5Ib"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://lf6-cdn-tos.bytecdntp.com/cdn/expire-1-M/font-awesome/6.0.0/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.css" media="print" onload="this.media='all'"><script>var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?cd1c6540cdf1dde9419bd102fe51c801";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script><script async="async" src="https://www.googletagmanager.com/gtag/js?id=G-57VL99KBMB"></script><script>window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-57VL99KBMB');
+</script><script defer="defer" data-pjax="data-pjax" src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon="{&quot;token&quot;: &quot;95045dab4a0c4429b93e8f4d03b6d16c&quot;}"></script><script>(function(c,l,a,r,i,t,y){
+    c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+    t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+    y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+})(window, document, "clarity", "script", "j53n31p0hk");</script><script>const GLOBAL_CONFIG = {
   root: '/',
   algolia: {"appId":"BYPCZSYOJI","apiKey":"6af2e592cfa13577928c34a0b6129069","indexName":"akimio","hits":{"per_page":6},"languages":{"input_placeholder":"搜索文章","hits_empty":"找不到您查询的内容：${query}","hits_stats":"找到 ${hits} 条结果，用时 ${time} 毫秒"}},
   localSearch: undefined,
@@ -260,33 +275,7 @@ frps.ini内容如下：123456789101112131415[common]# 监听端口bind_port = 70
 服务器镜像：snowdreamtech/frps
 重启策略：always
 网络模式：host
-文件映射：/etc/data/docker/frp/frps.ini:/etc/frp/frps.ini1docker run --restart=alway ...</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/posts/1021/" title="Armbian手把手玩机指南01-系统刷入并安装可视化桌面"><img class="cover" src="https://img.akimio.top/Blog/2023/09/1696083844-65182f8492279.webp" alt="cover"><div class="content is-center"><div class="date"><i class="fas fa-history fa-fw"></i> 2023-10-01</div><div class="title">Armbian手把手玩机指南01-系统刷入并安装可视化桌面</div><div class="info">Armbian简介
-Armbian系统是基于Debian/Ubuntu而构建的专门用于ARM芯片的轻量级Linux系统。Armbian系统精益、干净，并且100%兼容并继承了Debian/Ubuntu系统的功能和丰富的软件生态，可以安全稳定地运行在 TF/SD/USB 及设备的 eMMC 里。
-
-前言之前买了一个N1盒子玩，想当一个简单的服务器玩玩，但找了很多地方都没找到一个合适的方法，于是只能自己一个人慢慢摸索，本系列教程将基于Armbian，手把手教你玩转空闲的电视盒子。
-不知道你家里是否有空闲的电视盒子、N1盒子、HK1box、我家云、贝壳鱼等晶晨amlogic-s9XXX或者rockship系列产品都是可以适用的，这里附一张ophub大大的适配机型图
-
-
-
-
-芯片
-设备
-内核
-Armbian
-
-
-
-
-a311d
-Khadas-VIM3
-全部
-amlogic_a311d.img
-
-
-s922x
-Beelink-GT-King, Beelink-GT-King-Pro, Ugoos-AM6-Plus, ODROID-N2, X88-King, Ali-CT2000
-全部
-amlog ...</div></div></a></div><div><a href="/posts/1011/" title="Docker命令大全"><img class="cover" src="https://img.akimio.top/Blog/2023/09/1696084647-651832a7552c1.webp" alt="cover"><div class="content is-center"><div class="date"><i class="fas fa-history fa-fw"></i> 2023-10-01</div><div class="title">Docker命令大全</div><div class="info">Docker介绍Docker 是一个开源的应用容器引擎，让开发者可以打包他们的应用以及依赖包到一个可移植的镜像中，然后发布到任何流行的 Linux或Windows操作系统的机器上，也可以实现虚拟化。容器是完全使用沙箱机制，相互之间不会有任何接口。
+文件映射：/etc/data/docker/frp/frps.ini:/etc/frp/frps.ini1docker run --restart=alway ...</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/posts/1011/" title="Docker命令大全"><img class="cover" src="https://img.akimio.top/Blog/2023/09/1696084647-651832a7552c1.webp" alt="cover"><div class="content is-center"><div class="date"><i class="fas fa-history fa-fw"></i> 2023-10-01</div><div class="title">Docker命令大全</div><div class="info">Docker介绍Docker 是一个开源的应用容器引擎，让开发者可以打包他们的应用以及依赖包到一个可移植的镜像中，然后发布到任何流行的 Linux或Windows操作系统的机器上，也可以实现虚拟化。容器是完全使用沙箱机制，相互之间不会有任何接口。
 Docker命令大全容器生命周期管理
 run
 start/stop/restart
@@ -326,7 +315,8 @@ version
 Docker命令具体的案例：
 docker run：启动一个Docker容器。
 1docker run -it --name my_container ubuntu:latest bash
-此命令将会在容器上启动一个最 ...</div></div></a></div><div><a href="/posts/1002/" title="利用FRP和Nginx-Proxy-Manager为内网设备提供内外穿透服务"><img class="cover" src="https://img.akimio.top/Blog/2023/09/1696084462-651831eeb8897.webp" alt="cover"><div class="content is-center"><div class="date"><i class="fas fa-history fa-fw"></i> 2023-04-10</div><div class="title">利用FRP和Nginx-Proxy-Manager为内网设备提供内外穿透服务</div><div class="info">基于Docker的FRP内网穿透部署服务器搭建（FRPS）
+此命令将会在容器上启动一个最 ...</div></div></a></div><div><a href="/posts/1009/" title="Nginx-Proxy-Manager问题补充：DNSPod证书申请错误、NPM端口丢失"><img class="cover" src="https://img.akimio.top/Blog/2023/09/1696084798-6518333e6266f.webp" alt="cover"><div class="content is-center"><div class="date"><i class="fas fa-history fa-fw"></i> 2023-09-10</div><div class="title">Nginx-Proxy-Manager问题补充：DNSPod证书申请错误、NPM端口丢失</div><div class="info">前言Nginx是一个高性能的HTTP和反向代理web服务器，同时也提供了IMAP/POP3/SMTP服务。作为有公网IP的NAS用户常用其为NAS进行反向代理服务。使用反向代理实现多域名访问不同应用，规避IP+端口访问，不仅免去记端口号的麻烦，还可以只留下一个端口进行访问，提高了局域网环境的安全性。与此同时，还可以利用NAS作为跳板，反向代理其他的内外设备，例如路由器后台等服务。原生Nginx并没有WebUI，而是使用配置文件进行配置，但对于普通用户来说自己写Config难度较高，因此大多数人使用带有WebUI的Nginx-Proxy-Manager进行反向代理，但是NPM本身有些BUG导致使用体验下降，今天则带来教程解决这些问题。Nginx-Proxy-Manager的安装教程可以看往期教程利用FRP和Nginx-Proxy-Manager为内网设备提供内外穿透服务
+DNSPod域名免费证书申请错误大多数人的NAS使用的是家用带宽，普通情况下运营商会封锁80和443端口，因此在使用反向代理时往往会使用其他的端口进行配置，而NPM中的免费证书申请并不能使用80以外的端口，所有大多数人使 ...</div></div></a></div><div><a href="/posts/1002/" title="利用FRP和Nginx-Proxy-Manager为内网设备提供内外穿透服务"><img class="cover" src="https://img.akimio.top/Blog/2023/09/1696084462-651831eeb8897.webp" alt="cover"><div class="content is-center"><div class="date"><i class="fas fa-history fa-fw"></i> 2023-04-10</div><div class="title">利用FRP和Nginx-Proxy-Manager为内网设备提供内外穿透服务</div><div class="info">基于Docker的FRP内网穿透部署服务器搭建（FRPS）
 创建配置文件创建存放目录1sudo mkdir /etc/data/docker/frp
 创建frps.ini文件1nano /etc/data/docker/frp/frps.ini
 frps.ini内容如下：123456789101112131415[common]# 监听端口bind_port = 7000# 面板端口dashboard_port = 7500# 登录面板账号设置dashboard_user = admindashboard_pwd = admin23# 设置http及https协议下代理端口（非重要）vhost_http_port = 7080vhost_https_port = 7081# 身份验证token = 12345678
@@ -336,25 +326,33 @@ frps.ini内容如下：123456789101112131415[common]# 监听端口bind_port = 70
 服务器镜像：snowdreamtech/frps
 重启策略：always
 网络模式：host
-文件映射：/etc/data/docker/frp/frps.ini:/etc/frp/frps.ini1docker run --restart=alway ...</div></div></a></div><div><a href="/posts/1009/" title="Nginx-Proxy-Manager问题补充：DNSPod证书申请错误、NPM端口丢失"><img class="cover" src="https://img.akimio.top/Blog/2023/09/1696084798-6518333e6266f.webp" alt="cover"><div class="content is-center"><div class="date"><i class="fas fa-history fa-fw"></i> 2023-09-10</div><div class="title">Nginx-Proxy-Manager问题补充：DNSPod证书申请错误、NPM端口丢失</div><div class="info">前言Nginx是一个高性能的HTTP和反向代理web服务器，同时也提供了IMAP/POP3/SMTP服务。作为有公网IP的NAS用户常用其为NAS进行反向代理服务。使用反向代理实现多域名访问不同应用，规避IP+端口访问，不仅免去记端口号的麻烦，还可以只留下一个端口进行访问，提高了局域网环境的安全性。与此同时，还可以利用NAS作为跳板，反向代理其他的内外设备，例如路由器后台等服务。原生Nginx并没有WebUI，而是使用配置文件进行配置，但对于普通用户来说自己写Config难度较高，因此大多数人使用带有WebUI的Nginx-Proxy-Manager进行反向代理，但是NPM本身有些BUG导致使用体验下降，今天则带来教程解决这些问题。Nginx-Proxy-Manager的安装教程可以看往期教程利用FRP和Nginx-Proxy-Manager为内网设备提供内外穿透服务
-DNSPod域名免费证书申请错误大多数人的NAS使用的是家用带宽，普通情况下运营商会封锁80和443端口，因此在使用反向代理时往往会使用其他的端口进行配置，而NPM中的免费证书申请并不能使用80以外的端口，所有大多数人使 ...</div></div></a></div><div><a href="/posts/1015/" title="Hexo重装记录"><img class="cover" src="https://img.akimio.top/Blog/2023/09/1696084993-6518340135d0e.webp" alt="cover"><div class="content is-center"><div class="date"><i class="fas fa-history fa-fw"></i> 2023-10-01</div><div class="title">Hexo重装记录</div><div class="info">准备工作
-安装Hexo
-安装NPM
-安装node.js
+文件映射：/etc/data/docker/frp/frps.ini:/etc/frp/frps.ini1docker run --restart=alway ...</div></div></a></div><div><a href="/posts/1021/" title="Armbian手把手玩机指南01-系统刷入并安装可视化桌面"><img class="cover" src="https://img.akimio.top/Blog/2023/09/1696083844-65182f8492279.webp" alt="cover"><div class="content is-center"><div class="date"><i class="fas fa-history fa-fw"></i> 2023-10-01</div><div class="title">Armbian手把手玩机指南01-系统刷入并安装可视化桌面</div><div class="info">Armbian简介
+Armbian系统是基于Debian/Ubuntu而构建的专门用于ARM芯片的轻量级Linux系统。Armbian系统精益、干净，并且100%兼容并继承了Debian/Ubuntu系统的功能和丰富的软件生态，可以安全稳定地运行在 TF/SD/USB 及设备的 eMMC 里。
 
-重装开始更换淘宝源1npm config set registry http://registry.npmmirror.com
-换回默认源1npm config set registry https://registry.npmjs.org/
-初始化Hexo
-安装Hexo1hexo init Blog_v2
-进入博客文件夹1cd Blog_v2
-初始化git1git init 
+前言之前买了一个N1盒子玩，想当一个简单的服务器玩玩，但找了很多地方都没找到一个合适的方法，于是只能自己一个人慢慢摸索，本系列教程将基于Armbian，手把手教你玩转空闲的电视盒子。
+不知道你家里是否有空闲的电视盒子、N1盒子、HK1box、我家云、贝壳鱼等晶晨amlogic-s9XXX或者rockship系列产品都是可以适用的，这里附一张ophub大大的适配机型图
 
 
-安装Buterfly主题
-从Github安装稳定版1git clone -b master https://github.com/jerryc127/hexo-theme-butterfly.git themes/butterfly
-进入[Blog_v2]/themes/butterfly，删除[.git]文件夹
-安装pug 以及 stylus 的渲染器1npm install hexo-renderer-pug hexo-renderer-stylus --save
-方便后续升级1cp -rf ./themes/butterfly/_config. ...</div></div></a></div><div><a href="/posts/1024/" title="为Hexo博客添加后台管理系统"><img class="cover" src="https://img.akimio.top/Blog/2023/09/1696085047-6518343797886.webp" alt="cover"><div class="content is-center"><div class="date"><i class="fas fa-history fa-fw"></i> 2023-10-01</div><div class="title">为Hexo博客添加后台管理系统</div><div class="info">前言Hexo是一个静态网站生成器，许多人用其来搭建博客，我的博客就是使用Hexo搭建，相比前之前介绍的Halo（传送门：利用Replit搭建个人博客Halo）搭建成本更加低，因为很多网站都支持了托管静态网站（后面可能会更新一篇静态网站的文章），但Hexo是静态网页，没有后台管理系统，对于想新建一个博客的小白来说难度比Halo大，但是也有许多大佬构建了网页的Hexo后台管理系统，今天给大家介绍两个后台管理系统：Qexo和ESHexoN，并附上搭建方式Hexo的源码需放在Github/Gitlab上
+
+
+芯片
+设备
+内核
+Armbian
+
+
+
+
+a311d
+Khadas-VIM3
+全部
+amlogic_a311d.img
+
+
+s922x
+Beelink-GT-King, Beelink-GT-King-Pro, Ugoos-AM6-Plus, ODROID-N2, X88-King, Ali-CT2000
+全部
+amlog ...</div></div></a></div><div><a href="/posts/1027/" title="将M.2固态硬盘设为群晖存储池"><img class="cover" src="https://img.akimio.top/Blog/2023/09/1696085815-65183737cc4cf.webp" alt="cover"><div class="content is-center"><div class="date"><i class="fas fa-history fa-fw"></i> 2023-10-01</div><div class="title">将M.2固态硬盘设为群晖存储池</div><div class="info">前言之前我的NAS用的系统是Unraid，但在外省读书时，Unraid启动盘U盘损坏导致无法开机，好在U盘其中的的配置文件还是可以读取的，在视频电话、父母帮助、远程控制下我终于救回了我的NAS，并且没有数据的损失。趁着暑假我将NAS的系统从Unraid换成群晖，一开始我使用Unraid的理由很简单，就是群晖的Linux内核版本太低，无法支持N5095等11代CPU的硬解。但随着半年的使用，我发现硬解并不是我的刚需，所以打算换回群晖（在大佬JIM的开发可以使用SA6400的机型实现硬解，相关博客；但我使用的是arpl-i18n的自动引导编译，编译SA6400的机型会导致Kernel崩溃，与作者讨论后无果，于是改用DS920+的机型，因为我之前也说过硬解对我来说不是刚需）换回群晖的理由还有两点，一点是我的NAS主要是做一个备份服务器，可以同步我设备上的文件就可以了，虽然Unraid可以通过Nextcloud实现，但是Nextcloud一并不是Unraid原生组件，所以没办法把备份的文件在Unraid文件里展示出来（这方面Unraid做的确实不太好），并且我使用Nginx-Proxy-Man ...</div></div></a></div><div><a href="/posts/1024/" title="为Hexo博客添加后台管理系统"><img class="cover" src="https://img.akimio.top/Blog/2023/09/1696085047-6518343797886.webp" alt="cover"><div class="content is-center"><div class="date"><i class="fas fa-history fa-fw"></i> 2023-10-01</div><div class="title">为Hexo博客添加后台管理系统</div><div class="info">前言Hexo是一个静态网站生成器，许多人用其来搭建博客，我的博客就是使用Hexo搭建，相比前之前介绍的Halo（传送门：利用Replit搭建个人博客Halo）搭建成本更加低，因为很多网站都支持了托管静态网站（后面可能会更新一篇静态网站的文章），但Hexo是静态网页，没有后台管理系统，对于想新建一个博客的小白来说难度比Halo大，但是也有许多大佬构建了网页的Hexo后台管理系统，今天给大家介绍两个后台管理系统：Qexo和ESHexoN，并附上搭建方式Hexo的源码需放在Github/Gitlab上
 Qexo Qexo,一个快速、强大、漂亮的在线Hexo编辑器Github仓库、使用文档
 特色：
 
@@ -511,7 +509,7 @@ var pjax = new Pjax({
   elements: 'a:not([target="_blank"])',
   selectors: pjaxSelectors,
   cacheBust: false,
-  analytics: false,
+  analytics: true,
   scrollRestoration: false
 })
 
@@ -556,7 +554,7 @@ document.addEventListener('pjax:complete', function () {
   typeof panguInit === 'function' && panguInit()
 
   // google analytics
-  typeof gtag === 'function' && gtag('config', '', {'page_path': window.location.pathname});
+  typeof gtag === 'function' && gtag('config', 'G-57VL99KBMB', {'page_path': window.location.pathname});
 
   // baidu analytics
   typeof _hmt === 'object' && _hmt.push(['_trackPageview',window.location.pathname]);
