@@ -341,7 +341,46 @@ iOS14.5，地区可设为中国大陆最后一版，方法参见千灵的博客
 
 
 7.0.21
-粤康 ...</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/posts/1011/" title="Docker命令大全"><img class="cover" src="https://img.akimio.top/Blog/2023/09/1696084647-651832a7552c1.webp" alt="cover"><div class="content is-center"><div class="date"><i class="fas fa-history fa-fw"></i> 2023-10-01</div><div class="title">Docker命令大全</div><div class="info">Docker介绍Docker 是一个开源的应用容器引擎，让开发者可以打包他们的应用以及依赖包到一个可移植的镜像中，然后发布到任何流行的 Linux或Windows操作系统的机器上，也可以实现虚拟化。容器是完全使用沙箱机制，相互之间不会有任何接口。
+粤康 ...</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/posts/1015/" title="Hexo重装记录"><img class="cover" src="https://img.akimio.top/Blog/2023/09/1696084993-6518340135d0e.webp" alt="cover"><div class="content is-center"><div class="date"><i class="fas fa-history fa-fw"></i> 2023-10-01</div><div class="title">Hexo重装记录</div><div class="info">准备工作
+安装Hexo
+安装NPM
+安装node.js
+
+重装开始更换淘宝源1npm config set registry http://registry.npmmirror.com
+换回默认源1npm config set registry https://registry.npmjs.org/
+初始化Hexo
+安装Hexo1hexo init Blog_v2
+进入博客文件夹1cd Blog_v2
+初始化git1git init 
+
+
+安装Buterfly主题
+从Github安装稳定版1git clone -b master https://github.com/jerryc127/hexo-theme-butterfly.git themes/butterfly
+进入[Blog_v2]/themes/butterfly，删除[.git]文件夹
+安装pug 以及 stylus 的渲染器1npm install hexo-renderer-pug hexo-renderer-stylus --save
+方便后续升级1cp -rf ./themes/butterfly/_config. ...</div></div></a></div><div><a href="/posts/1024/" title="为Hexo博客添加后台管理系统"><img class="cover" src="https://img.akimio.top/Blog/2023/09/1696085047-6518343797886.webp" alt="cover"><div class="content is-center"><div class="date"><i class="fas fa-history fa-fw"></i> 2023-10-01</div><div class="title">为Hexo博客添加后台管理系统</div><div class="info">前言Hexo是一个静态网站生成器，许多人用其来搭建博客，我的博客就是使用Hexo搭建，相比前之前介绍的Halo（传送门：利用Replit搭建个人博客Halo）搭建成本更加低，因为很多网站都支持了托管静态网站（后面可能会更新一篇静态网站的文章），但Hexo是静态网页，没有后台管理系统，对于想新建一个博客的小白来说难度比Halo大，但是也有许多大佬构建了网页的Hexo后台管理系统，今天给大家介绍两个后台管理系统：Qexo和ESHexoN，并附上搭建方式Hexo的源码需放在Github/Gitlab上
+Qexo Qexo,一个快速、强大、漂亮的在线Hexo编辑器Github仓库、使用文档
+特色：
+
+自定义图床上传图片
+在线配置编辑
+在线页面管理
+开放API
+自动检查更新
+在线一键更新
+快速接入友情链接
+简单的说说短文
+类似不算子的统计
+自动填文章模板
+
+下面是搭建教程
+准备数据库Qexo支持的数据库：
+
+MySQL
+PostgreSQL
+MongoDB
+
+这次我们使用MongoDB数据库，先去MongoDB官网注册一个账户，这边我已经有账户了就不做演示了因为MongoDB账户每一个项目（Pr ...</div></div></a></div><div><a href="/posts/1011/" title="Docker命令大全"><img class="cover" src="https://img.akimio.top/Blog/2023/09/1696084647-651832a7552c1.webp" alt="cover"><div class="content is-center"><div class="date"><i class="fas fa-history fa-fw"></i> 2023-10-01</div><div class="title">Docker命令大全</div><div class="info">Docker介绍Docker 是一个开源的应用容器引擎，让开发者可以打包他们的应用以及依赖包到一个可移植的镜像中，然后发布到任何流行的 Linux或Windows操作系统的机器上，也可以实现虚拟化。容器是完全使用沙箱机制，相互之间不会有任何接口。
 Docker命令大全容器生命周期管理
 run
 start/stop/restart
@@ -381,46 +420,7 @@ version
 Docker命令具体的案例：
 docker run：启动一个Docker容器。
 1docker run -it --name my_container ubuntu:latest bash
-此命令将会在容器上启动一个最 ...</div></div></a></div><div><a href="/posts/1027/" title="将M.2固态硬盘设为群晖存储池"><img class="cover" src="https://img.akimio.top/Blog/2023/09/1696085815-65183737cc4cf.webp" alt="cover"><div class="content is-center"><div class="date"><i class="fas fa-history fa-fw"></i> 2023-10-01</div><div class="title">将M.2固态硬盘设为群晖存储池</div><div class="info">前言之前我的NAS用的系统是Unraid，但在外省读书时，Unraid启动盘U盘损坏导致无法开机，好在U盘其中的的配置文件还是可以读取的，在视频电话、父母帮助、远程控制下我终于救回了我的NAS，并且没有数据的损失。趁着暑假我将NAS的系统从Unraid换成群晖，一开始我使用Unraid的理由很简单，就是群晖的Linux内核版本太低，无法支持N5095等11代CPU的硬解。但随着半年的使用，我发现硬解并不是我的刚需，所以打算换回群晖（在大佬JIM的开发可以使用SA6400的机型实现硬解，相关博客；但我使用的是arpl-i18n的自动引导编译，编译SA6400的机型会导致Kernel崩溃，与作者讨论后无果，于是改用DS920+的机型，因为我之前也说过硬解对我来说不是刚需）换回群晖的理由还有两点，一点是我的NAS主要是做一个备份服务器，可以同步我设备上的文件就可以了，虽然Unraid可以通过Nextcloud实现，但是Nextcloud一并不是Unraid原生组件，所以没办法把备份的文件在Unraid文件里展示出来（这方面Unraid做的确实不太好），并且我使用Nginx-Proxy-Man ...</div></div></a></div><div><a href="/posts/1024/" title="为Hexo博客添加后台管理系统"><img class="cover" src="https://img.akimio.top/Blog/2023/09/1696085047-6518343797886.webp" alt="cover"><div class="content is-center"><div class="date"><i class="fas fa-history fa-fw"></i> 2023-10-01</div><div class="title">为Hexo博客添加后台管理系统</div><div class="info">前言Hexo是一个静态网站生成器，许多人用其来搭建博客，我的博客就是使用Hexo搭建，相比前之前介绍的Halo（传送门：利用Replit搭建个人博客Halo）搭建成本更加低，因为很多网站都支持了托管静态网站（后面可能会更新一篇静态网站的文章），但Hexo是静态网页，没有后台管理系统，对于想新建一个博客的小白来说难度比Halo大，但是也有许多大佬构建了网页的Hexo后台管理系统，今天给大家介绍两个后台管理系统：Qexo和ESHexoN，并附上搭建方式Hexo的源码需放在Github/Gitlab上
-Qexo Qexo,一个快速、强大、漂亮的在线Hexo编辑器Github仓库、使用文档
-特色：
-
-自定义图床上传图片
-在线配置编辑
-在线页面管理
-开放API
-自动检查更新
-在线一键更新
-快速接入友情链接
-简单的说说短文
-类似不算子的统计
-自动填文章模板
-
-下面是搭建教程
-准备数据库Qexo支持的数据库：
-
-MySQL
-PostgreSQL
-MongoDB
-
-这次我们使用MongoDB数据库，先去MongoDB官网注册一个账户，这边我已经有账户了就不做演示了因为MongoDB账户每一个项目（Pr ...</div></div></a></div><div><a href="/posts/1015/" title="Hexo重装记录"><img class="cover" src="https://img.akimio.top/Blog/2023/09/1696084993-6518340135d0e.webp" alt="cover"><div class="content is-center"><div class="date"><i class="fas fa-history fa-fw"></i> 2023-10-01</div><div class="title">Hexo重装记录</div><div class="info">准备工作
-安装Hexo
-安装NPM
-安装node.js
-
-重装开始更换淘宝源1npm config set registry http://registry.npmmirror.com
-换回默认源1npm config set registry https://registry.npmjs.org/
-初始化Hexo
-安装Hexo1hexo init Blog_v2
-进入博客文件夹1cd Blog_v2
-初始化git1git init 
-
-
-安装Buterfly主题
-从Github安装稳定版1git clone -b master https://github.com/jerryc127/hexo-theme-butterfly.git themes/butterfly
-进入[Blog_v2]/themes/butterfly，删除[.git]文件夹
-安装pug 以及 stylus 的渲染器1npm install hexo-renderer-pug hexo-renderer-stylus --save
-方便后续升级1cp -rf ./themes/butterfly/_config. ...</div></div></a></div><div><a href="/posts/1026/" title="Git快速上手指南"><img class="cover" src="https://img.akimio.top/Blog/2023/09/1696087818-65183f0a92ed5.webp" alt="cover"><div class="content is-center"><div class="date"><i class="fas fa-history fa-fw"></i> 2023-08-05</div><div class="title">Git快速上手指南</div><div class="info">Git入门什么是GitGit是一种分布式版本控制系统。假设有一个文件夹，随之时间的变化文件夹中文件的内容随时间变化，无论是是删除或增加文件夹的内容还是修改文件夹中的某个文件的内容，都能称为一个“版本”，而Git可以记录每个版本之间的区别并快速回滚到某个版本。简单来说，Git就像是是游戏的进度存档，可以快速回档
+此命令将会在容器上启动一个最 ...</div></div></a></div><div><a href="/posts/1027/" title="将M.2固态硬盘设为群晖存储池"><img class="cover" src="https://img.akimio.top/Blog/2023/09/1696085815-65183737cc4cf.webp" alt="cover"><div class="content is-center"><div class="date"><i class="fas fa-history fa-fw"></i> 2023-10-01</div><div class="title">将M.2固态硬盘设为群晖存储池</div><div class="info">前言之前我的NAS用的系统是Unraid，但在外省读书时，Unraid启动盘U盘损坏导致无法开机，好在U盘其中的的配置文件还是可以读取的，在视频电话、父母帮助、远程控制下我终于救回了我的NAS，并且没有数据的损失。趁着暑假我将NAS的系统从Unraid换成群晖，一开始我使用Unraid的理由很简单，就是群晖的Linux内核版本太低，无法支持N5095等11代CPU的硬解。但随着半年的使用，我发现硬解并不是我的刚需，所以打算换回群晖（在大佬JIM的开发可以使用SA6400的机型实现硬解，相关博客；但我使用的是arpl-i18n的自动引导编译，编译SA6400的机型会导致Kernel崩溃，与作者讨论后无果，于是改用DS920+的机型，因为我之前也说过硬解对我来说不是刚需）换回群晖的理由还有两点，一点是我的NAS主要是做一个备份服务器，可以同步我设备上的文件就可以了，虽然Unraid可以通过Nextcloud实现，但是Nextcloud一并不是Unraid原生组件，所以没办法把备份的文件在Unraid文件里展示出来（这方面Unraid做的确实不太好），并且我使用Nginx-Proxy-Man ...</div></div></a></div><div><a href="/posts/1026/" title="Git快速上手指南"><img class="cover" src="https://img.akimio.top/Blog/2023/09/1696087818-65183f0a92ed5.webp" alt="cover"><div class="content is-center"><div class="date"><i class="fas fa-history fa-fw"></i> 2023-08-05</div><div class="title">Git快速上手指南</div><div class="info">Git入门什么是GitGit是一种分布式版本控制系统。假设有一个文件夹，随之时间的变化文件夹中文件的内容随时间变化，无论是是删除或增加文件夹的内容还是修改文件夹中的某个文件的内容，都能称为一个“版本”，而Git可以记录每个版本之间的区别并快速回滚到某个版本。简单来说，Git就像是是游戏的进度存档，可以快速回档
 Git可以清楚地记录每个文件是谁在什么时候加进来的，什么时候修改的，修改的内容有哪些
 无论做什么工作，如果有Git帮你保留这些历史记录和证据，那么发生意外情况的时候你就能知道是从什么时候开始有问题，以及该找谁负责了
 Git的优点速度块，占用体积小如果你也有按照时间顺序备份文件的习惯，或许一个两个小文件还好，但是一旦涉及到大型文件夹，一次备份就会占用大量的空间，并且没有办法记录各个版本之间的差异
