@@ -13,7 +13,7 @@ function whenDOMReady() {
   // 自适应
   
   function photos() {
-    let url = 'https://memos.example.com/api/v1/memo?creatorId=用户ID&tag=相册' // 修改这里的URL
+    let url = 'https://s.dusays.com/api/v1/memo?creatorId=72&tag=相册' // 修改这里的URL
     fetch(url).then(res => res.json()).then(data => {
         let html = '',
             imgs = []
