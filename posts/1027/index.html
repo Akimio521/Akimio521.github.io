@@ -227,7 +227,46 @@ CPU
 Git可以清楚地记录每个文件是谁在什么时候加进来的，什么时候修改的，修改的内容有哪些
 无论做什么工作，如果有Git帮你保留这些历史记录和证据，那么发生意外情况的时候你就能知道是从什么时候开始有问题，以及该找谁负责了
 Git的优点速度块，占用体积小如果你也有按照时间顺序备份文件的习惯，或许一个两个小文件还好，但是一旦涉及到大型文件夹，一次备份就会占用大量的空间，并且没有办法记录各个版本之间的差异
-分布式系统Git通常会有一服共同的服务器，所有文件都保存在这台服务器之上，即使在没有网络的环境下，在个人电脑上依然可以使用Git进行版本控制，待网络恢复后，再将个人电脑的数据同步（Push）到这台服务器上去。而个人电脑的数量可以有很多，每个人都可以将自己的修改后的文件同步到这台服务器上，大 ...</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/posts/1011/" title="Docker命令大全"><img class="cover" src="https://img.akimio.top/Blog/2023/10/1697201890-65293ee2710be.webp" alt="cover"><div class="content is-center"><div class="date"><i class="fas fa-history fa-fw"></i> 2023-10-13</div><div class="title">Docker命令大全</div><div class="info">Docker介绍Docker 是一个开源的应用容器引擎，让开发者可以打包他们的应用以及依赖包到一个可移植的镜像中，然后发布到任何流行的 Linux或Windows操作系统的机器上，也可以实现虚拟化。容器是完全使用沙箱机制，相互之间不会有任何接口。
+分布式系统Git通常会有一服共同的服务器，所有文件都保存在这台服务器之上，即使在没有网络的环境下，在个人电脑上依然可以使用Git进行版本控制，待网络恢复后，再将个人电脑的数据同步（Push）到这台服务器上去。而个人电脑的数量可以有很多，每个人都可以将自己的修改后的文件同步到这台服务器上，大 ...</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/posts/1015/" title="Hexo重装记录"><img class="cover" src="https://img.akimio.top/Blog/2023/10/1697202008-65293f5806c51.webp" alt="cover"><div class="content is-center"><div class="date"><i class="fas fa-history fa-fw"></i> 2023-10-13</div><div class="title">Hexo重装记录</div><div class="info">准备工作
+安装Hexo
+安装NPM
+安装node.js
+
+重装开始更换淘宝源1npm config set registry http://registry.npmmirror.com
+换回默认源1npm config set registry https://registry.npmjs.org/
+初始化Hexo
+安装Hexo1hexo init Blog_v2
+进入博客文件夹1cd Blog_v2
+初始化git1git init 
+
+
+安装Buterfly主题
+从Github安装稳定版1git clone -b master https://github.com/jerryc127/hexo-theme-butterfly.git themes/butterfly
+进入[Blog_v2]/themes/butterfly，删除[.git]文件夹
+安装pug 以及 stylus 的渲染器1npm install hexo-renderer-pug hexo-renderer-stylus --save
+方便后续升级1cp -rf ./themes/butterfly/_config. ...</div></div></a></div><div><a href="/posts/1024/" title="为Hexo博客添加后台管理系统"><img class="cover" src="https://img.akimio.top/Blog/2023/10/1697201984-65293f409920d.webp" alt="cover"><div class="content is-center"><div class="date"><i class="fas fa-history fa-fw"></i> 2023-10-13</div><div class="title">为Hexo博客添加后台管理系统</div><div class="info">前言Hexo是一个静态网站生成器，许多人用其来搭建博客，我的博客就是使用Hexo搭建，相比前之前介绍的Halo（传送门：利用Replit搭建个人博客Halo）搭建成本更加低，因为很多网站都支持了托管静态网站（后面可能会更新一篇静态网站的文章），但Hexo是静态网页，没有后台管理系统，对于想新建一个博客的小白来说难度比Halo大，但是也有许多大佬构建了网页的Hexo后台管理系统，今天给大家介绍两个后台管理系统：Qexo和ESHexoN，并附上搭建方式Hexo的源码需放在Github/Gitlab上
+Qexo Qexo,一个快速、强大、漂亮的在线Hexo编辑器Github仓库、使用文档
+特色：
+
+自定义图床上传图片
+在线配置编辑
+在线页面管理
+开放API
+自动检查更新
+在线一键更新
+快速接入友情链接
+简单的说说短文
+类似不算子的统计
+自动填文章模板
+
+下面是搭建教程
+准备数据库Qexo支持的数据库：
+
+MySQL
+PostgreSQL
+MongoDB
+
+这次我们使用MongoDB数据库，先去MongoDB官网注册一个账户，这边我已经有账户了就不做演示了因为MongoDB账户每一个项目（Pr ...</div></div></a></div><div><a href="/posts/1011/" title="Docker命令大全"><img class="cover" src="https://img.akimio.top/Blog/2023/10/1697201890-65293ee2710be.webp" alt="cover"><div class="content is-center"><div class="date"><i class="fas fa-history fa-fw"></i> 2023-10-13</div><div class="title">Docker命令大全</div><div class="info">Docker介绍Docker 是一个开源的应用容器引擎，让开发者可以打包他们的应用以及依赖包到一个可移植的镜像中，然后发布到任何流行的 Linux或Windows操作系统的机器上，也可以实现虚拟化。容器是完全使用沙箱机制，相互之间不会有任何接口。
 Docker命令大全容器生命周期管理
 run
 start/stop/restart
@@ -267,46 +306,7 @@ version
 Docker命令具体的案例：
 docker run：启动一个Docker容器。
 1docker run -it --name my_container ubuntu:latest bash
-此命令将会在容器上启动一个最 ...</div></div></a></div><div><a href="/posts/1015/" title="Hexo重装记录"><img class="cover" src="https://img.akimio.top/Blog/2023/10/1697202008-65293f5806c51.webp" alt="cover"><div class="content is-center"><div class="date"><i class="fas fa-history fa-fw"></i> 2023-10-13</div><div class="title">Hexo重装记录</div><div class="info">准备工作
-安装Hexo
-安装NPM
-安装node.js
-
-重装开始更换淘宝源1npm config set registry http://registry.npmmirror.com
-换回默认源1npm config set registry https://registry.npmjs.org/
-初始化Hexo
-安装Hexo1hexo init Blog_v2
-进入博客文件夹1cd Blog_v2
-初始化git1git init 
-
-
-安装Buterfly主题
-从Github安装稳定版1git clone -b master https://github.com/jerryc127/hexo-theme-butterfly.git themes/butterfly
-进入[Blog_v2]/themes/butterfly，删除[.git]文件夹
-安装pug 以及 stylus 的渲染器1npm install hexo-renderer-pug hexo-renderer-stylus --save
-方便后续升级1cp -rf ./themes/butterfly/_config. ...</div></div></a></div><div><a href="/posts/1024/" title="为Hexo博客添加后台管理系统"><img class="cover" src="https://img.akimio.top/Blog/2023/10/1697201984-65293f409920d.webp" alt="cover"><div class="content is-center"><div class="date"><i class="fas fa-history fa-fw"></i> 2023-10-13</div><div class="title">为Hexo博客添加后台管理系统</div><div class="info">前言Hexo是一个静态网站生成器，许多人用其来搭建博客，我的博客就是使用Hexo搭建，相比前之前介绍的Halo（传送门：利用Replit搭建个人博客Halo）搭建成本更加低，因为很多网站都支持了托管静态网站（后面可能会更新一篇静态网站的文章），但Hexo是静态网页，没有后台管理系统，对于想新建一个博客的小白来说难度比Halo大，但是也有许多大佬构建了网页的Hexo后台管理系统，今天给大家介绍两个后台管理系统：Qexo和ESHexoN，并附上搭建方式Hexo的源码需放在Github/Gitlab上
-Qexo Qexo,一个快速、强大、漂亮的在线Hexo编辑器Github仓库、使用文档
-特色：
-
-自定义图床上传图片
-在线配置编辑
-在线页面管理
-开放API
-自动检查更新
-在线一键更新
-快速接入友情链接
-简单的说说短文
-类似不算子的统计
-自动填文章模板
-
-下面是搭建教程
-准备数据库Qexo支持的数据库：
-
-MySQL
-PostgreSQL
-MongoDB
-
-这次我们使用MongoDB数据库，先去MongoDB官网注册一个账户，这边我已经有账户了就不做演示了因为MongoDB账户每一个项目（Pr ...</div></div></a></div><div><a href="/posts/1020/" title="使用BetterNCM美化网易云"><img class="cover" src="https://img.akimio.top/Blog/2023/10/1697202929-652942f1440fc.webp" alt="cover"><div class="content is-center"><div class="date"><i class="fas fa-history fa-fw"></i> 2023-10-13</div><div class="title">使用BetterNCM美化网易云</div><div class="info">前言最近网易云更新了Windows的3.0测试版本，样式也更加美观简洁，这里附上尝鲜版本：阿里云盘样式比之前的版本好看多了，之前我是搭配BetterNCM进行美化，这篇文章主要是为了记录我的网易云美化方式下面是我美化好的样式插播一个广告
+此命令将会在容器上启动一个最 ...</div></div></a></div><div><a href="/posts/1020/" title="使用BetterNCM美化网易云"><img class="cover" src="https://img.akimio.top/Blog/2023/10/1697202929-652942f1440fc.webp" alt="cover"><div class="content is-center"><div class="date"><i class="fas fa-history fa-fw"></i> 2023-10-13</div><div class="title">使用BetterNCM美化网易云</div><div class="info">前言最近网易云更新了Windows的3.0测试版本，样式也更加美观简洁，这里附上尝鲜版本：阿里云盘样式比之前的版本好看多了，之前我是搭配BetterNCM进行美化，这篇文章主要是为了记录我的网易云美化方式下面是我美化好的样式插播一个广告
 
 欢迎使用我的音乐站，支持网易云音乐登入和灰色音乐解锁
 欢迎使用我的音乐解锁站，支持网易云、QQ、酷狗、酷我加密音乐格式解锁
