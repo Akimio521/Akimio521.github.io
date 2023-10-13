@@ -11,7 +11,7 @@
 
 .icat-content.icat-content-item.icatPage {
   height: 19rem;
-  color: var(--icat-white);
+  color: #e6e6e6;
   overflow: hidden;
   margin-top: 0;
   border-radius: 12px;
@@ -58,7 +58,7 @@
   border-radius: 20px;
   justify-content: center;
   background: var(--icat-white);
-  color: var(--icat-black);
+  color: #e6e6e6;
   display: flex;
   align-items: center;
   transition: .3s;
@@ -74,7 +74,7 @@
 }
 #page:has(#icat_page) .icat-content-item .icat-card-content .icat-change-button-group .icat-change-button:hover {
   background: var(--icat-blue);
-  color: var(--icat-white);
+  color: #e6e6e6;
 }
 
 @media screen and (max-width: 768px) {

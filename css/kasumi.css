@@ -131,26 +131,6 @@
     top: -70px; /*顶栏调整空缺补齐*/
 }
 
-/*文章封面高度调整*/
-/* ----- */
-
-@media screen and (max-width: 1300px){
-  #recent-posts>.recent-post-item .post_cover img.post_bg {
-    min-width: 100%;
-    -webkit-backface-visibility: hidden;
-    -webkit-transform-style: preserve-3d;
-    transition: .3s ease-in-out;
-    min-height: 100%;
-    user-select: none;
-  }
-}
-#recent-posts>.recent-post-item .post_cover {
-  width: 100%;
-  height: 100%;
-  transition: all .6s ease 0s;
-  object-fit: cover;
-}
-
 /*文章顶图模糊*/
 /* ----- */
 
