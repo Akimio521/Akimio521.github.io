@@ -292,7 +292,18 @@ amlogic_a311d.img
 s922x
 Beelink-GT-King, Beelink-GT-King-Pro, Ugoos-AM6-Plus, ODROID-N2, X88-King, Ali-CT2000
 全部
-amlog ...</div></div></a></div><div><a href="/posts/1011/" title="Docker命令大全"><img class="cover" src="https://img.akimio.top/Blog/2023/10/1697201890-65293ee2710be.webp" alt="cover"><div class="content is-center"><div class="date"><i class="fas fa-history fa-fw"></i> 2023-10-13</div><div class="title">Docker命令大全</div><div class="info">Docker介绍Docker 是一个开源的应用容器引擎，让开发者可以打包他们的应用以及依赖包到一个可移植的镜像中，然后发布到任何流行的 Linux或Windows操作系统的机器上，也可以实现虚拟化。容器是完全使用沙箱机制，相互之间不会有任何接口。
+amlog ...</div></div></a></div><div><a href="/posts/1009/" title="Nginx-Proxy-Manager问题补充：DNSPod证书申请错误、NPM端口丢失"><img class="cover" src="https://img.akimio.top/Blog/2023/10/1697201905-65293ef1d6b28.webp" alt="cover"><div class="content is-center"><div class="date"><i class="fas fa-history fa-fw"></i> 2023-09-10</div><div class="title">Nginx-Proxy-Manager问题补充：DNSPod证书申请错误、NPM端口丢失</div><div class="info">前言Nginx是一个高性能的HTTP和反向代理web服务器，同时也提供了IMAP/POP3/SMTP服务。作为有公网IP的NAS用户常用其为NAS进行反向代理服务。使用反向代理实现多域名访问不同应用，规避IP+端口访问，不仅免去记端口号的麻烦，还可以只留下一个端口进行访问，提高了局域网环境的安全性。与此同时，还可以利用NAS作为跳板，反向代理其他的内外设备，例如路由器后台等服务。原生Nginx并没有WebUI，而是使用配置文件进行配置，但对于普通用户来说自己写Config难度较高，因此大多数人使用带有WebUI的Nginx-Proxy-Manager进行反向代理，但是NPM本身有些BUG导致使用体验下降，今天则带来教程解决这些问题。Nginx-Proxy-Manager的安装教程可以看往期教程利用FRP和Nginx-Proxy-Manager为内网设备提供内外穿透服务
+DNSPod域名免费证书申请错误大多数人的NAS使用的是家用带宽，普通情况下运营商会封锁80和443端口，因此在使用反向代理时往往会使用其他的端口进行配置，而NPM中的免费证书申请并不能使用80以外的端口，所有大多数人使 ...</div></div></a></div><div><a href="/posts/1002/" title="利用FRP和Nginx-Proxy-Manager为内网设备提供内外穿透服务"><img class="cover" src="https://img.akimio.top/Blog/2023/10/1697201860-65293ec4815a9.webp" alt="cover"><div class="content is-center"><div class="date"><i class="fas fa-history fa-fw"></i> 2023-04-10</div><div class="title">利用FRP和Nginx-Proxy-Manager为内网设备提供内外穿透服务</div><div class="info">基于Docker的FRP内网穿透部署服务器搭建（FRPS）
+创建配置文件创建存放目录1sudo mkdir /etc/data/docker/frp
+创建frps.ini文件1nano /etc/data/docker/frp/frps.ini
+frps.ini内容如下：123456789101112131415[common]# 监听端口bind_port = 7000# 面板端口dashboard_port = 7500# 登录面板账号设置dashboard_user = admindashboard_pwd = admin23# 设置http及https协议下代理端口（非重要）vhost_http_port = 7080vhost_https_port = 7081# 身份验证token = 12345678
+配置Docker
+
+
+服务器镜像：snowdreamtech/frps
+重启策略：always
+网络模式：host
+文件映射：/etc/data/docker/frp/frps.ini:/etc/frp/frps.ini1docker run --restart=alway ...</div></div></a></div><div><a href="/posts/1011/" title="Docker命令大全"><img class="cover" src="https://img.akimio.top/Blog/2023/10/1697201890-65293ee2710be.webp" alt="cover"><div class="content is-center"><div class="date"><i class="fas fa-history fa-fw"></i> 2023-10-13</div><div class="title">Docker命令大全</div><div class="info">Docker介绍Docker 是一个开源的应用容器引擎，让开发者可以打包他们的应用以及依赖包到一个可移植的镜像中，然后发布到任何流行的 Linux或Windows操作系统的机器上，也可以实现虚拟化。容器是完全使用沙箱机制，相互之间不会有任何接口。
 Docker命令大全容器生命周期管理
 run
 start/stop/restart
@@ -332,18 +343,7 @@ version
 Docker命令具体的案例：
 docker run：启动一个Docker容器。
 1docker run -it --name my_container ubuntu:latest bash
-此命令将会在容器上启动一个最 ...</div></div></a></div><div><a href="/posts/1009/" title="Nginx-Proxy-Manager问题补充：DNSPod证书申请错误、NPM端口丢失"><img class="cover" src="https://img.akimio.top/Blog/2023/10/1697201905-65293ef1d6b28.webp" alt="cover"><div class="content is-center"><div class="date"><i class="fas fa-history fa-fw"></i> 2023-09-10</div><div class="title">Nginx-Proxy-Manager问题补充：DNSPod证书申请错误、NPM端口丢失</div><div class="info">前言Nginx是一个高性能的HTTP和反向代理web服务器，同时也提供了IMAP/POP3/SMTP服务。作为有公网IP的NAS用户常用其为NAS进行反向代理服务。使用反向代理实现多域名访问不同应用，规避IP+端口访问，不仅免去记端口号的麻烦，还可以只留下一个端口进行访问，提高了局域网环境的安全性。与此同时，还可以利用NAS作为跳板，反向代理其他的内外设备，例如路由器后台等服务。原生Nginx并没有WebUI，而是使用配置文件进行配置，但对于普通用户来说自己写Config难度较高，因此大多数人使用带有WebUI的Nginx-Proxy-Manager进行反向代理，但是NPM本身有些BUG导致使用体验下降，今天则带来教程解决这些问题。Nginx-Proxy-Manager的安装教程可以看往期教程利用FRP和Nginx-Proxy-Manager为内网设备提供内外穿透服务
-DNSPod域名免费证书申请错误大多数人的NAS使用的是家用带宽，普通情况下运营商会封锁80和443端口，因此在使用反向代理时往往会使用其他的端口进行配置，而NPM中的免费证书申请并不能使用80以外的端口，所有大多数人使 ...</div></div></a></div><div><a href="/posts/1002/" title="利用FRP和Nginx-Proxy-Manager为内网设备提供内外穿透服务"><img class="cover" src="https://img.akimio.top/Blog/2023/10/1697201860-65293ec4815a9.webp" alt="cover"><div class="content is-center"><div class="date"><i class="fas fa-history fa-fw"></i> 2023-04-10</div><div class="title">利用FRP和Nginx-Proxy-Manager为内网设备提供内外穿透服务</div><div class="info">基于Docker的FRP内网穿透部署服务器搭建（FRPS）
-创建配置文件创建存放目录1sudo mkdir /etc/data/docker/frp
-创建frps.ini文件1nano /etc/data/docker/frp/frps.ini
-frps.ini内容如下：123456789101112131415[common]# 监听端口bind_port = 7000# 面板端口dashboard_port = 7500# 登录面板账号设置dashboard_user = admindashboard_pwd = admin23# 设置http及https协议下代理端口（非重要）vhost_http_port = 7080vhost_https_port = 7081# 身份验证token = 12345678
-配置Docker
-
-
-服务器镜像：snowdreamtech/frps
-重启策略：always
-网络模式：host
-文件映射：/etc/data/docker/frp/frps.ini:/etc/frp/frps.ini1docker run --restart=alway ...</div></div></a></div><div><a href="/posts/1015/" title="Hexo重装记录"><img class="cover" src="https://img.akimio.top/Blog/2023/10/1697202008-65293f5806c51.webp" alt="cover"><div class="content is-center"><div class="date"><i class="fas fa-history fa-fw"></i> 2023-10-13</div><div class="title">Hexo重装记录</div><div class="info">准备工作
+此命令将会在容器上启动一个最 ...</div></div></a></div><div><a href="/posts/1015/" title="Hexo重装记录"><img class="cover" src="https://img.akimio.top/Blog/2023/10/1697202008-65293f5806c51.webp" alt="cover"><div class="content is-center"><div class="date"><i class="fas fa-history fa-fw"></i> 2023-10-13</div><div class="title">Hexo重装记录</div><div class="info">准备工作
 安装Hexo
 安装NPM
 安装node.js
