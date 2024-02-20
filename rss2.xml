@@ -1,0 +1,1100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rss version="2.0"
+  xmlns:atom="http://www.w3.org/2005/Atom"
+  xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>秋澪的博客</title>
+    <link>https://blog.akimio.top/</link>
+    
+    <image>
+      <url>https://img.akimio.top/avatar/akimio.png</url>
+      <title>秋澪的博客</title>
+      <link>https://blog.akimio.top/</link>
+    </image>
+    
+    <atom:link href="https://blog.akimio.top/rss2.xml" rel="self" type="application/rss+xml"/>
+    
+    <description>秋澪的个人博客</description>
+    <pubDate>Tue, 13 Feb 2024 09:58:56 GMT</pubDate>
+    <generator>http://hexo.io/</generator>
+    
+    <item>
+      <title>FastCDN说明文档</title>
+      <link>https://blog.akimio.top/posts/1036/</link>
+      <guid>https://blog.akimio.top/posts/1036/</guid>
+      <pubDate>Sat, 20 Jan 2024 04:27:45 GMT</pubDate>
+      
+        
+        
+          
+          
+      <description>&lt;h1&gt;前言&lt;/h1&gt;
+&lt;p&gt;最近几天一直再写一个小程序（其实去年11月就有想法了，但是这两天才有时间真真完善了一下），这两天终于写完了v0.1版本了，并且也达到了一个正常使用的范围&lt;/p&gt;
+&lt;h1&gt;FastCDN简介&lt;/h1&gt;
+&lt;p&gt;一款自动优选CloudFlare的Anyca</description>
+          
+        
+      
+      
+      
+      
+      <category domain="https://blog.akimio.top/categories/%E6%96%87%E6%A1%A3/">文档</category>
+      
+      
+      <category domain="https://blog.akimio.top/tags/Docker/">Docker</category>
+      
+      <category domain="https://blog.akimio.top/tags/CloudFlare/">CloudFlare</category>
+      
+      
+      <comments>https://blog.akimio.top/posts/1036/#disqus_thread</comments>
+      
+    </item>
+    
+    <item>
+      <title>利用CloudFlare搭建镜像站</title>
+      <link>https://blog.akimio.top/posts/1035/</link>
+      <guid>https://blog.akimio.top/posts/1035/</guid>
+      <pubDate>Tue, 16 Jan 2024 07:17:45 GMT</pubDate>
+      
+      <description>0成本自建一个专属自己的镜像站</description>
+      
+      
+      
+      
+      <category domain="https://blog.akimio.top/categories/%E7%BD%91%E7%BB%9C%E5%9F%BA%E5%BB%BA%E8%AE%A1%E5%88%92/">网络基建计划</category>
+      
+      
+      <category domain="https://blog.akimio.top/tags/%E6%95%99%E7%A8%8B/">教程</category>
+      
+      <category domain="https://blog.akimio.top/tags/%E9%95%9C%E5%83%8F%E7%AB%99%E6%90%AD%E5%BB%BA/">镜像站搭建</category>
+      
+      
+      <comments>https://blog.akimio.top/posts/1035/#disqus_thread</comments>
+      
+    </item>
+    
+    <item>
+      <title>Docker入门教程</title>
+      <link>https://blog.akimio.top/posts/1034/</link>
+      <guid>https://blog.akimio.top/posts/1034/</guid>
+      <pubDate>Thu, 11 Jan 2024 04:32:52 GMT</pubDate>
+      
+        
+        
+          
+          
+      <description>&lt;h1&gt;前言&lt;/h1&gt;
+&lt;p&gt;之前发过一篇有关Docker命令的文章，但感觉太水了，也不能系统地学习Docker这门技术，并且之前也只是会用，自己并不会构建Docker的镜像，并且很多命令行的操作并不习惯，所以现在重新系统的学习一下Docker，从使用到构建一个自己的Docker</description>
+          
+        
+      
+      
+      
+      
+      <category domain="https://blog.akimio.top/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">学习笔记</category>
+      
+      
+      <category domain="https://blog.akimio.top/tags/%E6%95%99%E7%A8%8B/">教程</category>
+      
+      <category domain="https://blog.akimio.top/tags/Docker/">Docker</category>
+      
+      
+      <comments>https://blog.akimio.top/posts/1034/#disqus_thread</comments>
+      
+    </item>
+    
+    <item>
+      <title>UnlockMusic音乐解锁搭建教程</title>
+      <link>https://blog.akimio.top/posts/1033/</link>
+      <guid>https://blog.akimio.top/posts/1033/</guid>
+      <pubDate>Wed, 27 Dec 2023 07:05:28 GMT</pubDate>
+      
+      <description>搭建一个属于自己的一个免费的音乐解锁工具——UnlockMusic</description>
+      
+      
+      
+      
+      <category domain="https://blog.akimio.top/categories/%E7%BD%91%E7%BB%9C%E5%9F%BA%E5%BB%BA%E8%AE%A1%E5%88%92/">网络基建计划</category>
+      
+      
+      <category domain="https://blog.akimio.top/tags/%E6%95%99%E7%A8%8B/">教程</category>
+      
+      <category domain="https://blog.akimio.top/tags/UnlockMusic%E9%9F%B3%E4%B9%90%E8%A7%A3%E9%94%81/">UnlockMusic音乐解锁</category>
+      
+      
+      <comments>https://blog.akimio.top/posts/1033/#disqus_thread</comments>
+      
+    </item>
+    
+    <item>
+      <title>Excalidraw搭建教程</title>
+      <link>https://blog.akimio.top/posts/1032/</link>
+      <guid>https://blog.akimio.top/posts/1032/</guid>
+      <pubDate>Fri, 13 Oct 2023 13:23:17 GMT</pubDate>
+      
+      <description>这篇文章介绍了如何搭建一个属于自己的一个免费的在线图形工具——Excalidraw</description>
+      
+      
+      
+      
+      <category domain="https://blog.akimio.top/categories/%E7%BD%91%E7%BB%9C%E5%9F%BA%E5%BB%BA%E8%AE%A1%E5%88%92/">网络基建计划</category>
+      
+      
+      <category domain="https://blog.akimio.top/tags/%E6%95%99%E7%A8%8B/">教程</category>
+      
+      <category domain="https://blog.akimio.top/tags/Excalidraw/">Excalidraw</category>
+      
+      
+      <comments>https://blog.akimio.top/posts/1032/#disqus_thread</comments>
+      
+    </item>
+    
+    <item>
+      <title>推一个自己的小项目——AutoFilm</title>
+      <link>https://blog.akimio.top/posts/1031/</link>
+      <guid>https://blog.akimio.top/posts/1031/</guid>
+      <pubDate>Mon, 02 Oct 2023 02:17:05 GMT</pubDate>
+      
+        
+        
+          
+          
+      <description>&lt;p&gt;&lt;strong&gt;原开发过程以及详细原理已移除，本文不含低于v1.0.0的使用教程&lt;/strong&gt;&lt;/p&gt;
+&lt;h1&gt;前言&lt;/h1&gt;
+&lt;p&gt;最开始是在酷安看到一篇有关Emby播放Strm文件的文章，后面楼主公开了代码，当时我还不太会Python（虽然现在还是不会）并且楼主也是</description>
+          
+        
+      
+      
+      
+      
+      <category domain="https://blog.akimio.top/categories/%E6%96%87%E6%A1%A3/">文档</category>
+      
+      
+      <category domain="https://blog.akimio.top/tags/%E6%95%99%E7%A8%8B/">教程</category>
+      
+      <category domain="https://blog.akimio.top/tags/NAS/">NAS</category>
+      
+      
+      <comments>https://blog.akimio.top/posts/1031/#disqus_thread</comments>
+      
+    </item>
+    
+    <item>
+      <title>利用CDN加速并保护站点</title>
+      <link>https://blog.akimio.top/posts/1030/</link>
+      <guid>https://blog.akimio.top/posts/1030/</guid>
+      <pubDate>Fri, 22 Sep 2023 13:28:32 GMT</pubDate>
+      
+      <description>本文介绍了如何使用免费CDN服务CloudFlare保护博客，提高访问速度，避免攻击。包括接入CloudFlare、优选IP加速、SaaS回源、国内直连等方法。</description>
+      
+      
+      
+      
+      <category domain="https://blog.akimio.top/categories/%E5%A4%87%E5%BF%98%E5%BD%95/">备忘录</category>
+      
+      
+      <category domain="https://blog.akimio.top/tags/%E6%95%99%E7%A8%8B/">教程</category>
+      
+      <category domain="https://blog.akimio.top/tags/%E7%BD%91%E7%AB%99%E4%BC%98%E5%8C%96/">网站优化</category>
+      
+      <category domain="https://blog.akimio.top/tags/CLoudflare/">CLoudflare</category>
+      
+      
+      <comments>https://blog.akimio.top/posts/1030/#disqus_thread</comments>
+      
+    </item>
+    
+    <item>
+      <title>校园网碎碎念</title>
+      <link>https://blog.akimio.top/posts/1029/</link>
+      <guid>https://blog.akimio.top/posts/1029/</guid>
+      <pubDate>Fri, 08 Sep 2023 09:47:33 GMT</pubDate>
+      
+        
+        
+          
+          
+      <description>&lt;p&gt;现在大学校园网都应该挺常见的吧，不知道大家读书那时候校园网体验怎么，这篇碎碎念主要是写一点关于我折腾校园网的事情吧&lt;br&gt;
+我们的校园元每个月30元，不限流量，恰好宿舍也有网口，我们宿舍就打算一起合租校园网，在宿舍放了个路由器一起使用&lt;/p&gt;
+&lt;h1&gt;IPv6&lt;/h1&gt;
+&lt;</description>
+          
+        
+      
+      
+      
+      
+      <category domain="https://blog.akimio.top/categories/%E5%A4%87%E5%BF%98%E5%BD%95/">备忘录</category>
+      
+      
+      <category domain="https://blog.akimio.top/tags/%E6%95%99%E7%A8%8B/">教程</category>
+      
+      <category domain="https://blog.akimio.top/tags/%E5%A4%87%E5%BF%98%E5%BD%95/">备忘录</category>
+      
+      <category domain="https://blog.akimio.top/tags/%E8%B7%AF%E7%94%B1%E5%99%A8/">路由器</category>
+      
+      
+      <comments>https://blog.akimio.top/posts/1029/#disqus_thread</comments>
+      
+    </item>
+    
+    <item>
+      <title>三朝元老再就业——百元机装机体验暨P104-100快速上手</title>
+      <link>https://blog.akimio.top/posts/1028/</link>
+      <guid>https://blog.akimio.top/posts/1028/</guid>
+      <pubDate>Sun, 06 Aug 2023 12:11:44 GMT</pubDate>
+      
+        
+        
+          
+          
+      <description>&lt;h1&gt;前言&lt;/h1&gt;
+&lt;p&gt;最近迷上了AI绘画，最近也算是当了一波赛博画师，我觉得AI绘画目前最有优势的地方除了可以快速创作外应该就是可以避免版权问题，我的博客很多图片都是Pixiv上的插画，目前还没有收到关于版权的问题，但最近我也在用AI绘画出的图进行替换（顺便挖个坑，&lt;s&gt;</description>
+          
+        
+      
+      
+      
+      
+      <category domain="https://blog.akimio.top/categories/%E5%A4%87%E5%BF%98%E5%BD%95/">备忘录</category>
+      
+      
+      <category domain="https://blog.akimio.top/tags/%E6%95%99%E7%A8%8B/">教程</category>
+      
+      
+      <comments>https://blog.akimio.top/posts/1028/#disqus_thread</comments>
+      
+    </item>
+    
+    <item>
+      <title>将M.2固态硬盘设为群晖存储池</title>
+      <link>https://blog.akimio.top/posts/1027/</link>
+      <guid>https://blog.akimio.top/posts/1027/</guid>
+      <pubDate>Thu, 03 Aug 2023 08:00:07 GMT</pubDate>
+      
+        
+        
+          
+          
+      <description>&lt;h1&gt;前言&lt;/h1&gt;
+&lt;p&gt;之前我的NAS用的系统是Unraid，但在外省读书时，Unraid启动盘U盘损坏导致无法开机，好在U盘其中的的配置文件还是可以读取的，在视频电话、父母帮助、远程控制下我终于救回了我的NAS，并且没有数据的损失。&lt;br&gt;
+趁着暑假我将NAS的系统从Un</description>
+          
+        
+      
+      
+      
+      
+      <category domain="https://blog.akimio.top/categories/NAS/">NAS</category>
+      
+      
+      <category domain="https://blog.akimio.top/tags/%E6%95%99%E7%A8%8B/">教程</category>
+      
+      <category domain="https://blog.akimio.top/tags/%E5%A4%87%E5%BF%98%E5%BD%95/">备忘录</category>
+      
+      <category domain="https://blog.akimio.top/tags/%E7%BE%A4%E6%99%96/">群晖</category>
+      
+      
+      <comments>https://blog.akimio.top/posts/1027/#disqus_thread</comments>
+      
+    </item>
+    
+    <item>
+      <title>Git快速上手指南</title>
+      <link>https://blog.akimio.top/posts/1026/</link>
+      <guid>https://blog.akimio.top/posts/1026/</guid>
+      <pubDate>Sat, 01 Jul 2023 08:54:32 GMT</pubDate>
+      
+        
+        
+          
+          
+      <description>&lt;h1&gt;Git入门&lt;/h1&gt;
+&lt;h2 id=&quot;什么是Git&quot;&gt;&lt;a class=&quot;headerlink&quot;</description>
+          
+        
+      
+      
+      
+      
+      <category domain="https://blog.akimio.top/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">学习笔记</category>
+      
+      
+      <category domain="https://blog.akimio.top/tags/%E6%95%99%E7%A8%8B/">教程</category>
+      
+      <category domain="https://blog.akimio.top/tags/Git/">Git</category>
+      
+      
+      <comments>https://blog.akimio.top/posts/1026/#disqus_thread</comments>
+      
+    </item>
+    
+    <item>
+      <title>利用Ventoy打造最强硬盘</title>
+      <link>https://blog.akimio.top/posts/1025/</link>
+      <guid>https://blog.akimio.top/posts/1025/</guid>
+      <pubDate>Thu, 29 Jun 2023 03:41:26 GMT</pubDate>
+      
+        
+        
+          
+          
+      <description>&lt;h1&gt;前言&lt;/h1&gt;
+&lt;p&gt;最近随着国产固态的崛起，固态硬盘价格也大降，618期间我花费400左右购入了一块国产PCIE4.0固态，打算配合硬盘盒做成一块移动固态，本期教程将基于固态硬盘制作最强的AIO移动硬盘（&lt;s&gt;All in one,all in one,one</description>
+          
+        
+      
+      
+      
+      
+      <category domain="https://blog.akimio.top/categories/%E5%A4%87%E5%BF%98%E5%BD%95/">备忘录</category>
+      
+      
+      <category domain="https://blog.akimio.top/tags/%E6%95%99%E7%A8%8B/">教程</category>
+      
+      <category domain="https://blog.akimio.top/tags/Ventoy/">Ventoy</category>
+      
+      <category domain="https://blog.akimio.top/tags/WinToGo/">WinToGo</category>
+      
+      <category domain="https://blog.akimio.top/tags/LinToGo/">LinToGo</category>
+      
+      <category domain="https://blog.akimio.top/tags/AIO/">AIO</category>
+      
+      
+      <comments>https://blog.akimio.top/posts/1025/#disqus_thread</comments>
+      
+    </item>
+    
+    <item>
+      <title>为Hexo博客添加后台管理系统</title>
+      <link>https://blog.akimio.top/posts/1024/</link>
+      <guid>https://blog.akimio.top/posts/1024/</guid>
+      <pubDate>Sat, 24 Jun 2023 03:06:05 GMT</pubDate>
+      
+        
+        
+          
+          
+      <description>&lt;h1&gt;前言&lt;/h1&gt;
+&lt;p&gt;Hexo是一个静态网站生成器，许多人用其来搭建博客，我的&lt;a href=&quot;/&quot;&gt;博客&lt;/a&gt;就是使用Hexo搭建，相比前之前介绍的Halo（传送门：&lt;a</description>
+          
+        
+      
+      
+      
+      
+      <category domain="https://blog.akimio.top/categories/Hexo/">Hexo</category>
+      
+      
+      <category domain="https://blog.akimio.top/tags/%E6%95%99%E7%A8%8B/">教程</category>
+      
+      <category domain="https://blog.akimio.top/tags/%E5%A4%87%E5%BF%98%E5%BD%95/">备忘录</category>
+      
+      <category domain="https://blog.akimio.top/tags/Hexo/">Hexo</category>
+      
+      <category domain="https://blog.akimio.top/tags/%E5%8D%9A%E5%AE%A2/">博客</category>
+      
+      
+      <comments>https://blog.akimio.top/posts/1024/#disqus_thread</comments>
+      
+    </item>
+    
+    <item>
+      <title>MarkDown笔记软件推荐</title>
+      <link>https://blog.akimio.top/posts/1023/</link>
+      <guid>https://blog.akimio.top/posts/1023/</guid>
+      <pubDate>Thu, 08 Jun 2023 12:40:15 GMT</pubDate>
+      
+      <description>这篇文章介绍了四款Markdown笔记软件：WPS、Obsidian、Simplenote和NotesHub。它们各有优点和缺点，读者可以根据自己的需求选择适合自己的软件。</description>
+      
+      
+      
+      
+      <category domain="https://blog.akimio.top/categories/%E5%A4%87%E5%BF%98%E5%BD%95/">备忘录</category>
+      
+      
+      <category domain="https://blog.akimio.top/tags/%E6%8E%A8%E8%8D%90/">推荐</category>
+      
+      <category domain="https://blog.akimio.top/tags/%E8%BD%AF%E4%BB%B6/">软件</category>
+      
+      <category domain="https://blog.akimio.top/tags/Markdown/">Markdown</category>
+      
+      
+      <comments>https://blog.akimio.top/posts/1023/#disqus_thread</comments>
+      
+    </item>
+    
+    <item>
+      <title>免费的云数据库推荐</title>
+      <link>https://blog.akimio.top/posts/1022/</link>
+      <guid>https://blog.akimio.top/posts/1022/</guid>
+      <pubDate>Mon, 05 Jun 2023 08:52:03 GMT</pubDate>
+      
+        
+        
+          
+          
+      <description>&lt;h1&gt;前言&lt;/h1&gt;
+&lt;p&gt;一个星期前收到了Bit.io的邮件，说是要跑路了，6.29之后数据库进入只读模式，7.29前保持可访问，如果大家有用Bit.io数据库的准备要在23.6.30前迁移数据库内容。Bit.io算是我最喜欢的一款免费云数据库了吧，Bit.io是托管在GCP</description>
+          
+        
+      
+      
+      
+      
+      <category domain="https://blog.akimio.top/categories/%E5%A4%87%E5%BF%98%E5%BD%95/">备忘录</category>
+      
+      
+      <category domain="https://blog.akimio.top/tags/%E6%8E%A8%E8%8D%90/">推荐</category>
+      
+      
+      <comments>https://blog.akimio.top/posts/1022/#disqus_thread</comments>
+      
+    </item>
+    
+    <item>
+      <title>Armbian手把手玩机指南01-系统刷入并安装可视化桌面</title>
+      <link>https://blog.akimio.top/posts/1021/</link>
+      <guid>https://blog.akimio.top/posts/1021/</guid>
+      <pubDate>Sat, 03 Jun 2023 15:23:29 GMT</pubDate>
+      
+      <description>本文是一篇关于如何使用Armbian系统将空闲电视盒子打造成服务器的教程。Armbian系统是一种专门用于ARM芯片的轻量级Linux系统，可以安全稳定地运行在TF/SD/USB及设备的eMMC里。文章介绍了如何下载对应机型的镜像，将镜像写入U盘或者TF卡中，然后将其插入电视盒子中，跑代码等步骤。同时，文章还详细介绍了如何安装图形化桌面，以及如何自行安装Linux软件等。</description>
+      
+      
+      
+      
+      <category domain="https://blog.akimio.top/categories/Armbian%E7%B3%BB%E7%BB%9F/">Armbian系统</category>
+      
+      
+      <category domain="https://blog.akimio.top/tags/Arbiam/">Arbiam</category>
+      
+      <category domain="https://blog.akimio.top/tags/%E6%95%99%E7%A8%8B/">教程</category>
+      
+      
+      <comments>https://blog.akimio.top/posts/1021/#disqus_thread</comments>
+      
+    </item>
+    
+    <item>
+      <title>使用BetterNCM美化网易云</title>
+      <link>https://blog.akimio.top/posts/1020/</link>
+      <guid>https://blog.akimio.top/posts/1020/</guid>
+      <pubDate>Sat, 03 Jun 2023 14:03:26 GMT</pubDate>
+      
+      <description>本文介绍了网易云音乐的美化方式，主要是通过BetterNCM扩展工具和一些美化插件来实现。作者分享了安装BetterNCM的三种方式，详细介绍了使用BetterNCM中的美化插件、拓展插件等。</description>
+      
+      
+      
+      
+      <category domain="https://blog.akimio.top/categories/Windows/">Windows</category>
+      
+      
+      <category domain="https://blog.akimio.top/tags/%E6%95%99%E7%A8%8B/">教程</category>
+      
+      <category domain="https://blog.akimio.top/tags/%E5%A4%87%E5%BF%98%E5%BD%95/">备忘录</category>
+      
+      <category domain="https://blog.akimio.top/tags/%E8%BD%AF%E4%BB%B6%E6%8E%A8%E8%8D%90/">软件推荐</category>
+      
+      
+      <comments>https://blog.akimio.top/posts/1020/#disqus_thread</comments>
+      
+    </item>
+    
+    <item>
+      <title>IOS旧版本应用推荐</title>
+      <link>https://blog.akimio.top/posts/1019/</link>
+      <guid>https://blog.akimio.top/posts/1019/</guid>
+      <pubDate>Sat, 27 May 2023 11:16:27 GMT</pubDate>
+      
+        
+        
+          
+          
+      <description>&lt;blockquote&gt;
+&lt;p&gt;本文章最早发布于&lt;a</description>
+          
+        
+      
+      
+      
+      
+      <category domain="https://blog.akimio.top/categories/%E5%A4%87%E5%BF%98%E5%BD%95/">备忘录</category>
+      
+      
+      <category domain="https://blog.akimio.top/tags/%E6%8E%A8%E8%8D%90/">推荐</category>
+      
+      <category domain="https://blog.akimio.top/tags/%E8%BD%AF%E4%BB%B6/">软件</category>
+      
+      <category domain="https://blog.akimio.top/tags/IOS/">IOS</category>
+      
+      
+      <comments>https://blog.akimio.top/posts/1019/#disqus_thread</comments>
+      
+    </item>
+    
+    <item>
+      <title>51单片机学习记录-01</title>
+      <link>https://blog.akimio.top/posts/1018/</link>
+      <guid>https://blog.akimio.top/posts/1018/</guid>
+      <pubDate>Tue, 23 May 2023 08:40:51 GMT</pubDate>
+      
+        
+        
+          
+          
+      <description>&lt;h1&gt;前提提醒&lt;/h1&gt;
+&lt;p&gt;&lt;strong&gt;激活Keil4/5&lt;/strong&gt;&lt;br&gt;
+&lt;strong&gt;下面学习及图片以Keil4为例，Keil5方法类似&lt;/strong&gt;&lt;/p&gt;
+&lt;h1&gt;创建项目&lt;/h1&gt;
+&lt;p&gt;打开Keil4，在上方的导航栏中依次选择&lt;code&gt;Pr</description>
+          
+        
+      
+      
+      
+      
+      <category domain="https://blog.akimio.top/categories/51%E5%8D%95%E7%89%87%E6%9C%BA%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/">51单片机学习记录</category>
+      
+      
+      <category domain="https://blog.akimio.top/tags/51%E5%8D%95%E7%89%87%E6%9C%BA/">51单片机</category>
+      
+      <category domain="https://blog.akimio.top/tags/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/">学习记录</category>
+      
+      
+      <comments>https://blog.akimio.top/posts/1018/#disqus_thread</comments>
+      
+    </item>
+    
+    <item>
+      <title>51单片机学习记录-00</title>
+      <link>https://blog.akimio.top/posts/1017/</link>
+      <guid>https://blog.akimio.top/posts/1017/</guid>
+      <pubDate>Mon, 22 May 2023 09:30:39 GMT</pubDate>
+      
+      <description>开始记录51单品机学习历程</description>
+      
+      
+      
+      
+      <category domain="https://blog.akimio.top/categories/51%E5%8D%95%E7%89%87%E6%9C%BA%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/">51单片机学习记录</category>
+      
+      
+      <category domain="https://blog.akimio.top/tags/51%E5%8D%95%E7%89%87%E6%9C%BA/">51单片机</category>
+      
+      <category domain="https://blog.akimio.top/tags/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/">学习记录</category>
+      
+      
+      <comments>https://blog.akimio.top/posts/1017/#disqus_thread</comments>
+      
+    </item>
+    
+    <item>
+      <title>免费域名注册</title>
+      <link>https://blog.akimio.top/posts/1016/</link>
+      <guid>https://blog.akimio.top/posts/1016/</guid>
+      <pubDate>Sat, 20 May 2023 12:03:55 GMT</pubDate>
+      
+        
+        
+          
+          
+      <description>&lt;h1&gt;介绍&lt;/h1&gt;
+&lt;p&gt;域名（英语：Domain</description>
+          
+        
+      
+      
+      
+      
+      <category domain="https://blog.akimio.top/categories/%E5%A4%87%E5%BF%98%E5%BD%95/">备忘录</category>
+      
+      
+      <category domain="https://blog.akimio.top/tags/%E6%95%99%E7%A8%8B/">教程</category>
+      
+      <category domain="https://blog.akimio.top/tags/%E5%A4%87%E5%BF%98%E5%BD%95/">备忘录</category>
+      
+      <category domain="https://blog.akimio.top/tags/%E5%9F%9F%E5%90%8D/">域名</category>
+      
+      
+      <comments>https://blog.akimio.top/posts/1016/#disqus_thread</comments>
+      
+    </item>
+    
+    <item>
+      <title>Hexo重装记录</title>
+      <link>https://blog.akimio.top/posts/1015/</link>
+      <guid>https://blog.akimio.top/posts/1015/</guid>
+      <pubDate>Thu, 18 May 2023 04:44:31 GMT</pubDate>
+      
+        
+        
+          
+          
+      <description>&lt;h1&gt;准备工作&lt;/h1&gt;
+&lt;ul&gt;
+&lt;li&gt;安装Hexo&lt;/li&gt;
+&lt;li&gt;安装NPM&lt;/li&gt;
+&lt;li&gt;安装node.js&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1&gt;重装开始&lt;/h1&gt;
+&lt;h2 id=&quot;更换淘宝源&quot;&gt;&lt;a class=&quot;headerlink&quot;</description>
+          
+        
+      
+      
+      
+      
+      <category domain="https://blog.akimio.top/categories/Hexo/">Hexo</category>
+      
+      
+      <category domain="https://blog.akimio.top/tags/%E6%95%99%E7%A8%8B/">教程</category>
+      
+      <category domain="https://blog.akimio.top/tags/%E5%A4%87%E5%BF%98%E5%BD%95/">备忘录</category>
+      
+      <category domain="https://blog.akimio.top/tags/Hexo/">Hexo</category>
+      
+      <category domain="https://blog.akimio.top/tags/%E5%8D%9A%E5%AE%A2/">博客</category>
+      
+      <category domain="https://blog.akimio.top/tags/%E7%BE%8E%E5%8C%96/">美化</category>
+      
+      
+      <comments>https://blog.akimio.top/posts/1015/#disqus_thread</comments>
+      
+    </item>
+    
+    <item>
+      <title>利用CloudFlare创建域名邮箱</title>
+      <link>https://blog.akimio.top/posts/1014/</link>
+      <guid>https://blog.akimio.top/posts/1014/</guid>
+      <pubDate>Sat, 13 May 2023 01:59:52 GMT</pubDate>
+      
+      <description>本文介绍了如何使用Cloudflare的免费邮件路由功能来保护个人隐私，减少隐私泄露和不必要的广告邮件。</description>
+      
+      
+      
+      
+      <category domain="https://blog.akimio.top/categories/%E7%BD%91%E7%BB%9C%E5%9F%BA%E5%BB%BA%E8%AE%A1%E5%88%92/">网络基建计划</category>
+      
+      
+      <category domain="https://blog.akimio.top/tags/%E6%95%99%E7%A8%8B/">教程</category>
+      
+      <category domain="https://blog.akimio.top/tags/CLoudflare/">CLoudflare</category>
+      
+      <category domain="https://blog.akimio.top/tags/%E5%9F%9F%E5%90%8D%E9%82%AE%E7%AE%B1/">域名邮箱</category>
+      
+      
+      <comments>https://blog.akimio.top/posts/1014/#disqus_thread</comments>
+      
+    </item>
+    
+    <item>
+      <title>在Render上部署Alist</title>
+      <link>https://blog.akimio.top/posts/1013/</link>
+      <guid>https://blog.akimio.top/posts/1013/</guid>
+      <pubDate>Thu, 11 May 2023 03:34:55 GMT</pubDate>
+      
+      <description>这篇文章是一篇关于在Render上部署Alist的教程。Alist是一个类似于网盘的项目，可以用于存储和分享文件。文章详细介绍了使用Github账号在Render上部署Alist的步骤，包括fork项目、修改配置文件、创建Render账号、配置MySQL数据库、部署项目等。同时，文章还介绍了如何使用自定义域名和UptimeRobot来防止项目休眠和备份项目。本文适合对Github、Render和MySQL数据库有一定了解的读者学习。</description>
+      
+      
+      
+      
+      <category domain="https://blog.akimio.top/categories/%E7%BD%91%E7%BB%9C%E5%9F%BA%E5%BB%BA%E8%AE%A1%E5%88%92/">网络基建计划</category>
+      
+      
+      <category domain="https://blog.akimio.top/tags/%E6%95%99%E7%A8%8B/">教程</category>
+      
+      <category domain="https://blog.akimio.top/tags/Alist/">Alist</category>
+      
+      <category domain="https://blog.akimio.top/tags/Render/">Render</category>
+      
+      
+      <comments>https://blog.akimio.top/posts/1013/#disqus_thread</comments>
+      
+    </item>
+    
+    <item>
+      <title>利用Replit搭建Alist</title>
+      <link>https://blog.akimio.top/posts/1012/</link>
+      <guid>https://blog.akimio.top/posts/1012/</guid>
+      <pubDate>Wed, 10 May 2023 09:46:49 GMT</pubDate>
+      
+      <description>本文介绍了两种解决方案，来应对Replit最近封杀团队项目比较严重的问题。第一种方案是使用加密脚本，通过用密文运行脚本规避检测，但后续更新比较繁琐。第二种方案是个人项目+外接数据库，可以使用自建数据库、bit.io账户、db4free账号三选一，并且可以同步修改信息，平时在家里用自己部署的对网盘进行挂载，在外网可以直接使用Replit。本文详细介绍了如何进行账号设置、复制模板、项目配置、更改域名、防止休眠等操作。值得注意的是，Replit项目在一段时间无人访问后会自动进入休眠，停止项目的运行，届时Alist将无法访问，可以使用UptimeRobot定期访问项目地址以达到阻止休眠的效果。</description>
+      
+      
+      
+      
+      <category domain="https://blog.akimio.top/categories/%E7%BD%91%E7%BB%9C%E5%9F%BA%E5%BB%BA%E8%AE%A1%E5%88%92/">网络基建计划</category>
+      
+      
+      <category domain="https://blog.akimio.top/tags/%E6%95%99%E7%A8%8B/">教程</category>
+      
+      <category domain="https://blog.akimio.top/tags/Alist/">Alist</category>
+      
+      <category domain="https://blog.akimio.top/tags/Replit/">Replit</category>
+      
+      
+      <comments>https://blog.akimio.top/posts/1012/#disqus_thread</comments>
+      
+    </item>
+    
+    <item>
+      <title>Docker命令大全</title>
+      <link>https://blog.akimio.top/posts/1011/</link>
+      <guid>https://blog.akimio.top/posts/1011/</guid>
+      <pubDate>Wed, 10 May 2023 07:26:21 GMT</pubDate>
+      
+        
+        
+          
+          
+      <description>&lt;h1&gt;Docker介绍&lt;/h1&gt;
+&lt;p&gt;Docker 是一个开源的应用容器引擎，让开发者可以打包他们的应用以及依赖包到一个可移植的镜像中，然后发布到任何流行的</description>
+          
+        
+      
+      
+      
+      
+      <category domain="https://blog.akimio.top/categories/Docker/">Docker</category>
+      
+      
+      <category domain="https://blog.akimio.top/tags/%E6%95%99%E7%A8%8B/">教程</category>
+      
+      <category domain="https://blog.akimio.top/tags/Docker/">Docker</category>
+      
+      <category domain="https://blog.akimio.top/tags/%E5%A4%87%E5%BF%98%E5%BD%95/">备忘录</category>
+      
+      
+      <comments>https://blog.akimio.top/posts/1011/#disqus_thread</comments>
+      
+    </item>
+    
+    <item>
+      <title>MariaDB数据库搭建及基础用指南</title>
+      <link>https://blog.akimio.top/posts/1010/</link>
+      <guid>https://blog.akimio.top/posts/1010/</guid>
+      <pubDate>Tue, 09 May 2023 04:25:25 GMT</pubDate>
+      
+        
+        
+          
+          
+      <description>&lt;h1&gt;MairaDB介绍&lt;/h1&gt;
+&lt;p&gt;MariaDB是由MySQL的开发者创建的一个开源关系型数据库管理系统，它是MySQL的一个分支，基于社区开发和维护。它完全兼容MySQL，并扩展了一些新特性和功能。MariaDB被广泛用于Web应用程序和企业级软件中，因为它具有高可靠</description>
+          
+        
+      
+      
+      
+      
+      <category domain="https://blog.akimio.top/categories/%E5%A4%87%E5%BF%98%E5%BD%95/">备忘录</category>
+      
+      
+      <category domain="https://blog.akimio.top/tags/%E6%95%99%E7%A8%8B/">教程</category>
+      
+      <category domain="https://blog.akimio.top/tags/Docker/">Docker</category>
+      
+      <category domain="https://blog.akimio.top/tags/%E5%A4%87%E5%BF%98%E5%BD%95/">备忘录</category>
+      
+      <category domain="https://blog.akimio.top/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库</category>
+      
+      
+      <comments>https://blog.akimio.top/posts/1010/#disqus_thread</comments>
+      
+    </item>
+    
+    <item>
+      <title>Nginx-Proxy-Manager问题补充：DNSPod证书申请错误、NPM端口丢失</title>
+      <link>https://blog.akimio.top/posts/1009/</link>
+      <guid>https://blog.akimio.top/posts/1009/</guid>
+      <pubDate>Sun, 07 May 2023 07:46:27 GMT</pubDate>
+      
+      <description>这篇文章介绍了如何使用Nginx进行反向代理，以及如何使用带有WebUI的Nginx-Proxy-Manager进行反向代理。文章详细介绍了如何解决Nginx-Proxy-Manager中的一些BUG，例如DNSPod域名免费证书申请错误和端口丢失等问题。</description>
+      
+      
+      
+      
+      <category domain="https://blog.akimio.top/categories/Docker/">Docker</category>
+      
+      
+      <category domain="https://blog.akimio.top/tags/%E6%95%99%E7%A8%8B/">教程</category>
+      
+      <category domain="https://blog.akimio.top/tags/Docker/">Docker</category>
+      
+      <category domain="https://blog.akimio.top/tags/NAS/">NAS</category>
+      
+      
+      <comments>https://blog.akimio.top/posts/1009/#disqus_thread</comments>
+      
+    </item>
+    
+    <item>
+      <title>VPS基础配置</title>
+      <link>https://blog.akimio.top/posts/1008/</link>
+      <guid>https://blog.akimio.top/posts/1008/</guid>
+      <pubDate>Tue, 02 May 2023 05:13:44 GMT</pubDate>
+      
+        
+        
+          
+          
+      <description>&lt;h1&gt;介绍&lt;/h1&gt;
+&lt;blockquote&gt;
+&lt;p&gt;虚拟专用服务器（英语：Virtual private</description>
+          
+        
+      
+      
+      
+      
+      <category domain="https://blog.akimio.top/categories/%E5%A4%87%E5%BF%98%E5%BD%95/">备忘录</category>
+      
+      
+      <category domain="https://blog.akimio.top/tags/%E6%95%99%E7%A8%8B/">教程</category>
+      
+      <category domain="https://blog.akimio.top/tags/Docker/">Docker</category>
+      
+      <category domain="https://blog.akimio.top/tags/VPS/">VPS</category>
+      
+      
+      <comments>https://blog.akimio.top/posts/1008/#disqus_thread</comments>
+      
+    </item>
+    
+    <item>
+      <title>Ubuntu安装及ROS安装教程</title>
+      <link>https://blog.akimio.top/posts/1007/</link>
+      <guid>https://blog.akimio.top/posts/1007/</guid>
+      <pubDate>Mon, 01 May 2023 12:29:58 GMT</pubDate>
+      
+        
+        
+          
+          
+      <description>&lt;p&gt;环境声明：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;主系统：Window11 x64&lt;/li&gt;
+&lt;li&gt;网络环境：境内&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;安装目标：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Ubuntu LTS</description>
+          
+        
+      
+      
+      
+      
+      <category domain="https://blog.akimio.top/categories/ROS/">ROS</category>
+      
+      
+      <category domain="https://blog.akimio.top/tags/%E6%95%99%E7%A8%8B/">教程</category>
+      
+      <category domain="https://blog.akimio.top/tags/ROS/">ROS</category>
+      
+      <category domain="https://blog.akimio.top/tags/Ubuntu/">Ubuntu</category>
+      
+      <category domain="https://blog.akimio.top/tags/WSL/">WSL</category>
+      
+      <category domain="https://blog.akimio.top/tags/VMware/">VMware</category>
+      
+      
+      <comments>https://blog.akimio.top/posts/1007/#disqus_thread</comments>
+      
+    </item>
+    
+    <item>
+      <title>个人图床搭建之Github篇</title>
+      <link>https://blog.akimio.top/posts/1006/</link>
+      <guid>https://blog.akimio.top/posts/1006/</guid>
+      <pubDate>Sun, 16 Apr 2023 02:51:44 GMT</pubDate>
+      
+      <description>这篇文章介绍了如何搭建自己的Github图床，使用Github作为图床可以减轻博客服务器的压力，同时也能提高网页加载速度，使用户体验更好。文章详细介绍了如何使用Github仓库作为图库，以及如何使用PicGO、jsDelivr和Vercel等工具进行图床的优化和管理。虽然使用Github作为图床有一定的风险，但是使用这种方法可以免费地搭建自己的图床，并且部署简单，使用方便。</description>
+      
+      
+      
+      
+      <category domain="https://blog.akimio.top/categories/%E7%BD%91%E7%BB%9C%E5%9F%BA%E5%BB%BA%E8%AE%A1%E5%88%92/">网络基建计划</category>
+      
+      
+      <category domain="https://blog.akimio.top/tags/%E6%95%99%E7%A8%8B/">教程</category>
+      
+      <category domain="https://blog.akimio.top/tags/%E5%8D%9A%E5%AE%A2/">博客</category>
+      
+      <category domain="https://blog.akimio.top/tags/%E5%9B%BE%E5%BA%8A/">图床</category>
+      
+      
+      <comments>https://blog.akimio.top/posts/1006/#disqus_thread</comments>
+      
+    </item>
+    
+    <item>
+      <title>利用Replit搭建个人博客Halo</title>
+      <link>https://blog.akimio.top/posts/1005/</link>
+      <guid>https://blog.akimio.top/posts/1005/</guid>
+      <pubDate>Thu, 13 Apr 2023 08:26:08 GMT</pubDate>
+      
+      <description>这篇文章介绍了如何在Replit上使用Halo搭建个人博客。文章详细介绍了注册账号及账户设置、创建项目、了解Replit项目的大致操作方法、安装Halo、配置管理员账号密码、Halo初运行、使用自己的域名以及Replit项目休眠等操作。同时还分析了使用Replit搭建个人博客的优势和劣势，如操作简单、适合小白上手等优势，以及无法更改更多详细配置、只能使用Halo官方的数据库等劣势。</description>
+      
+      
+      
+      
+      <category domain="https://blog.akimio.top/categories/%E7%BD%91%E7%BB%9C%E5%9F%BA%E5%BB%BA%E8%AE%A1%E5%88%92/">网络基建计划</category>
+      
+      
+      <category domain="https://blog.akimio.top/tags/%E6%95%99%E7%A8%8B/">教程</category>
+      
+      <category domain="https://blog.akimio.top/tags/%E5%8D%9A%E5%AE%A2/">博客</category>
+      
+      <category domain="https://blog.akimio.top/tags/Replit/">Replit</category>
+      
+      <category domain="https://blog.akimio.top/tags/Halo/">Halo</category>
+      
+      
+      <comments>https://blog.akimio.top/posts/1005/#disqus_thread</comments>
+      
+    </item>
+    
+    <item>
+      <title>AI工具网站推荐</title>
+      <link>https://blog.akimio.top/posts/1004/</link>
+      <guid>https://blog.akimio.top/posts/1004/</guid>
+      <pubDate>Fri, 24 Mar 2023 06:34:18 GMT</pubDate>
+      
+        
+        
+          
+          
+      <description>&lt;h1&gt;文本类&lt;/h1&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;https://readme.rustc.cloud/zh&quot;&gt;README 生成器&lt;/a&gt; 用AI生成完整的GitHub readme&lt;/li&gt;
+&lt;li&gt;&lt;a</description>
+          
+        
+      
+      
+      
+      
+      <category domain="https://blog.akimio.top/categories/%E5%A4%87%E5%BF%98%E5%BD%95/">备忘录</category>
+      
+      
+      <category domain="https://blog.akimio.top/tags/%E6%8E%A8%E8%8D%90/">推荐</category>
+      
+      <category domain="https://blog.akimio.top/tags/%E7%BD%91%E7%AB%99/">网站</category>
+      
+      
+      <comments>https://blog.akimio.top/posts/1004/#disqus_thread</comments>
+      
+    </item>
+    
+    <item>
+      <title>MarkDown入门教程</title>
+      <link>https://blog.akimio.top/posts/1003/</link>
+      <guid>https://blog.akimio.top/posts/1003/</guid>
+      <pubDate>Fri, 24 Mar 2023 02:27:02 GMT</pubDate>
+      
+        
+        
+          
+          
+      <description>&lt;h1&gt;Markdown 是什么？&lt;/h1&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Markdown 是一种轻量级的标记语言，可用于在纯文本文档中添加格式化元素。Markdown 由 John Gruber 于 2004</description>
+          
+        
+      
+      
+      
+      
+      <category domain="https://blog.akimio.top/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">学习笔记</category>
+      
+      
+      <category domain="https://blog.akimio.top/tags/%E6%95%99%E7%A8%8B/">教程</category>
+      
+      
+      <comments>https://blog.akimio.top/posts/1003/#disqus_thread</comments>
+      
+    </item>
+    
+    <item>
+      <title>利用FRP和Nginx-Proxy-Manager为内网设备提供内外穿透服务</title>
+      <link>https://blog.akimio.top/posts/1002/</link>
+      <guid>https://blog.akimio.top/posts/1002/</guid>
+      <pubDate>Sat, 18 Mar 2023 13:55:24 GMT</pubDate>
+      
+      <description>本文介绍了基于Docker的FRP内网穿透和Nginx-Proxy-Manager反向代理的部署方法。首先是FRP内网穿透部署，需要在服务器上创建配置文件并配置Docker，同时需要开放相应端口以及配置VPS防火墙策略。其次是Nginx-Proxy-Manager反向代理部署，需要在VPS客户端上创建挂载目录并配置Docker，同时需要开放相应端口。在配置Nginx-Proxy-Manager时，可以选择中文汉化版本镜像或者英文原版镜像，同时需要注意配置数据和SSL证书的文件映射。</description>
+      
+      
+      
+      
+      <category domain="https://blog.akimio.top/categories/Docker/">Docker</category>
+      
+      
+      <category domain="https://blog.akimio.top/tags/%E6%95%99%E7%A8%8B/">教程</category>
+      
+      <category domain="https://blog.akimio.top/tags/Docker/">Docker</category>
+      
+      <category domain="https://blog.akimio.top/tags/VPS/">VPS</category>
+      
+      <category domain="https://blog.akimio.top/tags/%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F/">内网穿透</category>
+      
+      
+      <comments>https://blog.akimio.top/posts/1002/#disqus_thread</comments>
+      
+    </item>
+    
+    <item>
+      <title>基于Ubuntu安装docker</title>
+      <link>https://blog.akimio.top/posts/1001/</link>
+      <guid>https://blog.akimio.top/posts/1001/</guid>
+      <pubDate>Sat, 18 Mar 2023 10:55:00 GMT</pubDate>
+      
+        
+        
+          
+          
+      <description>&lt;h1&gt;卸载旧版本Docker&lt;/h1&gt;
+&lt;figure class=&quot;highlight plaintext&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td</description>
+          
+        
+      
+      
+      
+      
+      <category domain="https://blog.akimio.top/categories/Docker/">Docker</category>
+      
+      
+      <category domain="https://blog.akimio.top/tags/Docker/">Docker</category>
+      
+      <category domain="https://blog.akimio.top/tags/VPS/">VPS</category>
+      
+      
+      <comments>https://blog.akimio.top/posts/1001/#disqus_thread</comments>
+      
+    </item>
+    
+    <item>
+      <title>Hello World</title>
+      <link>https://blog.akimio.top/posts/1/</link>
+      <guid>https://blog.akimio.top/posts/1/</guid>
+      <pubDate>Sat, 18 Mar 2023 04:00:00 GMT</pubDate>
+      
+        
+        
+          
+          
+      <description>&lt;h1&gt;&lt;strong&gt;Hello World.&lt;/strong&gt;&lt;/h1&gt;
+&lt;p&gt;&lt;em&gt;This is my bolg</description>
+          
+        
+      
+      
+      
+      
+      
+      
+    </item>
+    
+  </channel>
+</rss>

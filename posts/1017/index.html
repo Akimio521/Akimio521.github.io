@@ -1,0 +1,405 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1"><title>51单片机学习记录-00 | 秋澪的博客</title><noscript>开启JavaScript才能访问本站哦~</noscript><link rel="icon" href="https://img.akimio.top/avatar/akimio.png"><!-- index.css--><link rel="stylesheet" href="/css/index.css?v=1.4.7"><!-- inject head--><meta name="google-site-verification" content="Fk7XyGh7jge7BoQY"><meta name="baidu-site-verification" content="codeva-Ppouj7y5Ib"><link rel="stylesheet" href="https://cdn.cbd.int/solitude-source/icon/scoicon.min.css"><link rel="stylesheet" href="https://cdn.staticfile.org/node-snackbar/0.1.16/snackbar.min.css"><!-- aplayer--><!-- swiper--><link rel="stylesheet" href="https://cdn.staticfile.org/fancyapps-ui/5.0.33/fancybox/fancybox.min.css"><link rel="stylesheet" href="https://cdn.staticfile.org/KaTeX/0.16.9/katex.min.css"><!-- Open Graph--><meta name="description" content="开始记录51单品机学习历程"><!-- pwa--><script>(win => {
+        win.saveToLocal = {
+            set: function setWithExpiry(key, value, ttl) {
+                if (ttl === 0)
+                    return
+                const now = new Date()
+                const expiryDay = ttl * 86400000
+                const item = {
+                    value: value,
+                    expiry: now.getTime() + expiryDay,
+                }
+                localStorage.setItem(key, JSON.stringify(item))
+            },
+
+            get: function getWithExpiry(key) {
+                const itemStr = localStorage.getItem(key)
+
+                if (!itemStr) {
+                    return undefined
+                }
+                const item = JSON.parse(itemStr)
+                const now = new Date()
+
+                if (now.getTime() > item.expiry) {
+                    localStorage.removeItem(key)
+                    return undefined
+                }
+                return item.value
+            }
+        }
+
+        const DarkModeStatus = localStorage.getItem('theme')
+        if (DarkModeStatus !== null) {
+            if (DarkModeStatus === 'dark') {
+                document.documentElement.setAttribute('data-theme', 'dark')
+            } else {
+                document.documentElement.setAttribute('data-theme', 'light')
+            }
+        }
+
+        const asideStatus = saveToLocal.get('aside-status')
+        if (asideStatus !== undefined) {
+            if (asideStatus === 'hide') {
+                document.documentElement.classList.add('hide-aside')
+            } else {
+                document.documentElement.classList.remove('hide-aside')
+            }
+        }
+    }
+)(window)
+
+console.log(
+    "%c🔥 程序：Hexo | 主题：Hexo-Theme-Solitude | 作者：王卓Sco、亦封 | Github: https://github.com/wleelw/Hexo-theme-solitude | 版本：v1.4.7 😄",
+    "color: #fff; background: linear-gradient(-25deg, #a8edea, #fed6e3); padding: 8px 15px; border-radius: 8px; text-shadow: 2px 2px 4px white; color: black;"
+);</script><!-- global head--><script>const GLOBAL_CONFIG = {
+    root: '/',
+    algolia: {"appId":"FFEW0LYV6V","apiKey":"67e0012d866ead8c1cc09c58c6b50c3e","indexName":"blog","hits":{"per_page":10}},
+    localsearch: undefined,
+    runtime: '2023-03-18 12:00:00',
+    lazyload: {
+        enable: true,
+        error: '/img/error_load.png'
+    },
+    hightlight: {
+        enable: true,
+        limit: 200,
+        expand: true,
+        copy: true,
+    },
+    randomlinks: false,
+    lang: {
+        theme: {
+            dark: '已切换至深色模式',
+            light: '已切换至浅色模式',
+        },
+        copy: {
+            success: '复制成功',
+            error: '复制失败',
+        },
+        backtop: '返回顶部',
+        time: {
+            recent: '最近',
+            yesterday: '昨天',
+            berforeyesterday: '前天',
+            daybefore: '天前',
+            runtime: '天',
+        },
+        search: {
+            empty: '找不到你查询的内容：${query}',
+            hit: '找到 ${hits} 条结果，用时 ${time} 毫秒',
+            placeholder: '输入关键词快速查找',
+        },
+        chs: {
+            chs_to_cht: '繁體中文',
+            cht_to_chs: '简体中文',
+        }
+    },
+    aside: {
+        sayhello: {
+            morning: '一日之计在于晨',
+            noon: '吃饱了才有力气干活',
+            afternoon: '集中精力，攻克难关',
+            night: '不要太劳累了，早睡更健康',
+            goodnight: '睡个好觉，保证精力充沛',
+        },
+        sayhello2: ["🤖️ 数码科技爱好者","🔍 分享与热心帮助","🏠 智能家居小能手","🔨 设计开发一条龙","🤝 专修交互与设计","🏃 脚踏实地行动派","🧱 团队小组发动机","💢 壮汉人狠话不多","🎮 电竞游戏爱好者"],
+    },
+    covercolor: {
+        enable: true
+    },
+    comment: {
+        enable: true,
+        type: 'twikoo',
+        commentBarrage: true,
+        randomInfoStart: ["聪敏的","可爱的","美丽的"],
+        randomInfoEnd: ["白菜","小可爱","小仙女"],
+        twikoo: {
+            url: 'https://twikoo.akimio.top/',
+            accessToken: ''
+        },
+        waline: {
+            url: '',
+        }
+    },
+    lightbox: 'fancybox',
+    rightside: {
+        enable: true
+    },
+    ai: {
+        enable: false,
+        key: '',
+        talk: '我是王卓Sco开发的摘要生成助理ScoGPT，ScoGPT在静态部署时进行摘要的撰写，并且在访客访问时通过ScoCorrection转译后的文本摘要实现工具。我在这里只负责已经生成的摘要显示，你无法与我直接沟通，但我可以回答一些预设的问题。',
+        randomPost: false,
+    },
+    music: {
+        enable: false,
+    },
+    translate: {"defaultEncoding":2,"translateDelay":0},
+};</script><meta name="generator" content="Hexo 7.1.1"><link rel="alternate" href="/atom.xml" title="秋澪的博客" type="application/atom+xml">
+<link rel="alternate" href="/rss2.xml" title="秋澪的博客" type="application/rss+xml">
+</head><body id="body"><!-- universe--><canvas id="universe"></canvas><!-- loading--><!-- console--><div id="console"><div class="close-btn" onclick="sco.hideConsole()"><i class="scoicon sco-close-fill"></i></div><div class="console-card-group"><div class="console-card-group-left"><div class="console-card" id="card-newest-comments" onclick="sco.hideConsole()"><div class="card-content"><div class="author-content-item-tips">互动</div><div class="author-content-item-title">最新评论</div></div><div class="aside-list"></div></div></div><div class="console-card-group-right"><div class="console-card tags" onclick="sco.hideConsole()"><div class="card-content"><div class="author-content-item-tips">标签</div><div class="author-content-item-title">寻找感兴趣的领域</div></div><div class="card-tag-cloud"><a href="/tags/51%E5%8D%95%E7%89%87%E6%9C%BA/">51单片机<sup>2</sup></a><a href="/tags/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/">学习记录<sup>2</sup></a><a href="/tags/Arbiam/">Arbiam<sup>1</sup></a><a href="/tags/%E6%95%99%E7%A8%8B/">教程<sup>28</sup></a><a href="/tags/Docker/">Docker<sup>8</sup></a><a href="/tags/%E5%A4%87%E5%BF%98%E5%BD%95/">备忘录<sup>8</sup></a><a href="/tags/NAS/">NAS<sup>2</sup></a><a href="/tags/VPS/">VPS<sup>3</sup></a><a href="/tags/%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F/">内网穿透<sup>1</sup></a><a href="/tags/Hexo/">Hexo<sup>2</sup></a><a href="/tags/%E5%8D%9A%E5%AE%A2/">博客<sup>4</sup></a><a href="/tags/%E7%BE%8E%E5%8C%96/">美化<sup>1</sup></a><a href="/tags/ROS/">ROS<sup>1</sup></a><a href="/tags/Ubuntu/">Ubuntu<sup>1</sup></a><a href="/tags/WSL/">WSL<sup>1</sup></a><a href="/tags/VMware/">VMware<sup>1</sup></a><a href="/tags/%E8%BD%AF%E4%BB%B6%E6%8E%A8%E8%8D%90/">软件推荐<sup>1</sup></a><a href="/tags/%E7%BE%A4%E6%99%96/">群晖<sup>1</sup></a><a href="/tags/%E6%8E%A8%E8%8D%90/">推荐<sup>4</sup></a><a href="/tags/%E7%BD%91%E7%AB%99/">网站<sup>1</sup></a><a href="/tags/%E8%BD%AF%E4%BB%B6/">软件<sup>2</sup></a><a href="/tags/IOS/">IOS<sup>1</sup></a><a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库<sup>1</sup></a><a href="/tags/Markdown/">Markdown<sup>1</sup></a><a href="/tags/%E5%9F%9F%E5%90%8D/">域名<sup>1</sup></a><a href="/tags/%E7%BD%91%E7%AB%99%E4%BC%98%E5%8C%96/">网站优化<sup>1</sup></a><a href="/tags/CLoudflare/">CLoudflare<sup>2</sup></a><a href="/tags/Ventoy/">Ventoy<sup>1</sup></a><a href="/tags/WinToGo/">WinToGo<sup>1</sup></a><a href="/tags/LinToGo/">LinToGo<sup>1</sup></a><a href="/tags/AIO/">AIO<sup>1</sup></a><a href="/tags/%E8%B7%AF%E7%94%B1%E5%99%A8/">路由器<sup>1</sup></a><a href="/tags/Git/">Git<sup>1</sup></a><a href="/tags/CloudFlare/">CloudFlare<sup>1</sup></a><a href="/tags/Excalidraw/">Excalidraw<sup>1</sup></a><a href="/tags/UnlockMusic%E9%9F%B3%E4%B9%90%E8%A7%A3%E9%94%81/">UnlockMusic音乐解锁<sup>1</sup></a><a href="/tags/%E5%9B%BE%E5%BA%8A/">图床<sup>1</sup></a><a href="/tags/%E5%9F%9F%E5%90%8D%E9%82%AE%E7%AE%B1/">域名邮箱<sup>1</sup></a><a href="/tags/%E9%95%9C%E5%83%8F%E7%AB%99%E6%90%AD%E5%BB%BA/">镜像站搭建<sup>1</sup></a><a href="/tags/Alist/">Alist<sup>2</sup></a><a href="/tags/Replit/">Replit<sup>2</sup></a><a href="/tags/Halo/">Halo<sup>1</sup></a><a href="/tags/Render/">Render<sup>1</sup></a></div></div><div class="console-card history" onclick="sco.hideConsole()"><ul class="card-archive-list"><li class="card-archive-list-item"><a class="card-archive-list-link" onclick="pjax.loadUrl('/archives/2024/01/')" href="javascript:void(0);" rel="external nofollow noreferrer"><span class="card-archive-list-date">2024/01</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">3</span><span class="card-archive-list-count-unit">篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" onclick="pjax.loadUrl('/archives/2023/12/')" href="javascript:void(0);" rel="external nofollow noreferrer"><span class="card-archive-list-date">2023/12</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">1</span><span class="card-archive-list-count-unit">篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" onclick="pjax.loadUrl('/archives/2023/10/')" href="javascript:void(0);" rel="external nofollow noreferrer"><span class="card-archive-list-date">2023/10</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">2</span><span class="card-archive-list-count-unit">篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" onclick="pjax.loadUrl('/archives/2023/09/')" href="javascript:void(0);" rel="external nofollow noreferrer"><span class="card-archive-list-date">2023/09</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">2</span><span class="card-archive-list-count-unit">篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" onclick="pjax.loadUrl('/archives/2023/08/')" href="javascript:void(0);" rel="external nofollow noreferrer"><span class="card-archive-list-date">2023/08</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">2</span><span class="card-archive-list-count-unit">篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" onclick="pjax.loadUrl('/archives/2023/07/')" href="javascript:void(0);" rel="external nofollow noreferrer"><span class="card-archive-list-date">2023/07</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">1</span><span class="card-archive-list-count-unit">篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" onclick="pjax.loadUrl('/archives/2023/06/')" href="javascript:void(0);" rel="external nofollow noreferrer"><span class="card-archive-list-date">2023/06</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">6</span><span class="card-archive-list-count-unit">篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" onclick="pjax.loadUrl('/archives/2023/05/')" href="javascript:void(0);" rel="external nofollow noreferrer"><span class="card-archive-list-date">2023/05</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">13</span><span class="card-archive-list-count-unit">篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" onclick="pjax.loadUrl('/archives/2023/04/')" href="javascript:void(0);" rel="external nofollow noreferrer"><span class="card-archive-list-date">2023/04</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">2</span><span class="card-archive-list-count-unit">篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" onclick="pjax.loadUrl('/archives/2023/03/')" href="javascript:void(0);" rel="external nofollow noreferrer"><span class="card-archive-list-date">2023/03</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">5</span><span class="card-archive-list-count-unit">篇</span></div></a></li></ul></div></div></div><div class="button-group"><div class="console-btn-item"><a class="darkmode_switchbutton" onclick="sco.switchDarkMode()" title="昼夜切换" href="javascript:void(0);" rel="external nofollow noreferrer"><i class="scoicon sco-moon-clear-fill"></i></a></div><div class="console-btn-item" id="consoleHideAside"><a class="asideSwitch" onclick="sco.switchHideAside()" title="边栏显示控制" href="javascript:void(0);" rel="external nofollow noreferrer"><i class="scoicon sco-side-bar-fill"></i></a></div><div class="console-btn-item on" id="consoleCommentBarrage" onclick="sco.switchCommentBarrage()"><a class="commentBarrage"><i class="scoicon sco-chat-fill"></i></a></div></div><div class="console-mask" onclick="sco.hideConsole()"></div></div><!-- sidebar--><div id="sidebar" style="zoom: 1;"><div id="menu-mask" style="display: none;"></div><div id="sidebar-menus"><span class="sidebar-menu-item-title">功能</span><div class="sidebar-menu-item"><a class="darkmode_switchbutton menu-child" onclick="sco.switchDarkMode()" href="javascript:void(0);" rel="external nofollow noreferrer"><i class="scoicon sco-moon-clear-fill"></i><span>显示模式</span></a></div><div class="back-menu-list-groups"><div class="back-menu-list-group"><div class="back-menu-list-title">项目</div><div class="back-menu-list"><a class="back-menu-item" target="_blank" rel="noopener" href="https://akimio.top" title="个人主页"><img class="back-menu-item-icon" src="https://img.akimio.top/avatar/akimio.png" alt="项目"><span class="back-menu-item-text">个人主页</span></a><a class="back-menu-item" target="_blank" rel="noopener" href="https://excalidraw.akimio.top" title="Excalidraw"><img class="back-menu-item-icon" src="https://img.akimio.top/ICON/excalidraw.png" alt="项目"><span class="back-menu-item-text">Excalidraw</span></a><a class="back-menu-item" target="_blank" rel="noopener" href="https://chatgpt.akimio.top" title="ChatGPT"><img class="back-menu-item-icon" src="https://img.akimio.top/ICON/chatgpt.png" alt="项目"><span class="back-menu-item-text">ChatGPT</span></a><a class="back-menu-item" target="_blank" rel="noopener" href="https://alist.akimio.top" title="Alist"><img class="back-menu-item-icon" src="https://img.akimio.top/ICON/alist.png" alt="项目"><span class="back-menu-item-text">Alist</span></a><a class="back-menu-item" target="_blank" rel="noopener" href="https://music.akimio.top" title="Splayer"><img class="back-menu-item-icon" src="https://img.akimio.top/ICON/splayer.png" alt="项目"><span class="back-menu-item-text">Splayer</span></a><a class="back-menu-item" target="_blank" rel="noopener" href="https://um.akimio.top" title="音乐解锁"><img class="back-menu-item-icon" src="https://img.akimio.top/ICON/UnlockMusic.png" alt="项目"><span class="back-menu-item-text">音乐解锁</span></a></div></div></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="javascript:void(0);" rel="external nofollow noreferrer"><span>文库</span></a><ul class="menus_item_child"><li><a class="site-page child" href="/archives/"><i class="scoicon sco-folder-fill"></i><span>文章列表</span></a></li><li><a class="site-page child" href="/categories/"><i class="scoicon sco-checkbox-multiple-blank-fill"></i><span>全部分类</span></a></li><li><a class="site-page child" href="/tags/"><i class="scoicon sco-price-tag-fill"></i><span>全部标签</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);" rel="external nofollow noreferrer"><span>友链</span></a><ul class="menus_item_child"><li><a class="site-page child" href="/links/"><i class="scoicon sco-group-fill"></i><span>友情链接</span></a></li><li><a class="site-page child" href="/frcircle/"><i class="scoicon sco-wifi-fill"></i><span>朋友圈</span></a></li><li><a class="site-page child" href="javascript:travelling()" rel="external nofollow noreferrer"><i class="scoicon sco-gift-fill"></i><span>宝藏博主</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);" rel="external nofollow noreferrer"><span>我的</span></a><ul class="menus_item_child"><li><a class="site-page child" href="/tools/"><i class="scoicon sco-tools-fill"></i><span>工具箱</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);" rel="external nofollow noreferrer"><span>关于</span></a><ul class="menus_item_child"><li><a class="site-page child" href="/about/"><i class="scoicon sco-contacts-fill"></i><span>关于本站</span></a></li></ul></div></div><span class="sidebar-menu-item-title">标签</span><div class="card-widget card-tags card-archives card-webinfo card-allinfo"><div class="card-tag-cloud"><a href="/tags/51%E5%8D%95%E7%89%87%E6%9C%BA/">51单片机<sup>2</sup></a><a href="/tags/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/">学习记录<sup>2</sup></a><a href="/tags/Arbiam/">Arbiam<sup>1</sup></a><a href="/tags/%E6%95%99%E7%A8%8B/">教程<sup>28</sup></a><a href="/tags/Docker/">Docker<sup>8</sup></a><a href="/tags/%E5%A4%87%E5%BF%98%E5%BD%95/">备忘录<sup>8</sup></a><a href="/tags/NAS/">NAS<sup>2</sup></a><a href="/tags/VPS/">VPS<sup>3</sup></a><a href="/tags/%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F/">内网穿透<sup>1</sup></a><a href="/tags/Hexo/">Hexo<sup>2</sup></a><a href="/tags/%E5%8D%9A%E5%AE%A2/">博客<sup>4</sup></a><a href="/tags/%E7%BE%8E%E5%8C%96/">美化<sup>1</sup></a><a href="/tags/ROS/">ROS<sup>1</sup></a><a href="/tags/Ubuntu/">Ubuntu<sup>1</sup></a><a href="/tags/WSL/">WSL<sup>1</sup></a><a href="/tags/VMware/">VMware<sup>1</sup></a><a href="/tags/%E8%BD%AF%E4%BB%B6%E6%8E%A8%E8%8D%90/">软件推荐<sup>1</sup></a><a href="/tags/%E7%BE%A4%E6%99%96/">群晖<sup>1</sup></a><a href="/tags/%E6%8E%A8%E8%8D%90/">推荐<sup>4</sup></a><a href="/tags/%E7%BD%91%E7%AB%99/">网站<sup>1</sup></a><a href="/tags/%E8%BD%AF%E4%BB%B6/">软件<sup>2</sup></a><a href="/tags/IOS/">IOS<sup>1</sup></a><a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库<sup>1</sup></a><a href="/tags/Markdown/">Markdown<sup>1</sup></a><a href="/tags/%E5%9F%9F%E5%90%8D/">域名<sup>1</sup></a><a href="/tags/%E7%BD%91%E7%AB%99%E4%BC%98%E5%8C%96/">网站优化<sup>1</sup></a><a href="/tags/CLoudflare/">CLoudflare<sup>2</sup></a><a href="/tags/Ventoy/">Ventoy<sup>1</sup></a><a href="/tags/WinToGo/">WinToGo<sup>1</sup></a><a href="/tags/LinToGo/">LinToGo<sup>1</sup></a><a href="/tags/AIO/">AIO<sup>1</sup></a><a href="/tags/%E8%B7%AF%E7%94%B1%E5%99%A8/">路由器<sup>1</sup></a><a href="/tags/Git/">Git<sup>1</sup></a><a href="/tags/CloudFlare/">CloudFlare<sup>1</sup></a><a href="/tags/Excalidraw/">Excalidraw<sup>1</sup></a><a href="/tags/UnlockMusic%E9%9F%B3%E4%B9%90%E8%A7%A3%E9%94%81/">UnlockMusic音乐解锁<sup>1</sup></a><a href="/tags/%E5%9B%BE%E5%BA%8A/">图床<sup>1</sup></a><a href="/tags/%E5%9F%9F%E5%90%8D%E9%82%AE%E7%AE%B1/">域名邮箱<sup>1</sup></a><a href="/tags/%E9%95%9C%E5%83%8F%E7%AB%99%E6%90%AD%E5%BB%BA/">镜像站搭建<sup>1</sup></a><a href="/tags/Alist/">Alist<sup>2</sup></a><a href="/tags/Replit/">Replit<sup>2</sup></a><a href="/tags/Halo/">Halo<sup>1</sup></a><a href="/tags/Render/">Render<sup>1</sup></a></div></div></div></div><!-- keyboard--><div class="post" id="body-wrap"><header class="post-bg" id="page-header"><nav class="show" id="nav"><div id="nav-group"><div id="blog_name"><div class="back-home-button" tabindex="-1"><i class="back-home-button-icon scoicon sco-more-fill"></i><div class="back-menu-list-groups"><div class="back-menu-list-group"><div class="back-menu-list-title">项目</div><div class="back-menu-list"><a class="back-menu-item" target="_blank" rel="noopener" href="https://akimio.top" title="个人主页"><img class="back-menu-item-icon" src="https://img.akimio.top/avatar/akimio.png" alt="项目"><span class="back-menu-item-text">个人主页</span></a><a class="back-menu-item" target="_blank" rel="noopener" href="https://excalidraw.akimio.top" title="Excalidraw"><img class="back-menu-item-icon" src="https://img.akimio.top/ICON/excalidraw.png" alt="项目"><span class="back-menu-item-text">Excalidraw</span></a><a class="back-menu-item" target="_blank" rel="noopener" href="https://chatgpt.akimio.top" title="ChatGPT"><img class="back-menu-item-icon" src="https://img.akimio.top/ICON/chatgpt.png" alt="项目"><span class="back-menu-item-text">ChatGPT</span></a><a class="back-menu-item" target="_blank" rel="noopener" href="https://alist.akimio.top" title="Alist"><img class="back-menu-item-icon" src="https://img.akimio.top/ICON/alist.png" alt="项目"><span class="back-menu-item-text">Alist</span></a><a class="back-menu-item" target="_blank" rel="noopener" href="https://music.akimio.top" title="Splayer"><img class="back-menu-item-icon" src="https://img.akimio.top/ICON/splayer.png" alt="项目"><span class="back-menu-item-text">Splayer</span></a><a class="back-menu-item" target="_blank" rel="noopener" href="https://um.akimio.top" title="音乐解锁"><img class="back-menu-item-icon" src="https://img.akimio.top/ICON/UnlockMusic.png" alt="项目"><span class="back-menu-item-text">音乐解锁</span></a></div></div></div></div><a id="site-name" href="/" title="返回博客主页" target="_self"><span class="title">秋澪Akimio的博客</span></a></div><div id="page-name-mask"><div id="page-name"><a id="page-name-text" onclick="sco.toTop()">51单片机学习记录-00</a></div></div><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="javascript:void(0);" rel="external nofollow noreferrer"><span>文库</span></a><ul class="menus_item_child"><li><a class="site-page child" href="/archives/"><i class="scoicon sco-folder-fill"></i><span>文章列表</span></a></li><li><a class="site-page child" href="/categories/"><i class="scoicon sco-checkbox-multiple-blank-fill"></i><span>全部分类</span></a></li><li><a class="site-page child" href="/tags/"><i class="scoicon sco-price-tag-fill"></i><span>全部标签</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);" rel="external nofollow noreferrer"><span>友链</span></a><ul class="menus_item_child"><li><a class="site-page child" href="/links/"><i class="scoicon sco-group-fill"></i><span>友情链接</span></a></li><li><a class="site-page child" href="/frcircle/"><i class="scoicon sco-wifi-fill"></i><span>朋友圈</span></a></li><li><a class="site-page child" href="javascript:travelling()" rel="external nofollow noreferrer"><i class="scoicon sco-gift-fill"></i><span>宝藏博主</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);" rel="external nofollow noreferrer"><span>我的</span></a><ul class="menus_item_child"><li><a class="site-page child" href="/tools/"><i class="scoicon sco-tools-fill"></i><span>工具箱</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);" rel="external nofollow noreferrer"><span>关于</span></a><ul class="menus_item_child"><li><a class="site-page child" href="/about/"><i class="scoicon sco-contacts-fill"></i><span>关于本站</span></a></li></ul></div></div></div><div id="nav-left"></div><div id="nav-right"><div class="nav-button" id="travellings_button"><a class="site-page" target="_blank" rel="noopener external nofollow noreferrer" href="https://www.travellings.cn/go.html" title=""><i class="scoicon sco-train-line"></i></a></div><div class="nav-button" id="randomPost_button"><a class="site-page" onclick="toRandomPost()" title="随机一篇文章" href="javascript:void(0);" rel="external nofollow noreferrer"><i class="scoicon sco-signal-tower-fill"></i></a></div><div class="nav-button" id="search-button"><a class="site-page social-icon search" href="javascript:void(0);" rel="external nofollow noreferrer" title="搜索"><i class="scoicon sco-search-line"></i></a></div><div class="nav-button" id="nav-console"><a class="console_switchbutton" onclick="sco.showConsole()" title="中控台" href="javascript:void(0);" rel="external nofollow noreferrer"><i class="scoicon sco-dashboard-fill"></i></a></div><div class="nav-button" id="nav-totop" onclick="sco.toTop()"><a class="totopbtn"><i class="scoicon sco-arrow-up-line"></i><span id="percent">0</span></a></div><div id="toggle-menu"><a class="site-page"><i class="scoicon sco-menu-line"></i></a></div></div></div></nav><div class="coverdiv" id="coverdiv"><img class="nolazyload" id="post-cover" src="https://img.akimio.top/Blog/2023/10/1697201710-65293e2eb84e7.webp" alt="51单片机学习记录-00"></div><div id="post-info"><div id="post-firstinfo"><div class="meta-firstline"><a class="post-meta-original" title="该文章为原创文章，注意版权协议">原创</a><span class="post-meta-categories"><a class="post-meta-categories" href="/categories/51单片机学习记录/">51单片机学习记录</a></span><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/51%E5%8D%95%E7%89%87%E6%9C%BA/"><span class="tags-name tags-punctuation">51单片机</span></a><a class="post-meta__tags" href="/tags/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/"><span class="tags-name tags-punctuation">学习记录</span></a></div></div></div></div><h1 class="post-title">51单片机学习记录-00</h1><div id="post-meta"><div class="meta-secondline"><span class="post-meta-date" title="meta_posted 2023-05-22 17:30:39"><i class="post-meta-icon scoicon sco-calendar-todo-fill"></i><time datetime="2023-05-22T09:30:39.000Z">2023-05-22T09:30:39.000Z</time></span><span class="post-meta-date" title="meta_updated 2024-02-13 17:53:26"><i class="post-meta-icon scoicon sco-refresh-line"></i><time datetime="2024-02-13T09:53:26.000Z">2024-02-13T09:53:26.000Z</time></span><span class="post-meta-wordcount"><i class="post-meta-icon scoicon sco-word-fill" title="文章字数"></i><span class="word-count">753</span><span class="post-meta-separator"></span><i class="post-meta-icon scoicon sco-clock-fill" title="阅读耗时"></i><span>2 min</span></span><span class="post-meta-position" title="作者IP归属地为大连"><i class="post-meta-icon scoicon sco-map-pin-fill"></i><span>大连</span></span><a class="post-meta-pv" href="/posts/1017/" title="文章热度"><i class="post-meta-icon scoicon sco-fire-fill"></i><span id="twikoo_visitors"><i class="scoicon sco-loading-line"></i></span></a><span class="post-meta-commentcount" title="评论数" onclick="sco.scrollTo('post-comment')"><i class="scoicon sco-chat-fill"></i><a href="/posts/1017/#post-comment"><span id="twikoo-count"><i class="scoicon sco-loading-line"></i></span></a></span></div></div></div><section class="main-hero-waves-area waves-area"><svg class="waves-svg" xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto"><defs><path id="gentle-wave" d="M -160 44 c 30 0 58 -18 88 -18 s 58 18 88 18 s 58 -18 88 -18 s 58 18 88 18 v 44 h -352 Z"></path></defs><g class="parallax"><use href="#gentle-wave" x="48" y="0"></use><use href="#gentle-wave" x="48" y="3"></use><use href="#gentle-wave" x="48" y="5"></use><use href="#gentle-wave" x="48" y="7"></use></g></svg></section></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1>介绍</h1>
+<blockquote>
+<p>单片机（英语：single-chip microcomputer，台湾作单晶片，全称单片微型计算机，又称微控制器单元（microcontroller unit）），是把中央处理器、存储器、定时/计数器（timer/counter）、各种输入输出接口等都集成在一块集成电路芯片上的微型计算机。与应用在个人电脑中的通用型微处理器相比，它更强调自供应（不用外接硬件）和节约成本，集成程度更高，但因为规格已经包含，所能实现的功能也较专一。它的最大优点是体积小，可放在仪表内部，但存储量小，输入输出接口简单。由于其发展非常迅速，旧的定义已不能满足，所以在很多应用场合被称为范围更广的微控制器；由于单片机微电脑常用于当控制器，故又名single chip microcontroller。</p>
+</blockquote>
+<h1>前言</h1>
+<p>这个系列主要是51单片机的入门学习历程，笔者也是第一次接触单片机，将从零开始与大家一共学习单片机，本系列博客不仅是为了给新加入的小伙伴一些指引，也是巩固自身的学习，若其中内容有不当之处，欢迎大佬斧正，让我们一起<strong>無限進歩</strong></p>
+<h1>准备</h1>
+<h2 id="硬件"><a class="headerlink" href="#硬件"></a>硬件</h2>
+<ul>
+<li>Windows电脑（Windows7-Windows11）</li>
+<li>51单片机开发板</li>
+<li>数据线</li>
+</ul>
+<h2 id="软件"><a class="headerlink" href="#软件"></a>软件</h2>
+<ul>
+<li>Keil4（Keil5向下兼容Keil4，Keil5主要升级了对arm架构的适配，对于初学者而言Keil4即可）</li>
+<li>STC-ISP（烧录软件）</li>
+<li>各种驱动</li>
+</ul>
+<h1>资料下载</h1>
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>分享平台</th>
+<th>链接</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Keil4编程软件</td>
+<td>阿里云盘</td>
+<td><a target="_blank" rel="noopener external nofollow noreferrer" href="https://www.aliyundrive.com/s/1JrhGuEH8s3">https://www.aliyundrive.com/s/1JrhGuEH8s3</a></td>
+</tr>
+<tr>
+<td>竞赛平台实验程序</td>
+<td>阿里云盘</td>
+<td><a target="_blank" rel="noopener external nofollow noreferrer" href="https://www.aliyundrive.com/s/Ati1MvY4xYX">https://www.aliyundrive.com/s/Ati1MvY4xYX</a></td>
+</tr>
+<tr>
+<td>51单片机实验程序</td>
+<td>阿里云盘</td>
+<td><a target="_blank" rel="noopener external nofollow noreferrer" href="https://www.aliyundrive.com/s/6a3ygrWyoba">https://www.aliyundrive.com/s/6a3ygrWyoba</a></td>
+</tr>
+<tr>
+<td>原理图</td>
+<td>阿里云盘</td>
+<td><a target="_blank" rel="noopener external nofollow noreferrer" href="https://www.aliyundrive.com/s/PL88M8epT23">https://www.aliyundrive.com/s/PL88M8epT23</a></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>蓝桥杯CT10D资料汇总</th>
+<th>分享平台</th>
+<th>链接</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>【必读】readme_电子设计工坊</td>
+<td>阿里云盘</td>
+<td><a target="_blank" rel="noopener external nofollow noreferrer" href="https://www.aliyundrive.com/s/LGAFc5By2Yq">https://www.aliyundrive.com/s/LGAFc5By2Yq</a></td>
+</tr>
+<tr>
+<td>电子设计工坊_CT107D问题解答V1.0</td>
+<td>阿里云盘</td>
+<td><a target="_blank" rel="noopener external nofollow noreferrer" href="https://www.aliyundrive.com/s/SqwYRtscX9w">https://www.aliyundrive.com/s/SqwYRtscX9w</a></td>
+</tr>
+<tr>
+<td>1.CT107D单片机综合训练平台</td>
+<td>阿里云盘</td>
+<td><a target="_blank" rel="noopener external nofollow noreferrer" href="https://www.aliyundrive.com/s/sFsAyDbmHDd">https://www.aliyundrive.com/s/sFsAyDbmHDd</a></td>
+</tr>
+<tr>
+<td>2.蓝桥杯单片机组软件</td>
+<td>阿里云盘</td>
+<td><a target="_blank" rel="noopener external nofollow noreferrer" href="https://www.aliyundrive.com/s/pEFTW8ikV3w">https://www.aliyundrive.com/s/pEFTW8ikV3w</a></td>
+</tr>
+<tr>
+<td>3.蓝桥杯单片机组历年真题</td>
+<td>阿里云盘</td>
+<td><a target="_blank" rel="noopener external nofollow noreferrer" href="https://www.aliyundrive.com/s/Ag3gG7ntmUs">https://www.aliyundrive.com/s/Ag3gG7ntmUs</a></td>
+</tr>
+<tr>
+<td>4.蓝桥杯单片机组客观题资料</td>
+<td>阿里云盘</td>
+<td><a target="_blank" rel="noopener external nofollow noreferrer" href="https://www.aliyundrive.com/s/pfwhWvTtuPM">https://www.aliyundrive.com/s/pfwhWvTtuPM</a></td>
+</tr>
+<tr>
+<td>5.蓝桥杯单片机答疑汇总</td>
+<td>阿里云盘</td>
+<td><a target="_blank" rel="noopener external nofollow noreferrer" href="https://www.aliyundrive.com/s/jbCRqMYGBTs">https://www.aliyundrive.com/s/jbCRqMYGBTs</a></td>
+</tr>
+<tr>
+<td>6.赛场提供的软件包</td>
+<td>阿里云盘</td>
+<td><a target="_blank" rel="noopener external nofollow noreferrer" href="https://www.aliyundrive.com/s/tMtHitQzanJ">https://www.aliyundrive.com/s/tMtHitQzanJ</a></td>
+</tr>
+<tr>
+<td>7.补充资料</td>
+<td>阿里云盘</td>
+<td><a target="_blank" rel="noopener external nofollow noreferrer" href="https://www.aliyundrive.com/s/YfLFSP8Q9UJ">https://www.aliyundrive.com/s/YfLFSP8Q9UJ</a></td>
+</tr>
+</tbody>
+</table>
+<p>如果无法下载，可以在评论区留言，我收到后会更新</p>
+<p><strong>Keil4如何认证可以自行搜索</strong></p>
+<h1>尾声</h1>
+<p>最后附上一张原理图，原理图是单片机的关键，学单片机其实就是在学C语言和对原理图的解读，祝愿大家玩的享受、学的开心<br>
+<img data-lazy-src="https://img.akimio.top/Blog/2023/09/1696081585-651826b17c154.webp" alt="原理图" loading="lazy"></p>
+</article><div class="post-copyright"><div class="post-copyright__author_group"><a class="post-copyright__author_img" href="/about/"><img class="post-copyright__author_img_front" data-lazy-src="https://img.akimio.top/avatar/akimio.png"></a><div class="post-copyright__author_name">秋澪的博客</div><div class="post-copyright__author_desc">Akimio blog</div></div><div class="post-tools" id="post-tools"><div class="post-tools-left"><div id="quit-box" onclick="RemoveRewardMask()"></div><div class="reward-link mode"><a class="reward-link-button" href="/rss2.xml" title="订阅"><i class="scoicon sco-plant-fill"></i>订阅</a></div></div></div><div class="post-copyright__notice"><span class="post-copyright-info">本文是原创文章，采用<a target="_blank" rel="noopener external nofollow noreferrer" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">CC BY-NC-SA 4.0</a>协议，完整转载请注明来自<a href="/">秋澪的博客</a></span></div></div><div class="post-tools-right"><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/51%E5%8D%95%E7%89%87%E6%9C%BA/"><span class="tags-punctuation"></span>51单片机<span class="tagsPageCount">2</span></a><a class="post-meta__tags" href="/tags/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/"><span class="tags-punctuation"></span>学习记录<span class="tagsPageCount">2</span></a></div></div></div><nav class="needEndHide pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/posts/1018/"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">51单片机学习记录-01</div></div></a></div><div class="next-post pull-right"><a href="/posts/1016/"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">免费域名注册</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="scoicon sco-star-smile-fill"></i><span>喜欢这篇的人也看了</span><div class="relatedPosts-link"><a onclick="event.preventDefault(); toRandomPost();" href="javascript:void(0);" rel="external nofollow" data-pjax-state="">随便逛逛</a></div></div><div class="relatedPosts-list"><div><a href="/posts/1018/" title="51单片机学习记录-01"><img class="cover" data-lazy-src="https://img.akimio.top/Blog/2023/10/1697201683-65293e13e7f14.webp" alt="cover"><div class="content is-center"><div class="title">51单片机学习记录-01</div></div></a></div></div></div><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="scoicon sco-chat-fill"></i><span> 评论</span><span></span></div><div class="comment-randomInfo"><a onclick="sco.addRandomCommentInfo()" href="javascript:void(0)" rel="external nofollow noreferrer">匿名评论</a></div><div class="comment-tips" id="comment-tips"><span>✅ 你无需删除空行，直接评论以获取最佳展示效果</span></div></div><div class="comment-wrap"><div id="comment"></div><script>async function initComment() {
+    var initOptions = Object.assign(
+        {"envId":"https://twikoo.akimio.top/","lang":"zh-CN","accessToken":null},
+        {
+            el: '#comment',
+            onCommentLoaded: function () {
+                GLOBAL_CONFIG.lightbox && utils.lightbox(document.querySelectorAll('#twikoo .tk-content img:not(.tk-owo-emotion)'))
+            },
+            lang: 'zh-CN',
+        }
+    )
+    await twikoo.init(initOptions)
+    if (true) {
+        var countOptions = Object.assign(
+            {"envId":"https://twikoo.akimio.top/","lang":"zh-CN","accessToken":null},
+            {
+                urls: [window.location.pathname],
+                includeReply: false
+            }
+        )
+        const res = await twikoo.getCommentsCount(countOptions)
+        try {
+            document.getElementById('twikoo-count').innerText = res[0].count
+            document.querySelector('.comment-headline span:last-child').innerText = ` (${res[0].count})`
+        } catch (e) {
+            document.getElementById('twikoo-count').innerText = '加载错误'
+        }
+    }
+}</script></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="card-content"><div class="card-info-avatar is-center"><div class="author-info__top-group"><div class="author-info__sayhi" id="author-info__sayhi" onclick="sco.changeSayHelloText()">sayhello.morning</div></div></div><div class="avatar-img-group"><img class="avatar-img" alt="头像" data-lazy-src="https://img.akimio.top/avatar/akimio.png"><div class="avatar-sticker"><img class="avatar-sticker-img" data-lazy-src="https://bu.dusays.com/2023/12/30/659011053e246.png" alt="心情贴纸"></div></div><div class="author-info__description_group"><div class="author-info__description"><b>一只喜欢七彩球的枯叶蝶</b></div><div class="author-info__description2">原博客地址：<b>blog.zuilang.tk</b></div></div><div class="author-info__bottom-group"><a class="author-info__bottom-group-left" href="/about/"><div class="author-info__name">秋澪</div><div class="author-info__desc">Akimio blog</div></a><div class="card-info-social-icons is-center"><a class="social-icon" target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/Akimio" title="Github"><i class="scoicon scoicon sco-github-line"></i></a><a class="social-icon" target="_blank" rel="noopener external nofollow noreferrer" href="https://space.bilibili.com/35466886" title="Bilibili"><i class="scoicon scoicon sco-bilibili-line"></i></a></div></div></div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="scoicon sco-menu-line"></i><span>文章目录</span></div><div class="toc-content" id="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-text">介绍</span></a></li><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-text">前言</span></a></li><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-text">准备</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%A1%AC%E4%BB%B6"><span class="toc-text">硬件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BD%AF%E4%BB%B6"><span class="toc-text">软件</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-text">资料下载</span></a></li><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-text">尾声</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="scoicon sco-map-line"></i><span>最近发布</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/posts/1036/" title="FastCDN说明文档"><img alt="FastCDN说明文档" data-lazy-src="https://img.akimio.top/Blog/2024/01/1705725058-65ab4c824e8bd.webp"></a><div class="content"><a class="title" href="/posts/1036/" title="FastCDN说明文档">FastCDN说明文档</a><a class="article-recent_post_categories" href="/posts/1036/">文档</a></div></div><div class="aside-list-item"><a class="thumbnail" href="/posts/1035/" title="利用CloudFlare搭建镜像站"><img alt="利用CloudFlare搭建镜像站" data-lazy-src="https://img.akimio.top/Blog/2024/01/1705389355-65a62d2b0759a.webp"></a><div class="content"><a class="title" href="/posts/1035/" title="利用CloudFlare搭建镜像站">利用CloudFlare搭建镜像站</a><a class="article-recent_post_categories" href="/posts/1035/">网络基建计划</a></div></div><div class="aside-list-item"><a class="thumbnail" href="/posts/1034/" title="Docker入门教程"><img alt="Docker入门教程" data-lazy-src="https://img.akimio.top/Blog/2024/01/1704949049-659f753963b50.webp"></a><div class="content"><a class="title" href="/posts/1034/" title="Docker入门教程">Docker入门教程</a><a class="article-recent_post_categories" href="/posts/1034/">学习笔记</a></div></div><div class="aside-list-item"><a class="thumbnail" href="/posts/1033/" title="UnlockMusic音乐解锁搭建教程"><img alt="UnlockMusic音乐解锁搭建教程" data-lazy-src="https://img.akimio.top/Blog/2023/12/1696081573-651826a504cc6.png"></a><div class="content"><a class="title" href="/posts/1033/" title="UnlockMusic音乐解锁搭建教程">UnlockMusic音乐解锁搭建教程</a><a class="article-recent_post_categories" href="/posts/1033/">网络基建计划</a></div></div><div class="aside-list-item"><a class="thumbnail" href="/posts/1032/" title="Excalidraw搭建教程"><img alt="Excalidraw搭建教程" data-lazy-src="https://img.akimio.top/Blog/2023/10/1697201324-65293cac786a0.webp"></a><div class="content"><a class="title" href="/posts/1032/" title="Excalidraw搭建教程">Excalidraw搭建教程</a><a class="article-recent_post_categories" href="/posts/1032/">网络基建计划</a></div></div></div></div></div></div></main><footer id="footer"><div id="sco-footer-bar"><div class="footer-logo"><span class="scoicon">秋澪Akimio的博客</span></div><div class="footer-bar-description">来自秋澪的博客 - Akimio blog的文章</div><a class="footer-bar-link" href="/">了解更多</a></div><div id="footer_deal"><a class="deal_link" target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/Akimio521" title="Github"><i class="scoicon scoicon sco-bilibili-line"></i></a><a class="deal_link" href="mailto:akimio2333@gmail.com" rel="external nofollow noreferrer" title="Mail"><i class="scoicon scoicon sco-mail-line"></i></a><div class="footer_mini_logo" id="footer_mini_logo" title="返回顶部" onclick="sco.toTop()"><img data-lazy-src="https://img.akimio.top/avatar/akimio.png" alt="返回顶部"></div><a class="deal_link" target="_blank" rel="noopener external nofollow noreferrer" href="https://space.bilibili.com/1329819902" title="Bilibili"><i class="scoicon scoicon sco-bilibili-line"></i></a><a class="deal_link" target="_blank" rel="noopener external nofollow noreferrer" href="http://www.coolapk.com/u/4951361" title="酷安"><i class="scoicon scoicon sco-douyin-fill"></i></a></div><div id="sco-footer"><div class="footer-group"><h3 class="footer-title">导航</h3><div class="footer-links"><a class="footer-item" href="/archives/" title="归档">归档</a><a class="footer-item" href="/categories/" title="分类">分类</a><a class="footer-item" href="/tags/" title="标签">标签</a></div></div><div class="footer-group"><h3 class="footer-title">服务</h3><div class="footer-links"><a class="footer-item" target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com" title="Github">Github</a><a class="footer-item" target="_blank" rel="noopener external nofollow noreferrer" href="https://vercel.com/" title="Vercel">Vercel</a><a class="footer-item" target="_blank" rel="noopener external nofollow noreferrer" href="https://www.cloudflare.com/" title="CloudFlare">CloudFlare</a></div></div><div class="footer-group"><h3 class="footer-title">订阅</h3><div class="footer-links"><a class="footer-item" href="/rss2.xml" title="RSS">RSS</a><a class="footer-item" href="/sitemap.xml" title="站点地图">站点地图</a><a class="footer-item" href="/baidusitemap.xml" title="百度站点地图">百度站点地图</a></div></div><div class="footer-group"><h3 class="footer-title">协议</h3><div class="footer-links"><a class="footer-item" href="/cookies/" title="Cookies">Cookies</a><a class="footer-item" href="/privacy/" title="用户协议">用户协议</a><a class="footer-item" href="/copyright/" title="版权协议">版权协议</a></div></div></div><div id="footer-bar"><div class="footer-bar-links"><div class="footer-bar-left"><div class="copyright">© 2023 - 2024 By&nbsp;<a class="footer-bar-link" href="/">秋澪</a></div></div><div class="footer-bar-right"><a class="footer-bar-link" target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/wleelw/hexo-theme-solitude" title="主题">主题</a><a class="footer-bar-link cc"><i class="scoicon sco-copyright-line"></i><i class="scoicon sco-creative-commons-by-line"></i><i class="scoicon sco-creative-commons-nc-line"></i><i class="scoicon sco-creative-commons-nd-line"></i></a></div></div></div><div class="comment-barrage needEndHide"></div></footer></div><!-- inject body--><div><script src="/js/main.js?v=1.4.7"></script><script src="/js/utils.js?v=1.4.7"></script><div id="rightMenu"><div class="rightMenu-group rightMenu-small"><div class="rightMenu-item" id="menu-backward"><i class="scoicon sco-arrow-left-line"></i></div><div class="rightMenu-item" id="menu-forward"><i class="scoicon sco-arrow-right-line"></i></div><div class="rightMenu-item" id="menu-refresh"><i class="scoicon sco-restart-line"></i></div><div class="rightMenu-item" id="menu-top"><i class="scoicon sco-arrow-up-line"></i></div></div><div class="rightMenu-group rightMenu-line rightMenuPlugin"><div class="rightMenu-item" id="menu-copytext"><i class="scoicon sco-copy-fill"></i><span>复制选中文本</span></div><div class="rightMenu-item" id="menu-pastetext"><i class="scoicon sco-clipboard-fill"></i><span>粘贴文本</span></div><a class="rightMenu-item" id="menu-commenttext"><i class="scoicon sco-chat-new-fill"></i><span>引用到评论</span></a><div class="rightMenu-item" id="menu-newwindow"><i class="scoicon sco-window-fill"></i><span>新窗口打开</span></div><div class="rightMenu-item" id="menu-copylink"><i class="scoicon sco-link-line"></i><span>复制链接地址</span></div><div class="rightMenu-item" id="menu-copyimg"><i class="scoicon sco-copy-fill"></i><span>复制此图片</span></div><div class="rightMenu-item" id="menu-downloadimg"><i class="scoicon sco-download-cloud-fill"></i><span>下载此图片</span></div><div class="rightMenu-item" id="menu-search"><i class="scoicon sco-search-line"></i><span>站内搜索</span></div><div class="rightMenu-item" id="menu-music-toggle"><i class="scoicon sco-play-fill"></i><span>播放音乐</span></div><div class="rightMenu-item" id="menu-music-back"><i class="scoicon sco-skip-back-fill"></i><span>切换到上一首</span></div><div class="rightMenu-item" id="menu-music-forward"><i class="scoicon sco-skip-forward-fill"></i><span>切换到下一首</span></div><div class="rightMenu-item" id="menu-music-playlist" onclick="window.open('https://music.163.com/#/playlist?id=8407304077', '_blank');"><i class="scoicon sco-play-list-2-line"></i><span>查看所有歌曲</span></div><div class="rightMenu-item" id="menu-music-copyMusicName"><i class="scoicon sco-copy-fill"></i><span>复制歌名</span></div></div><div class="rightMenu-group rightMenu-line rightMenuOther"><a class="rightMenu-item menu-Link" id="menu-randomPost"><i class="scoicon sco-signal-tower-fill"></i><span>随便逛逛</span></a><a class="rightMenu-item menu-link" href="/categories/"><i class="scoicon sco-checkbox-multiple-blank-fill"></i><span>文章分类</span></a><a class="rightMenu-item menu-link" href="/tags/"><i class="scoicon sco-price-tag-fill"></i><span>文章标签</span></a></div><div class="rightMenu-group rightMenu-line rightMenuOther"><div class="rightMenu-item" id="menu-copy"><i class="scoicon sco-external-link-fill"></i><span>复制地址</span></div><div class="rightMenu-item" id="menu-commentBarrage"><i class="scoicon sco-chat-fill"></i><span class="menu-commentBarrage-text">关闭热评</span></div><div class="rightMenu-item" id="menu-darkmode"><i class="scoicon sco-moon-clear-fill"></i><span class="menu-darkmode-text">深色模式</span></div><div class="rightMenu-item" id="menu-translate"><i class="scoicon sco-panben-line"></i><span>轉為繁體</span></div></div></div><div id="rightmenu-mask"></div><script src="/js/rightside.js?v=1.4.7"></script><script src="https://cdn.cbd.int/solitude-source/js/universe.min.js"></script><script>dark()
+</script><script src="/js/tw_cn.js?v=1.4.7"></script><script src="https://cdn.staticfile.org/pjax/0.2.8/pjax.min.js"></script><script src="https://cdn.staticfile.org/vanilla-lazyload/17.8.5/lazyload.iife.min.js"></script><script src="https://cdn.staticfile.org/node-snackbar/0.1.16/snackbar.min.js"></script><script src="https://cdn.staticfile.org/fancyapps-ui/5.0.33/fancybox/fancybox.umd.min.js"></script><script>const coverColorConfig = {
+    api: 'https://img2color.wzsco.top/api?img=',
+    time: 43200000,
+}</script><script src="/js/covercolor/api.js?v=1.4.7"></script><script src="https://cdn.staticfile.org/twikoo/1.6.31/twikoo.all.min.js"></script><script src="/js/comment/twikoo_commentBarrage.js?v=1.4.7"></script><script src="https://cdn.staticfile.org/pace/1.2.4/pace.min.js"></script><script src="https://cdn.staticfile.org/instantsearch.js/4.63.0/instantsearch.production.min.js"></script><script src="https://cdn.staticfile.org/algoliasearch/4.22.0/algoliasearch-lite.umd.min.js"></script></div><div id="js-pjax"><script async src="https://cdn.staticfile.org/busuanzi/2.3.0/bsz.pure.mini.min.js"></script><script id="config-diff">var PAGE_CONFIG = {
+    is_post: true,
+    is_page: false,
+    is_home: false,
+    page: 'post',
+    toc: true,
+    comment: true,
+}
+</script></div><!-- newest comment--><script>window.addEventListener('load', () => {
+    const changeContent = (content) => {
+        if (content === '') return content;
+
+        const replacements = [
+            {regex: /<img.*?src="(.*?)"?[^\>]+>/ig, replacement: '[图片]'},
+            {regex: /<a[^>]+?href=["']?([^"']+)["']?[^>]*>([^<]+)<\/a>/gi, replacement: '[链接]'},
+            {regex: /<pre><code>.*?<\/pre>/gi, replacement: '[代码]'},
+            {regex: /<[^>]+>/g, replacement: ""}
+        ];
+
+        content = replacements.reduce((str, {regex, replacement}) => str.replace(regex, replacement), content);
+
+        return content.length > 150 ? content.substring(0, 150) + '...' : content;
+    }
+
+    const getComment = () => {
+        const $dom = document.querySelector('#card-newest-comments .aside-list')
+
+        const runTwikoo = () => {
+            twikoo.getRecentComments({
+                envId: GLOBAL_CONFIG.comment.twikoo.url,
+                region: '',
+                pageSize: 6,
+                includeReply: true
+            }).then(function (res) {
+                const twikooArray = res.map(e => ({
+                    'content': changeContent(e.comment),
+                    'avatar': e.avatar,
+                    'nick': e.nick,
+                    'url': `${e.url}#${e.id}`,
+                    'date': new Date(e.created).toISOString()
+                }))
+                generateHtml(twikooArray)
+            }).catch(function (err) {
+                $dom.innerHTML = "无法获取评论，请确认相关配置是否正确"
+            })
+        }
+        runTwikoo()
+    }
+
+    const generateHtml = array => {
+        const $dom = document.querySelector('#card-newest-comments .aside-list')
+        $dom.innerHTML = array.length ? array.map(item => `
+            <div class='aside-list-item'>
+              <a href='${item.url}' class='thumbnail'>
+                <img data-lazy-src='${item.avatar}' alt='${item.nick}'>
+                <div class='name'><span>${item.nick}</span></div>
+              </a>
+              <div class='content'>
+                <a class='comment' href='${item.url}'>${item.content}</a>
+                <time class="datetime" datetime="${item.date}"></time>
+              </div>
+            </div>
+          `).join('') : '没有评论'
+        window.lazyLoadInstance && window.lazyLoadInstance.update()
+        window.pjax && window.pjax.refresh($dom)
+        changeTimeFormat()
+    }
+
+    const newestCommentInit = () => {
+        const $asideList = document.querySelector('#card-newest-comments .aside-list')
+        if ($asideList) {
+            getComment()
+        }
+    }
+
+    newestCommentInit()
+})</script><!-- pjax--><script>let pjaxSelectors = [
+    'title',
+    '#body-wrap',
+    '#site-config',
+    'meta[name="description"]',
+    '#js-pjax',
+    'meta[property^="og:"]',
+]
+
+const pjax = new Pjax({
+    elements: 'a:not([target="_blank"])',
+    selectors: pjaxSelectors,
+    cacheBust: false,
+    analytics: false,
+    scrollRestoration: false
+})
+
+document.querySelectorAll('script[data-pjax]').forEach(item => {
+    const newScript = document.createElement('script')
+    const content = item.text || item.textContent || item.innerHTML || ""
+    Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+    newScript.appendChild(document.createTextNode(content))
+    item.parentNode.replaceChild(newScript, item)
+})
+
+document.addEventListener('pjax:complete', () => {
+    window.refreshFn()
+})
+
+document.addEventListener('pjax:error', (e) => {
+    if (e.request.status === 404) {
+        pjax.loadUrl('/404.html')
+    }
+})</script><!-- theme--><script>initTheme = () => {
+    let isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches
+    const cachedMode = saveToLocal.get('theme');
+    if (cachedMode === undefined) {
+        const nowMode =
+            isDarkMode ? 'dark' : 'light'
+        document.documentElement.setAttribute('data-theme', nowMode);
+    } else {
+        document.documentElement.setAttribute('data-theme', cachedMode);
+    }
+}
+initTheme()</script><!-- search--><div id="algolia-search"><div class="search-dialog"><div class="algolia-navbar"><div class="search-dialog__title" id="algolia-search-title">搜索</div><div class="algolia-tips"><i class="scoicon sco-algolia-fill"></i><span class="algolia-tips-text">Algolia</span></div><span class="search-close-button"><i class="scoicon sco-close-fill"></i></span></div><div id="algolia-input-panel"><div id="algolia-search-input"></div></div><div id="search-results"><div id="algolia-hits"></div></div><div id="algolia-tips"><div id="algolia-pagination"></div><div id="algolia-stats"></div></div></div><div id="search-mask"></div></div><script src="/js/search/algolia.js?v=1.4.7"></script><!-- music--></body></html><script>const posts=["posts/1036/","posts/1035/","posts/1034/","posts/1033/","posts/1032/","posts/1031/","posts/1030/","posts/1029/","posts/1028/","posts/1027/","posts/1026/","posts/1025/","posts/1024/","posts/1023/","posts/1022/","posts/1021/","posts/1020/","posts/1019/","posts/1018/","posts/1017/","posts/1016/","posts/1015/","posts/1014/","posts/1013/","posts/1012/","posts/1011/","posts/1010/","posts/1009/","posts/1008/","posts/1007/","posts/1006/","posts/1005/","posts/1004/","posts/1003/","posts/1002/","posts/1001/","posts/1/"];function toRandomPost(){ pjax.loadUrl('/'+posts[Math.floor(Math.random()*posts.length)]); };</script>

@@ -1,0 +1,514 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Armbian手把手玩机指南01-系统刷入并安装可视化桌面 | 秋澪的博客</title><noscript>开启JavaScript才能访问本站哦~</noscript><link rel="icon" href="https://img.akimio.top/avatar/akimio.png"><!-- index.css--><link rel="stylesheet" href="/css/index.css?v=1.4.7"><!-- inject head--><meta name="google-site-verification" content="Fk7XyGh7jge7BoQY"><meta name="baidu-site-verification" content="codeva-Ppouj7y5Ib"><link rel="stylesheet" href="https://cdn.cbd.int/solitude-source/icon/scoicon.min.css"><link rel="stylesheet" href="https://cdn.staticfile.org/node-snackbar/0.1.16/snackbar.min.css"><!-- aplayer--><!-- swiper--><link rel="stylesheet" href="https://cdn.staticfile.org/fancyapps-ui/5.0.33/fancybox/fancybox.min.css"><link rel="stylesheet" href="https://cdn.staticfile.org/KaTeX/0.16.9/katex.min.css"><!-- Open Graph--><meta name="description" content="本文是一篇关于如何使用Armbian系统将空闲电视盒子打造成服务器的教程。Armbian系统是一种专门用于ARM芯片的轻量级Linux系统，可以安全稳定地运行在TF&amp;#x2F;SD&amp;#x2F;USB及设备的eMMC里。文章介绍了如何下载对应机型的镜像，将镜像写入U盘或者TF卡中，然后将其插入电视盒子中，跑代码等步骤。同"><!-- pwa--><script>(win => {
+        win.saveToLocal = {
+            set: function setWithExpiry(key, value, ttl) {
+                if (ttl === 0)
+                    return
+                const now = new Date()
+                const expiryDay = ttl * 86400000
+                const item = {
+                    value: value,
+                    expiry: now.getTime() + expiryDay,
+                }
+                localStorage.setItem(key, JSON.stringify(item))
+            },
+
+            get: function getWithExpiry(key) {
+                const itemStr = localStorage.getItem(key)
+
+                if (!itemStr) {
+                    return undefined
+                }
+                const item = JSON.parse(itemStr)
+                const now = new Date()
+
+                if (now.getTime() > item.expiry) {
+                    localStorage.removeItem(key)
+                    return undefined
+                }
+                return item.value
+            }
+        }
+
+        const DarkModeStatus = localStorage.getItem('theme')
+        if (DarkModeStatus !== null) {
+            if (DarkModeStatus === 'dark') {
+                document.documentElement.setAttribute('data-theme', 'dark')
+            } else {
+                document.documentElement.setAttribute('data-theme', 'light')
+            }
+        }
+
+        const asideStatus = saveToLocal.get('aside-status')
+        if (asideStatus !== undefined) {
+            if (asideStatus === 'hide') {
+                document.documentElement.classList.add('hide-aside')
+            } else {
+                document.documentElement.classList.remove('hide-aside')
+            }
+        }
+    }
+)(window)
+
+console.log(
+    "%c🔥 程序：Hexo | 主题：Hexo-Theme-Solitude | 作者：王卓Sco、亦封 | Github: https://github.com/wleelw/Hexo-theme-solitude | 版本：v1.4.7 😄",
+    "color: #fff; background: linear-gradient(-25deg, #a8edea, #fed6e3); padding: 8px 15px; border-radius: 8px; text-shadow: 2px 2px 4px white; color: black;"
+);</script><!-- global head--><script>const GLOBAL_CONFIG = {
+    root: '/',
+    algolia: {"appId":"FFEW0LYV6V","apiKey":"67e0012d866ead8c1cc09c58c6b50c3e","indexName":"blog","hits":{"per_page":10}},
+    localsearch: undefined,
+    runtime: '2023-03-18 12:00:00',
+    lazyload: {
+        enable: true,
+        error: '/img/error_load.png'
+    },
+    hightlight: {
+        enable: true,
+        limit: 200,
+        expand: true,
+        copy: true,
+    },
+    randomlinks: false,
+    lang: {
+        theme: {
+            dark: '已切换至深色模式',
+            light: '已切换至浅色模式',
+        },
+        copy: {
+            success: '复制成功',
+            error: '复制失败',
+        },
+        backtop: '返回顶部',
+        time: {
+            recent: '最近',
+            yesterday: '昨天',
+            berforeyesterday: '前天',
+            daybefore: '天前',
+            runtime: '天',
+        },
+        search: {
+            empty: '找不到你查询的内容：${query}',
+            hit: '找到 ${hits} 条结果，用时 ${time} 毫秒',
+            placeholder: '输入关键词快速查找',
+        },
+        chs: {
+            chs_to_cht: '繁體中文',
+            cht_to_chs: '简体中文',
+        }
+    },
+    aside: {
+        sayhello: {
+            morning: '一日之计在于晨',
+            noon: '吃饱了才有力气干活',
+            afternoon: '集中精力，攻克难关',
+            night: '不要太劳累了，早睡更健康',
+            goodnight: '睡个好觉，保证精力充沛',
+        },
+        sayhello2: ["🤖️ 数码科技爱好者","🔍 分享与热心帮助","🏠 智能家居小能手","🔨 设计开发一条龙","🤝 专修交互与设计","🏃 脚踏实地行动派","🧱 团队小组发动机","💢 壮汉人狠话不多","🎮 电竞游戏爱好者"],
+    },
+    covercolor: {
+        enable: true
+    },
+    comment: {
+        enable: true,
+        type: 'twikoo',
+        commentBarrage: true,
+        randomInfoStart: ["聪敏的","可爱的","美丽的"],
+        randomInfoEnd: ["白菜","小可爱","小仙女"],
+        twikoo: {
+            url: 'https://twikoo.akimio.top/',
+            accessToken: ''
+        },
+        waline: {
+            url: '',
+        }
+    },
+    lightbox: 'fancybox',
+    rightside: {
+        enable: true
+    },
+    ai: {
+        enable: false,
+        key: '',
+        talk: '我是王卓Sco开发的摘要生成助理ScoGPT，ScoGPT在静态部署时进行摘要的撰写，并且在访客访问时通过ScoCorrection转译后的文本摘要实现工具。我在这里只负责已经生成的摘要显示，你无法与我直接沟通，但我可以回答一些预设的问题。',
+        randomPost: false,
+    },
+    music: {
+        enable: false,
+    },
+    translate: {"defaultEncoding":2,"translateDelay":0},
+};</script><meta name="generator" content="Hexo 7.1.1"><link rel="alternate" href="/atom.xml" title="秋澪的博客" type="application/atom+xml">
+<link rel="alternate" href="/rss2.xml" title="秋澪的博客" type="application/rss+xml">
+</head><body id="body"><!-- universe--><canvas id="universe"></canvas><!-- loading--><!-- console--><div id="console"><div class="close-btn" onclick="sco.hideConsole()"><i class="scoicon sco-close-fill"></i></div><div class="console-card-group"><div class="console-card-group-left"><div class="console-card" id="card-newest-comments" onclick="sco.hideConsole()"><div class="card-content"><div class="author-content-item-tips">互动</div><div class="author-content-item-title">最新评论</div></div><div class="aside-list"></div></div></div><div class="console-card-group-right"><div class="console-card tags" onclick="sco.hideConsole()"><div class="card-content"><div class="author-content-item-tips">标签</div><div class="author-content-item-title">寻找感兴趣的领域</div></div><div class="card-tag-cloud"><a href="/tags/51%E5%8D%95%E7%89%87%E6%9C%BA/">51单片机<sup>2</sup></a><a href="/tags/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/">学习记录<sup>2</sup></a><a href="/tags/Arbiam/">Arbiam<sup>1</sup></a><a href="/tags/%E6%95%99%E7%A8%8B/">教程<sup>28</sup></a><a href="/tags/Docker/">Docker<sup>8</sup></a><a href="/tags/%E5%A4%87%E5%BF%98%E5%BD%95/">备忘录<sup>8</sup></a><a href="/tags/NAS/">NAS<sup>2</sup></a><a href="/tags/VPS/">VPS<sup>3</sup></a><a href="/tags/%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F/">内网穿透<sup>1</sup></a><a href="/tags/Hexo/">Hexo<sup>2</sup></a><a href="/tags/%E5%8D%9A%E5%AE%A2/">博客<sup>4</sup></a><a href="/tags/%E7%BE%8E%E5%8C%96/">美化<sup>1</sup></a><a href="/tags/ROS/">ROS<sup>1</sup></a><a href="/tags/Ubuntu/">Ubuntu<sup>1</sup></a><a href="/tags/WSL/">WSL<sup>1</sup></a><a href="/tags/VMware/">VMware<sup>1</sup></a><a href="/tags/%E8%BD%AF%E4%BB%B6%E6%8E%A8%E8%8D%90/">软件推荐<sup>1</sup></a><a href="/tags/%E7%BE%A4%E6%99%96/">群晖<sup>1</sup></a><a href="/tags/%E6%8E%A8%E8%8D%90/">推荐<sup>4</sup></a><a href="/tags/%E7%BD%91%E7%AB%99/">网站<sup>1</sup></a><a href="/tags/%E8%BD%AF%E4%BB%B6/">软件<sup>2</sup></a><a href="/tags/IOS/">IOS<sup>1</sup></a><a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库<sup>1</sup></a><a href="/tags/Markdown/">Markdown<sup>1</sup></a><a href="/tags/%E5%9F%9F%E5%90%8D/">域名<sup>1</sup></a><a href="/tags/%E7%BD%91%E7%AB%99%E4%BC%98%E5%8C%96/">网站优化<sup>1</sup></a><a href="/tags/CLoudflare/">CLoudflare<sup>2</sup></a><a href="/tags/Ventoy/">Ventoy<sup>1</sup></a><a href="/tags/WinToGo/">WinToGo<sup>1</sup></a><a href="/tags/LinToGo/">LinToGo<sup>1</sup></a><a href="/tags/AIO/">AIO<sup>1</sup></a><a href="/tags/%E8%B7%AF%E7%94%B1%E5%99%A8/">路由器<sup>1</sup></a><a href="/tags/Git/">Git<sup>1</sup></a><a href="/tags/CloudFlare/">CloudFlare<sup>1</sup></a><a href="/tags/Excalidraw/">Excalidraw<sup>1</sup></a><a href="/tags/UnlockMusic%E9%9F%B3%E4%B9%90%E8%A7%A3%E9%94%81/">UnlockMusic音乐解锁<sup>1</sup></a><a href="/tags/%E5%9B%BE%E5%BA%8A/">图床<sup>1</sup></a><a href="/tags/%E5%9F%9F%E5%90%8D%E9%82%AE%E7%AE%B1/">域名邮箱<sup>1</sup></a><a href="/tags/%E9%95%9C%E5%83%8F%E7%AB%99%E6%90%AD%E5%BB%BA/">镜像站搭建<sup>1</sup></a><a href="/tags/Alist/">Alist<sup>2</sup></a><a href="/tags/Replit/">Replit<sup>2</sup></a><a href="/tags/Halo/">Halo<sup>1</sup></a><a href="/tags/Render/">Render<sup>1</sup></a></div></div><div class="console-card history" onclick="sco.hideConsole()"><ul class="card-archive-list"><li class="card-archive-list-item"><a class="card-archive-list-link" onclick="pjax.loadUrl('/archives/2024/01/')" href="javascript:void(0);" rel="external nofollow noreferrer"><span class="card-archive-list-date">2024/01</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">3</span><span class="card-archive-list-count-unit">篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" onclick="pjax.loadUrl('/archives/2023/12/')" href="javascript:void(0);" rel="external nofollow noreferrer"><span class="card-archive-list-date">2023/12</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">1</span><span class="card-archive-list-count-unit">篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" onclick="pjax.loadUrl('/archives/2023/10/')" href="javascript:void(0);" rel="external nofollow noreferrer"><span class="card-archive-list-date">2023/10</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">2</span><span class="card-archive-list-count-unit">篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" onclick="pjax.loadUrl('/archives/2023/09/')" href="javascript:void(0);" rel="external nofollow noreferrer"><span class="card-archive-list-date">2023/09</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">2</span><span class="card-archive-list-count-unit">篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" onclick="pjax.loadUrl('/archives/2023/08/')" href="javascript:void(0);" rel="external nofollow noreferrer"><span class="card-archive-list-date">2023/08</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">2</span><span class="card-archive-list-count-unit">篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" onclick="pjax.loadUrl('/archives/2023/07/')" href="javascript:void(0);" rel="external nofollow noreferrer"><span class="card-archive-list-date">2023/07</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">1</span><span class="card-archive-list-count-unit">篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" onclick="pjax.loadUrl('/archives/2023/06/')" href="javascript:void(0);" rel="external nofollow noreferrer"><span class="card-archive-list-date">2023/06</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">6</span><span class="card-archive-list-count-unit">篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" onclick="pjax.loadUrl('/archives/2023/05/')" href="javascript:void(0);" rel="external nofollow noreferrer"><span class="card-archive-list-date">2023/05</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">13</span><span class="card-archive-list-count-unit">篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" onclick="pjax.loadUrl('/archives/2023/04/')" href="javascript:void(0);" rel="external nofollow noreferrer"><span class="card-archive-list-date">2023/04</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">2</span><span class="card-archive-list-count-unit">篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" onclick="pjax.loadUrl('/archives/2023/03/')" href="javascript:void(0);" rel="external nofollow noreferrer"><span class="card-archive-list-date">2023/03</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">5</span><span class="card-archive-list-count-unit">篇</span></div></a></li></ul></div></div></div><div class="button-group"><div class="console-btn-item"><a class="darkmode_switchbutton" onclick="sco.switchDarkMode()" title="昼夜切换" href="javascript:void(0);" rel="external nofollow noreferrer"><i class="scoicon sco-moon-clear-fill"></i></a></div><div class="console-btn-item" id="consoleHideAside"><a class="asideSwitch" onclick="sco.switchHideAside()" title="边栏显示控制" href="javascript:void(0);" rel="external nofollow noreferrer"><i class="scoicon sco-side-bar-fill"></i></a></div><div class="console-btn-item on" id="consoleCommentBarrage" onclick="sco.switchCommentBarrage()"><a class="commentBarrage"><i class="scoicon sco-chat-fill"></i></a></div></div><div class="console-mask" onclick="sco.hideConsole()"></div></div><!-- sidebar--><div id="sidebar" style="zoom: 1;"><div id="menu-mask" style="display: none;"></div><div id="sidebar-menus"><span class="sidebar-menu-item-title">功能</span><div class="sidebar-menu-item"><a class="darkmode_switchbutton menu-child" onclick="sco.switchDarkMode()" href="javascript:void(0);" rel="external nofollow noreferrer"><i class="scoicon sco-moon-clear-fill"></i><span>显示模式</span></a></div><div class="back-menu-list-groups"><div class="back-menu-list-group"><div class="back-menu-list-title">项目</div><div class="back-menu-list"><a class="back-menu-item" target="_blank" rel="noopener" href="https://akimio.top" title="个人主页"><img class="back-menu-item-icon" src="https://img.akimio.top/avatar/akimio.png" alt="项目"><span class="back-menu-item-text">个人主页</span></a><a class="back-menu-item" target="_blank" rel="noopener" href="https://excalidraw.akimio.top" title="Excalidraw"><img class="back-menu-item-icon" src="https://img.akimio.top/ICON/excalidraw.png" alt="项目"><span class="back-menu-item-text">Excalidraw</span></a><a class="back-menu-item" target="_blank" rel="noopener" href="https://chatgpt.akimio.top" title="ChatGPT"><img class="back-menu-item-icon" src="https://img.akimio.top/ICON/chatgpt.png" alt="项目"><span class="back-menu-item-text">ChatGPT</span></a><a class="back-menu-item" target="_blank" rel="noopener" href="https://alist.akimio.top" title="Alist"><img class="back-menu-item-icon" src="https://img.akimio.top/ICON/alist.png" alt="项目"><span class="back-menu-item-text">Alist</span></a><a class="back-menu-item" target="_blank" rel="noopener" href="https://music.akimio.top" title="Splayer"><img class="back-menu-item-icon" src="https://img.akimio.top/ICON/splayer.png" alt="项目"><span class="back-menu-item-text">Splayer</span></a><a class="back-menu-item" target="_blank" rel="noopener" href="https://um.akimio.top" title="音乐解锁"><img class="back-menu-item-icon" src="https://img.akimio.top/ICON/UnlockMusic.png" alt="项目"><span class="back-menu-item-text">音乐解锁</span></a></div></div></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="javascript:void(0);" rel="external nofollow noreferrer"><span>文库</span></a><ul class="menus_item_child"><li><a class="site-page child" href="/archives/"><i class="scoicon sco-folder-fill"></i><span>文章列表</span></a></li><li><a class="site-page child" href="/categories/"><i class="scoicon sco-checkbox-multiple-blank-fill"></i><span>全部分类</span></a></li><li><a class="site-page child" href="/tags/"><i class="scoicon sco-price-tag-fill"></i><span>全部标签</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);" rel="external nofollow noreferrer"><span>友链</span></a><ul class="menus_item_child"><li><a class="site-page child" href="/links/"><i class="scoicon sco-group-fill"></i><span>友情链接</span></a></li><li><a class="site-page child" href="/frcircle/"><i class="scoicon sco-wifi-fill"></i><span>朋友圈</span></a></li><li><a class="site-page child" href="javascript:travelling()" rel="external nofollow noreferrer"><i class="scoicon sco-gift-fill"></i><span>宝藏博主</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);" rel="external nofollow noreferrer"><span>我的</span></a><ul class="menus_item_child"><li><a class="site-page child" href="/tools/"><i class="scoicon sco-tools-fill"></i><span>工具箱</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);" rel="external nofollow noreferrer"><span>关于</span></a><ul class="menus_item_child"><li><a class="site-page child" href="/about/"><i class="scoicon sco-contacts-fill"></i><span>关于本站</span></a></li></ul></div></div><span class="sidebar-menu-item-title">标签</span><div class="card-widget card-tags card-archives card-webinfo card-allinfo"><div class="card-tag-cloud"><a href="/tags/51%E5%8D%95%E7%89%87%E6%9C%BA/">51单片机<sup>2</sup></a><a href="/tags/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/">学习记录<sup>2</sup></a><a href="/tags/Arbiam/">Arbiam<sup>1</sup></a><a href="/tags/%E6%95%99%E7%A8%8B/">教程<sup>28</sup></a><a href="/tags/Docker/">Docker<sup>8</sup></a><a href="/tags/%E5%A4%87%E5%BF%98%E5%BD%95/">备忘录<sup>8</sup></a><a href="/tags/NAS/">NAS<sup>2</sup></a><a href="/tags/VPS/">VPS<sup>3</sup></a><a href="/tags/%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F/">内网穿透<sup>1</sup></a><a href="/tags/Hexo/">Hexo<sup>2</sup></a><a href="/tags/%E5%8D%9A%E5%AE%A2/">博客<sup>4</sup></a><a href="/tags/%E7%BE%8E%E5%8C%96/">美化<sup>1</sup></a><a href="/tags/ROS/">ROS<sup>1</sup></a><a href="/tags/Ubuntu/">Ubuntu<sup>1</sup></a><a href="/tags/WSL/">WSL<sup>1</sup></a><a href="/tags/VMware/">VMware<sup>1</sup></a><a href="/tags/%E8%BD%AF%E4%BB%B6%E6%8E%A8%E8%8D%90/">软件推荐<sup>1</sup></a><a href="/tags/%E7%BE%A4%E6%99%96/">群晖<sup>1</sup></a><a href="/tags/%E6%8E%A8%E8%8D%90/">推荐<sup>4</sup></a><a href="/tags/%E7%BD%91%E7%AB%99/">网站<sup>1</sup></a><a href="/tags/%E8%BD%AF%E4%BB%B6/">软件<sup>2</sup></a><a href="/tags/IOS/">IOS<sup>1</sup></a><a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库<sup>1</sup></a><a href="/tags/Markdown/">Markdown<sup>1</sup></a><a href="/tags/%E5%9F%9F%E5%90%8D/">域名<sup>1</sup></a><a href="/tags/%E7%BD%91%E7%AB%99%E4%BC%98%E5%8C%96/">网站优化<sup>1</sup></a><a href="/tags/CLoudflare/">CLoudflare<sup>2</sup></a><a href="/tags/Ventoy/">Ventoy<sup>1</sup></a><a href="/tags/WinToGo/">WinToGo<sup>1</sup></a><a href="/tags/LinToGo/">LinToGo<sup>1</sup></a><a href="/tags/AIO/">AIO<sup>1</sup></a><a href="/tags/%E8%B7%AF%E7%94%B1%E5%99%A8/">路由器<sup>1</sup></a><a href="/tags/Git/">Git<sup>1</sup></a><a href="/tags/CloudFlare/">CloudFlare<sup>1</sup></a><a href="/tags/Excalidraw/">Excalidraw<sup>1</sup></a><a href="/tags/UnlockMusic%E9%9F%B3%E4%B9%90%E8%A7%A3%E9%94%81/">UnlockMusic音乐解锁<sup>1</sup></a><a href="/tags/%E5%9B%BE%E5%BA%8A/">图床<sup>1</sup></a><a href="/tags/%E5%9F%9F%E5%90%8D%E9%82%AE%E7%AE%B1/">域名邮箱<sup>1</sup></a><a href="/tags/%E9%95%9C%E5%83%8F%E7%AB%99%E6%90%AD%E5%BB%BA/">镜像站搭建<sup>1</sup></a><a href="/tags/Alist/">Alist<sup>2</sup></a><a href="/tags/Replit/">Replit<sup>2</sup></a><a href="/tags/Halo/">Halo<sup>1</sup></a><a href="/tags/Render/">Render<sup>1</sup></a></div></div></div></div><!-- keyboard--><div class="post" id="body-wrap"><header class="post-bg" id="page-header"><nav class="show" id="nav"><div id="nav-group"><div id="blog_name"><div class="back-home-button" tabindex="-1"><i class="back-home-button-icon scoicon sco-more-fill"></i><div class="back-menu-list-groups"><div class="back-menu-list-group"><div class="back-menu-list-title">项目</div><div class="back-menu-list"><a class="back-menu-item" target="_blank" rel="noopener" href="https://akimio.top" title="个人主页"><img class="back-menu-item-icon" src="https://img.akimio.top/avatar/akimio.png" alt="项目"><span class="back-menu-item-text">个人主页</span></a><a class="back-menu-item" target="_blank" rel="noopener" href="https://excalidraw.akimio.top" title="Excalidraw"><img class="back-menu-item-icon" src="https://img.akimio.top/ICON/excalidraw.png" alt="项目"><span class="back-menu-item-text">Excalidraw</span></a><a class="back-menu-item" target="_blank" rel="noopener" href="https://chatgpt.akimio.top" title="ChatGPT"><img class="back-menu-item-icon" src="https://img.akimio.top/ICON/chatgpt.png" alt="项目"><span class="back-menu-item-text">ChatGPT</span></a><a class="back-menu-item" target="_blank" rel="noopener" href="https://alist.akimio.top" title="Alist"><img class="back-menu-item-icon" src="https://img.akimio.top/ICON/alist.png" alt="项目"><span class="back-menu-item-text">Alist</span></a><a class="back-menu-item" target="_blank" rel="noopener" href="https://music.akimio.top" title="Splayer"><img class="back-menu-item-icon" src="https://img.akimio.top/ICON/splayer.png" alt="项目"><span class="back-menu-item-text">Splayer</span></a><a class="back-menu-item" target="_blank" rel="noopener" href="https://um.akimio.top" title="音乐解锁"><img class="back-menu-item-icon" src="https://img.akimio.top/ICON/UnlockMusic.png" alt="项目"><span class="back-menu-item-text">音乐解锁</span></a></div></div></div></div><a id="site-name" href="/" title="返回博客主页" target="_self"><span class="title">秋澪Akimio的博客</span></a></div><div id="page-name-mask"><div id="page-name"><a id="page-name-text" onclick="sco.toTop()">Armbian手把手玩机指南01-系统刷入并安装可视化桌面</a></div></div><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="javascript:void(0);" rel="external nofollow noreferrer"><span>文库</span></a><ul class="menus_item_child"><li><a class="site-page child" href="/archives/"><i class="scoicon sco-folder-fill"></i><span>文章列表</span></a></li><li><a class="site-page child" href="/categories/"><i class="scoicon sco-checkbox-multiple-blank-fill"></i><span>全部分类</span></a></li><li><a class="site-page child" href="/tags/"><i class="scoicon sco-price-tag-fill"></i><span>全部标签</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);" rel="external nofollow noreferrer"><span>友链</span></a><ul class="menus_item_child"><li><a class="site-page child" href="/links/"><i class="scoicon sco-group-fill"></i><span>友情链接</span></a></li><li><a class="site-page child" href="/frcircle/"><i class="scoicon sco-wifi-fill"></i><span>朋友圈</span></a></li><li><a class="site-page child" href="javascript:travelling()" rel="external nofollow noreferrer"><i class="scoicon sco-gift-fill"></i><span>宝藏博主</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);" rel="external nofollow noreferrer"><span>我的</span></a><ul class="menus_item_child"><li><a class="site-page child" href="/tools/"><i class="scoicon sco-tools-fill"></i><span>工具箱</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);" rel="external nofollow noreferrer"><span>关于</span></a><ul class="menus_item_child"><li><a class="site-page child" href="/about/"><i class="scoicon sco-contacts-fill"></i><span>关于本站</span></a></li></ul></div></div></div><div id="nav-left"></div><div id="nav-right"><div class="nav-button" id="travellings_button"><a class="site-page" target="_blank" rel="noopener external nofollow noreferrer" href="https://www.travellings.cn/go.html" title=""><i class="scoicon sco-train-line"></i></a></div><div class="nav-button" id="randomPost_button"><a class="site-page" onclick="toRandomPost()" title="随机一篇文章" href="javascript:void(0);" rel="external nofollow noreferrer"><i class="scoicon sco-signal-tower-fill"></i></a></div><div class="nav-button" id="search-button"><a class="site-page social-icon search" href="javascript:void(0);" rel="external nofollow noreferrer" title="搜索"><i class="scoicon sco-search-line"></i></a></div><div class="nav-button" id="nav-console"><a class="console_switchbutton" onclick="sco.showConsole()" title="中控台" href="javascript:void(0);" rel="external nofollow noreferrer"><i class="scoicon sco-dashboard-fill"></i></a></div><div class="nav-button" id="nav-totop" onclick="sco.toTop()"><a class="totopbtn"><i class="scoicon sco-arrow-up-line"></i><span id="percent">0</span></a></div><div id="toggle-menu"><a class="site-page"><i class="scoicon sco-menu-line"></i></a></div></div></div></nav><div class="coverdiv" id="coverdiv"><img class="nolazyload" id="post-cover" src="https://img.akimio.top/Blog/2023/10/1697202901-652942d50c895.webp" alt="Armbian手把手玩机指南01-系统刷入并安装可视化桌面"></div><div id="post-info"><div id="post-firstinfo"><div class="meta-firstline"><a class="post-meta-original" title="该文章为原创文章，注意版权协议">原创</a><span class="post-meta-categories"><a class="post-meta-categories" href="/categories/Armbian系统/">Armbian系统</a></span><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/Arbiam/"><span class="tags-name tags-punctuation">Arbiam</span></a><a class="post-meta__tags" href="/tags/%E6%95%99%E7%A8%8B/"><span class="tags-name tags-punctuation">教程</span></a></div></div></div></div><h1 class="post-title">Armbian手把手玩机指南01-系统刷入并安装可视化桌面</h1><div id="post-meta"><div class="meta-secondline"><span class="post-meta-date" title="meta_posted 2023-06-03 23:23:29"><i class="post-meta-icon scoicon sco-calendar-todo-fill"></i><time datetime="2023-06-03T15:23:29.000Z">2023-06-03T15:23:29.000Z</time></span><span class="post-meta-date" title="meta_updated 2024-02-13 17:53:48"><i class="post-meta-icon scoicon sco-refresh-line"></i><time datetime="2024-02-13T09:53:48.000Z">2024-02-13T09:53:48.000Z</time></span><span class="post-meta-wordcount"><i class="post-meta-icon scoicon sco-word-fill" title="文章字数"></i><span class="word-count">2.5k</span><span class="post-meta-separator"></span><i class="post-meta-icon scoicon sco-clock-fill" title="阅读耗时"></i><span>9 min</span></span><span class="post-meta-position" title="作者IP归属地为深圳"><i class="post-meta-icon scoicon sco-map-pin-fill"></i><span>深圳</span></span><a class="post-meta-pv" href="/posts/1021/" title="文章热度"><i class="post-meta-icon scoicon sco-fire-fill"></i><span id="twikoo_visitors"><i class="scoicon sco-loading-line"></i></span></a><span class="post-meta-commentcount" title="评论数" onclick="sco.scrollTo('post-comment')"><i class="scoicon sco-chat-fill"></i><a href="/posts/1021/#post-comment"><span id="twikoo-count"><i class="scoicon sco-loading-line"></i></span></a></span></div></div></div><section class="main-hero-waves-area waves-area"><svg class="waves-svg" xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto"><defs><path id="gentle-wave" d="M -160 44 c 30 0 58 -18 88 -18 s 58 18 88 18 s 58 -18 88 -18 s 58 18 88 18 v 44 h -352 Z"></path></defs><g class="parallax"><use href="#gentle-wave" x="48" y="0"></use><use href="#gentle-wave" x="48" y="3"></use><use href="#gentle-wave" x="48" y="5"></use><use href="#gentle-wave" x="48" y="7"></use></g></svg></section></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1>Armbian简介</h1>
+<blockquote>
+<p>Armbian系统是基于Debian/Ubuntu而构建的专门用于ARM芯片的轻量级Linux系统。Armbian系统精益、干净，并且100%兼容并继承了Debian/Ubuntu系统的功能和丰富的软件生态，可以安全稳定地运行在 TF/SD/USB 及设备的 eMMC 里。</p>
+</blockquote>
+<h1>前言</h1>
+<p>之前买了一个N1盒子玩，想当一个简单的服务器玩玩，但找了很多地方都没找到一个合适的方法，于是只能自己一个人慢慢摸索，本系列教程将基于Armbian，手把手教你玩转空闲的电视盒子。</p>
+<p>不知道你家里是否有空闲的电视盒子、N1盒子、HK1box、我家云、贝壳鱼等晶晨amlogic-s9XXX或者rockship系列产品都是可以适用的，这里附一张ophub大大的适配机型图</p>
+<table>
+<thead>
+<tr>
+<th>芯片</th>
+<th>设备</th>
+<th><a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/ophub/kernel">内核</a></th>
+<th><a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/ophub/amlogic-s9xxx-armbian/releases">Armbian</a></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>a311d</td>
+<td><a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/ophub/amlogic-s9xxx-openwrt/issues/99">Khadas-VIM3</a></td>
+<td><a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/ophub/kernel/releases/tag/kernel_stable">全部</a></td>
+<td>amlogic_a311d.img</td>
+</tr>
+<tr>
+<td>s922x</td>
+<td><a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/ophub/amlogic-s9xxx-armbian/issues/370">Beelink-GT-King</a>, <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/ophub/amlogic-s9xxx-armbian/issues/707">Beelink-GT-King-Pro</a>, <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/ophub/amlogic-s9xxx-openwrt/issues/213">Ugoos-AM6-Plus</a>, <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/ophub/amlogic-s9xxx-openwrt/issues/201">ODROID-N2</a>, <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/ophub/amlogic-s9xxx-armbian/issues/988">X88-King</a>, <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/ophub/amlogic-s9xxx-armbian/issues/1150">Ali-CT2000</a></td>
+<td><a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/ophub/kernel/releases/tag/kernel_stable">全部</a></td>
+<td>amlogic_s922x.img</td>
+</tr>
+<tr>
+<td>s905x3</td>
+<td><a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/ophub/amlogic-s9xxx-armbian/issues/351">X96-Max+</a>, <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/ophub/amlogic-s9xxx-armbian/issues/414">HK1-Box</a>, <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/ophub/amlogic-s9xxx-armbian/issues/1006">Vontar-X3</a>, <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/ophub/amlogic-s9xxx-armbian/issues/1250">H96-Max-X3</a>, <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/ophub/amlogic-s9xxx-armbian/issues/782">Ugoos-X3</a>, <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/ophub/amlogic-s9xxx-armbian/issues/644">TX3(QZ)</a>, <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/ophub/amlogic-s9xxx-armbian/issues/1077">TX3(BZ)</a>, <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/ophub/amlogic-s9xxx-armbian/issues/366">X96-Air</a>, <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/ophub/amlogic-s9xxx-armbian/issues/779">X96-Max+_A100</a>, <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/ophub/amlogic-s9xxx-armbian/issues/157">A95XF3-Air</a>, <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/ophub/amlogic-s9xxx-armbian/issues/506">Tencent-Aurora-3Pro(s905x3-b)</a>, <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/ophub/amlogic-s9xxx-armbian/issues/788">X96-Max+Q1</a>, <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/ophub/amlogic-s9xxx-armbian/issues/909">X96-Max+100W</a>, <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/ophub/amlogic-s9xxx-armbian/issues/1086">X96-Max+_2101</a>, <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/ophub/amlogic-s9xxx-armbian/issues/1181">Infinity-B32</a>, <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/ophub/amlogic-s9xxx-armbian/issues/1166">Whale</a></td>
+<td><a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/ophub/kernel/releases/tag/kernel_stable">全部</a></td>
+<td>amlogic_s905x3.img</td>
+</tr>
+<tr>
+<td>s905x2</td>
+<td><a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/ophub/amlogic-s9xxx-armbian/issues/453">X96Max-4G</a>, <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/ophub/amlogic-s9xxx-armbian/issues/95">X96Max-2G</a>, <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/ophub/amlogic-s9xxx-armbian/issues/79">MECOOL-KM3-4G</a>, <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/ophub/amlogic-s9xxx-openwrt/issues/351">Tanix-Tx5-Max</a>, <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/ophub/amlogic-s9xxx-armbian/issues/851">A95X-F2</a></td>
+<td><a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/ophub/kernel/releases/tag/kernel_stable">全部</a></td>
+<td>amlogic_s905x2.img</td>
+</tr>
+<tr>
+<td>s912</td>
+<td><a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/ophub/amlogic-s9xxx-armbian/issues/500">Tanix-TX8-Max</a>, <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/ophub/amlogic-s9xxx-armbian/issues/315">Tanix-TX9-Pro(3G)</a>, <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/ophub/amlogic-s9xxx-armbian/issues/740">Tanix-TX9-Pro(2G)</a>, <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/ophub/amlogic-s9xxx-armbian/issues/72#issuecomment-1012790770">Tanix-TX92</a>, <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/ophub/amlogic-s9xxx-openwrt/issues/260">Nexbox-A1</a>, <a target="_blank" rel="noopener external nofollow noreferrer" href="https://www.cafago.com/en/p-v2979eu-2g.html">Nexbox-A95X-A2</a>,  <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/ophub/amlogic-s9xxx-openwrt/issues/260">A95X</a>, <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/ophub/amlogic-s9xxx-armbian/issues/72#issuecomment-1013071513">H96-Pro-Plus</a>, <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/ophub/amlogic-s9xxx-armbian/issues/72">VORKE-Z6-Plus</a>, <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/ophub/amlogic-s9xxx-armbian/issues/158">Mecool-M8S-PRO-L</a>, <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/ophub/amlogic-s9xxx-armbian/issues/525">Vontar-X92</a>, <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/ophub/amlogic-s9xxx-armbian/issues/668">T95Z-Plus</a>, <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/ophub/amlogic-s9xxx-armbian/issues/1020">Octopus-Planet</a>, <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/ophub/amlogic-s9xxx-armbian/issues/522">Phicomm-T1</a></td>
+<td><a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/ophub/kernel/releases/tag/kernel_stable">全部</a></td>
+<td>amlogic_s912.img</td>
+</tr>
+<tr>
+<td>s905d</td>
+<td><a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/ophub/amlogic-s9xxx-armbian/issues/59">MECOOL-KI-Pro</a>, <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/ophub/amlogic-s9xxx-armbian/issues/925">Phicomm-N1</a></td>
+<td><a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/ophub/kernel/releases/tag/kernel_stable">全部</a></td>
+<td>amlogic_s905d.img</td>
+</tr>
+<tr>
+<td>s905x</td>
+<td><a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/ophub/amlogic-s9xxx-armbian/issues/368">HG680P</a>, <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/ophub/amlogic-s9xxx-armbian/issues/60">B860H</a>, <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/ophub/amlogic-s9xxx-armbian/issues/98">TBee-Box</a>, <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/ophub/amlogic-s9xxx-armbian/issues/285">T95</a>, <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/ophub/amlogic-s9xxx-armbian/issues/645">TX9</a>, <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/ophub/amlogic-s9xxx-armbian/issues/1405">XiaoMI-3S</a></td>
+<td><a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/ophub/kernel/releases/tag/kernel_stable">全部</a></td>
+<td>amlogic_s905x.img</td>
+</tr>
+<tr>
+<td>s905w</td>
+<td><a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/ophub/amlogic-s9xxx-armbian/issues/621">X96-Mini</a>, <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/ophub/amlogic-s9xxx-armbian/issues/1062">TX3-Mini</a>, <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/ophub/amlogic-s9xxx-armbian/issues/570">W95</a>, <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/ophub/amlogic-s9xxx-armbian/issues/1044">X96W/FunTV</a>, <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/ophub/amlogic-s9xxx-armbian/issues/1140">MXQ-Pro-4K</a></td>
+<td><a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/ophub/kernel/releases/tag/kernel_stable">全部</a></td>
+<td>amlogic_s905w.img</td>
+</tr>
+<tr>
+<td>s905l2</td>
+<td><a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/ophub/amlogic-s9xxx-armbian/issues/648">MGV2000</a>, <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/ophub/amlogic-s9xxx-armbian/issues/921">MGV3000</a>, <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/ophub/amlogic-s9xxx-armbian/issues/648">Wojia-TV-IPBS9505</a>, <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/ophub/amlogic-s9xxx-openwrt/issues/405">M301A</a>, <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/ophub/amlogic-s9xxx-armbian/issues/1278">E900v21E</a></td>
+<td><a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/ophub/kernel/releases/tag/kernel_stable">全部</a></td>
+<td>amlogic_s905l2.img</td>
+</tr>
+<tr>
+<td>s905l3</td>
+<td><a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/ophub/amlogic-s9xxx-armbian/issues/1318">CM211-1</a>, <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/ophub/amlogic-s9xxx-armbian/issues/763">CM311-1</a>, <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/ophub/amlogic-s9xxx-armbian/issues/978">HG680-LC</a>, <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/ophub/amlogic-s9xxx-armbian/issues/921#issuecomment-1453143251">M401A</a>, <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/ophub/amlogic-s9xxx-armbian/issues/1277">UNT400G1</a></td>
+<td><a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/ophub/kernel/releases/tag/kernel_stable">全部</a></td>
+<td>amlogic_s905l3.img</td>
+</tr>
+<tr>
+<td>s905l3a</td>
+<td><a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/Calmact/e900v22c">E900V22C/D</a>, <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/ophub/amlogic-s9xxx-armbian/issues/517">CM311-1a-YST</a>, <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/ophub/amlogic-s9xxx-armbian/issues/732">M401A</a>, <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/ophub/amlogic-s9xxx-armbian/issues/517">M411A</a>, <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/ophub/amlogic-s9xxx-armbian/issues/970">UNT403A</a>, <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/ophub/amlogic-s9xxx-armbian/issues/970">UNT413A</a>, <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/ophub/amlogic-s9xxx-armbian/issues/741">ZTE-B863AV3.2-M</a></td>
+<td><a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/ophub/kernel/releases/tag/kernel_stable">全部</a></td>
+<td>amlogic_s905l3a.img</td>
+</tr>
+<tr>
+<td>s905l3b</td>
+<td><a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/ophub/amlogic-s9xxx-armbian/issues/1180">CM211-1</a>, <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/ophub/amlogic-s9xxx-armbian/issues/1268">CM311-1</a>, <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/ophub/amlogic-s9xxx-armbian/issues/1256">E900V22D</a>, <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/ophub/amlogic-s9xxx-armbian/issues/939">E900V22E</a>, <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/ophub/amlogic-s9xxx-armbian/pull/615">M302A/M304A</a>, <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/ophub/amlogic-s9xxx-armbian/issues/1154">Hisense-IP103H</a>, <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/ophub/amlogic-s9xxx-armbian/issues/1332">TY1608</a></td>
+<td><a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/ophub/kernel/releases/tag/kernel_stable">全部</a></td>
+<td>amlogic_s905l3b.img</td>
+</tr>
+<tr>
+<td>s905lb</td>
+<td><a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/ophub/amlogic-s9xxx-armbian/issues/734">Q96-mini</a>, <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/ophub/amlogic-s9xxx-armbian/pull/993">BesTV-R3300L</a>, <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/ophub/amlogic-s9xxx-armbian/issues/1190">SumaVision-Q7</a></td>
+<td><a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/ophub/kernel/releases/tag/kernel_stable">全部</a></td>
+<td>amlogic_s905lb.img</td>
+</tr>
+<tr>
+<td>s905</td>
+<td><a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/ophub/amlogic-s9xxx-armbian/issues/127">Beelink-Mini-MX-2G</a>, <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/ophub/amlogic-s9xxx-openwrt/issues/337">Sunvell-T95M</a>, <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/ophub/amlogic-s9xxx-armbian/issues/715">MXQ-Pro+4K</a>, <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/ophub/amlogic-s9xxx-armbian/issues/1175">SumaVision-Q5</a></td>
+<td><a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/ophub/kernel/releases/tag/kernel_stable">全部</a></td>
+<td>amlogic_s905.img</td>
+</tr>
+<tr>
+<td>rk3588</td>
+<td><a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/ophub/amlogic-s9xxx-armbian/issues/1240">Radxa-Rock5B</a>, <a target="_blank" rel="noopener external nofollow noreferrer" href="http://www.hinlink.com/index.php?id=138">HinLink-H88K</a>, <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/ophub/amlogic-s9xxx-openwrt/issues/415">Beelink-IPC-R</a></td>
+<td><a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/ophub/kernel/releases/tag/kernel_rk3588">rk3588</a></td>
+<td>rockchip_boxname.img</td>
+</tr>
+<tr>
+<td>rk3568</td>
+<td><a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/ophub/amlogic-s9xxx-armbian/issues/1061">FastRhino-R66S</a>, <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/ophub/amlogic-s9xxx-armbian/issues/774">FastRhino-R68S</a>, <a target="_blank" rel="noopener external nofollow noreferrer" href="http://www.hinlink.com/index.php?id=137">HinLink-H66K</a>, <a target="_blank" rel="noopener external nofollow noreferrer" href="http://www.hinlink.com/index.php?id=119">HinLink-H68K</a>, <a target="_blank" rel="noopener external nofollow noreferrer" href="https://wiki.radxa.com/Rock3/CM/CM3I/E25">Radxa-E25</a>, <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/ophub/amlogic-s9xxx-armbian/pull/1217">NanoPi-R5S</a></td>
+<td><a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/ophub/kernel/releases/tag/kernel_stable">6.x.y</a></td>
+<td>rockchip_boxname.img</td>
+</tr>
+<tr>
+<td>rk3566</td>
+<td><a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/ophub/amlogic-s9xxx-armbian/issues/1319">Panther-X2</a></td>
+<td><a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/ophub/kernel/releases/tag/kernel_stable">6.x.y</a></td>
+<td>rockchip_boxname.img</td>
+</tr>
+<tr>
+<td>rk3399</td>
+<td><a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/ophub/amlogic-s9xxx-armbian/pull/991">EAIDK-610</a>, <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/ophub/amlogic-s9xxx-armbian/pull/1080">King3399</a>, <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/ophub/amlogic-s9xxx-armbian/pull/1094">TN3399</a>, <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/ophub/amlogic-s9xxx-armbian/pull/1132">Kylin3399</a>, <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/ophub/amlogic-s9xxx-armbian/pull/1247">ZCube1-Max</a>, <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/ophub/amlogic-s9xxx-armbian/issues/1280">CRRC</a>, <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/ophub/amlogic-s9xxx-armbian/issues/1317">SMART-AM40</a>, <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/ophub/amlogic-s9xxx-armbian/issues/1326">SW799</a>, <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/ophub/amlogic-s9xxx-armbian/issues/1380">ZYSJ</a></td>
+<td><a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/ophub/kernel/releases/tag/kernel_stable">6.x.y</a></td>
+<td>rockchip_boxname.img</td>
+</tr>
+<tr>
+<td>rk3328</td>
+<td><a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/ophub/amlogic-s9xxx-armbian/issues/852">BeikeYun</a>, <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/ophub/amlogic-s9xxx-armbian/issues/1007">L1-Pro</a>, <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/ophub/amlogic-s9xxx-armbian/issues/1313">Station-M1</a>, <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/ophub/amlogic-s9xxx-armbian/issues/1313">Bqeel-MVR9</a></td>
+<td><a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/ophub/kernel/releases/tag/kernel_stable">全部</a></td>
+<td>rockchip_boxname.img</td>
+</tr>
+<tr>
+<td>h6</td>
+<td><a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/ophub/amlogic-s9xxx-armbian/issues/1100">Vplus</a>, <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/ophub/amlogic-s9xxx-armbian/issues/1120">Tanix-TX6</a></td>
+<td><a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/ophub/kernel/releases/tag/kernel_stable">全部</a></td>
+<td>allwinner_boxname.img</td>
+</tr>
+</tbody>
+</table>
+<p><a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/ophub/amlogic-s9xxx-armbian">Github仓库</a><br>
+大家可以自行去releases界面下载对应镜像，如果动手能力较强的也可以自行利用Github Actions编译一副专属的镜像文件。<br>
+我以N1盒子5.15.90内核版本作为演示<br>
+<strong>由于每个盒子开启U盘启动的方法不同，这里就不教了，大家自行搜索，默认大家已经开启了U盘启动</strong></p>
+<h1>准备</h1>
+<ul>
+<li>电视盒子（没有盒子进来干嘛）</li>
+<li>大于4G的U盘/TF卡</li>
+<li>一台电脑（这里以windows举例示范）</li>
+<li>一把可以链接盒子的键盘</li>
+<li>显示器</li>
+<li>各种链接线材</li>
+</ul>
+<h1>教程</h1>
+<h2 id="烧录镜像"><a class="headerlink" href="#烧录镜像"></a>烧录镜像</h2>
+<p>（下面是晶晨amlogic系列产品安装方法，如果是rockship请跳转至文末寻找ophub大大写的使用方法链接）<br>
+下载对应机型的镜像，可以对照我发的机型表下载，GitHub国内访问环境不稳定，推荐在国外进行访问<br>
+下载镜像后解压，再利用电脑将镜像写入U盘或者TF卡中，这里我以balenaEtcher为例<br>
+<img data-lazy-src="https://img.akimio.top/Blog/2023/09/1696083883-65182fab0ceb8.webp" alt="balenaEtcher" loading="lazy"></p>
+<h2 id="刷入系统"><a class="headerlink" href="#刷入系统"></a>刷入系统</h2>
+<p>依次选择刚解压好的<code>镜像文件</code>、<code>U盘/TF卡</code>、再点击<code>烧录</code>，然后静候等待烧录完成。他有两个进度条，先出现紫色的烧录，再出现绿色验证进度条，一定要等到验证完成后再拔出U盘/TF卡。<br>
+然后将烧录好的U盘/TF卡插入盒子中，并插入键盘，显示器以及电源。<br>
+不出意外的话，此时屏幕上会出现跑代码的画面（有些机型可能会出先现安卓的开机界面，不用理会），稍做等候跑完代码即可<br>
+<img data-lazy-src="https://img.akimio.top/Blog/2023/09/1696083907-65182fc388606.webp" alt="创建root用户密码" loading="lazy"></p>
+<p>出现password就代表跑完了，输入默认密码<code>1234</code>然后会让你输入一个新的密码，第二次是确认密码，<strong>Linux系统下是输入密码是看不到的，但确实是已经输入了</strong>（新版本好像直接让你更改一个新的密码，就不需要输入1234了，并且可以看到密码位数，这里大家根据系统提示操作就好）<br>
+我这里是直接让我输入一个新的密码作为root的密码，我输入了<code>1234</code>，提示弱密码，不用管他，然后让你选择默默的系统命令，这里我选择bash就输入1，如果你喜欢用zsh就输入2，什么都不懂就跟着我选择bash<br>
+<img data-lazy-src="https://img.akimio.top/Blog/2023/09/1696083934-65182fde72968.webp" alt="选择默认系统命令" loading="lazy"></p>
+<p>然后会让你创建一个User用户，有需要的可以自行创建，根据系统提示就好，只需要用到root用户（用户名是root，密码是刚刚自己改的那个）的话就ctrl+c就可以退出创建User用户的界面了<br>
+<img data-lazy-src="https://img.akimio.top/Blog/2023/09/1696083972-65183004b0965.webp" alt="跳过创建User用户" loading="lazy"></p>
+<p>如果你觉得机身自带的硬盘空间太小，不想将系统写入到内置硬盘的话可以跳过下面一步，这样的好处是物理保留了双系统，但是U盘/TF卡就不能拔下来了，不过也获得来更大的存储空间，推荐自带TF卡槽的机型使用。</p>
+<p>下面是写入内置emmc教程，命令：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">armbian-install</span><br></pre></td></tr></table></figure>
+<p>选择对应机型的DTB，DTB相当于驱动文件，可以自行更/移植改达到适配更多机型的目的，详细可以查看ophub大大的GitHub说明，因为我是N1且不需要流控（DMA-thresh是流控版本）就输入101<br>
+<img data-lazy-src="https://img.akimio.top/Blog/2023/09/1696083992-6518301862e6c.webp" alt="选择对应DTB" loading="lazy"></p>
+<p>然后选择卷格式，这边我选择更为常见的ext4，就输入1<br>
+<img data-lazy-src="https://img.akimio.top/Blog/2023/09/1696084013-6518302dec947.webp" alt="选择卷格式" loading="lazy"></p>
+<p>然后就是跑代码时间，后面success字样就是写入内置emmc成功了<br>
+<img data-lazy-src="https://img.akimio.top/Blog/2023/09/1696084035-65183043d8dda.webp" alt="系统写入内置emmc成功" loading="lazy"></p>
+<p>接着就输入重启命令：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">reboot</span><br></pre></td></tr></table></figure>
+<p>等待代码跑完，屏幕变黑就拔掉U盘/TF卡，然后等待盒子重启就好了<br>
+出现armbian login就是重启到内置的emmc里系统成功了，输入账号root，密码则为之前修改（创建）的，并且密码不可见，输完后直接回车就好<br>
+<img data-lazy-src="https://img.akimio.top/Blog/2023/09/1696084057-6518305913936.webp" alt="emmc内置系统开机成功" loading="lazy"></p>
+<p>登入成功应该是这个样子的，大家可以确认一下自己的硬盘大小，内存大小也没有问题（如果安装在U盘/TF卡中，硬盘大小应该是U盘/TF卡的大小）<br>
+<img data-lazy-src="https://img.akimio.top/Blog/2023/09/1696084077-6518306d01123.webp" alt="系统登入成功" loading="lazy"></p>
+<h2 id="配置无线网络（可选）"><a class="headerlink" href="#配置无线网络（可选）"></a>配置无线网络（可选）</h2>
+<p>接下来是连接Wi-Fi，如果使用网线连接就跳过这一步<br>
+输入命令：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">armbian-config</span><br></pre></td></tr></table></figure>
+<p>如果像我一样出现了Warning报错，就直接回车就好<br>
+<img data-lazy-src="https://img.akimio.top/Blog/2023/09/1696084107-6518308bb341e.webp" alt="Warning报错" loading="lazy"></p>
+<p>然后就会进入到一个设置界面<br>
+<img data-lazy-src="https://img.akimio.top/Blog/2023/09/1696084127-6518309f54a21.webp" alt="进入系统设置界面" loading="lazy"></p>
+<p>依次选择<code>network</code>-&gt;<code>wifi</code>-&gt;<code>找到wifi名</code>，输入密码连接即可，连接成功后，Wi-Fi名前面会有一个星号，然后用上下左右键依次选择<code>quit</code>-&gt;<code>back</code>-&gt;<code>exit</code>（反正都是在右下角，也可以按几次<code>esc</code>），然后就可以回到命令行界面了，这里就可以去路由器后台看看有没有分配到ip，如果分配到ip就可以使用ssh进行远程连接了，如果你是作为服务器的话以后就不需要屏幕</p>
+<h2 id="安装图形化界面"><a class="headerlink" href="#安装图形化界面"></a>安装图形化界面</h2>
+<p>接来下讲如何安装图形化桌面，作为一个小主机使用<br>
+在命令行下，输入命令：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">armbian-software</span><br></pre></td></tr></table></figure>
+<p>如果是第一次使用这个命了，会自动连接ubuntu下载目录，稍作等待即可<br>
+看到这个列表就说明成功执行<code>armbian-software</code>命令了<br>
+<img data-lazy-src="https://img.akimio.top/Blog/2023/09/1696084164-651830c434748.webp" alt="armbian-software列表" loading="lazy"></p>
+<p>然后输入<code>201</code>进行安装图形化桌面<br>
+<img data-lazy-src="https://img.akimio.top/Blog/2023/09/1696084180-651830d46d89b.webp" alt="可视化图形桌面安装" loading="lazy"></p>
+<p>如果你前面也像我一样跳过了User用户的注册，这里会让你重新注册一个非root用户供可视化图像界面用户使用，这里我注册了一个叫<code>abc</code>的账户，密码为<code>1234</code>，也是看不见，输完回车就好，然后会让你重复确认一遍密码<br>
+之后就是用户信息，你可以安装需求填写，也可以直接像我一样按回车跳过直到这个Y/n<br>
+这里讲一个Linux知识点，这里就是一个选择，可以输入y或者n（就是yes或者or），如果他有大写的就是默认选项，例如这里是Y/n，默认就是y，直接按回车和输入y按回车的效果是一样的，y/N同理<br>
+<img data-lazy-src="https://img.akimio.top/Blog/2023/09/1696084198-651830e6ee411.webp" alt="非root用户创建" loading="lazy"></p>
+<p>然后就是下载，我这里的下载速度大概只有0.1M/s，如果你的下载环境比较慢的话，建议更换网络环境<br>
+下载完后就有一个图形管理框架选择界面，因为我用过ubuntu，就选择gdm3，XUbuntu默认的是lightdm，看个人喜好<br>
+<img data-lazy-src="https://img.akimio.top/Blog/2023/09/1696084223-651830ff38d9d.webp" alt="图形管理框架选择" loading="lazy"></p>
+<p>然后就是跑完代码，出现success就基本成功了，然后就是选择是否安装中文支持，我选了y，后面就是跑代码了<br>
+<img data-lazy-src="https://img.akimio.top/Blog/2023/09/1696084241-65183111c7bf9.webp" alt="安装桌面中文支持" loading="lazy"></p>
+<p>跑完代码就会自动重启，重启后再跑一段代码就进入可视化桌面系统了，选择账户输入密码后就进入桌面了<br>
+<img data-lazy-src="https://img.akimio.top/Blog/2023/09/1696084258-65183122b17f8.webp" alt="选择用户" loading="lazy"></p>
+<p>进入可视化桌面<br>
+后面就是自行安装Linux软件了，就不再过多介绍了</p>
+<h1>尾声</h1>
+<p>如果大家对ophub大大的armbian系统感兴趣，建议自行查看大大写的说明书并且给大大一个star，这相当于给开源大佬的一键三连<br>
+<a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/ophub/amlogic-s9xxx-armbian/blob/main/build-armbian/documents/README.cn.md">中文说明书地址</a><br>
+里面详细说明了定制专属固件教程，各种命令的用法，包括armbian-updata（更新内核），armbian-tf（手动更改分区情况），如果后面遇到我会慢慢介绍</p>
+<p>感谢你的观看，本系列教程会持续更新，手把手教你把废弃的电视打造成迷你主机+应用服务器+影音库+软路由+下载器+博客服务器+签到机and so on……<br>
+如果有什么想看的也可以在评论区留言，若文章有疏漏，感谢斧正</p>
+</article><div class="post-copyright"><div class="post-copyright__author_group"><a class="post-copyright__author_img" href="/about/"><img class="post-copyright__author_img_front" data-lazy-src="https://img.akimio.top/avatar/akimio.png"></a><div class="post-copyright__author_name">秋澪的博客</div><div class="post-copyright__author_desc">Akimio blog</div></div><div class="post-tools" id="post-tools"><div class="post-tools-left"><div id="quit-box" onclick="RemoveRewardMask()"></div><div class="reward-link mode"><a class="reward-link-button" href="/rss2.xml" title="订阅"><i class="scoicon sco-plant-fill"></i>订阅</a></div></div></div><div class="post-copyright__notice"><span class="post-copyright-info">本文是原创文章，采用<a target="_blank" rel="noopener external nofollow noreferrer" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">CC BY-NC-SA 4.0</a>协议，完整转载请注明来自<a href="/">秋澪的博客</a></span></div></div><div class="post-tools-right"><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/Arbiam/"><span class="tags-punctuation"></span>Arbiam<span class="tagsPageCount">1</span></a><a class="post-meta__tags" href="/tags/%E6%95%99%E7%A8%8B/"><span class="tags-punctuation"></span>教程<span class="tagsPageCount">28</span></a></div></div></div><nav class="needEndHide pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/posts/1022/"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">免费的云数据库推荐</div></div></a></div><div class="next-post pull-right"><a href="/posts/1020/"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">使用BetterNCM美化网易云</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="scoicon sco-star-smile-fill"></i><span>喜欢这篇的人也看了</span><div class="relatedPosts-link"><a onclick="event.preventDefault(); toRandomPost();" href="javascript:void(0);" rel="external nofollow" data-pjax-state="">随便逛逛</a></div></div><div class="relatedPosts-list"><div><a href="/posts/1035/" title="利用CloudFlare搭建镜像站"><img class="cover" data-lazy-src="https://img.akimio.top/Blog/2024/01/1705389355-65a62d2b0759a.webp" alt="cover"><div class="content is-center"><div class="title">利用CloudFlare搭建镜像站</div></div></a></div><div><a href="/posts/1034/" title="Docker入门教程"><img class="cover" data-lazy-src="https://img.akimio.top/Blog/2024/01/1704949049-659f753963b50.webp" alt="cover"><div class="content is-center"><div class="title">Docker入门教程</div></div></a></div></div></div><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="scoicon sco-chat-fill"></i><span> 评论</span><span></span></div><div class="comment-randomInfo"><a onclick="sco.addRandomCommentInfo()" href="javascript:void(0)" rel="external nofollow noreferrer">匿名评论</a></div><div class="comment-tips" id="comment-tips"><span>✅ 你无需删除空行，直接评论以获取最佳展示效果</span></div></div><div class="comment-wrap"><div id="comment"></div><script>async function initComment() {
+    var initOptions = Object.assign(
+        {"envId":"https://twikoo.akimio.top/","lang":"zh-CN","accessToken":null},
+        {
+            el: '#comment',
+            onCommentLoaded: function () {
+                GLOBAL_CONFIG.lightbox && utils.lightbox(document.querySelectorAll('#twikoo .tk-content img:not(.tk-owo-emotion)'))
+            },
+            lang: 'zh-CN',
+        }
+    )
+    await twikoo.init(initOptions)
+    if (true) {
+        var countOptions = Object.assign(
+            {"envId":"https://twikoo.akimio.top/","lang":"zh-CN","accessToken":null},
+            {
+                urls: [window.location.pathname],
+                includeReply: false
+            }
+        )
+        const res = await twikoo.getCommentsCount(countOptions)
+        try {
+            document.getElementById('twikoo-count').innerText = res[0].count
+            document.querySelector('.comment-headline span:last-child').innerText = ` (${res[0].count})`
+        } catch (e) {
+            document.getElementById('twikoo-count').innerText = '加载错误'
+        }
+    }
+}</script></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="card-content"><div class="card-info-avatar is-center"><div class="author-info__top-group"><div class="author-info__sayhi" id="author-info__sayhi" onclick="sco.changeSayHelloText()">sayhello.morning</div></div></div><div class="avatar-img-group"><img class="avatar-img" alt="头像" data-lazy-src="https://img.akimio.top/avatar/akimio.png"><div class="avatar-sticker"><img class="avatar-sticker-img" data-lazy-src="https://bu.dusays.com/2023/12/30/659011053e246.png" alt="心情贴纸"></div></div><div class="author-info__description_group"><div class="author-info__description"><b>一只喜欢七彩球的枯叶蝶</b></div><div class="author-info__description2">原博客地址：<b>blog.zuilang.tk</b></div></div><div class="author-info__bottom-group"><a class="author-info__bottom-group-left" href="/about/"><div class="author-info__name">秋澪</div><div class="author-info__desc">Akimio blog</div></a><div class="card-info-social-icons is-center"><a class="social-icon" target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/Akimio" title="Github"><i class="scoicon scoicon sco-github-line"></i></a><a class="social-icon" target="_blank" rel="noopener external nofollow noreferrer" href="https://space.bilibili.com/35466886" title="Bilibili"><i class="scoicon scoicon sco-bilibili-line"></i></a></div></div></div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="scoicon sco-menu-line"></i><span>文章目录</span></div><div class="toc-content" id="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-text">Armbian简介</span></a></li><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-text">前言</span></a></li><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-text">准备</span></a></li><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-text">教程</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%83%A7%E5%BD%95%E9%95%9C%E5%83%8F"><span class="toc-text">烧录镜像</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%B7%E5%85%A5%E7%B3%BB%E7%BB%9F"><span class="toc-text">刷入系统</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%85%8D%E7%BD%AE%E6%97%A0%E7%BA%BF%E7%BD%91%E7%BB%9C%EF%BC%88%E5%8F%AF%E9%80%89%EF%BC%89"><span class="toc-text">配置无线网络（可选）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%89%E8%A3%85%E5%9B%BE%E5%BD%A2%E5%8C%96%E7%95%8C%E9%9D%A2"><span class="toc-text">安装图形化界面</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-text">尾声</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="scoicon sco-map-line"></i><span>最近发布</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/posts/1036/" title="FastCDN说明文档"><img alt="FastCDN说明文档" data-lazy-src="https://img.akimio.top/Blog/2024/01/1705725058-65ab4c824e8bd.webp"></a><div class="content"><a class="title" href="/posts/1036/" title="FastCDN说明文档">FastCDN说明文档</a><a class="article-recent_post_categories" href="/posts/1036/">文档</a></div></div><div class="aside-list-item"><a class="thumbnail" href="/posts/1035/" title="利用CloudFlare搭建镜像站"><img alt="利用CloudFlare搭建镜像站" data-lazy-src="https://img.akimio.top/Blog/2024/01/1705389355-65a62d2b0759a.webp"></a><div class="content"><a class="title" href="/posts/1035/" title="利用CloudFlare搭建镜像站">利用CloudFlare搭建镜像站</a><a class="article-recent_post_categories" href="/posts/1035/">网络基建计划</a></div></div><div class="aside-list-item"><a class="thumbnail" href="/posts/1034/" title="Docker入门教程"><img alt="Docker入门教程" data-lazy-src="https://img.akimio.top/Blog/2024/01/1704949049-659f753963b50.webp"></a><div class="content"><a class="title" href="/posts/1034/" title="Docker入门教程">Docker入门教程</a><a class="article-recent_post_categories" href="/posts/1034/">学习笔记</a></div></div><div class="aside-list-item"><a class="thumbnail" href="/posts/1033/" title="UnlockMusic音乐解锁搭建教程"><img alt="UnlockMusic音乐解锁搭建教程" data-lazy-src="https://img.akimio.top/Blog/2023/12/1696081573-651826a504cc6.png"></a><div class="content"><a class="title" href="/posts/1033/" title="UnlockMusic音乐解锁搭建教程">UnlockMusic音乐解锁搭建教程</a><a class="article-recent_post_categories" href="/posts/1033/">网络基建计划</a></div></div><div class="aside-list-item"><a class="thumbnail" href="/posts/1032/" title="Excalidraw搭建教程"><img alt="Excalidraw搭建教程" data-lazy-src="https://img.akimio.top/Blog/2023/10/1697201324-65293cac786a0.webp"></a><div class="content"><a class="title" href="/posts/1032/" title="Excalidraw搭建教程">Excalidraw搭建教程</a><a class="article-recent_post_categories" href="/posts/1032/">网络基建计划</a></div></div></div></div></div></div></main><footer id="footer"><div id="sco-footer-bar"><div class="footer-logo"><span class="scoicon">秋澪Akimio的博客</span></div><div class="footer-bar-description">来自秋澪的博客 - Akimio blog的文章</div><a class="footer-bar-link" href="/">了解更多</a></div><div id="footer_deal"><a class="deal_link" target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/Akimio521" title="Github"><i class="scoicon scoicon sco-bilibili-line"></i></a><a class="deal_link" href="mailto:akimio2333@gmail.com" rel="external nofollow noreferrer" title="Mail"><i class="scoicon scoicon sco-mail-line"></i></a><div class="footer_mini_logo" id="footer_mini_logo" title="返回顶部" onclick="sco.toTop()"><img data-lazy-src="https://img.akimio.top/avatar/akimio.png" alt="返回顶部"></div><a class="deal_link" target="_blank" rel="noopener external nofollow noreferrer" href="https://space.bilibili.com/1329819902" title="Bilibili"><i class="scoicon scoicon sco-bilibili-line"></i></a><a class="deal_link" target="_blank" rel="noopener external nofollow noreferrer" href="http://www.coolapk.com/u/4951361" title="酷安"><i class="scoicon scoicon sco-douyin-fill"></i></a></div><div id="sco-footer"><div class="footer-group"><h3 class="footer-title">导航</h3><div class="footer-links"><a class="footer-item" href="/archives/" title="归档">归档</a><a class="footer-item" href="/categories/" title="分类">分类</a><a class="footer-item" href="/tags/" title="标签">标签</a></div></div><div class="footer-group"><h3 class="footer-title">服务</h3><div class="footer-links"><a class="footer-item" target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com" title="Github">Github</a><a class="footer-item" target="_blank" rel="noopener external nofollow noreferrer" href="https://vercel.com/" title="Vercel">Vercel</a><a class="footer-item" target="_blank" rel="noopener external nofollow noreferrer" href="https://www.cloudflare.com/" title="CloudFlare">CloudFlare</a></div></div><div class="footer-group"><h3 class="footer-title">订阅</h3><div class="footer-links"><a class="footer-item" href="/rss2.xml" title="RSS">RSS</a><a class="footer-item" href="/sitemap.xml" title="站点地图">站点地图</a><a class="footer-item" href="/baidusitemap.xml" title="百度站点地图">百度站点地图</a></div></div><div class="footer-group"><h3 class="footer-title">协议</h3><div class="footer-links"><a class="footer-item" href="/cookies/" title="Cookies">Cookies</a><a class="footer-item" href="/privacy/" title="用户协议">用户协议</a><a class="footer-item" href="/copyright/" title="版权协议">版权协议</a></div></div></div><div id="footer-bar"><div class="footer-bar-links"><div class="footer-bar-left"><div class="copyright">© 2023 - 2024 By&nbsp;<a class="footer-bar-link" href="/">秋澪</a></div></div><div class="footer-bar-right"><a class="footer-bar-link" target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/wleelw/hexo-theme-solitude" title="主题">主题</a><a class="footer-bar-link cc"><i class="scoicon sco-copyright-line"></i><i class="scoicon sco-creative-commons-by-line"></i><i class="scoicon sco-creative-commons-nc-line"></i><i class="scoicon sco-creative-commons-nd-line"></i></a></div></div></div><div class="comment-barrage needEndHide"></div></footer></div><!-- inject body--><div><script src="/js/main.js?v=1.4.7"></script><script src="/js/utils.js?v=1.4.7"></script><div id="rightMenu"><div class="rightMenu-group rightMenu-small"><div class="rightMenu-item" id="menu-backward"><i class="scoicon sco-arrow-left-line"></i></div><div class="rightMenu-item" id="menu-forward"><i class="scoicon sco-arrow-right-line"></i></div><div class="rightMenu-item" id="menu-refresh"><i class="scoicon sco-restart-line"></i></div><div class="rightMenu-item" id="menu-top"><i class="scoicon sco-arrow-up-line"></i></div></div><div class="rightMenu-group rightMenu-line rightMenuPlugin"><div class="rightMenu-item" id="menu-copytext"><i class="scoicon sco-copy-fill"></i><span>复制选中文本</span></div><div class="rightMenu-item" id="menu-pastetext"><i class="scoicon sco-clipboard-fill"></i><span>粘贴文本</span></div><a class="rightMenu-item" id="menu-commenttext"><i class="scoicon sco-chat-new-fill"></i><span>引用到评论</span></a><div class="rightMenu-item" id="menu-newwindow"><i class="scoicon sco-window-fill"></i><span>新窗口打开</span></div><div class="rightMenu-item" id="menu-copylink"><i class="scoicon sco-link-line"></i><span>复制链接地址</span></div><div class="rightMenu-item" id="menu-copyimg"><i class="scoicon sco-copy-fill"></i><span>复制此图片</span></div><div class="rightMenu-item" id="menu-downloadimg"><i class="scoicon sco-download-cloud-fill"></i><span>下载此图片</span></div><div class="rightMenu-item" id="menu-search"><i class="scoicon sco-search-line"></i><span>站内搜索</span></div><div class="rightMenu-item" id="menu-music-toggle"><i class="scoicon sco-play-fill"></i><span>播放音乐</span></div><div class="rightMenu-item" id="menu-music-back"><i class="scoicon sco-skip-back-fill"></i><span>切换到上一首</span></div><div class="rightMenu-item" id="menu-music-forward"><i class="scoicon sco-skip-forward-fill"></i><span>切换到下一首</span></div><div class="rightMenu-item" id="menu-music-playlist" onclick="window.open('https://music.163.com/#/playlist?id=8407304077', '_blank');"><i class="scoicon sco-play-list-2-line"></i><span>查看所有歌曲</span></div><div class="rightMenu-item" id="menu-music-copyMusicName"><i class="scoicon sco-copy-fill"></i><span>复制歌名</span></div></div><div class="rightMenu-group rightMenu-line rightMenuOther"><a class="rightMenu-item menu-Link" id="menu-randomPost"><i class="scoicon sco-signal-tower-fill"></i><span>随便逛逛</span></a><a class="rightMenu-item menu-link" href="/categories/"><i class="scoicon sco-checkbox-multiple-blank-fill"></i><span>文章分类</span></a><a class="rightMenu-item menu-link" href="/tags/"><i class="scoicon sco-price-tag-fill"></i><span>文章标签</span></a></div><div class="rightMenu-group rightMenu-line rightMenuOther"><div class="rightMenu-item" id="menu-copy"><i class="scoicon sco-external-link-fill"></i><span>复制地址</span></div><div class="rightMenu-item" id="menu-commentBarrage"><i class="scoicon sco-chat-fill"></i><span class="menu-commentBarrage-text">关闭热评</span></div><div class="rightMenu-item" id="menu-darkmode"><i class="scoicon sco-moon-clear-fill"></i><span class="menu-darkmode-text">深色模式</span></div><div class="rightMenu-item" id="menu-translate"><i class="scoicon sco-panben-line"></i><span>轉為繁體</span></div></div></div><div id="rightmenu-mask"></div><script src="/js/rightside.js?v=1.4.7"></script><script src="https://cdn.cbd.int/solitude-source/js/universe.min.js"></script><script>dark()
+</script><script src="/js/tw_cn.js?v=1.4.7"></script><script src="https://cdn.staticfile.org/pjax/0.2.8/pjax.min.js"></script><script src="https://cdn.staticfile.org/vanilla-lazyload/17.8.5/lazyload.iife.min.js"></script><script src="https://cdn.staticfile.org/node-snackbar/0.1.16/snackbar.min.js"></script><script src="https://cdn.staticfile.org/fancyapps-ui/5.0.33/fancybox/fancybox.umd.min.js"></script><script>const coverColorConfig = {
+    api: 'https://img2color.wzsco.top/api?img=',
+    time: 43200000,
+}</script><script src="/js/covercolor/api.js?v=1.4.7"></script><script src="https://cdn.staticfile.org/twikoo/1.6.31/twikoo.all.min.js"></script><script src="/js/comment/twikoo_commentBarrage.js?v=1.4.7"></script><script src="https://cdn.staticfile.org/pace/1.2.4/pace.min.js"></script><script src="https://cdn.staticfile.org/instantsearch.js/4.63.0/instantsearch.production.min.js"></script><script src="https://cdn.staticfile.org/algoliasearch/4.22.0/algoliasearch-lite.umd.min.js"></script></div><div id="js-pjax"><script async src="https://cdn.staticfile.org/busuanzi/2.3.0/bsz.pure.mini.min.js"></script><script id="config-diff">var PAGE_CONFIG = {
+    is_post: true,
+    is_page: false,
+    is_home: false,
+    page: 'post',
+    toc: true,
+    comment: true,
+}
+</script></div><!-- newest comment--><script>window.addEventListener('load', () => {
+    const changeContent = (content) => {
+        if (content === '') return content;
+
+        const replacements = [
+            {regex: /<img.*?src="(.*?)"?[^\>]+>/ig, replacement: '[图片]'},
+            {regex: /<a[^>]+?href=["']?([^"']+)["']?[^>]*>([^<]+)<\/a>/gi, replacement: '[链接]'},
+            {regex: /<pre><code>.*?<\/pre>/gi, replacement: '[代码]'},
+            {regex: /<[^>]+>/g, replacement: ""}
+        ];
+
+        content = replacements.reduce((str, {regex, replacement}) => str.replace(regex, replacement), content);
+
+        return content.length > 150 ? content.substring(0, 150) + '...' : content;
+    }
+
+    const getComment = () => {
+        const $dom = document.querySelector('#card-newest-comments .aside-list')
+
+        const runTwikoo = () => {
+            twikoo.getRecentComments({
+                envId: GLOBAL_CONFIG.comment.twikoo.url,
+                region: '',
+                pageSize: 6,
+                includeReply: true
+            }).then(function (res) {
+                const twikooArray = res.map(e => ({
+                    'content': changeContent(e.comment),
+                    'avatar': e.avatar,
+                    'nick': e.nick,
+                    'url': `${e.url}#${e.id}`,
+                    'date': new Date(e.created).toISOString()
+                }))
+                generateHtml(twikooArray)
+            }).catch(function (err) {
+                $dom.innerHTML = "无法获取评论，请确认相关配置是否正确"
+            })
+        }
+        runTwikoo()
+    }
+
+    const generateHtml = array => {
+        const $dom = document.querySelector('#card-newest-comments .aside-list')
+        $dom.innerHTML = array.length ? array.map(item => `
+            <div class='aside-list-item'>
+              <a href='${item.url}' class='thumbnail'>
+                <img data-lazy-src='${item.avatar}' alt='${item.nick}'>
+                <div class='name'><span>${item.nick}</span></div>
+              </a>
+              <div class='content'>
+                <a class='comment' href='${item.url}'>${item.content}</a>
+                <time class="datetime" datetime="${item.date}"></time>
+              </div>
+            </div>
+          `).join('') : '没有评论'
+        window.lazyLoadInstance && window.lazyLoadInstance.update()
+        window.pjax && window.pjax.refresh($dom)
+        changeTimeFormat()
+    }
+
+    const newestCommentInit = () => {
+        const $asideList = document.querySelector('#card-newest-comments .aside-list')
+        if ($asideList) {
+            getComment()
+        }
+    }
+
+    newestCommentInit()
+})</script><!-- pjax--><script>let pjaxSelectors = [
+    'title',
+    '#body-wrap',
+    '#site-config',
+    'meta[name="description"]',
+    '#js-pjax',
+    'meta[property^="og:"]',
+]
+
+const pjax = new Pjax({
+    elements: 'a:not([target="_blank"])',
+    selectors: pjaxSelectors,
+    cacheBust: false,
+    analytics: false,
+    scrollRestoration: false
+})
+
+document.querySelectorAll('script[data-pjax]').forEach(item => {
+    const newScript = document.createElement('script')
+    const content = item.text || item.textContent || item.innerHTML || ""
+    Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+    newScript.appendChild(document.createTextNode(content))
+    item.parentNode.replaceChild(newScript, item)
+})
+
+document.addEventListener('pjax:complete', () => {
+    window.refreshFn()
+})
+
+document.addEventListener('pjax:error', (e) => {
+    if (e.request.status === 404) {
+        pjax.loadUrl('/404.html')
+    }
+})</script><!-- theme--><script>initTheme = () => {
+    let isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches
+    const cachedMode = saveToLocal.get('theme');
+    if (cachedMode === undefined) {
+        const nowMode =
+            isDarkMode ? 'dark' : 'light'
+        document.documentElement.setAttribute('data-theme', nowMode);
+    } else {
+        document.documentElement.setAttribute('data-theme', cachedMode);
+    }
+}
+initTheme()</script><!-- search--><div id="algolia-search"><div class="search-dialog"><div class="algolia-navbar"><div class="search-dialog__title" id="algolia-search-title">搜索</div><div class="algolia-tips"><i class="scoicon sco-algolia-fill"></i><span class="algolia-tips-text">Algolia</span></div><span class="search-close-button"><i class="scoicon sco-close-fill"></i></span></div><div id="algolia-input-panel"><div id="algolia-search-input"></div></div><div id="search-results"><div id="algolia-hits"></div></div><div id="algolia-tips"><div id="algolia-pagination"></div><div id="algolia-stats"></div></div></div><div id="search-mask"></div></div><script src="/js/search/algolia.js?v=1.4.7"></script><!-- music--></body></html><script>const posts=["posts/1036/","posts/1035/","posts/1034/","posts/1033/","posts/1032/","posts/1031/","posts/1030/","posts/1029/","posts/1028/","posts/1027/","posts/1026/","posts/1025/","posts/1024/","posts/1023/","posts/1022/","posts/1021/","posts/1020/","posts/1019/","posts/1018/","posts/1017/","posts/1016/","posts/1015/","posts/1014/","posts/1013/","posts/1012/","posts/1011/","posts/1010/","posts/1009/","posts/1008/","posts/1007/","posts/1006/","posts/1005/","posts/1004/","posts/1003/","posts/1002/","posts/1001/","posts/1/"];function toRandomPost(){ pjax.loadUrl('/'+posts[Math.floor(Math.random()*posts.length)]); };</script>

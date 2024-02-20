@@ -1,0 +1,456 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1"><title>利用Ventoy打造最强硬盘 | 秋澪的博客</title><noscript>开启JavaScript才能访问本站哦~</noscript><link rel="icon" href="https://img.akimio.top/avatar/akimio.png"><!-- index.css--><link rel="stylesheet" href="/css/index.css?v=1.4.7"><!-- inject head--><meta name="google-site-verification" content="Fk7XyGh7jge7BoQY"><meta name="baidu-site-verification" content="codeva-Ppouj7y5Ib"><link rel="stylesheet" href="https://cdn.cbd.int/solitude-source/icon/scoicon.min.css"><link rel="stylesheet" href="https://cdn.staticfile.org/node-snackbar/0.1.16/snackbar.min.css"><!-- aplayer--><!-- swiper--><link rel="stylesheet" href="https://cdn.staticfile.org/fancyapps-ui/5.0.33/fancybox/fancybox.min.css"><link rel="stylesheet" href="https://cdn.staticfile.org/KaTeX/0.16.9/katex.min.css"><!-- Open Graph--><meta name="description" content="前言 最近随着国产固态的崛起，固态硬盘价格也大降，618期间我花费400左右购入了一块国产PCIE4.0固态，打算配合硬盘盒做成一块移动固态，本期教程将基于固态硬盘制作最强的AIO移动硬盘（All in one,all in one,one boom,all bomm）也适用于固态U盘（普通U盘不建"><!-- pwa--><script>(win => {
+        win.saveToLocal = {
+            set: function setWithExpiry(key, value, ttl) {
+                if (ttl === 0)
+                    return
+                const now = new Date()
+                const expiryDay = ttl * 86400000
+                const item = {
+                    value: value,
+                    expiry: now.getTime() + expiryDay,
+                }
+                localStorage.setItem(key, JSON.stringify(item))
+            },
+
+            get: function getWithExpiry(key) {
+                const itemStr = localStorage.getItem(key)
+
+                if (!itemStr) {
+                    return undefined
+                }
+                const item = JSON.parse(itemStr)
+                const now = new Date()
+
+                if (now.getTime() > item.expiry) {
+                    localStorage.removeItem(key)
+                    return undefined
+                }
+                return item.value
+            }
+        }
+
+        const DarkModeStatus = localStorage.getItem('theme')
+        if (DarkModeStatus !== null) {
+            if (DarkModeStatus === 'dark') {
+                document.documentElement.setAttribute('data-theme', 'dark')
+            } else {
+                document.documentElement.setAttribute('data-theme', 'light')
+            }
+        }
+
+        const asideStatus = saveToLocal.get('aside-status')
+        if (asideStatus !== undefined) {
+            if (asideStatus === 'hide') {
+                document.documentElement.classList.add('hide-aside')
+            } else {
+                document.documentElement.classList.remove('hide-aside')
+            }
+        }
+    }
+)(window)
+
+console.log(
+    "%c🔥 程序：Hexo | 主题：Hexo-Theme-Solitude | 作者：王卓Sco、亦封 | Github: https://github.com/wleelw/Hexo-theme-solitude | 版本：v1.4.7 😄",
+    "color: #fff; background: linear-gradient(-25deg, #a8edea, #fed6e3); padding: 8px 15px; border-radius: 8px; text-shadow: 2px 2px 4px white; color: black;"
+);</script><!-- global head--><script>const GLOBAL_CONFIG = {
+    root: '/',
+    algolia: {"appId":"FFEW0LYV6V","apiKey":"67e0012d866ead8c1cc09c58c6b50c3e","indexName":"blog","hits":{"per_page":10}},
+    localsearch: undefined,
+    runtime: '2023-03-18 12:00:00',
+    lazyload: {
+        enable: true,
+        error: '/img/error_load.png'
+    },
+    hightlight: {
+        enable: true,
+        limit: 200,
+        expand: true,
+        copy: true,
+    },
+    randomlinks: false,
+    lang: {
+        theme: {
+            dark: '已切换至深色模式',
+            light: '已切换至浅色模式',
+        },
+        copy: {
+            success: '复制成功',
+            error: '复制失败',
+        },
+        backtop: '返回顶部',
+        time: {
+            recent: '最近',
+            yesterday: '昨天',
+            berforeyesterday: '前天',
+            daybefore: '天前',
+            runtime: '天',
+        },
+        search: {
+            empty: '找不到你查询的内容：${query}',
+            hit: '找到 ${hits} 条结果，用时 ${time} 毫秒',
+            placeholder: '输入关键词快速查找',
+        },
+        chs: {
+            chs_to_cht: '繁體中文',
+            cht_to_chs: '简体中文',
+        }
+    },
+    aside: {
+        sayhello: {
+            morning: '一日之计在于晨',
+            noon: '吃饱了才有力气干活',
+            afternoon: '集中精力，攻克难关',
+            night: '不要太劳累了，早睡更健康',
+            goodnight: '睡个好觉，保证精力充沛',
+        },
+        sayhello2: ["🤖️ 数码科技爱好者","🔍 分享与热心帮助","🏠 智能家居小能手","🔨 设计开发一条龙","🤝 专修交互与设计","🏃 脚踏实地行动派","🧱 团队小组发动机","💢 壮汉人狠话不多","🎮 电竞游戏爱好者"],
+    },
+    covercolor: {
+        enable: true
+    },
+    comment: {
+        enable: true,
+        type: 'twikoo',
+        commentBarrage: true,
+        randomInfoStart: ["聪敏的","可爱的","美丽的"],
+        randomInfoEnd: ["白菜","小可爱","小仙女"],
+        twikoo: {
+            url: 'https://twikoo.akimio.top/',
+            accessToken: ''
+        },
+        waline: {
+            url: '',
+        }
+    },
+    lightbox: 'fancybox',
+    rightside: {
+        enable: true
+    },
+    ai: {
+        enable: false,
+        key: '',
+        talk: '我是王卓Sco开发的摘要生成助理ScoGPT，ScoGPT在静态部署时进行摘要的撰写，并且在访客访问时通过ScoCorrection转译后的文本摘要实现工具。我在这里只负责已经生成的摘要显示，你无法与我直接沟通，但我可以回答一些预设的问题。',
+        randomPost: false,
+    },
+    music: {
+        enable: false,
+    },
+    translate: {"defaultEncoding":2,"translateDelay":0},
+};</script><meta name="generator" content="Hexo 7.1.1"><link rel="alternate" href="/atom.xml" title="秋澪的博客" type="application/atom+xml">
+<link rel="alternate" href="/rss2.xml" title="秋澪的博客" type="application/rss+xml">
+</head><body id="body"><!-- universe--><canvas id="universe"></canvas><!-- loading--><!-- console--><div id="console"><div class="close-btn" onclick="sco.hideConsole()"><i class="scoicon sco-close-fill"></i></div><div class="console-card-group"><div class="console-card-group-left"><div class="console-card" id="card-newest-comments" onclick="sco.hideConsole()"><div class="card-content"><div class="author-content-item-tips">互动</div><div class="author-content-item-title">最新评论</div></div><div class="aside-list"></div></div></div><div class="console-card-group-right"><div class="console-card tags" onclick="sco.hideConsole()"><div class="card-content"><div class="author-content-item-tips">标签</div><div class="author-content-item-title">寻找感兴趣的领域</div></div><div class="card-tag-cloud"><a href="/tags/51%E5%8D%95%E7%89%87%E6%9C%BA/">51单片机<sup>2</sup></a><a href="/tags/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/">学习记录<sup>2</sup></a><a href="/tags/Arbiam/">Arbiam<sup>1</sup></a><a href="/tags/%E6%95%99%E7%A8%8B/">教程<sup>28</sup></a><a href="/tags/Docker/">Docker<sup>8</sup></a><a href="/tags/%E5%A4%87%E5%BF%98%E5%BD%95/">备忘录<sup>8</sup></a><a href="/tags/NAS/">NAS<sup>2</sup></a><a href="/tags/VPS/">VPS<sup>3</sup></a><a href="/tags/%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F/">内网穿透<sup>1</sup></a><a href="/tags/Hexo/">Hexo<sup>2</sup></a><a href="/tags/%E5%8D%9A%E5%AE%A2/">博客<sup>4</sup></a><a href="/tags/%E7%BE%8E%E5%8C%96/">美化<sup>1</sup></a><a href="/tags/ROS/">ROS<sup>1</sup></a><a href="/tags/Ubuntu/">Ubuntu<sup>1</sup></a><a href="/tags/WSL/">WSL<sup>1</sup></a><a href="/tags/VMware/">VMware<sup>1</sup></a><a href="/tags/%E8%BD%AF%E4%BB%B6%E6%8E%A8%E8%8D%90/">软件推荐<sup>1</sup></a><a href="/tags/%E7%BE%A4%E6%99%96/">群晖<sup>1</sup></a><a href="/tags/%E6%8E%A8%E8%8D%90/">推荐<sup>4</sup></a><a href="/tags/%E7%BD%91%E7%AB%99/">网站<sup>1</sup></a><a href="/tags/%E8%BD%AF%E4%BB%B6/">软件<sup>2</sup></a><a href="/tags/IOS/">IOS<sup>1</sup></a><a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库<sup>1</sup></a><a href="/tags/Markdown/">Markdown<sup>1</sup></a><a href="/tags/%E5%9F%9F%E5%90%8D/">域名<sup>1</sup></a><a href="/tags/%E7%BD%91%E7%AB%99%E4%BC%98%E5%8C%96/">网站优化<sup>1</sup></a><a href="/tags/CLoudflare/">CLoudflare<sup>2</sup></a><a href="/tags/Ventoy/">Ventoy<sup>1</sup></a><a href="/tags/WinToGo/">WinToGo<sup>1</sup></a><a href="/tags/LinToGo/">LinToGo<sup>1</sup></a><a href="/tags/AIO/">AIO<sup>1</sup></a><a href="/tags/%E8%B7%AF%E7%94%B1%E5%99%A8/">路由器<sup>1</sup></a><a href="/tags/Git/">Git<sup>1</sup></a><a href="/tags/CloudFlare/">CloudFlare<sup>1</sup></a><a href="/tags/Excalidraw/">Excalidraw<sup>1</sup></a><a href="/tags/UnlockMusic%E9%9F%B3%E4%B9%90%E8%A7%A3%E9%94%81/">UnlockMusic音乐解锁<sup>1</sup></a><a href="/tags/%E5%9B%BE%E5%BA%8A/">图床<sup>1</sup></a><a href="/tags/%E5%9F%9F%E5%90%8D%E9%82%AE%E7%AE%B1/">域名邮箱<sup>1</sup></a><a href="/tags/%E9%95%9C%E5%83%8F%E7%AB%99%E6%90%AD%E5%BB%BA/">镜像站搭建<sup>1</sup></a><a href="/tags/Alist/">Alist<sup>2</sup></a><a href="/tags/Replit/">Replit<sup>2</sup></a><a href="/tags/Halo/">Halo<sup>1</sup></a><a href="/tags/Render/">Render<sup>1</sup></a></div></div><div class="console-card history" onclick="sco.hideConsole()"><ul class="card-archive-list"><li class="card-archive-list-item"><a class="card-archive-list-link" onclick="pjax.loadUrl('/archives/2024/01/')" href="javascript:void(0);" rel="external nofollow noreferrer"><span class="card-archive-list-date">2024/01</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">3</span><span class="card-archive-list-count-unit">篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" onclick="pjax.loadUrl('/archives/2023/12/')" href="javascript:void(0);" rel="external nofollow noreferrer"><span class="card-archive-list-date">2023/12</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">1</span><span class="card-archive-list-count-unit">篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" onclick="pjax.loadUrl('/archives/2023/10/')" href="javascript:void(0);" rel="external nofollow noreferrer"><span class="card-archive-list-date">2023/10</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">2</span><span class="card-archive-list-count-unit">篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" onclick="pjax.loadUrl('/archives/2023/09/')" href="javascript:void(0);" rel="external nofollow noreferrer"><span class="card-archive-list-date">2023/09</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">2</span><span class="card-archive-list-count-unit">篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" onclick="pjax.loadUrl('/archives/2023/08/')" href="javascript:void(0);" rel="external nofollow noreferrer"><span class="card-archive-list-date">2023/08</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">2</span><span class="card-archive-list-count-unit">篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" onclick="pjax.loadUrl('/archives/2023/07/')" href="javascript:void(0);" rel="external nofollow noreferrer"><span class="card-archive-list-date">2023/07</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">1</span><span class="card-archive-list-count-unit">篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" onclick="pjax.loadUrl('/archives/2023/06/')" href="javascript:void(0);" rel="external nofollow noreferrer"><span class="card-archive-list-date">2023/06</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">6</span><span class="card-archive-list-count-unit">篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" onclick="pjax.loadUrl('/archives/2023/05/')" href="javascript:void(0);" rel="external nofollow noreferrer"><span class="card-archive-list-date">2023/05</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">13</span><span class="card-archive-list-count-unit">篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" onclick="pjax.loadUrl('/archives/2023/04/')" href="javascript:void(0);" rel="external nofollow noreferrer"><span class="card-archive-list-date">2023/04</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">2</span><span class="card-archive-list-count-unit">篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" onclick="pjax.loadUrl('/archives/2023/03/')" href="javascript:void(0);" rel="external nofollow noreferrer"><span class="card-archive-list-date">2023/03</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">5</span><span class="card-archive-list-count-unit">篇</span></div></a></li></ul></div></div></div><div class="button-group"><div class="console-btn-item"><a class="darkmode_switchbutton" onclick="sco.switchDarkMode()" title="昼夜切换" href="javascript:void(0);" rel="external nofollow noreferrer"><i class="scoicon sco-moon-clear-fill"></i></a></div><div class="console-btn-item" id="consoleHideAside"><a class="asideSwitch" onclick="sco.switchHideAside()" title="边栏显示控制" href="javascript:void(0);" rel="external nofollow noreferrer"><i class="scoicon sco-side-bar-fill"></i></a></div><div class="console-btn-item on" id="consoleCommentBarrage" onclick="sco.switchCommentBarrage()"><a class="commentBarrage"><i class="scoicon sco-chat-fill"></i></a></div></div><div class="console-mask" onclick="sco.hideConsole()"></div></div><!-- sidebar--><div id="sidebar" style="zoom: 1;"><div id="menu-mask" style="display: none;"></div><div id="sidebar-menus"><span class="sidebar-menu-item-title">功能</span><div class="sidebar-menu-item"><a class="darkmode_switchbutton menu-child" onclick="sco.switchDarkMode()" href="javascript:void(0);" rel="external nofollow noreferrer"><i class="scoicon sco-moon-clear-fill"></i><span>显示模式</span></a></div><div class="back-menu-list-groups"><div class="back-menu-list-group"><div class="back-menu-list-title">项目</div><div class="back-menu-list"><a class="back-menu-item" target="_blank" rel="noopener" href="https://akimio.top" title="个人主页"><img class="back-menu-item-icon" src="https://img.akimio.top/avatar/akimio.png" alt="项目"><span class="back-menu-item-text">个人主页</span></a><a class="back-menu-item" target="_blank" rel="noopener" href="https://excalidraw.akimio.top" title="Excalidraw"><img class="back-menu-item-icon" src="https://img.akimio.top/ICON/excalidraw.png" alt="项目"><span class="back-menu-item-text">Excalidraw</span></a><a class="back-menu-item" target="_blank" rel="noopener" href="https://chatgpt.akimio.top" title="ChatGPT"><img class="back-menu-item-icon" src="https://img.akimio.top/ICON/chatgpt.png" alt="项目"><span class="back-menu-item-text">ChatGPT</span></a><a class="back-menu-item" target="_blank" rel="noopener" href="https://alist.akimio.top" title="Alist"><img class="back-menu-item-icon" src="https://img.akimio.top/ICON/alist.png" alt="项目"><span class="back-menu-item-text">Alist</span></a><a class="back-menu-item" target="_blank" rel="noopener" href="https://music.akimio.top" title="Splayer"><img class="back-menu-item-icon" src="https://img.akimio.top/ICON/splayer.png" alt="项目"><span class="back-menu-item-text">Splayer</span></a><a class="back-menu-item" target="_blank" rel="noopener" href="https://um.akimio.top" title="音乐解锁"><img class="back-menu-item-icon" src="https://img.akimio.top/ICON/UnlockMusic.png" alt="项目"><span class="back-menu-item-text">音乐解锁</span></a></div></div></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="javascript:void(0);" rel="external nofollow noreferrer"><span>文库</span></a><ul class="menus_item_child"><li><a class="site-page child" href="/archives/"><i class="scoicon sco-folder-fill"></i><span>文章列表</span></a></li><li><a class="site-page child" href="/categories/"><i class="scoicon sco-checkbox-multiple-blank-fill"></i><span>全部分类</span></a></li><li><a class="site-page child" href="/tags/"><i class="scoicon sco-price-tag-fill"></i><span>全部标签</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);" rel="external nofollow noreferrer"><span>友链</span></a><ul class="menus_item_child"><li><a class="site-page child" href="/links/"><i class="scoicon sco-group-fill"></i><span>友情链接</span></a></li><li><a class="site-page child" href="/frcircle/"><i class="scoicon sco-wifi-fill"></i><span>朋友圈</span></a></li><li><a class="site-page child" href="javascript:travelling()" rel="external nofollow noreferrer"><i class="scoicon sco-gift-fill"></i><span>宝藏博主</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);" rel="external nofollow noreferrer"><span>我的</span></a><ul class="menus_item_child"><li><a class="site-page child" href="/tools/"><i class="scoicon sco-tools-fill"></i><span>工具箱</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);" rel="external nofollow noreferrer"><span>关于</span></a><ul class="menus_item_child"><li><a class="site-page child" href="/about/"><i class="scoicon sco-contacts-fill"></i><span>关于本站</span></a></li></ul></div></div><span class="sidebar-menu-item-title">标签</span><div class="card-widget card-tags card-archives card-webinfo card-allinfo"><div class="card-tag-cloud"><a href="/tags/51%E5%8D%95%E7%89%87%E6%9C%BA/">51单片机<sup>2</sup></a><a href="/tags/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/">学习记录<sup>2</sup></a><a href="/tags/Arbiam/">Arbiam<sup>1</sup></a><a href="/tags/%E6%95%99%E7%A8%8B/">教程<sup>28</sup></a><a href="/tags/Docker/">Docker<sup>8</sup></a><a href="/tags/%E5%A4%87%E5%BF%98%E5%BD%95/">备忘录<sup>8</sup></a><a href="/tags/NAS/">NAS<sup>2</sup></a><a href="/tags/VPS/">VPS<sup>3</sup></a><a href="/tags/%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F/">内网穿透<sup>1</sup></a><a href="/tags/Hexo/">Hexo<sup>2</sup></a><a href="/tags/%E5%8D%9A%E5%AE%A2/">博客<sup>4</sup></a><a href="/tags/%E7%BE%8E%E5%8C%96/">美化<sup>1</sup></a><a href="/tags/ROS/">ROS<sup>1</sup></a><a href="/tags/Ubuntu/">Ubuntu<sup>1</sup></a><a href="/tags/WSL/">WSL<sup>1</sup></a><a href="/tags/VMware/">VMware<sup>1</sup></a><a href="/tags/%E8%BD%AF%E4%BB%B6%E6%8E%A8%E8%8D%90/">软件推荐<sup>1</sup></a><a href="/tags/%E7%BE%A4%E6%99%96/">群晖<sup>1</sup></a><a href="/tags/%E6%8E%A8%E8%8D%90/">推荐<sup>4</sup></a><a href="/tags/%E7%BD%91%E7%AB%99/">网站<sup>1</sup></a><a href="/tags/%E8%BD%AF%E4%BB%B6/">软件<sup>2</sup></a><a href="/tags/IOS/">IOS<sup>1</sup></a><a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库<sup>1</sup></a><a href="/tags/Markdown/">Markdown<sup>1</sup></a><a href="/tags/%E5%9F%9F%E5%90%8D/">域名<sup>1</sup></a><a href="/tags/%E7%BD%91%E7%AB%99%E4%BC%98%E5%8C%96/">网站优化<sup>1</sup></a><a href="/tags/CLoudflare/">CLoudflare<sup>2</sup></a><a href="/tags/Ventoy/">Ventoy<sup>1</sup></a><a href="/tags/WinToGo/">WinToGo<sup>1</sup></a><a href="/tags/LinToGo/">LinToGo<sup>1</sup></a><a href="/tags/AIO/">AIO<sup>1</sup></a><a href="/tags/%E8%B7%AF%E7%94%B1%E5%99%A8/">路由器<sup>1</sup></a><a href="/tags/Git/">Git<sup>1</sup></a><a href="/tags/CloudFlare/">CloudFlare<sup>1</sup></a><a href="/tags/Excalidraw/">Excalidraw<sup>1</sup></a><a href="/tags/UnlockMusic%E9%9F%B3%E4%B9%90%E8%A7%A3%E9%94%81/">UnlockMusic音乐解锁<sup>1</sup></a><a href="/tags/%E5%9B%BE%E5%BA%8A/">图床<sup>1</sup></a><a href="/tags/%E5%9F%9F%E5%90%8D%E9%82%AE%E7%AE%B1/">域名邮箱<sup>1</sup></a><a href="/tags/%E9%95%9C%E5%83%8F%E7%AB%99%E6%90%AD%E5%BB%BA/">镜像站搭建<sup>1</sup></a><a href="/tags/Alist/">Alist<sup>2</sup></a><a href="/tags/Replit/">Replit<sup>2</sup></a><a href="/tags/Halo/">Halo<sup>1</sup></a><a href="/tags/Render/">Render<sup>1</sup></a></div></div></div></div><!-- keyboard--><div class="post" id="body-wrap"><header class="post-bg" id="page-header"><nav class="show" id="nav"><div id="nav-group"><div id="blog_name"><div class="back-home-button" tabindex="-1"><i class="back-home-button-icon scoicon sco-more-fill"></i><div class="back-menu-list-groups"><div class="back-menu-list-group"><div class="back-menu-list-title">项目</div><div class="back-menu-list"><a class="back-menu-item" target="_blank" rel="noopener" href="https://akimio.top" title="个人主页"><img class="back-menu-item-icon" src="https://img.akimio.top/avatar/akimio.png" alt="项目"><span class="back-menu-item-text">个人主页</span></a><a class="back-menu-item" target="_blank" rel="noopener" href="https://excalidraw.akimio.top" title="Excalidraw"><img class="back-menu-item-icon" src="https://img.akimio.top/ICON/excalidraw.png" alt="项目"><span class="back-menu-item-text">Excalidraw</span></a><a class="back-menu-item" target="_blank" rel="noopener" href="https://chatgpt.akimio.top" title="ChatGPT"><img class="back-menu-item-icon" src="https://img.akimio.top/ICON/chatgpt.png" alt="项目"><span class="back-menu-item-text">ChatGPT</span></a><a class="back-menu-item" target="_blank" rel="noopener" href="https://alist.akimio.top" title="Alist"><img class="back-menu-item-icon" src="https://img.akimio.top/ICON/alist.png" alt="项目"><span class="back-menu-item-text">Alist</span></a><a class="back-menu-item" target="_blank" rel="noopener" href="https://music.akimio.top" title="Splayer"><img class="back-menu-item-icon" src="https://img.akimio.top/ICON/splayer.png" alt="项目"><span class="back-menu-item-text">Splayer</span></a><a class="back-menu-item" target="_blank" rel="noopener" href="https://um.akimio.top" title="音乐解锁"><img class="back-menu-item-icon" src="https://img.akimio.top/ICON/UnlockMusic.png" alt="项目"><span class="back-menu-item-text">音乐解锁</span></a></div></div></div></div><a id="site-name" href="/" title="返回博客主页" target="_self"><span class="title">秋澪Akimio的博客</span></a></div><div id="page-name-mask"><div id="page-name"><a id="page-name-text" onclick="sco.toTop()">利用Ventoy打造最强硬盘</a></div></div><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="javascript:void(0);" rel="external nofollow noreferrer"><span>文库</span></a><ul class="menus_item_child"><li><a class="site-page child" href="/archives/"><i class="scoicon sco-folder-fill"></i><span>文章列表</span></a></li><li><a class="site-page child" href="/categories/"><i class="scoicon sco-checkbox-multiple-blank-fill"></i><span>全部分类</span></a></li><li><a class="site-page child" href="/tags/"><i class="scoicon sco-price-tag-fill"></i><span>全部标签</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);" rel="external nofollow noreferrer"><span>友链</span></a><ul class="menus_item_child"><li><a class="site-page child" href="/links/"><i class="scoicon sco-group-fill"></i><span>友情链接</span></a></li><li><a class="site-page child" href="/frcircle/"><i class="scoicon sco-wifi-fill"></i><span>朋友圈</span></a></li><li><a class="site-page child" href="javascript:travelling()" rel="external nofollow noreferrer"><i class="scoicon sco-gift-fill"></i><span>宝藏博主</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);" rel="external nofollow noreferrer"><span>我的</span></a><ul class="menus_item_child"><li><a class="site-page child" href="/tools/"><i class="scoicon sco-tools-fill"></i><span>工具箱</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);" rel="external nofollow noreferrer"><span>关于</span></a><ul class="menus_item_child"><li><a class="site-page child" href="/about/"><i class="scoicon sco-contacts-fill"></i><span>关于本站</span></a></li></ul></div></div></div><div id="nav-left"></div><div id="nav-right"><div class="nav-button" id="travellings_button"><a class="site-page" target="_blank" rel="noopener external nofollow noreferrer" href="https://www.travellings.cn/go.html" title=""><i class="scoicon sco-train-line"></i></a></div><div class="nav-button" id="randomPost_button"><a class="site-page" onclick="toRandomPost()" title="随机一篇文章" href="javascript:void(0);" rel="external nofollow noreferrer"><i class="scoicon sco-signal-tower-fill"></i></a></div><div class="nav-button" id="search-button"><a class="site-page social-icon search" href="javascript:void(0);" rel="external nofollow noreferrer" title="搜索"><i class="scoicon sco-search-line"></i></a></div><div class="nav-button" id="nav-console"><a class="console_switchbutton" onclick="sco.showConsole()" title="中控台" href="javascript:void(0);" rel="external nofollow noreferrer"><i class="scoicon sco-dashboard-fill"></i></a></div><div class="nav-button" id="nav-totop" onclick="sco.toTop()"><a class="totopbtn"><i class="scoicon sco-arrow-up-line"></i><span id="percent">0</span></a></div><div id="toggle-menu"><a class="site-page"><i class="scoicon sco-menu-line"></i></a></div></div></div></nav><div class="coverdiv" id="coverdiv"><img class="nolazyload" id="post-cover" src="https://img.akimio.top/Blog/2023/10/1697202076-65293f9c3ba61.webp" alt="利用Ventoy打造最强硬盘"></div><div id="post-info"><div id="post-firstinfo"><div class="meta-firstline"><a class="post-meta-original" title="该文章为原创文章，注意版权协议">原创</a><span class="post-meta-categories"><a class="post-meta-categories" href="/categories/备忘录/">备忘录</a></span><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E6%95%99%E7%A8%8B/"><span class="tags-name tags-punctuation">教程</span></a><a class="post-meta__tags" href="/tags/Ventoy/"><span class="tags-name tags-punctuation">Ventoy</span></a><a class="post-meta__tags" href="/tags/WinToGo/"><span class="tags-name tags-punctuation">WinToGo</span></a><a class="post-meta__tags" href="/tags/LinToGo/"><span class="tags-name tags-punctuation">LinToGo</span></a><a class="post-meta__tags" href="/tags/AIO/"><span class="tags-name tags-punctuation">AIO</span></a></div></div></div></div><h1 class="post-title">利用Ventoy打造最强硬盘</h1><div id="post-meta"><div class="meta-secondline"><span class="post-meta-date" title="meta_posted 2023-06-29 11:41:26"><i class="post-meta-icon scoicon sco-calendar-todo-fill"></i><time datetime="2023-06-29T03:41:26.000Z">2023-06-29T03:41:26.000Z</time></span><span class="post-meta-date" title="meta_updated 2024-02-13 17:56:32"><i class="post-meta-icon scoicon sco-refresh-line"></i><time datetime="2024-02-13T09:56:32.000Z">2024-02-13T09:56:32.000Z</time></span><span class="post-meta-wordcount"><i class="post-meta-icon scoicon sco-word-fill" title="文章字数"></i><span class="word-count">5.1k</span><span class="post-meta-separator"></span><i class="post-meta-icon scoicon sco-clock-fill" title="阅读耗时"></i><span>18 min</span></span><span class="post-meta-position" title="作者IP归属地为大连"><i class="post-meta-icon scoicon sco-map-pin-fill"></i><span>大连</span></span><a class="post-meta-pv" href="/posts/1025/" title="文章热度"><i class="post-meta-icon scoicon sco-fire-fill"></i><span id="twikoo_visitors"><i class="scoicon sco-loading-line"></i></span></a><span class="post-meta-commentcount" title="评论数" onclick="sco.scrollTo('post-comment')"><i class="scoicon sco-chat-fill"></i><a href="/posts/1025/#post-comment"><span id="twikoo-count"><i class="scoicon sco-loading-line"></i></span></a></span></div></div></div><section class="main-hero-waves-area waves-area"><svg class="waves-svg" xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto"><defs><path id="gentle-wave" d="M -160 44 c 30 0 58 -18 88 -18 s 58 18 88 18 s 58 -18 88 -18 s 58 18 88 18 v 44 h -352 Z"></path></defs><g class="parallax"><use href="#gentle-wave" x="48" y="0"></use><use href="#gentle-wave" x="48" y="3"></use><use href="#gentle-wave" x="48" y="5"></use><use href="#gentle-wave" x="48" y="7"></use></g></svg></section></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1>前言</h1>
+<p>最近随着国产固态的崛起，固态硬盘价格也大降，618期间我花费400左右购入了一块国产PCIE4.0固态，打算配合硬盘盒做成一块移动固态，本期教程将基于固态硬盘制作最强的AIO移动硬盘（<s>All in one,all in one,one boom,all bomm</s>）也适用于固态U盘（普通U盘不建议），可以按照自身的需求自行搭配</p>
+<h1>硬件选择</h1>
+<p><strong>无任何恰饭，仅供参考</strong></p>
+<table>
+<thead>
+<tr>
+<th>硬件名</th>
+<th>型号</th>
+<th>购入价格</th>
+<th>选择理由</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>固态</td>
+<td>爱国者P7000z 2T</td>
+<td>470</td>
+<td>一块PCIe4.0的固态，TLC长江晶元+连芸主控，其实买PCIe3.0的固态就绰绰有余，但是目前PCIe3.0和4.0的价格拉不开，我主要看上了P7000z在跑满7000M/s的速度时，发热量较小（<strong>虽然移动硬盘挺受发热量的影响的，但是移动硬盘根本跑不满</strong>）以及较为优秀的垃圾回收机制（<strong>移动硬盘的通电时间一般会比较少，一个优秀的垃圾回收机制很影响体验</strong>）</td>
+</tr>
+<tr>
+<td>硬盘盒</td>
+<td>ITGZ硬盘盒 JMS583主控</td>
+<td>55</td>
+<td>这款硬盘盒最高是的速度是10G的USB协议，我觉得10G的协议的通用性较好，通常40G的雷电协议是不兼容20G的usb协议的，再者20G的接口也比较少见，而且20G硬盘盒价格通常在200元。据了解JMS583发热量也比较低，再者ITGZ是佳翼的子品牌（好像是同一个老板），本身50价位的产品还采用了CNC的金属工艺，我认为算是物超所值</td>
+</tr>
+</tbody>
+</table>
+<p><img data-lazy-src="https://img.akimio.top/Blog/2023/09/1696089592-651845f8e6797.webp" alt="小巧的硬盘盒" loading="lazy"><br>
+使用自带的线材进行测速，据网友反馈，使用更好的线材应该可以跑到950M/s的大文件读，超过900M/s的大文件写<br>
+<img data-lazy-src="https://img.akimio.top/Blog/2023/10/1696089612-6518460cafc62.webp" alt="10G口测速" loading="lazy"></p>
+<h1>介绍</h1>
+<p><a target="_blank" rel="noopener external nofollow noreferrer" href="https://www.ventoy.net/cn/">Ventoy</a>是一款非常实用的开源软件，可以将多个ISO文件写入一个USB设备上，从而快速创建一个多合一的可启动U盘。使用Ventoy可以轻松地创建多个安装盘、救援盘等，无需反复格式化U盘、复制镜像文件等繁琐操作。而且，Ventoy支持UEFI+Legacy模式、大部分操作系统的安装、UEFI Secure Boot等高级功能</p>
+<h1>Ventoy安装</h1>
+<p>先去<a target="_blank" rel="noopener external nofollow noreferrer" href="https://www.ventoy.net/cn/">Ventoy官网</a>下载制作工具（<a target="_blank" rel="noopener external nofollow noreferrer" href="https://www.ventoy.net/cn/download.html">下载地址</a>），我使用的Windows电脑，所以选择<code>ventoy-1.0.91-windows.zip</code>（下方也提供了很多官方的加速镜像源可供选择），下载后解压压缩包，打开<code>Ventoy2Disk.exe</code>，在设备那一栏选择你的硬盘（<strong>记得先备份硬盘中的数据，并且不要选错硬盘了</strong>），依次点击<code>配置选项</code>-&gt;<code>分区设置</code>，我打算在硬盘中安装Windows11ToGO，和UbuntuTogo，以及各种PE，所以打算分1t给这些镜像，所以勾选<code>在磁盘保留最后一段空间</code>并填入填<code>1024</code>（总容量-计划Ventoy所需空间=所填大小），这剩下的1024G我打算放我个人的资料，如果你打算使用Windows To Go则需要在<code>文件系统</code>选择NTFS，否则建议<code>exFat</code>（NTFS是针对机械硬盘设计的，会对数据的写入与擦除做详细的记录，但是固态硬盘的写入寿命是有限的，所以不建议使用NTFS）<br>
+<img data-lazy-src="https://img.akimio.top/Blog/2023/10/1696089717-6518467581d0f.webp" alt="Ventoy分区设置" loading="lazy"><br>
+然后依次点击<code>确定</code>-&gt;<code>安装</code>-&gt;<code>是</code>，提示<code>Ventoy已成功安装到此设备中</code>就代表安装完成了。然后在系统盘符中就可以看到一个名叫<code>Ventoy</code>新增的盘符</p>
+<h1>为硬盘分区</h1>
+<p>回到桌面，右键<code>此电脑</code>-&gt;<code>更多选项</code>-&gt;<code>管理</code>-&gt;<code>磁盘管理</code><br>
+Ventoy中就是存放各种镜像的位置，VTOYEFI存放的是Ventoy的各种信息配置，剩下未分配的1T空间就可以当作普通的硬盘来使用，这里我将剩余的1t分成3分分别存储我的应用程序、学习文档以及装机资料。右键未分配的空间，点击<code>新建简单卷</code>-&gt;<code>下一页</code>，大小我分配256G给我的应用程序，所以在<code>简单卷大小中</code>填入<code>262144</code>,然后点击<code>下一页</code>，驱动器号需修改的话自行修改，无需修改就点击<code>下一页</code>，<code>文件系统</code>我推荐<code>exFAT</code>，<code>卷标</code>我这里改成<code>应用程序</code>，然后点击<code>下一页</code>-&gt;<code>完成</code>，剩下的两个分区也如法炮制，接下来你就可以像使用正常硬盘一样往这三个分区中存入你的资料了</p>
+<h1>PE系统安装</h1>
+<p>这里我提供了4种PE的安装教程 ，思路就是制作系统镜像然后放进Ventoy中</p>
+<h2 id="微PE"><a class="headerlink" href="#微PE"></a>微PE</h2>
+<p>进入<a target="_blank" rel="noopener external nofollow noreferrer" href="https://www.wepe.com.cn/">微PE官网</a>，点击<code>下载</code>，我这里下载<code>微PE工具箱V2.2 64位作为演示</code>，下载完成后运行exe可执行文件，点击右下角的<code>生成可启动ISO</code><br>
+<img data-lazy-src="https://img.akimio.top/Blog/2023/10/1696089875-65184713a4c6b.webp" alt="点击这个光盘图标" loading="lazy"><br>
+然后修改<code>ISO输出位置</code>到一个你找得到的地方，<code>光盘卷标</code>和<code>壁纸</code>有需求就修改，修改完成后点击<code>立刻生成ISO</code>-&gt;<code>完成安装</code>，找到刚刚生成的ISO镜像，把他移动到硬盘的<code>Ventoy</code>分区中</p>
+<h2 id="HotPE"><a class="headerlink" href="#HotPE"></a>HotPE</h2>
+<p>进入<a target="_blank" rel="noopener external nofollow noreferrer" href="https://www.hotpe.top/">HotPE官网</a>，点击<code>下载</code>-&gt;<code>立即下载</code>，运行下载下来的exe可执行文件，右下角有类似的生成ISO镜像方式，生成完成后放进<code>Ventoy</code>分区中即可</p>
+<h2 id="FirPE"><a class="headerlink" href="#FirPE"></a>FirPE</h2>
+<p>进入<a target="_blank" rel="noopener external nofollow noreferrer" href="https://firpe.cn/page-247">FirPE官网</a>，点击左上角的<code>更多</code>-&gt;<code>下载地址</code>，在官方下载地址中本身就有ISO的镜像格式，下载后移动到<code>Ventoy</code>分区中即可，如果没找到ISO镜像文件，也可以先下载exe可执行文件，然后再生成ISO镜像放进<code>Ventoy</code>分区中</p>
+<h2 id="Edgeless"><a class="headerlink" href="#Edgeless"></a>Edgeless</h2>
+<p>进入<a target="_blank" rel="noopener external nofollow noreferrer" href="https://home.edgeless.top/">Edgeless官网</a>，点击下载，将下载的7z文件解压，运行里面的<code>edgeless-hub.exe</code>,依次点击<code>制作</code>-&gt;<code>写入</code>-&gt;<code>开始</code>安装依赖文件<br>
+<img data-lazy-src="https://img.akimio.top/Blog/2023/10/1696089894-651847264d1dd.webp" alt="" loading="lazy"><br>
+这里他会重新下载ventoy，但我们之前已经安装过，所以手动选择Ventoy的盘符，像我的盘符是E盘符，选择完后。点击<code>开始部署</code>然后就会在<code>Ventoy</code>分区中生成Eegeless的WIM镜像，在Edgeless的侧边栏中可以详细对Edgeless的PE做详细的配置，我在<code>插件</code>中安装了<code>微软常用运行库</code>、<code>ADB</code>、<code>Chrome</code>、<code>Eege浏览器</code>、<code>Bandzip</code>、<code>IDM</code>、<code>WPS精简版</code>、<code>分区助手</code>、<code>CrystalDisMark</code>、<code>ToDesk</code></p>
+<h1>WinToGO镜像制作</h1>
+<p>在硬盘选择方面，建议使用大文件读写超过200M/s、4K读写超过10M/s的硬盘进行制作，这样制作出来的Window性能不至于太差</p>
+<p>在安装方面，其原理都是将Windows系统写入虚拟磁盘中，然后将虚拟磁盘的文件放入Ventoy中使用Ventoy启动。可以用VirtualBox等虚拟机的方式进行生成VHD或VHDX等虚拟磁盘，也可以借盘等安装方式。这里我使用借盘的方式安装，使用虚拟机的方式安装可以参考下方的Linux To GO 镜像制作教程</p>
+<h2 id="下载Windows镜像"><a class="headerlink" href="#下载Windows镜像"></a>下载Windows镜像</h2>
+<p>关于镜像的选择我的建议是使用Windows LTSC</p>
+<blockquote>
+<p>Windows LTSC是Windows企业版的一个分支系统，它最大的特点在于精简和稳定。这个版本是面向企业用户的，相较于其他消费者版本，官方精简了许多系统组件，移除了许多无用功能和服务，系统更新只会推送更新安全补丁以及BUG修复补丁，不会更新功能补丁</p>
+</blockquote>
+<p>这样系统既能在一定程度上保证较为流畅的体验，也可以自动更新保证驱动可用，虽然Windows下载的驱动可能比原版驱动性能弱一点，但是WTG看重的还是兼容性，所以我推荐使用原版镜像</p>
+<h2 id="借盘"><a class="headerlink" href="#借盘"></a>借盘</h2>
+<p>回到桌面，右键<code>此电脑</code>-&gt;<code>更多选项</code>-&gt;<code>管理</code>-&gt;<code>磁盘管理</code>-&gt;<code>操作</code>-&gt;<code>创建VHD</code>；<br>
+<img data-lazy-src="https://img.akimio.top/Blog/2023/10/1696090048-651847c0285cb.webp" alt="" loading="lazy"><br>
+位置我先放在D盘，命名为<code>Windows11LTSC</code>；<br>
+虚拟硬盘大小我分了<code>1T</code>;<br>
+虚拟硬盘格式根据自己的需求选择，如果你的硬盘小于2T，也不打算后期换更大容量的硬盘那么选择<code>VHD</code>就好，这里我选择了<code>VHDX</code>；<br>
+虚拟硬盘类型我选择了<code>动态拓展</code>，这样实际占用并不会到1T，只是这个虚拟磁盘最大为1T；<br>
+<strong>固定大小的VHD性能比VHDX强，VHD也可以在后期扩容</strong><br>
+<img data-lazy-src="https://img.akimio.top/Blog/2023/10/1696090069-651847d57de93.webp" alt="" loading="lazy"><br>
+选择完成后点击<code>确定</code>，然后下面的磁盘栏中会多出一个硬盘I盘，就是刚刚创建的虚拟硬盘，右键，点击<code>初始化磁盘</code>，格式默认<code>GPT</code>就好（<s>应该不会有人拿只能MBR的电脑来用WTG吧</s>）,然后再右键，点击<code>新建简单卷</code>，参数全部默认就好</p>
+<h2 id="工具下载"><a class="headerlink" href="#工具下载"></a>工具下载</h2>
+<div class="tabs" id="工具下载"><ul class="nav-tabs"><li class="tab active"><button type="button" data-href="#工具下载-1">WTGA</button></li><li class="tab"><button type="button" data-href="#工具下载-2">Dism++</button></li></ul><div class="tab-contents"><div class="tab-item-content active" id="工具下载-1"><blockquote>
+<p>WTG辅助工具，全称Windows To Go辅助工具，是一款用于创建Windows To Go启动盘的软件工具。Windows To Go是在U盘或外置硬盘上创建一个可移动的Windows 10/8.1/8操作系统环境，使得用户可以直接通过U盘或外置硬盘在不同电脑上运行Windows操作系统，而不必安装在主机上</p>
+</blockquote>
+<p>微软官方的Win To Go制作工具限制比较多，一般会使用第三方工具快速部署，例如WTG辅助工具（简称WTGA）<br>
+<a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/nkc3g4/wtg-assistant">Windows To Go 辅助工具Github仓库</a>，下载最新发布的Releases，下载完成后解压</p><button type="button" class="tab-to-top" aria-label="scroll to top"><i class="scoicon sco-arrow-up-line"></i></button></div><div class="tab-item-content" id="工具下载-2"><blockquote>
+<p>Dism++是一个Windows操作系统优化和维护工具，它可以让用户清理系统垃圾文件、卸载系统自带应用、安装驱动程序、管理系统补丁和组件等。它是一款非常强大、方便实用的工具，经常被用来解决Windows系统中一些常见的问题</p>
+</blockquote>
+<p><a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/Chuyu-Team/Dism-Multi-language">Dism++的Github仓库</a>，下载最新发布的Releases，下载完成后解压</p><button type="button" class="tab-to-top" aria-label="scroll to top"><i class="scoicon sco-arrow-up-line"></i></button></div></div></div>
+<h2 id="安装系统到虚拟硬盘"><a class="headerlink" href="#安装系统到虚拟硬盘"></a>安装系统到虚拟硬盘</h2>
+<div class="tabs" id="安装方式"><ul class="nav-tabs"><li class="tab active"><button type="button" data-href="#安装方式-1">WTGA</button></li><li class="tab"><button type="button" data-href="#安装方式-2">Dism++</button></li></ul><div class="tab-contents"><div class="tab-item-content active" id="安装方式-1"><p>打开WTG辅助工具，选择镜像，以及对应的版本，安装位置选择刚刚创建虚拟磁盘的I盘，启用默认等待部署完成即可</p><button type="button" class="tab-to-top" aria-label="scroll to top"><i class="scoicon sco-arrow-up-line"></i></button></div><div class="tab-item-content" id="安装方式-2"><p>找到刚刚下载的Windows镜像（格式为ISO），右键，选择<code>更多打开方式</code>，选择<code>资源管理器</code>，然后ISO镜像文件就以磁盘的格式挂载到电脑上了，我这里挂载到了J盘<br>
+选择电脑系统对应的版本打开Dism++，点击左上角的<code>文件</code>-&gt;<code>释放镜像</code><br>
+<img data-lazy-src="https://img.akimio.top/Blog/2023/10/1696090110-651847fe5ef07.webp" alt="" loading="lazy"><br>
+镜像路径找到刚刚ISO挂载的磁盘，我这里是J盘，进入里面的<code>sources文件夹</code>，选择<code>install.wim</code>；<br>
+安装路径选择之前借盘出来的虚拟磁盘I盘；<br>
+<img data-lazy-src="https://img.akimio.top/Blog/2023/10/1696090140-6518481cc5222.webp" alt="" loading="lazy"><br>
+其他选项保持默认，点击<code>确定</code>，等待镜像释放完毕</p><button type="button" class="tab-to-top" aria-label="scroll to top"><i class="scoicon sco-arrow-up-line"></i></button></div></div></div>
+<h2 id="VHD启动插件安装"><a class="headerlink" href="#VHD启动插件安装"></a>VHD启动插件安装</h2>
+<p>打开<a target="_blank" rel="noopener external nofollow noreferrer" href="https://www.ventoy.net/">Ventoy官网</a>，点击顶部的<code>文档手册</code>，然后在侧边栏的<code>插件说明</code>中找到<code>Windows VHD 启动插件</code>，下载插件（从Github或者蓝奏云都行），下载完成后解压压缩包，里面有两个文件夹：<code>Win7Based</code>和<code>Win10Based</code>，里面均有一个img文件，将<code>Win10Based</code>文件夹中的img文件复制到Ventoy分区下的ventoy文件夹，至此Ventoy就支持VHD虚拟磁盘启动了</p>
+<h2 id="尾声"><a class="headerlink" href="#尾声"></a>尾声</h2>
+<p>回到磁盘管理中，右键虚拟磁盘，点击<code>分离VHD</code>，然后回到D盘中，将<code>Windows11LTSC.vhdx</code>移动到<code>ventoy</code>中，就能选择使用了<br>
+<strong>严格来说这种只是标准Window，但是为了教程简便就写到这了</strong></p>
+<h1>LinuxToGO镜像制作</h1>
+<h2 id="Linux镜像下载"><a class="headerlink" href="#Linux镜像下载"></a>Linux镜像下载</h2>
+<p>Linux镜像选择有很多，常见的有Ubuntu、Debian、CentOS等。我使用Linux主要是为了ROS的开发，所以我这次选择了Ubuntu</p>
+<h2 id="下载并安装VirtualBox"><a class="headerlink" href="#下载并安装VirtualBox"></a>下载并安装VirtualBox</h2>
+<p><a target="_blank" rel="noopener external nofollow noreferrer" href="https://www.virtualbox.org/">VirtualBox官网</a>,点击<code>Download</code>，选择合适的版本，并进行安装</p>
+<h2 id="制作Linux虚拟磁盘"><a class="headerlink" href="#制作Linux虚拟磁盘"></a>制作Linux虚拟磁盘</h2>
+<h3 id="创建虚拟机"><a class="headerlink" href="#创建虚拟机"></a>创建虚拟机</h3>
+<p>打开VirtualBox，点击<code>新建</code><br>
+<img data-lazy-src="https://img.akimio.top/Blog/2023/10/1696090172-6518483c95957.webp" alt="" loading="lazy"><br>
+填入虚拟机的名称、存放位置、虚拟光盘不用选择、类型选择<code>Linux</code>、版本选择<code>Ubuntu</code><br>
+<img data-lazy-src="https://img.akimio.top/Blog/2023/10/1696090200-65184858784f2.webp" alt="" loading="lazy"><br>
+内存大小和处理器核心按照实际情况填写就好、记得<strong>启用UEFI</strong><br>
+<img data-lazy-src="https://img.akimio.top/Blog/2023/10/1696090226-651848721d14e.webp" alt="" loading="lazy"><br>
+虚拟磁盘类型保持默认选择<code>VDI</code>即可,大小因为我是做开发用，所以默认25G就够用，最后点击<code>完成</code>。</p>
+<h3 id="配置Ubuntu镜像"><a class="headerlink" href="#配置Ubuntu镜像"></a>配置Ubuntu镜像</h3>
+<p>然后VirtualBox中就会多出一个虚拟机，先别着急启动，点击上方的<code>设置</code><br>
+<img data-lazy-src="https://img.akimio.top/Blog/2023/10/1696090252-6518488c0bc4c.webp" alt="" loading="lazy"><br>
+在侧边栏选择<code>系统</code>,在<code>启动顺序</code>中去除勾选<code>软驱</code><br>
+<img data-lazy-src="https://img.akimio.top/Blog/2023/10/1696090273-651848a142b13.webp" alt="" loading="lazy"><br>
+然后在侧边栏选择<code>存储</code>，点击<code>控制器：IDE</code>，再点击最右侧的光盘图标，选择下载好的Ubuntu镜像ISO文件，最后再点击下方的OK<br>
+<img data-lazy-src="https://img.akimio.top/Blog/2023/10/1696090295-651848b7129ba.webp" alt="" loading="lazy"></p>
+<h3 id="安装Ubuntu"><a class="headerlink" href="#安装Ubuntu"></a>安装Ubuntu</h3>
+<p>然后虚拟机就应该正常进入Ubuntu的安装了，接下来按照物理机安装Ubuntu即可（设置时区，键盘模式，用户等）</p>
+<h3 id="安装Linux支持插件"><a class="headerlink" href="#安装Linux支持插件"></a>安装Linux支持插件</h3>
+<p>安装完成Ubuntu后，系统会提示重启。关闭虚拟机，在设置中移除Ubuntu的安装镜像ISO<br>
+在<a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/ventoy/vtoyboot/releases">VentoyLinux的Github仓库</a>中下载最新的插件镜像ISO，在设置中添加虚拟光盘镜像，然后再次启动Ubuntu。选择用户登入<br>
+登入到Linux的桌面后就可以在侧边栏看到一个光盘的图标，打开后就能看到一个压缩包，右键压缩包将文件提取到桌面，打开文件夹，右键空白处，选择<code>在终端打开</code>，输入下面这行命令</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo bash votyboot.sh</span><br><span class="line"># 使用sudo命令会提示输入密码，密码不可见，输入后回车即可</span><br><span class="line"># 这个插件最好在每次Linux大版本更新后都运行一次</span><br></pre></td></tr></table></figure>
+<p>跑完代码后将虚拟机关机，即可</p>
+<h3 id="从Ventoy中启动虚拟机"><a class="headerlink" href="#从Ventoy中启动虚拟机"></a>从Ventoy中启动虚拟机</h3>
+<p>找到VirtualBox虚拟机的存放目录中找到Ubuntu的虚拟磁盘（.vdi后缀名的文件），将文件复制到Ventoy的根目录，将后缀更改为<code>.vdi.vtoy</code>，然后在Ventoy的引导页面中就能看到刚刚制作好的Ubuntu系统了</p>
+<h1>将常用应用放进硬盘</h1>
+<p>前面介绍了WTG和LTG的制作教程，但是并不是所有地方都可以关机电脑选择从硬盘启动，加载上国内电脑大多数是PC，不如退而求其次，将应用和数据保存在硬盘中，以后只要在Windows电脑上插入硬盘就能使用，而且应用产生的所有数据都可以保存在硬盘中，保证了数据的统一</p>
+<p>Windows软件从部署方式看，分为以下四个版本：安装版、绿色版、便携版、单文件版。<br>
+<strong>绿色版本</strong></p>
+<blockquote>
+<p>绿色版本软件是指不需要安装即可直接运行的软件。可以直接将其拷贝到计算机的任意位置进行使用，而不需要进行安装程序。优点是无需修改系统注册表、不会在系统中留下垃圾文件，可以轻松地在不同的计算机上使用。不过需要注意的是，有些绿色版本软件可能会在第一次运行时生成配置文件或其他相关文件，这些文件通常与软件本身保存在同一目录中，因此在删除软件时也要将这些文件一起删除，以免留下无关的残留文件,但有些绿色软件需要运行一些脚本注册相关系统组件，绿色软件多为第三方制作，可能携带有木马病毒</p>
+</blockquote>
+<p><strong>便携版本</strong></p>
+<blockquote>
+<p>便携版本软件也可以在不需要安装的情况下直接运行的软件。这种软件通常将所有的程序文件和设置保存在一个文件夹中，可以将该文件夹放在任何位置并在需要时直接运行。便携版本软件非常方便，因为它们不会对系统进行任何更改，可以在不同的计算机上使用，而不需要重新安装，相比绿色软件，完全不需要注册系统组件，更加适合在U盘等移动存储设备中使用</p>
+</blockquote>
+<p><strong>单文件版本</strong></p>
+<blockquote>
+<p>单文件版指的是软件只有一个文件，可以直接打开运行，不附带其他文件，除了开发者开发成单文件外，还可以将多个文件打包成一个单文件，类似于一个压缩包，运行时，将文件释放到系统临时目录，再运行主程序</p>
+</blockquote>
+<h2 id="PortableApps"><a class="headerlink" href="#PortableApps"></a>PortableApps</h2>
+<blockquote>
+<p>PortableApps是一个免费的开源软件平台，用于在Windows操作系统上运行便携式应用程序。这些便携式应用程序可以直接从USB驱动器、外置硬盘甚至云存储中运行，而无需安装或在计算机上留下任何痕迹PortableApps可以帮助用户在不同计算机之间快速、方便地同步他们的应用程序和数据，这对于需要移动办公或者使用公共计算机的用户来说非常方便。此外，PortableApps平台还提供了大量的免费便携式应用程序，包括办公套件、多媒体工具、网络工具等等。</p>
+</blockquote>
+<p>PortableApps的原理就是一个启动器，里面配置好了所有便携版本软件的配置和所需要的环境，并在后他健康，监测到软件被关闭后，把软件在电脑中的配置和环境信息保存在移动存储设备中，并删除在系统硬盘中的配置信息，保证系统的干净</p>
+<h3 id="安装PortableApps"><a class="headerlink" href="#安装PortableApps"></a>安装PortableApps</h3>
+<p>打开<a target="_blank" rel="noopener external nofollow noreferrer" href="https://portableapps.com/zh-cn">PortableApps官网</a>，下载安装包，选择<code>全新安装</code>-&gt;<code>便携式-安装到便携式设备</code>，我这里就选择安装到移动硬盘软件分区中的PortableApps文件夹中，文件夹中就多出一个exe可执行文件，以后在不同电脑中直接打开就可以看到在PortableApps中安装的应用</p>
+<h3 id="PortableApps安装官方应用"><a class="headerlink" href="#PortableApps安装官方应用"></a>PortableApps安装官方应用</h3>
+<p>PortableApps默认提供了安全工具，办公工具，编程开发等十余项分类，先默认软件中勾选需要的应用，点击即可安装，安装完成后在底部的菜单栏找到PortableApps的图标，打开就能看到安装好的便携应用，也可提供了备份软件和还原备份的方法；在应用管理中也可也一键检查更新，也有自带的应用市场安装需要的应用</p>
+<h3 id="PortableApps安装第三方应用"><a class="headerlink" href="#PortableApps安装第三方应用"></a>PortableApps安装第三方应用</h3>
+<p>除了官方软件，PortableApps还允许用户在论坛中自行下载所需的应用，打开<a target="_blank" rel="noopener external nofollow noreferrer" href="https://portableapps.com/zh-cn">PortableApps官网</a>，在右上角的搜索中搜索需要的应用，找到下载入口，点击下载，完成后在打开PortableApps面板中右键<code>应用管理</code>，点击<code>安装新的便携应用</code>，选择下载的文件就能安装</p>
+<h2 id="绿色版软件"><a class="headerlink" href="#绿色版软件"></a>绿色版软件</h2>
+<p>绿色软件大多数是由第三方制作，有一定病毒风险，这里不做赘述</p>
+<h2 id="便携版软件"><a class="headerlink" href="#便携版软件"></a>便携版软件</h2>
+<p>许多常见的软件都有便携版本，包括浏览器（如Firefox Portable、Google Chrome Portable）、办公套件（如LibreOffice Portable、OpenOffice Portable）、多媒体播放器（如VLC Media Player Portable）、图像编辑软件（如GIMP Portable）、压缩工具（如7-Zip Portable）等等，有些官方提供了便携版本软件的下载方式</p>
+<h2 id="单文件版软件"><a class="headerlink" href="#单文件版软件"></a>单文件版软件</h2>
+<p>这个可以自己使用工具将绿色版软件或便携版软件打包成单文件版应用，感兴趣的同学可以尝试使用<code>NSIS简易封包工具</code>自行制作</p>
+<h1>Ventoy美化</h1>
+<p>Ventoy默认的镜像选择界面虽然可以用，但是界面十分古老，并不美观，但好在Ventoy基于GRUB，可以使用GRUB主题，基本思路就是将主题放入Ventoy中，启用主题，配置关键词使引导与图标匹配，网上教程很多，这里不再赘述</p>
+<h1>尾声</h1>
+<p>以上就是利用Ventoy打造移动存储设备的AIO教程，至此，硬盘不单只是一个硬盘存储设备，还可以在其他电脑上启动你的专属Windows系统，再任意电脑上使用自己的软件（<s>随时随地加班</s>），集合PE可以轻松维护电脑（<s>运维狂喜</s>）。如果你和我一样喜欢折腾，可以尝试一下Ventoy。最后提醒一下各位：<br>
+<strong>数据无价，保持备份习惯</strong></p>
+</article><div class="post-copyright"><div class="post-copyright__author_group"><a class="post-copyright__author_img" href="/about/"><img class="post-copyright__author_img_front" data-lazy-src="https://img.akimio.top/avatar/akimio.png"></a><div class="post-copyright__author_name">秋澪的博客</div><div class="post-copyright__author_desc">Akimio blog</div></div><div class="post-tools" id="post-tools"><div class="post-tools-left"><div id="quit-box" onclick="RemoveRewardMask()"></div><div class="reward-link mode"><a class="reward-link-button" href="/rss2.xml" title="订阅"><i class="scoicon sco-plant-fill"></i>订阅</a></div></div></div><div class="post-copyright__notice"><span class="post-copyright-info">本文是原创文章，采用<a target="_blank" rel="noopener external nofollow noreferrer" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">CC BY-NC-SA 4.0</a>协议，完整转载请注明来自<a href="/">秋澪的博客</a></span></div></div><div class="post-tools-right"><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E6%95%99%E7%A8%8B/"><span class="tags-punctuation"></span>教程<span class="tagsPageCount">28</span></a><a class="post-meta__tags" href="/tags/Ventoy/"><span class="tags-punctuation"></span>Ventoy<span class="tagsPageCount">1</span></a><a class="post-meta__tags" href="/tags/WinToGo/"><span class="tags-punctuation"></span>WinToGo<span class="tagsPageCount">1</span></a><a class="post-meta__tags" href="/tags/LinToGo/"><span class="tags-punctuation"></span>LinToGo<span class="tagsPageCount">1</span></a><a class="post-meta__tags" href="/tags/AIO/"><span class="tags-punctuation"></span>AIO<span class="tagsPageCount">1</span></a></div></div></div><nav class="needEndHide pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/posts/1026/"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">Git快速上手指南</div></div></a></div><div class="next-post pull-right"><a href="/posts/1024/"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">为Hexo博客添加后台管理系统</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="scoicon sco-star-smile-fill"></i><span>喜欢这篇的人也看了</span><div class="relatedPosts-link"><a onclick="event.preventDefault(); toRandomPost();" href="javascript:void(0);" rel="external nofollow" data-pjax-state="">随便逛逛</a></div></div><div class="relatedPosts-list"><div><a href="/posts/1035/" title="利用CloudFlare搭建镜像站"><img class="cover" data-lazy-src="https://img.akimio.top/Blog/2024/01/1705389355-65a62d2b0759a.webp" alt="cover"><div class="content is-center"><div class="title">利用CloudFlare搭建镜像站</div></div></a></div><div><a href="/posts/1034/" title="Docker入门教程"><img class="cover" data-lazy-src="https://img.akimio.top/Blog/2024/01/1704949049-659f753963b50.webp" alt="cover"><div class="content is-center"><div class="title">Docker入门教程</div></div></a></div></div></div><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="scoicon sco-chat-fill"></i><span> 评论</span><span></span></div><div class="comment-randomInfo"><a onclick="sco.addRandomCommentInfo()" href="javascript:void(0)" rel="external nofollow noreferrer">匿名评论</a></div><div class="comment-tips" id="comment-tips"><span>✅ 你无需删除空行，直接评论以获取最佳展示效果</span></div></div><div class="comment-wrap"><div id="comment"></div><script>async function initComment() {
+    var initOptions = Object.assign(
+        {"envId":"https://twikoo.akimio.top/","lang":"zh-CN","accessToken":null},
+        {
+            el: '#comment',
+            onCommentLoaded: function () {
+                GLOBAL_CONFIG.lightbox && utils.lightbox(document.querySelectorAll('#twikoo .tk-content img:not(.tk-owo-emotion)'))
+            },
+            lang: 'zh-CN',
+        }
+    )
+    await twikoo.init(initOptions)
+    if (true) {
+        var countOptions = Object.assign(
+            {"envId":"https://twikoo.akimio.top/","lang":"zh-CN","accessToken":null},
+            {
+                urls: [window.location.pathname],
+                includeReply: false
+            }
+        )
+        const res = await twikoo.getCommentsCount(countOptions)
+        try {
+            document.getElementById('twikoo-count').innerText = res[0].count
+            document.querySelector('.comment-headline span:last-child').innerText = ` (${res[0].count})`
+        } catch (e) {
+            document.getElementById('twikoo-count').innerText = '加载错误'
+        }
+    }
+}</script></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="card-content"><div class="card-info-avatar is-center"><div class="author-info__top-group"><div class="author-info__sayhi" id="author-info__sayhi" onclick="sco.changeSayHelloText()">sayhello.morning</div></div></div><div class="avatar-img-group"><img class="avatar-img" alt="头像" data-lazy-src="https://img.akimio.top/avatar/akimio.png"><div class="avatar-sticker"><img class="avatar-sticker-img" data-lazy-src="https://bu.dusays.com/2023/12/30/659011053e246.png" alt="心情贴纸"></div></div><div class="author-info__description_group"><div class="author-info__description"><b>一只喜欢七彩球的枯叶蝶</b></div><div class="author-info__description2">原博客地址：<b>blog.zuilang.tk</b></div></div><div class="author-info__bottom-group"><a class="author-info__bottom-group-left" href="/about/"><div class="author-info__name">秋澪</div><div class="author-info__desc">Akimio blog</div></a><div class="card-info-social-icons is-center"><a class="social-icon" target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/Akimio" title="Github"><i class="scoicon scoicon sco-github-line"></i></a><a class="social-icon" target="_blank" rel="noopener external nofollow noreferrer" href="https://space.bilibili.com/35466886" title="Bilibili"><i class="scoicon scoicon sco-bilibili-line"></i></a></div></div></div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="scoicon sco-menu-line"></i><span>文章目录</span></div><div class="toc-content" id="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-text">前言</span></a></li><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-text">硬件选择</span></a></li><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-text">介绍</span></a></li><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-text">Ventoy安装</span></a></li><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-text">为硬盘分区</span></a></li><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-text">PE系统安装</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BE%AEPE"><span class="toc-text">微PE</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#HotPE"><span class="toc-text">HotPE</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#FirPE"><span class="toc-text">FirPE</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Edgeless"><span class="toc-text">Edgeless</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-text">WinToGO镜像制作</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%8B%E8%BD%BDWindows%E9%95%9C%E5%83%8F"><span class="toc-text">下载Windows镜像</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%80%9F%E7%9B%98"><span class="toc-text">借盘</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B7%A5%E5%85%B7%E4%B8%8B%E8%BD%BD"><span class="toc-text">工具下载</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%89%E8%A3%85%E7%B3%BB%E7%BB%9F%E5%88%B0%E8%99%9A%E6%8B%9F%E7%A1%AC%E7%9B%98"><span class="toc-text">安装系统到虚拟硬盘</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#VHD%E5%90%AF%E5%8A%A8%E6%8F%92%E4%BB%B6%E5%AE%89%E8%A3%85"><span class="toc-text">VHD启动插件安装</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B0%BE%E5%A3%B0"><span class="toc-text">尾声</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-text">LinuxToGO镜像制作</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Linux%E9%95%9C%E5%83%8F%E4%B8%8B%E8%BD%BD"><span class="toc-text">Linux镜像下载</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%8B%E8%BD%BD%E5%B9%B6%E5%AE%89%E8%A3%85VirtualBox"><span class="toc-text">下载并安装VirtualBox</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%B6%E4%BD%9CLinux%E8%99%9A%E6%8B%9F%E7%A3%81%E7%9B%98"><span class="toc-text">制作Linux虚拟磁盘</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%9B%E5%BB%BA%E8%99%9A%E6%8B%9F%E6%9C%BA"><span class="toc-text">创建虚拟机</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%85%8D%E7%BD%AEUbuntu%E9%95%9C%E5%83%8F"><span class="toc-text">配置Ubuntu镜像</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%89%E8%A3%85Ubuntu"><span class="toc-text">安装Ubuntu</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%89%E8%A3%85Linux%E6%94%AF%E6%8C%81%E6%8F%92%E4%BB%B6"><span class="toc-text">安装Linux支持插件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BB%8EVentoy%E4%B8%AD%E5%90%AF%E5%8A%A8%E8%99%9A%E6%8B%9F%E6%9C%BA"><span class="toc-text">从Ventoy中启动虚拟机</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-text">将常用应用放进硬盘</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#PortableApps"><span class="toc-text">PortableApps</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%89%E8%A3%85PortableApps"><span class="toc-text">安装PortableApps</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#PortableApps%E5%AE%89%E8%A3%85%E5%AE%98%E6%96%B9%E5%BA%94%E7%94%A8"><span class="toc-text">PortableApps安装官方应用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#PortableApps%E5%AE%89%E8%A3%85%E7%AC%AC%E4%B8%89%E6%96%B9%E5%BA%94%E7%94%A8"><span class="toc-text">PortableApps安装第三方应用</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BB%BF%E8%89%B2%E7%89%88%E8%BD%AF%E4%BB%B6"><span class="toc-text">绿色版软件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BE%BF%E6%90%BA%E7%89%88%E8%BD%AF%E4%BB%B6"><span class="toc-text">便携版软件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8D%95%E6%96%87%E4%BB%B6%E7%89%88%E8%BD%AF%E4%BB%B6"><span class="toc-text">单文件版软件</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-text">Ventoy美化</span></a></li><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-text">尾声</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="scoicon sco-map-line"></i><span>最近发布</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/posts/1036/" title="FastCDN说明文档"><img alt="FastCDN说明文档" data-lazy-src="https://img.akimio.top/Blog/2024/01/1705725058-65ab4c824e8bd.webp"></a><div class="content"><a class="title" href="/posts/1036/" title="FastCDN说明文档">FastCDN说明文档</a><a class="article-recent_post_categories" href="/posts/1036/">文档</a></div></div><div class="aside-list-item"><a class="thumbnail" href="/posts/1035/" title="利用CloudFlare搭建镜像站"><img alt="利用CloudFlare搭建镜像站" data-lazy-src="https://img.akimio.top/Blog/2024/01/1705389355-65a62d2b0759a.webp"></a><div class="content"><a class="title" href="/posts/1035/" title="利用CloudFlare搭建镜像站">利用CloudFlare搭建镜像站</a><a class="article-recent_post_categories" href="/posts/1035/">网络基建计划</a></div></div><div class="aside-list-item"><a class="thumbnail" href="/posts/1034/" title="Docker入门教程"><img alt="Docker入门教程" data-lazy-src="https://img.akimio.top/Blog/2024/01/1704949049-659f753963b50.webp"></a><div class="content"><a class="title" href="/posts/1034/" title="Docker入门教程">Docker入门教程</a><a class="article-recent_post_categories" href="/posts/1034/">学习笔记</a></div></div><div class="aside-list-item"><a class="thumbnail" href="/posts/1033/" title="UnlockMusic音乐解锁搭建教程"><img alt="UnlockMusic音乐解锁搭建教程" data-lazy-src="https://img.akimio.top/Blog/2023/12/1696081573-651826a504cc6.png"></a><div class="content"><a class="title" href="/posts/1033/" title="UnlockMusic音乐解锁搭建教程">UnlockMusic音乐解锁搭建教程</a><a class="article-recent_post_categories" href="/posts/1033/">网络基建计划</a></div></div><div class="aside-list-item"><a class="thumbnail" href="/posts/1032/" title="Excalidraw搭建教程"><img alt="Excalidraw搭建教程" data-lazy-src="https://img.akimio.top/Blog/2023/10/1697201324-65293cac786a0.webp"></a><div class="content"><a class="title" href="/posts/1032/" title="Excalidraw搭建教程">Excalidraw搭建教程</a><a class="article-recent_post_categories" href="/posts/1032/">网络基建计划</a></div></div></div></div></div></div></main><footer id="footer"><div id="sco-footer-bar"><div class="footer-logo"><span class="scoicon">秋澪Akimio的博客</span></div><div class="footer-bar-description">来自秋澪的博客 - Akimio blog的文章</div><a class="footer-bar-link" href="/">了解更多</a></div><div id="footer_deal"><a class="deal_link" target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/Akimio521" title="Github"><i class="scoicon scoicon sco-bilibili-line"></i></a><a class="deal_link" href="mailto:akimio2333@gmail.com" rel="external nofollow noreferrer" title="Mail"><i class="scoicon scoicon sco-mail-line"></i></a><div class="footer_mini_logo" id="footer_mini_logo" title="返回顶部" onclick="sco.toTop()"><img data-lazy-src="https://img.akimio.top/avatar/akimio.png" alt="返回顶部"></div><a class="deal_link" target="_blank" rel="noopener external nofollow noreferrer" href="https://space.bilibili.com/1329819902" title="Bilibili"><i class="scoicon scoicon sco-bilibili-line"></i></a><a class="deal_link" target="_blank" rel="noopener external nofollow noreferrer" href="http://www.coolapk.com/u/4951361" title="酷安"><i class="scoicon scoicon sco-douyin-fill"></i></a></div><div id="sco-footer"><div class="footer-group"><h3 class="footer-title">导航</h3><div class="footer-links"><a class="footer-item" href="/archives/" title="归档">归档</a><a class="footer-item" href="/categories/" title="分类">分类</a><a class="footer-item" href="/tags/" title="标签">标签</a></div></div><div class="footer-group"><h3 class="footer-title">服务</h3><div class="footer-links"><a class="footer-item" target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com" title="Github">Github</a><a class="footer-item" target="_blank" rel="noopener external nofollow noreferrer" href="https://vercel.com/" title="Vercel">Vercel</a><a class="footer-item" target="_blank" rel="noopener external nofollow noreferrer" href="https://www.cloudflare.com/" title="CloudFlare">CloudFlare</a></div></div><div class="footer-group"><h3 class="footer-title">订阅</h3><div class="footer-links"><a class="footer-item" href="/rss2.xml" title="RSS">RSS</a><a class="footer-item" href="/sitemap.xml" title="站点地图">站点地图</a><a class="footer-item" href="/baidusitemap.xml" title="百度站点地图">百度站点地图</a></div></div><div class="footer-group"><h3 class="footer-title">协议</h3><div class="footer-links"><a class="footer-item" href="/cookies/" title="Cookies">Cookies</a><a class="footer-item" href="/privacy/" title="用户协议">用户协议</a><a class="footer-item" href="/copyright/" title="版权协议">版权协议</a></div></div></div><div id="footer-bar"><div class="footer-bar-links"><div class="footer-bar-left"><div class="copyright">© 2023 - 2024 By&nbsp;<a class="footer-bar-link" href="/">秋澪</a></div></div><div class="footer-bar-right"><a class="footer-bar-link" target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/wleelw/hexo-theme-solitude" title="主题">主题</a><a class="footer-bar-link cc"><i class="scoicon sco-copyright-line"></i><i class="scoicon sco-creative-commons-by-line"></i><i class="scoicon sco-creative-commons-nc-line"></i><i class="scoicon sco-creative-commons-nd-line"></i></a></div></div></div><div class="comment-barrage needEndHide"></div></footer></div><!-- inject body--><div><script src="/js/main.js?v=1.4.7"></script><script src="/js/utils.js?v=1.4.7"></script><div id="rightMenu"><div class="rightMenu-group rightMenu-small"><div class="rightMenu-item" id="menu-backward"><i class="scoicon sco-arrow-left-line"></i></div><div class="rightMenu-item" id="menu-forward"><i class="scoicon sco-arrow-right-line"></i></div><div class="rightMenu-item" id="menu-refresh"><i class="scoicon sco-restart-line"></i></div><div class="rightMenu-item" id="menu-top"><i class="scoicon sco-arrow-up-line"></i></div></div><div class="rightMenu-group rightMenu-line rightMenuPlugin"><div class="rightMenu-item" id="menu-copytext"><i class="scoicon sco-copy-fill"></i><span>复制选中文本</span></div><div class="rightMenu-item" id="menu-pastetext"><i class="scoicon sco-clipboard-fill"></i><span>粘贴文本</span></div><a class="rightMenu-item" id="menu-commenttext"><i class="scoicon sco-chat-new-fill"></i><span>引用到评论</span></a><div class="rightMenu-item" id="menu-newwindow"><i class="scoicon sco-window-fill"></i><span>新窗口打开</span></div><div class="rightMenu-item" id="menu-copylink"><i class="scoicon sco-link-line"></i><span>复制链接地址</span></div><div class="rightMenu-item" id="menu-copyimg"><i class="scoicon sco-copy-fill"></i><span>复制此图片</span></div><div class="rightMenu-item" id="menu-downloadimg"><i class="scoicon sco-download-cloud-fill"></i><span>下载此图片</span></div><div class="rightMenu-item" id="menu-search"><i class="scoicon sco-search-line"></i><span>站内搜索</span></div><div class="rightMenu-item" id="menu-music-toggle"><i class="scoicon sco-play-fill"></i><span>播放音乐</span></div><div class="rightMenu-item" id="menu-music-back"><i class="scoicon sco-skip-back-fill"></i><span>切换到上一首</span></div><div class="rightMenu-item" id="menu-music-forward"><i class="scoicon sco-skip-forward-fill"></i><span>切换到下一首</span></div><div class="rightMenu-item" id="menu-music-playlist" onclick="window.open('https://music.163.com/#/playlist?id=8407304077', '_blank');"><i class="scoicon sco-play-list-2-line"></i><span>查看所有歌曲</span></div><div class="rightMenu-item" id="menu-music-copyMusicName"><i class="scoicon sco-copy-fill"></i><span>复制歌名</span></div></div><div class="rightMenu-group rightMenu-line rightMenuOther"><a class="rightMenu-item menu-Link" id="menu-randomPost"><i class="scoicon sco-signal-tower-fill"></i><span>随便逛逛</span></a><a class="rightMenu-item menu-link" href="/categories/"><i class="scoicon sco-checkbox-multiple-blank-fill"></i><span>文章分类</span></a><a class="rightMenu-item menu-link" href="/tags/"><i class="scoicon sco-price-tag-fill"></i><span>文章标签</span></a></div><div class="rightMenu-group rightMenu-line rightMenuOther"><div class="rightMenu-item" id="menu-copy"><i class="scoicon sco-external-link-fill"></i><span>复制地址</span></div><div class="rightMenu-item" id="menu-commentBarrage"><i class="scoicon sco-chat-fill"></i><span class="menu-commentBarrage-text">关闭热评</span></div><div class="rightMenu-item" id="menu-darkmode"><i class="scoicon sco-moon-clear-fill"></i><span class="menu-darkmode-text">深色模式</span></div><div class="rightMenu-item" id="menu-translate"><i class="scoicon sco-panben-line"></i><span>轉為繁體</span></div></div></div><div id="rightmenu-mask"></div><script src="/js/rightside.js?v=1.4.7"></script><script src="https://cdn.cbd.int/solitude-source/js/universe.min.js"></script><script>dark()
+</script><script src="/js/tw_cn.js?v=1.4.7"></script><script src="https://cdn.staticfile.org/pjax/0.2.8/pjax.min.js"></script><script src="https://cdn.staticfile.org/vanilla-lazyload/17.8.5/lazyload.iife.min.js"></script><script src="https://cdn.staticfile.org/node-snackbar/0.1.16/snackbar.min.js"></script><script src="https://cdn.staticfile.org/fancyapps-ui/5.0.33/fancybox/fancybox.umd.min.js"></script><script>const coverColorConfig = {
+    api: 'https://img2color.wzsco.top/api?img=',
+    time: 43200000,
+}</script><script src="/js/covercolor/api.js?v=1.4.7"></script><script src="https://cdn.staticfile.org/twikoo/1.6.31/twikoo.all.min.js"></script><script src="/js/comment/twikoo_commentBarrage.js?v=1.4.7"></script><script src="https://cdn.staticfile.org/pace/1.2.4/pace.min.js"></script><script src="https://cdn.staticfile.org/instantsearch.js/4.63.0/instantsearch.production.min.js"></script><script src="https://cdn.staticfile.org/algoliasearch/4.22.0/algoliasearch-lite.umd.min.js"></script></div><div id="js-pjax"><script async src="https://cdn.staticfile.org/busuanzi/2.3.0/bsz.pure.mini.min.js"></script><script id="config-diff">var PAGE_CONFIG = {
+    is_post: true,
+    is_page: false,
+    is_home: false,
+    page: 'post',
+    toc: true,
+    comment: true,
+}
+</script></div><!-- newest comment--><script>window.addEventListener('load', () => {
+    const changeContent = (content) => {
+        if (content === '') return content;
+
+        const replacements = [
+            {regex: /<img.*?src="(.*?)"?[^\>]+>/ig, replacement: '[图片]'},
+            {regex: /<a[^>]+?href=["']?([^"']+)["']?[^>]*>([^<]+)<\/a>/gi, replacement: '[链接]'},
+            {regex: /<pre><code>.*?<\/pre>/gi, replacement: '[代码]'},
+            {regex: /<[^>]+>/g, replacement: ""}
+        ];
+
+        content = replacements.reduce((str, {regex, replacement}) => str.replace(regex, replacement), content);
+
+        return content.length > 150 ? content.substring(0, 150) + '...' : content;
+    }
+
+    const getComment = () => {
+        const $dom = document.querySelector('#card-newest-comments .aside-list')
+
+        const runTwikoo = () => {
+            twikoo.getRecentComments({
+                envId: GLOBAL_CONFIG.comment.twikoo.url,
+                region: '',
+                pageSize: 6,
+                includeReply: true
+            }).then(function (res) {
+                const twikooArray = res.map(e => ({
+                    'content': changeContent(e.comment),
+                    'avatar': e.avatar,
+                    'nick': e.nick,
+                    'url': `${e.url}#${e.id}`,
+                    'date': new Date(e.created).toISOString()
+                }))
+                generateHtml(twikooArray)
+            }).catch(function (err) {
+                $dom.innerHTML = "无法获取评论，请确认相关配置是否正确"
+            })
+        }
+        runTwikoo()
+    }
+
+    const generateHtml = array => {
+        const $dom = document.querySelector('#card-newest-comments .aside-list')
+        $dom.innerHTML = array.length ? array.map(item => `
+            <div class='aside-list-item'>
+              <a href='${item.url}' class='thumbnail'>
+                <img data-lazy-src='${item.avatar}' alt='${item.nick}'>
+                <div class='name'><span>${item.nick}</span></div>
+              </a>
+              <div class='content'>
+                <a class='comment' href='${item.url}'>${item.content}</a>
+                <time class="datetime" datetime="${item.date}"></time>
+              </div>
+            </div>
+          `).join('') : '没有评论'
+        window.lazyLoadInstance && window.lazyLoadInstance.update()
+        window.pjax && window.pjax.refresh($dom)
+        changeTimeFormat()
+    }
+
+    const newestCommentInit = () => {
+        const $asideList = document.querySelector('#card-newest-comments .aside-list')
+        if ($asideList) {
+            getComment()
+        }
+    }
+
+    newestCommentInit()
+})</script><!-- pjax--><script>let pjaxSelectors = [
+    'title',
+    '#body-wrap',
+    '#site-config',
+    'meta[name="description"]',
+    '#js-pjax',
+    'meta[property^="og:"]',
+]
+
+const pjax = new Pjax({
+    elements: 'a:not([target="_blank"])',
+    selectors: pjaxSelectors,
+    cacheBust: false,
+    analytics: false,
+    scrollRestoration: false
+})
+
+document.querySelectorAll('script[data-pjax]').forEach(item => {
+    const newScript = document.createElement('script')
+    const content = item.text || item.textContent || item.innerHTML || ""
+    Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+    newScript.appendChild(document.createTextNode(content))
+    item.parentNode.replaceChild(newScript, item)
+})
+
+document.addEventListener('pjax:complete', () => {
+    window.refreshFn()
+})
+
+document.addEventListener('pjax:error', (e) => {
+    if (e.request.status === 404) {
+        pjax.loadUrl('/404.html')
+    }
+})</script><!-- theme--><script>initTheme = () => {
+    let isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches
+    const cachedMode = saveToLocal.get('theme');
+    if (cachedMode === undefined) {
+        const nowMode =
+            isDarkMode ? 'dark' : 'light'
+        document.documentElement.setAttribute('data-theme', nowMode);
+    } else {
+        document.documentElement.setAttribute('data-theme', cachedMode);
+    }
+}
+initTheme()</script><!-- search--><div id="algolia-search"><div class="search-dialog"><div class="algolia-navbar"><div class="search-dialog__title" id="algolia-search-title">搜索</div><div class="algolia-tips"><i class="scoicon sco-algolia-fill"></i><span class="algolia-tips-text">Algolia</span></div><span class="search-close-button"><i class="scoicon sco-close-fill"></i></span></div><div id="algolia-input-panel"><div id="algolia-search-input"></div></div><div id="search-results"><div id="algolia-hits"></div></div><div id="algolia-tips"><div id="algolia-pagination"></div><div id="algolia-stats"></div></div></div><div id="search-mask"></div></div><script src="/js/search/algolia.js?v=1.4.7"></script><!-- music--></body></html><script>const posts=["posts/1036/","posts/1035/","posts/1034/","posts/1033/","posts/1032/","posts/1031/","posts/1030/","posts/1029/","posts/1028/","posts/1027/","posts/1026/","posts/1025/","posts/1024/","posts/1023/","posts/1022/","posts/1021/","posts/1020/","posts/1019/","posts/1018/","posts/1017/","posts/1016/","posts/1015/","posts/1014/","posts/1013/","posts/1012/","posts/1011/","posts/1010/","posts/1009/","posts/1008/","posts/1007/","posts/1006/","posts/1005/","posts/1004/","posts/1003/","posts/1002/","posts/1001/","posts/1/"];function toRandomPost(){ pjax.loadUrl('/'+posts[Math.floor(Math.random()*posts.length)]); };</script>

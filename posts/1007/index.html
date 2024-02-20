@@ -1,0 +1,531 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Ubuntu安装及ROS安装教程 | 秋澪的博客</title><noscript>开启JavaScript才能访问本站哦~</noscript><link rel="icon" href="https://img.akimio.top/avatar/akimio.png"><!-- index.css--><link rel="stylesheet" href="/css/index.css?v=1.4.7"><!-- inject head--><meta name="google-site-verification" content="Fk7XyGh7jge7BoQY"><meta name="baidu-site-verification" content="codeva-Ppouj7y5Ib"><link rel="stylesheet" href="https://cdn.cbd.int/solitude-source/icon/scoicon.min.css"><link rel="stylesheet" href="https://cdn.staticfile.org/node-snackbar/0.1.16/snackbar.min.css"><!-- aplayer--><!-- swiper--><link rel="stylesheet" href="https://cdn.staticfile.org/fancyapps-ui/5.0.33/fancybox/fancybox.min.css"><link rel="stylesheet" href="https://cdn.staticfile.org/KaTeX/0.16.9/katex.min.css"><!-- Open Graph--><meta name="description" content="环境声明： 主系统：Window11 x64 网络环境：境内 安装目标： Ubuntu LTS 16.04&amp;#x2F;20.04（VMware中安装的版本为16.04，Windows子系统安装的版本为20.04） ROS1.0 新手快速入门 VMware安装Ubuntu，传送门 自动化脚本安装ROS"><!-- pwa--><script>(win => {
+        win.saveToLocal = {
+            set: function setWithExpiry(key, value, ttl) {
+                if (ttl === 0)
+                    return
+                const now = new Date()
+                const expiryDay = ttl * 86400000
+                const item = {
+                    value: value,
+                    expiry: now.getTime() + expiryDay,
+                }
+                localStorage.setItem(key, JSON.stringify(item))
+            },
+
+            get: function getWithExpiry(key) {
+                const itemStr = localStorage.getItem(key)
+
+                if (!itemStr) {
+                    return undefined
+                }
+                const item = JSON.parse(itemStr)
+                const now = new Date()
+
+                if (now.getTime() > item.expiry) {
+                    localStorage.removeItem(key)
+                    return undefined
+                }
+                return item.value
+            }
+        }
+
+        const DarkModeStatus = localStorage.getItem('theme')
+        if (DarkModeStatus !== null) {
+            if (DarkModeStatus === 'dark') {
+                document.documentElement.setAttribute('data-theme', 'dark')
+            } else {
+                document.documentElement.setAttribute('data-theme', 'light')
+            }
+        }
+
+        const asideStatus = saveToLocal.get('aside-status')
+        if (asideStatus !== undefined) {
+            if (asideStatus === 'hide') {
+                document.documentElement.classList.add('hide-aside')
+            } else {
+                document.documentElement.classList.remove('hide-aside')
+            }
+        }
+    }
+)(window)
+
+console.log(
+    "%c🔥 程序：Hexo | 主题：Hexo-Theme-Solitude | 作者：王卓Sco、亦封 | Github: https://github.com/wleelw/Hexo-theme-solitude | 版本：v1.4.7 😄",
+    "color: #fff; background: linear-gradient(-25deg, #a8edea, #fed6e3); padding: 8px 15px; border-radius: 8px; text-shadow: 2px 2px 4px white; color: black;"
+);</script><!-- global head--><script>const GLOBAL_CONFIG = {
+    root: '/',
+    algolia: {"appId":"FFEW0LYV6V","apiKey":"67e0012d866ead8c1cc09c58c6b50c3e","indexName":"blog","hits":{"per_page":10}},
+    localsearch: undefined,
+    runtime: '2023-03-18 12:00:00',
+    lazyload: {
+        enable: true,
+        error: '/img/error_load.png'
+    },
+    hightlight: {
+        enable: true,
+        limit: 200,
+        expand: true,
+        copy: true,
+    },
+    randomlinks: false,
+    lang: {
+        theme: {
+            dark: '已切换至深色模式',
+            light: '已切换至浅色模式',
+        },
+        copy: {
+            success: '复制成功',
+            error: '复制失败',
+        },
+        backtop: '返回顶部',
+        time: {
+            recent: '最近',
+            yesterday: '昨天',
+            berforeyesterday: '前天',
+            daybefore: '天前',
+            runtime: '天',
+        },
+        search: {
+            empty: '找不到你查询的内容：${query}',
+            hit: '找到 ${hits} 条结果，用时 ${time} 毫秒',
+            placeholder: '输入关键词快速查找',
+        },
+        chs: {
+            chs_to_cht: '繁體中文',
+            cht_to_chs: '简体中文',
+        }
+    },
+    aside: {
+        sayhello: {
+            morning: '一日之计在于晨',
+            noon: '吃饱了才有力气干活',
+            afternoon: '集中精力，攻克难关',
+            night: '不要太劳累了，早睡更健康',
+            goodnight: '睡个好觉，保证精力充沛',
+        },
+        sayhello2: ["🤖️ 数码科技爱好者","🔍 分享与热心帮助","🏠 智能家居小能手","🔨 设计开发一条龙","🤝 专修交互与设计","🏃 脚踏实地行动派","🧱 团队小组发动机","💢 壮汉人狠话不多","🎮 电竞游戏爱好者"],
+    },
+    covercolor: {
+        enable: true
+    },
+    comment: {
+        enable: true,
+        type: 'twikoo',
+        commentBarrage: true,
+        randomInfoStart: ["聪敏的","可爱的","美丽的"],
+        randomInfoEnd: ["白菜","小可爱","小仙女"],
+        twikoo: {
+            url: 'https://twikoo.akimio.top/',
+            accessToken: ''
+        },
+        waline: {
+            url: '',
+        }
+    },
+    lightbox: 'fancybox',
+    rightside: {
+        enable: true
+    },
+    ai: {
+        enable: false,
+        key: '',
+        talk: '我是王卓Sco开发的摘要生成助理ScoGPT，ScoGPT在静态部署时进行摘要的撰写，并且在访客访问时通过ScoCorrection转译后的文本摘要实现工具。我在这里只负责已经生成的摘要显示，你无法与我直接沟通，但我可以回答一些预设的问题。',
+        randomPost: false,
+    },
+    music: {
+        enable: false,
+    },
+    translate: {"defaultEncoding":2,"translateDelay":0},
+};</script><meta name="generator" content="Hexo 7.1.1"><link rel="alternate" href="/atom.xml" title="秋澪的博客" type="application/atom+xml">
+<link rel="alternate" href="/rss2.xml" title="秋澪的博客" type="application/rss+xml">
+</head><body id="body"><!-- universe--><canvas id="universe"></canvas><!-- loading--><!-- console--><div id="console"><div class="close-btn" onclick="sco.hideConsole()"><i class="scoicon sco-close-fill"></i></div><div class="console-card-group"><div class="console-card-group-left"><div class="console-card" id="card-newest-comments" onclick="sco.hideConsole()"><div class="card-content"><div class="author-content-item-tips">互动</div><div class="author-content-item-title">最新评论</div></div><div class="aside-list"></div></div></div><div class="console-card-group-right"><div class="console-card tags" onclick="sco.hideConsole()"><div class="card-content"><div class="author-content-item-tips">标签</div><div class="author-content-item-title">寻找感兴趣的领域</div></div><div class="card-tag-cloud"><a href="/tags/51%E5%8D%95%E7%89%87%E6%9C%BA/">51单片机<sup>2</sup></a><a href="/tags/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/">学习记录<sup>2</sup></a><a href="/tags/Arbiam/">Arbiam<sup>1</sup></a><a href="/tags/%E6%95%99%E7%A8%8B/">教程<sup>28</sup></a><a href="/tags/Docker/">Docker<sup>8</sup></a><a href="/tags/%E5%A4%87%E5%BF%98%E5%BD%95/">备忘录<sup>8</sup></a><a href="/tags/NAS/">NAS<sup>2</sup></a><a href="/tags/VPS/">VPS<sup>3</sup></a><a href="/tags/%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F/">内网穿透<sup>1</sup></a><a href="/tags/Hexo/">Hexo<sup>2</sup></a><a href="/tags/%E5%8D%9A%E5%AE%A2/">博客<sup>4</sup></a><a href="/tags/%E7%BE%8E%E5%8C%96/">美化<sup>1</sup></a><a href="/tags/ROS/">ROS<sup>1</sup></a><a href="/tags/Ubuntu/">Ubuntu<sup>1</sup></a><a href="/tags/WSL/">WSL<sup>1</sup></a><a href="/tags/VMware/">VMware<sup>1</sup></a><a href="/tags/%E8%BD%AF%E4%BB%B6%E6%8E%A8%E8%8D%90/">软件推荐<sup>1</sup></a><a href="/tags/%E7%BE%A4%E6%99%96/">群晖<sup>1</sup></a><a href="/tags/%E6%8E%A8%E8%8D%90/">推荐<sup>4</sup></a><a href="/tags/%E7%BD%91%E7%AB%99/">网站<sup>1</sup></a><a href="/tags/%E8%BD%AF%E4%BB%B6/">软件<sup>2</sup></a><a href="/tags/IOS/">IOS<sup>1</sup></a><a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库<sup>1</sup></a><a href="/tags/Markdown/">Markdown<sup>1</sup></a><a href="/tags/%E5%9F%9F%E5%90%8D/">域名<sup>1</sup></a><a href="/tags/%E7%BD%91%E7%AB%99%E4%BC%98%E5%8C%96/">网站优化<sup>1</sup></a><a href="/tags/CLoudflare/">CLoudflare<sup>2</sup></a><a href="/tags/Ventoy/">Ventoy<sup>1</sup></a><a href="/tags/WinToGo/">WinToGo<sup>1</sup></a><a href="/tags/LinToGo/">LinToGo<sup>1</sup></a><a href="/tags/AIO/">AIO<sup>1</sup></a><a href="/tags/%E8%B7%AF%E7%94%B1%E5%99%A8/">路由器<sup>1</sup></a><a href="/tags/Git/">Git<sup>1</sup></a><a href="/tags/CloudFlare/">CloudFlare<sup>1</sup></a><a href="/tags/Excalidraw/">Excalidraw<sup>1</sup></a><a href="/tags/UnlockMusic%E9%9F%B3%E4%B9%90%E8%A7%A3%E9%94%81/">UnlockMusic音乐解锁<sup>1</sup></a><a href="/tags/%E5%9B%BE%E5%BA%8A/">图床<sup>1</sup></a><a href="/tags/%E5%9F%9F%E5%90%8D%E9%82%AE%E7%AE%B1/">域名邮箱<sup>1</sup></a><a href="/tags/%E9%95%9C%E5%83%8F%E7%AB%99%E6%90%AD%E5%BB%BA/">镜像站搭建<sup>1</sup></a><a href="/tags/Alist/">Alist<sup>2</sup></a><a href="/tags/Replit/">Replit<sup>2</sup></a><a href="/tags/Halo/">Halo<sup>1</sup></a><a href="/tags/Render/">Render<sup>1</sup></a></div></div><div class="console-card history" onclick="sco.hideConsole()"><ul class="card-archive-list"><li class="card-archive-list-item"><a class="card-archive-list-link" onclick="pjax.loadUrl('/archives/2024/01/')" href="javascript:void(0);" rel="external nofollow noreferrer"><span class="card-archive-list-date">2024/01</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">3</span><span class="card-archive-list-count-unit">篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" onclick="pjax.loadUrl('/archives/2023/12/')" href="javascript:void(0);" rel="external nofollow noreferrer"><span class="card-archive-list-date">2023/12</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">1</span><span class="card-archive-list-count-unit">篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" onclick="pjax.loadUrl('/archives/2023/10/')" href="javascript:void(0);" rel="external nofollow noreferrer"><span class="card-archive-list-date">2023/10</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">2</span><span class="card-archive-list-count-unit">篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" onclick="pjax.loadUrl('/archives/2023/09/')" href="javascript:void(0);" rel="external nofollow noreferrer"><span class="card-archive-list-date">2023/09</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">2</span><span class="card-archive-list-count-unit">篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" onclick="pjax.loadUrl('/archives/2023/08/')" href="javascript:void(0);" rel="external nofollow noreferrer"><span class="card-archive-list-date">2023/08</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">2</span><span class="card-archive-list-count-unit">篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" onclick="pjax.loadUrl('/archives/2023/07/')" href="javascript:void(0);" rel="external nofollow noreferrer"><span class="card-archive-list-date">2023/07</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">1</span><span class="card-archive-list-count-unit">篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" onclick="pjax.loadUrl('/archives/2023/06/')" href="javascript:void(0);" rel="external nofollow noreferrer"><span class="card-archive-list-date">2023/06</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">6</span><span class="card-archive-list-count-unit">篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" onclick="pjax.loadUrl('/archives/2023/05/')" href="javascript:void(0);" rel="external nofollow noreferrer"><span class="card-archive-list-date">2023/05</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">13</span><span class="card-archive-list-count-unit">篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" onclick="pjax.loadUrl('/archives/2023/04/')" href="javascript:void(0);" rel="external nofollow noreferrer"><span class="card-archive-list-date">2023/04</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">2</span><span class="card-archive-list-count-unit">篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" onclick="pjax.loadUrl('/archives/2023/03/')" href="javascript:void(0);" rel="external nofollow noreferrer"><span class="card-archive-list-date">2023/03</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">5</span><span class="card-archive-list-count-unit">篇</span></div></a></li></ul></div></div></div><div class="button-group"><div class="console-btn-item"><a class="darkmode_switchbutton" onclick="sco.switchDarkMode()" title="昼夜切换" href="javascript:void(0);" rel="external nofollow noreferrer"><i class="scoicon sco-moon-clear-fill"></i></a></div><div class="console-btn-item" id="consoleHideAside"><a class="asideSwitch" onclick="sco.switchHideAside()" title="边栏显示控制" href="javascript:void(0);" rel="external nofollow noreferrer"><i class="scoicon sco-side-bar-fill"></i></a></div><div class="console-btn-item on" id="consoleCommentBarrage" onclick="sco.switchCommentBarrage()"><a class="commentBarrage"><i class="scoicon sco-chat-fill"></i></a></div></div><div class="console-mask" onclick="sco.hideConsole()"></div></div><!-- sidebar--><div id="sidebar" style="zoom: 1;"><div id="menu-mask" style="display: none;"></div><div id="sidebar-menus"><span class="sidebar-menu-item-title">功能</span><div class="sidebar-menu-item"><a class="darkmode_switchbutton menu-child" onclick="sco.switchDarkMode()" href="javascript:void(0);" rel="external nofollow noreferrer"><i class="scoicon sco-moon-clear-fill"></i><span>显示模式</span></a></div><div class="back-menu-list-groups"><div class="back-menu-list-group"><div class="back-menu-list-title">项目</div><div class="back-menu-list"><a class="back-menu-item" target="_blank" rel="noopener" href="https://akimio.top" title="个人主页"><img class="back-menu-item-icon" src="https://img.akimio.top/avatar/akimio.png" alt="项目"><span class="back-menu-item-text">个人主页</span></a><a class="back-menu-item" target="_blank" rel="noopener" href="https://excalidraw.akimio.top" title="Excalidraw"><img class="back-menu-item-icon" src="https://img.akimio.top/ICON/excalidraw.png" alt="项目"><span class="back-menu-item-text">Excalidraw</span></a><a class="back-menu-item" target="_blank" rel="noopener" href="https://chatgpt.akimio.top" title="ChatGPT"><img class="back-menu-item-icon" src="https://img.akimio.top/ICON/chatgpt.png" alt="项目"><span class="back-menu-item-text">ChatGPT</span></a><a class="back-menu-item" target="_blank" rel="noopener" href="https://alist.akimio.top" title="Alist"><img class="back-menu-item-icon" src="https://img.akimio.top/ICON/alist.png" alt="项目"><span class="back-menu-item-text">Alist</span></a><a class="back-menu-item" target="_blank" rel="noopener" href="https://music.akimio.top" title="Splayer"><img class="back-menu-item-icon" src="https://img.akimio.top/ICON/splayer.png" alt="项目"><span class="back-menu-item-text">Splayer</span></a><a class="back-menu-item" target="_blank" rel="noopener" href="https://um.akimio.top" title="音乐解锁"><img class="back-menu-item-icon" src="https://img.akimio.top/ICON/UnlockMusic.png" alt="项目"><span class="back-menu-item-text">音乐解锁</span></a></div></div></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="javascript:void(0);" rel="external nofollow noreferrer"><span>文库</span></a><ul class="menus_item_child"><li><a class="site-page child" href="/archives/"><i class="scoicon sco-folder-fill"></i><span>文章列表</span></a></li><li><a class="site-page child" href="/categories/"><i class="scoicon sco-checkbox-multiple-blank-fill"></i><span>全部分类</span></a></li><li><a class="site-page child" href="/tags/"><i class="scoicon sco-price-tag-fill"></i><span>全部标签</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);" rel="external nofollow noreferrer"><span>友链</span></a><ul class="menus_item_child"><li><a class="site-page child" href="/links/"><i class="scoicon sco-group-fill"></i><span>友情链接</span></a></li><li><a class="site-page child" href="/frcircle/"><i class="scoicon sco-wifi-fill"></i><span>朋友圈</span></a></li><li><a class="site-page child" href="javascript:travelling()" rel="external nofollow noreferrer"><i class="scoicon sco-gift-fill"></i><span>宝藏博主</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);" rel="external nofollow noreferrer"><span>我的</span></a><ul class="menus_item_child"><li><a class="site-page child" href="/tools/"><i class="scoicon sco-tools-fill"></i><span>工具箱</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);" rel="external nofollow noreferrer"><span>关于</span></a><ul class="menus_item_child"><li><a class="site-page child" href="/about/"><i class="scoicon sco-contacts-fill"></i><span>关于本站</span></a></li></ul></div></div><span class="sidebar-menu-item-title">标签</span><div class="card-widget card-tags card-archives card-webinfo card-allinfo"><div class="card-tag-cloud"><a href="/tags/51%E5%8D%95%E7%89%87%E6%9C%BA/">51单片机<sup>2</sup></a><a href="/tags/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/">学习记录<sup>2</sup></a><a href="/tags/Arbiam/">Arbiam<sup>1</sup></a><a href="/tags/%E6%95%99%E7%A8%8B/">教程<sup>28</sup></a><a href="/tags/Docker/">Docker<sup>8</sup></a><a href="/tags/%E5%A4%87%E5%BF%98%E5%BD%95/">备忘录<sup>8</sup></a><a href="/tags/NAS/">NAS<sup>2</sup></a><a href="/tags/VPS/">VPS<sup>3</sup></a><a href="/tags/%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F/">内网穿透<sup>1</sup></a><a href="/tags/Hexo/">Hexo<sup>2</sup></a><a href="/tags/%E5%8D%9A%E5%AE%A2/">博客<sup>4</sup></a><a href="/tags/%E7%BE%8E%E5%8C%96/">美化<sup>1</sup></a><a href="/tags/ROS/">ROS<sup>1</sup></a><a href="/tags/Ubuntu/">Ubuntu<sup>1</sup></a><a href="/tags/WSL/">WSL<sup>1</sup></a><a href="/tags/VMware/">VMware<sup>1</sup></a><a href="/tags/%E8%BD%AF%E4%BB%B6%E6%8E%A8%E8%8D%90/">软件推荐<sup>1</sup></a><a href="/tags/%E7%BE%A4%E6%99%96/">群晖<sup>1</sup></a><a href="/tags/%E6%8E%A8%E8%8D%90/">推荐<sup>4</sup></a><a href="/tags/%E7%BD%91%E7%AB%99/">网站<sup>1</sup></a><a href="/tags/%E8%BD%AF%E4%BB%B6/">软件<sup>2</sup></a><a href="/tags/IOS/">IOS<sup>1</sup></a><a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库<sup>1</sup></a><a href="/tags/Markdown/">Markdown<sup>1</sup></a><a href="/tags/%E5%9F%9F%E5%90%8D/">域名<sup>1</sup></a><a href="/tags/%E7%BD%91%E7%AB%99%E4%BC%98%E5%8C%96/">网站优化<sup>1</sup></a><a href="/tags/CLoudflare/">CLoudflare<sup>2</sup></a><a href="/tags/Ventoy/">Ventoy<sup>1</sup></a><a href="/tags/WinToGo/">WinToGo<sup>1</sup></a><a href="/tags/LinToGo/">LinToGo<sup>1</sup></a><a href="/tags/AIO/">AIO<sup>1</sup></a><a href="/tags/%E8%B7%AF%E7%94%B1%E5%99%A8/">路由器<sup>1</sup></a><a href="/tags/Git/">Git<sup>1</sup></a><a href="/tags/CloudFlare/">CloudFlare<sup>1</sup></a><a href="/tags/Excalidraw/">Excalidraw<sup>1</sup></a><a href="/tags/UnlockMusic%E9%9F%B3%E4%B9%90%E8%A7%A3%E9%94%81/">UnlockMusic音乐解锁<sup>1</sup></a><a href="/tags/%E5%9B%BE%E5%BA%8A/">图床<sup>1</sup></a><a href="/tags/%E5%9F%9F%E5%90%8D%E9%82%AE%E7%AE%B1/">域名邮箱<sup>1</sup></a><a href="/tags/%E9%95%9C%E5%83%8F%E7%AB%99%E6%90%AD%E5%BB%BA/">镜像站搭建<sup>1</sup></a><a href="/tags/Alist/">Alist<sup>2</sup></a><a href="/tags/Replit/">Replit<sup>2</sup></a><a href="/tags/Halo/">Halo<sup>1</sup></a><a href="/tags/Render/">Render<sup>1</sup></a></div></div></div></div><!-- keyboard--><div class="post" id="body-wrap"><header class="post-bg" id="page-header"><nav class="show" id="nav"><div id="nav-group"><div id="blog_name"><div class="back-home-button" tabindex="-1"><i class="back-home-button-icon scoicon sco-more-fill"></i><div class="back-menu-list-groups"><div class="back-menu-list-group"><div class="back-menu-list-title">项目</div><div class="back-menu-list"><a class="back-menu-item" target="_blank" rel="noopener" href="https://akimio.top" title="个人主页"><img class="back-menu-item-icon" src="https://img.akimio.top/avatar/akimio.png" alt="项目"><span class="back-menu-item-text">个人主页</span></a><a class="back-menu-item" target="_blank" rel="noopener" href="https://excalidraw.akimio.top" title="Excalidraw"><img class="back-menu-item-icon" src="https://img.akimio.top/ICON/excalidraw.png" alt="项目"><span class="back-menu-item-text">Excalidraw</span></a><a class="back-menu-item" target="_blank" rel="noopener" href="https://chatgpt.akimio.top" title="ChatGPT"><img class="back-menu-item-icon" src="https://img.akimio.top/ICON/chatgpt.png" alt="项目"><span class="back-menu-item-text">ChatGPT</span></a><a class="back-menu-item" target="_blank" rel="noopener" href="https://alist.akimio.top" title="Alist"><img class="back-menu-item-icon" src="https://img.akimio.top/ICON/alist.png" alt="项目"><span class="back-menu-item-text">Alist</span></a><a class="back-menu-item" target="_blank" rel="noopener" href="https://music.akimio.top" title="Splayer"><img class="back-menu-item-icon" src="https://img.akimio.top/ICON/splayer.png" alt="项目"><span class="back-menu-item-text">Splayer</span></a><a class="back-menu-item" target="_blank" rel="noopener" href="https://um.akimio.top" title="音乐解锁"><img class="back-menu-item-icon" src="https://img.akimio.top/ICON/UnlockMusic.png" alt="项目"><span class="back-menu-item-text">音乐解锁</span></a></div></div></div></div><a id="site-name" href="/" title="返回博客主页" target="_self"><span class="title">秋澪Akimio的博客</span></a></div><div id="page-name-mask"><div id="page-name"><a id="page-name-text" onclick="sco.toTop()">Ubuntu安装及ROS安装教程</a></div></div><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="javascript:void(0);" rel="external nofollow noreferrer"><span>文库</span></a><ul class="menus_item_child"><li><a class="site-page child" href="/archives/"><i class="scoicon sco-folder-fill"></i><span>文章列表</span></a></li><li><a class="site-page child" href="/categories/"><i class="scoicon sco-checkbox-multiple-blank-fill"></i><span>全部分类</span></a></li><li><a class="site-page child" href="/tags/"><i class="scoicon sco-price-tag-fill"></i><span>全部标签</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);" rel="external nofollow noreferrer"><span>友链</span></a><ul class="menus_item_child"><li><a class="site-page child" href="/links/"><i class="scoicon sco-group-fill"></i><span>友情链接</span></a></li><li><a class="site-page child" href="/frcircle/"><i class="scoicon sco-wifi-fill"></i><span>朋友圈</span></a></li><li><a class="site-page child" href="javascript:travelling()" rel="external nofollow noreferrer"><i class="scoicon sco-gift-fill"></i><span>宝藏博主</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);" rel="external nofollow noreferrer"><span>我的</span></a><ul class="menus_item_child"><li><a class="site-page child" href="/tools/"><i class="scoicon sco-tools-fill"></i><span>工具箱</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);" rel="external nofollow noreferrer"><span>关于</span></a><ul class="menus_item_child"><li><a class="site-page child" href="/about/"><i class="scoicon sco-contacts-fill"></i><span>关于本站</span></a></li></ul></div></div></div><div id="nav-left"></div><div id="nav-right"><div class="nav-button" id="travellings_button"><a class="site-page" target="_blank" rel="noopener external nofollow noreferrer" href="https://www.travellings.cn/go.html" title=""><i class="scoicon sco-train-line"></i></a></div><div class="nav-button" id="randomPost_button"><a class="site-page" onclick="toRandomPost()" title="随机一篇文章" href="javascript:void(0);" rel="external nofollow noreferrer"><i class="scoicon sco-signal-tower-fill"></i></a></div><div class="nav-button" id="search-button"><a class="site-page social-icon search" href="javascript:void(0);" rel="external nofollow noreferrer" title="搜索"><i class="scoicon sco-search-line"></i></a></div><div class="nav-button" id="nav-console"><a class="console_switchbutton" onclick="sco.showConsole()" title="中控台" href="javascript:void(0);" rel="external nofollow noreferrer"><i class="scoicon sco-dashboard-fill"></i></a></div><div class="nav-button" id="nav-totop" onclick="sco.toTop()"><a class="totopbtn"><i class="scoicon sco-arrow-up-line"></i><span id="percent">0</span></a></div><div id="toggle-menu"><a class="site-page"><i class="scoicon sco-menu-line"></i></a></div></div></div></nav><div class="coverdiv" id="coverdiv"><img class="nolazyload" id="post-cover" src="https://img.akimio.top/Blog/2023/10/1697202911-652942df00394.webp" alt="Ubuntu安装及ROS安装教程"></div><div id="post-info"><div id="post-firstinfo"><div class="meta-firstline"><a class="post-meta-original" title="该文章为原创文章，注意版权协议">原创</a><span class="post-meta-categories"><a class="post-meta-categories" href="/categories/ROS/">ROS</a></span><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E6%95%99%E7%A8%8B/"><span class="tags-name tags-punctuation">教程</span></a><a class="post-meta__tags" href="/tags/ROS/"><span class="tags-name tags-punctuation">ROS</span></a><a class="post-meta__tags" href="/tags/Ubuntu/"><span class="tags-name tags-punctuation">Ubuntu</span></a><a class="post-meta__tags" href="/tags/WSL/"><span class="tags-name tags-punctuation">WSL</span></a><a class="post-meta__tags" href="/tags/VMware/"><span class="tags-name tags-punctuation">VMware</span></a></div></div></div></div><h1 class="post-title">Ubuntu安装及ROS安装教程</h1><div id="post-meta"><div class="meta-secondline"><span class="post-meta-date" title="meta_posted 2023-05-01 20:29:58"><i class="post-meta-icon scoicon sco-calendar-todo-fill"></i><time datetime="2023-05-01T12:29:58.000Z">2023-05-01T12:29:58.000Z</time></span><span class="post-meta-date" title="meta_updated 2023-05-01 20:29:59"><i class="post-meta-icon scoicon sco-refresh-line"></i><time datetime="2023-05-01T12:29:59.000Z">2023-05-01T12:29:59.000Z</time></span><span class="post-meta-wordcount"><i class="post-meta-icon scoicon sco-word-fill" title="文章字数"></i><span class="word-count">2.7k</span><span class="post-meta-separator"></span><i class="post-meta-icon scoicon sco-clock-fill" title="阅读耗时"></i><span>11 min</span></span><span class="post-meta-position" title="作者IP归属地为大连"><i class="post-meta-icon scoicon sco-map-pin-fill"></i><span>大连</span></span><a class="post-meta-pv" href="/posts/1007/" title="文章热度"><i class="post-meta-icon scoicon sco-fire-fill"></i><span id="twikoo_visitors"><i class="scoicon sco-loading-line"></i></span></a><span class="post-meta-commentcount" title="评论数" onclick="sco.scrollTo('post-comment')"><i class="scoicon sco-chat-fill"></i><a href="/posts/1007/#post-comment"><span id="twikoo-count"><i class="scoicon sco-loading-line"></i></span></a></span></div></div></div><section class="main-hero-waves-area waves-area"><svg class="waves-svg" xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto"><defs><path id="gentle-wave" d="M -160 44 c 30 0 58 -18 88 -18 s 58 18 88 18 s 58 -18 88 -18 s 58 18 88 18 v 44 h -352 Z"></path></defs><g class="parallax"><use href="#gentle-wave" x="48" y="0"></use><use href="#gentle-wave" x="48" y="3"></use><use href="#gentle-wave" x="48" y="5"></use><use href="#gentle-wave" x="48" y="7"></use></g></svg></section></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><p>环境声明：</p>
+<ul>
+<li>主系统：Window11 x64</li>
+<li>网络环境：境内</li>
+</ul>
+<p>安装目标：</p>
+<ul>
+<li>Ubuntu LTS 16.04/20.04（VMware中安装的版本为16.04，Windows子系统安装的版本为20.04）</li>
+<li>ROS1.0</li>
+</ul>
+<p><strong>新手快速入门</strong></p>
+<ol>
+<li>VMware安装Ubuntu，<a href="/posts/1007/#%E5%9C%A8VMware%E8%99%9A%E6%8B%9F%E6%9C%BA%E4%B8%AD%E5%AE%89%E8%A3%85Ubuntu">传送门</a></li>
+<li>自动化脚本安装ROS，<a href="/1007/#%E5%B0%8F%E7%99%BD%E4%B8%80%E9%94%AE%E5%AE%89%E8%A3%85%E8%84%9A%E6%9C%AC%EF%BC%88%E5%8F%AF%E8%83%BD%E4%BC%9A%E5%A4%B1%E6%95%88%EF%BC%89">传送门</a></li>
+</ol>
+<h1>介绍 (资料来源百度百科&amp;维基百科)</h1>
+<h2 id="Ubuntu"><a class="headerlink" href="#Ubuntu"></a>Ubuntu</h2>
+<blockquote>
+<p>Ubuntu是基于Debian，以桌面应用为主的Linux发行版。Ubuntu有三个正式版本，包括桌面版、服务器版及用于物联网设备和机器人的Core版。前述三个版本既能安装于实体电脑，也能安装于虚拟电脑。从17.10版本开始，Ubuntu以GNOME为默认桌面环境。<br>
+Ubuntu是著名的Linux发行版之一，也是目前最多用户的Linux版本。Ubuntu每六个月（即每年的四月与十月）发布一个新版本，长期支持（LTS）版本每两年发布一次。普通版本一般只支持9个月，但LTS版本一般能提供5年的支持。<br>
+Ubuntu由英国肯诺有限公司发布，他们提供商业支持。它是基于自由软件，其名称来自非洲南部祖鲁语或科萨语的“Ubuntu”一词（译为乌班图），意思是“人性”、“我的存在是因为大家的存在”，是非洲传统的一种价值观。<br>
+肯诺有限公司通过销售与Ubuntu相关的技术支持和其他服务来产生收益。Ubuntu项目公开承诺开源软件开发的原则；鼓励人们使用自由软件，研究它的运作原理，改进和分发</p>
+</blockquote>
+<h2 id="wsl"><a class="headerlink" href="#wsl"></a>wsl</h2>
+<blockquote>
+<p>WSL（Windows Subsystem for Linux，简称WSL，译为适用于Windows的Linux子系统）是一个在Windows 10\11上能够运行原生Linux二进制可执行文件（ELF格式）的兼容层。它是由微软与Canonical公司合作开发，其目标是使纯正的Ubuntu、Debian等映像能下载和解压到用户的本地计算机，并且映像内的工具和实用工具能在此子系统上原生运行。</p>
+</blockquote>
+<h2 id="ROS"><a class="headerlink" href="#ROS"></a>ROS</h2>
+<blockquote>
+<p>ROS（英语：Robot Operating System，译为机器人操作系统），是专为机器人软件开发所设计出来的一套电脑操作系统架构。它是一个开源的元级操作系统（后操作系统），提供类似于操作系统的服务，包括硬件抽象描述、底层驱动程序管理、共用功能的执行、程序间消息传递、程序发行包管理，它也提供一些工具和库用于获取、建立、编写和执行多机融合的程序。</p>
+</blockquote>
+<h1>Ubuntu安装</h1>
+<h2 id="物理机安装安装Ubuntu"><a class="headerlink" href="#物理机安装安装Ubuntu"></a>物理机安装安装Ubuntu</h2>
+<h3 id="下载Ubuntu镜像"><a class="headerlink" href="#下载Ubuntu镜像"></a>下载Ubuntu镜像</h3>
+<ul>
+<li><a target="_blank" rel="noopener external nofollow noreferrer" href="https://cn.ubuntu.com/download">Ubuntu官网下载地址</a></li>
+<li><a target="_blank" rel="noopener external nofollow noreferrer" href="http://releases.ubuntu.com/16.04/ubuntu-16.04.7-desktop-amd64.iso">Ubuntu16.04官网下载地址</a></li>
+<li><a target="_blank" rel="noopener external nofollow noreferrer" href="https://releases.ubuntu.com/22.04/ubuntu-22.04.2-desktop-amd64.iso">Ubuntu22.04官网下载地址</a><br>
+这里以16.04为例</li>
+</ul>
+<h3 id="下载烧录软件"><a class="headerlink" href="#下载烧录软件"></a>下载烧录软件</h3>
+<p>这里推荐两个烧录软件</p>
+<h4 id="Rufus"><a class="headerlink" href="#Rufus"></a>Rufus</h4>
+<ul>
+<li><a target="_blank" rel="noopener external nofollow noreferrer" href="https://rufus.ie/zh/">Rufus官网</a></li>
+<li><a href="hhttps://github.com/pbatard/rufus/releases/download/v4.0/rufus-4.0_x86.exe" rel="external nofollow noreferrer">Rufus-Windows-x64下载</a></li>
+</ul>
+<h4 id="balenaEtcher"><a class="headerlink" href="#balenaEtcher"></a>balenaEtcher</h4>
+<ul>
+<li><a target="_blank" rel="noopener external nofollow noreferrer" href="https://www.balena.io/etcher">balenaEtcher官网</a></li>
+<li><a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/balena-io/etcher/releases/download/v1.18.4/balenaEtcher-Setup-1.18.4.exe">balenaEtcher-windows-x64安装包下载</a></li>
+<li><a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/balena-io/etcher/releases/download/v1.18.4/balenaEtcher-Portable-1.18.4.exe">balenaEtcher-windows-x64便携版下载</a></li>
+</ul>
+<h3 id="烧录镜像"><a class="headerlink" href="#烧录镜像"></a>烧录镜像</h3>
+<ol>
+<li>下载完Ubuntu镜像并安装好烧录软件后，准备一个大于8G的U盘/移动硬盘，<strong>备份U盘/移动硬盘数据</strong></li>
+<li>打开烧录软件并将Ubuntu镜像烧录进U盘/移动硬盘内</li>
+<li>将U盘/移动硬盘插入待安装Ubuntu的实体机内，开机进入BIOS内，选择从U盘/移动硬盘启动，按提示安装Ubuntu系统</li>
+</ol>
+<h2 id="在VMware虚拟机中安装Ubuntu"><a class="headerlink" href="#在VMware虚拟机中安装Ubuntu"></a>在VMware虚拟机中安装Ubuntu</h2>
+<h3 id="下载VMware"><a class="headerlink" href="#下载VMware"></a>下载VMware</h3>
+<ul>
+<li><a target="_blank" rel="noopener external nofollow noreferrer" href="https://customerconnect.vmware.com/cn/downloads/">VMware官网下载地址</a></li>
+<li><a target="_blank" rel="noopener external nofollow noreferrer" href="https://download3.vmware.com/software/wkst/file/VMware-workstation-full-15.5.6-16341506.exe">VMware15.5.6下载地址</a><br>
+在官网找到需要的版本，这里使用15.5.6为例，下载后安装，并激活<br>
+各版本激活码</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">14：CG54H-D8D0H-H8DHY-C6X7X-N2KG6</span><br><span class="line">15：UY758-0RXEQ-M81WP-8ZM7Z-Y3HDA</span><br><span class="line">16：ZF3R0-FHED2-M80TY-8QYGC-NPKYF</span><br><span class="line">16：YF390-0HF8P-M81RQ-2DXQE-M2UT6</span><br><span class="line">16：ZF71R-DMX85-08DQY-8YMNC-PPHV8</span><br></pre></td></tr></table></figure>
+<h3 id="下载Ubuntu镜像-2"><a class="headerlink" href="#下载Ubuntu镜像-2"></a>下载Ubuntu镜像</h3>
+<ul>
+<li><a target="_blank" rel="noopener external nofollow noreferrer" href="https://cn.ubuntu.com/download">Ubuntu官网下载地址</a></li>
+<li><a target="_blank" rel="noopener external nofollow noreferrer" href="http://releases.ubuntu.com/16.04/ubuntu-16.04.7-desktop-amd64.iso">Ubuntu16.04官网下载地址</a></li>
+<li><a target="_blank" rel="noopener external nofollow noreferrer" href="https://releases.ubuntu.com/22.04/ubuntu-22.04.2-desktop-amd64.iso">Ubuntu22.04官网下载地址</a><br>
+这里以16.04为例</li>
+</ul>
+<h3 id="创建虚拟机"><a class="headerlink" href="#创建虚拟机"></a>创建虚拟机</h3>
+<ol>
+<li>打开VMware，点击创建虚拟机</li>
+<li>配置类型选择典型</li>
+<li>光盘映像文件选择刚刚下载的Ubuntu镜像</li>
+<li>个性化Linux选择，这里自行配置</li>
+<li>命名虚拟机名称，并选择安装位置</li>
+<li>硬盘容量和虚拟机磁盘类型按需选择</li>
+<li>自定义虚拟机设备按需选择</li>
+<li>完成创建，打开虚拟机并初始化</li>
+</ol>
+<h3 id="Ubuntu配置"><a class="headerlink" href="#Ubuntu配置"></a>Ubuntu配置</h3>
+<ol>
+<li>在Ubuntu16.04中在桌面Ctrl+Alt+T即可快速打开命令行</li>
+</ol>
+<h2 id="在Windows子系统中安装"><a class="headerlink" href="#在Windows子系统中安装"></a>在Windows子系统中安装</h2>
+<h3 id="启动Linux的Windows子系统功能"><a class="headerlink" href="#启动Linux的Windows子系统功能"></a>启动Linux的Windows子系统功能</h3>
+<ol>
+<li>单击Win 11任务栏上给出的“搜索图标”</li>
+<li>类型 –打开或关闭窗口功能</li>
+<li>将【适用于Linux的Windows子系统】打勾选中</li>
+<li>按确定按钮</li>
+<li>然后“重启”你的系统</li>
+</ol>
+<p>如果是非Windows11（如Windows10），先打开Windows搜索，搜索控制面板，打开控制面板后依次打开【程序】、【启动或关闭Windows功能】，然后操作回到上述第三步</p>
+<h3 id="安装Ubuntu-Linux应用"><a class="headerlink" href="#安装Ubuntu-Linux应用"></a>安装Ubuntu Linux应用</h3>
+<ol>
+<li>打开Microsoft Store应用</li>
+<li>搜索Ubuntu，按照需求安装Ubuntu 20.04 or 18.04，这里我们选择Ubuntu LTS 20.04</li>
+<li>安装完后直接打开Ubuntu应用，会提示在安装中，如果提示Erro，可能是驱动程序错误等原因，可以在搜索引擎中直接搜索报错代码直至安装成功</li>
+</ol>
+<h3 id="配置Ubuntu的用户"><a class="headerlink" href="#配置Ubuntu的用户"></a>配置Ubuntu的用户</h3>
+<ol>
+<li>用户名：只能是英文与数字的组合（可能有些符号也是允许的）</li>
+<li>用户密码：Ubuntu默认有防窥密码个数，虽然不会显示，但是是成功输入的，输入完成后直接回车即可，然后需要再次输入密码以确认</li>
+</ol>
+<h1>安装ROS</h1>
+<h2 id="小白一键安装脚本（可能会失效）"><a class="headerlink" href="#小白一键安装脚本（可能会失效）"></a>小白一键安装脚本（可能会失效）</h2>
+<ul>
+<li><a target="_blank" rel="noopener external nofollow noreferrer" href="https://blog.csdn.net/jianlai_/article/details/123545130">自动脚本作者博客</a></li>
+</ul>
+<h3 id="自动脚本教程"><a class="headerlink" href="#自动脚本教程"></a>自动脚本教程</h3>
+<p>在Ubuntu的命令行中输入自动脚本安装命令</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget http://fishros.com/install -O fishros &amp;&amp; . fishros</span><br></pre></td></tr></table></figure>
+<ol>
+<li>系统提示，输入用户密码</li>
+<li>选择[1]，安装ROS</li>
+<li>选择[1]，更换系统源</li>
+<li>选择[2]，更换并清理第三方源</li>
+<li>选择[3]，安装ROS1.0（如有其他需求可以安装ROS2.0）</li>
+<li>选择[1]，安装桌面版</li>
+<li>脚本自动安装ROS1.0，ROS1.0大小大概有2G</li>
+<li>安装完成后，输入命令roscore -h测试是否安装成功</li>
+</ol>
+<h2 id="手动安装ROS"><a class="headerlink" href="#手动安装ROS"></a>手动安装ROS</h2>
+<p><strong>国境内用户需自备上网环境</strong></p>
+<h3 id="备份镜像源设置文件"><a class="headerlink" href="#备份镜像源设置文件"></a>备份镜像源设置文件</h3>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo <span class="built_in">cp</span> /etc/apt/sources.list /etc/apt/sources.list.bak</span><br></pre></td></tr></table></figure>
+<h3 id="编辑镜像源设置文件"><a class="headerlink" href="#编辑镜像源设置文件"></a>编辑镜像源设置文件</h3>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo vim /etc/apt/sources.list</span><br></pre></td></tr></table></figure>
+<p>按i进入编辑模式，下面三个源任选其一</p>
+<h4 id="中科大源"><a class="headerlink" href="#中科大源"></a>中科大源</h4>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">deb https://mirrors.ustc.edu.cn/ubuntu/ bionic main restricted universe multiverse</span><br><span class="line">deb-src https://mirrors.ustc.edu.cn/ubuntu/ bionic main restricted universe multiverse</span><br><span class="line">deb https://mirrors.ustc.edu.cn/ubuntu/ bionic-updates main restricted universe multiverse</span><br><span class="line">deb-src https://mirrors.ustc.edu.cn/ubuntu/ bionic-updates main restricted universe multiverse</span><br><span class="line">deb https://mirrors.ustc.edu.cn/ubuntu/ bionic-backports main restricted universe multiverse</span><br><span class="line">deb-src https://mirrors.ustc.edu.cn/ubuntu/ bionic-backports main restricted universe multiverse</span><br><span class="line">deb https://mirrors.ustc.edu.cn/ubuntu/ bionic-security main restricted universe multiverse</span><br><span class="line">deb-src https://mirrors.ustc.edu.cn/ubuntu/ bionic-security main restricted universe multiverse</span><br><span class="line">deb https://mirrors.ustc.edu.cn/ubuntu/ bionic-proposed main restricted universe multiverse</span><br><span class="line">deb-src https://mirrors.ustc.edu.cn/ubuntu/ bionic-proposed main restricted universe multiverse</span><br></pre></td></tr></table></figure>
+<h4 id="清华源"><a class="headerlink" href="#清华源"></a>清华源</h4>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ bionic main restricted universe multiverse</span><br><span class="line">deb-src https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ bionic main restricted universe multiverse</span><br><span class="line">deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ bionic-updates main restricted universe multiverse</span><br><span class="line">deb-src https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ bionic-updates main restricted universe multiverse</span><br><span class="line">deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ bionic-backports main restricted universe multiverse</span><br><span class="line">deb-src https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ bionic-backports main restricted universe multiverse</span><br><span class="line">deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ bionic-security main restricted universe multiverse</span><br><span class="line">deb-src https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ bionic-security main restricted universe multiverse</span><br><span class="line">deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ bionic-proposed main restricted universe multiverse</span><br><span class="line">deb-src https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ bionic-proposed main restricted universe multiverse</span><br></pre></td></tr></table></figure>
+<h4 id="阿里源"><a class="headerlink" href="#阿里源"></a>阿里源</h4>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">deb http://mirrors.aliyun.com/ubuntu/ focal main restricted universe multiverse</span><br><span class="line">deb http://mirrors.aliyun.com/ubuntu/ focal-security main restricted universe multiverse</span><br><span class="line">deb http://mirrors.aliyun.com/ubuntu/ focal-updates main restricted universe multiverse</span><br><span class="line">deb http://mirrors.aliyun.com/ubuntu/ focal-proposed main restricted universe multiverse</span><br><span class="line">deb http://mirrors.aliyun.com/ubuntu/ focal-backports main restricted universe multiverse</span><br><span class="line">deb-src http://mirrors.aliyun.com/ubuntu/ focal main restricted universe multiverse</span><br><span class="line">deb-src http://mirrors.aliyun.com/ubuntu/ focal-security main restricted universe multiverse</span><br><span class="line">deb-src http://mirrors.aliyun.com/ubuntu/ focal-updates main restricted universe multiverse</span><br><span class="line">deb-src http://mirrors.aliyun.com/ubuntu/ focal-proposed main restricted universe multiverse</span><br><span class="line">deb-src http://mirrors.aliyun.com/ubuntu/ focal-backports main restricted universe multiverse</span><br></pre></td></tr></table></figure>
+<p>点击Esc键退出编辑模式，再键入<code>:wq</code><br>
+保存配置并推退出</p>
+<h3 id="设置source-lis"><a class="headerlink" href="#设置source-lis"></a>设置source lis</h3>
+<h4 id="官方源"><a class="headerlink" href="#官方源"></a>官方源</h4>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo sh -c <span class="string">&#x27;echo &quot;deb http://packages.ros.org/ros/ubuntu $(lsb_release -sc) main&quot; &gt; /etc/apt/sources.list.d/ros-latest.list&#x27;</span></span><br></pre></td></tr></table></figure>
+<h4 id="中科大源-2"><a class="headerlink" href="#中科大源-2"></a>中科大源</h4>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo sh -c <span class="string">&#x27;. /etc/lsb-release &amp;&amp; echo &quot;deb http://mirrors.ustc.edu.cn/ros/ubuntu/ $DISTRIB_CODENAME main&quot; &gt; /etc/apt/sources.list.d/ros-latest.list&#x27;</span></span><br></pre></td></tr></table></figure>
+<h3 id="设置密钥"><a class="headerlink" href="#设置密钥"></a>设置密钥</h3>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-key adv --keyserver <span class="string">&#x27;hkp://keyserver.ubuntu.com:80&#x27;</span> --recv-key C1CF6E31E6BADE8868B172B4F42ED6FBAB17C654</span><br></pre></td></tr></table></figure>
+<p>注意：如果出现提示 GPG 错误，由于没有公钥，无法验证下列签名：NO_PUBKEY F42ED6FBAB17C654；或者提示无法访问hkp://ha.pool.sks-keyservers.net:80请执行输入如下命令</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys F42ED6FBAB17C654</span><br></pre></td></tr></table></figure>
+<p>如果是提示  gpg 找不到 有效的 OpenPGP 数据，可以输入以下命令</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-key adv --recv-keys --keyserver hkp://keyserver.ubuntu.com:80 AAAD1D3563E5A736A4F561EE884D6308E89713C4</span><br></pre></td></tr></table></figure>
+<h3 id="安装ROS"><a class="headerlink" href="#安装ROS"></a>安装ROS</h3>
+<h4 id="更新源"><a class="headerlink" href="#更新源"></a>更新源</h4>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get update</span><br></pre></td></tr></table></figure>
+<h4 id="安装-ROS"><a class="headerlink" href="#安装-ROS"></a>安装 ROS</h4>
+<p><strong>不同系统版本安装不同版本包名不同，需替换包名</strong></p>
+<table>
+<thead>
+<tr>
+<th>Ubuntu</th>
+<th>ROS 1.0</th>
+<th>ROS 2.0</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>16.04 LTS</td>
+<td>Kinetic LTS</td>
+<td>Ardent</td>
+</tr>
+<tr>
+<td>18.04 LTS</td>
+<td>Melodic LTS</td>
+<td>Dashing LTS</td>
+</tr>
+<tr>
+<td>20.04 LTS</td>
+<td>Noetic LTS</td>
+<td>Foxy LTS</td>
+</tr>
+</tbody>
+</table>
+<p>这里以Ubuntu16.04安装ROS1.0为例，<strong>注意替换包名</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install ros-kinetic-desktop-full</span><br></pre></td></tr></table></figure>
+<h3 id="检查ROS是否成功安装"><a class="headerlink" href="#检查ROS是否成功安装"></a>检查ROS是否成功安装</h3>
+<p>安装完成后，可以用下面的命令来查看可使用的包，<strong>注意替换包名</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">apt-cache search ros-kinetic</span><br></pre></td></tr></table></figure>
+<h4 id="配置ROS环境到系统"><a class="headerlink" href="#配置ROS环境到系统"></a>配置ROS环境到系统</h4>
+<p>初始化ROS并更新ROS</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo rosdep init</span><br><span class="line">rosdep update</span><br></pre></td></tr></table></figure>
+<p>如果rosdep init 一直提示error，则需要自备代理环境或更改hosts解析</p>
+<h5 id="外网代理环境"><a class="headerlink" href="#外网代理环境"></a>外网代理环境</h5>
+<p><strong>略</strong></p>
+<h5 id="hosts解析"><a class="headerlink" href="#hosts解析"></a>hosts解析</h5>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo vim /etc/hosts</span><br></pre></td></tr></table></figure>
+<p>键入i进入编辑模式，在文件末尾添加 下面代码</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">151.101.84.133 raw.githubusercontent.com</span><br></pre></td></tr></table></figure>
+<p>或者</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">185.199.108.133 raw.githubusercontent.com</span><br></pre></td></tr></table></figure>
+<p>如果上面的ip均不可用，可百度搜索其它可用的ip，或者到<a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/521xueweihan/GitHub520">GitHub520项目</a>查询ip</p>
+<h4 id="初始化环境变量"><a class="headerlink" href="#初始化环境变量"></a>初始化环境变量</h4>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">echo</span> <span class="string">&quot;source /opt/ros/kinetic/setup.bash&quot;</span> &gt;&gt; ~/.bashrc</span><br><span class="line"><span class="built_in">source</span> ~/.bashrc</span><br></pre></td></tr></table></figure>
+<h4 id="验证ROS"><a class="headerlink" href="#验证ROS"></a>验证ROS</h4>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">roscore -h</span><br></pre></td></tr></table></figure>
+<h1>署方式的优劣分析</h1>
+<h2 id="Ubuntu的三种部署方式"><a class="headerlink" href="#Ubuntu的三种部署方式"></a>Ubuntu的三种部署方式</h2>
+<h3 id="实体机"><a class="headerlink" href="#实体机"></a>实体机</h3>
+<p>-性能最高<br>
+-安装步骤最为繁琐</p>
+<h3 id="虚拟机"><a class="headerlink" href="#虚拟机"></a>虚拟机</h3>
+<ul>
+<li>性能介于实体机和WSL子系统之间</li>
+<li>安装步骤相对简单，不会对现有系统造成影响</li>
+<li>方便对配置好的系统直接分享</li>
+</ul>
+<h3 id="WSL子系统"><a class="headerlink" href="#WSL子系统"></a>WSL子系统</h3>
+<ul>
+<li>安装步骤相对最简单，最直接</li>
+<li>文件管理集成Windows，方便在Windows环境下对WSl子系统内部文件进行管理</li>
+<li>网络环境和Windows一致</li>
+<li>但性能最差</li>
+</ul>
+<h2 id="ROS的两种种部署方式"><a class="headerlink" href="#ROS的两种种部署方式"></a>ROS的两种种部署方式</h2>
+<h3 id="手动安装"><a class="headerlink" href="#手动安装"></a>手动安装</h3>
+<ul>
+<li>学习&amp;了解Linux的基本操作</li>
+<li>安装步骤对新手不太友好，境内用户可能会遇到网络问题</li>
+</ul>
+<h3 id="自动安装脚本"><a class="headerlink" href="#自动安装脚本"></a>自动安装脚本</h3>
+<ul>
+<li>一键式懒人脚本，方便迅速，安装简单</li>
+<li>安装版本不可定</li>
+<li>脚本有失效风险</li>
+</ul>
+</article><div class="post-copyright"><div class="post-copyright__author_group"><a class="post-copyright__author_img" href="/about/"><img class="post-copyright__author_img_front" data-lazy-src="https://img.akimio.top/avatar/akimio.png"></a><div class="post-copyright__author_name">秋澪的博客</div><div class="post-copyright__author_desc">Akimio blog</div></div><div class="post-tools" id="post-tools"><div class="post-tools-left"><div id="quit-box" onclick="RemoveRewardMask()"></div><div class="reward-link mode"><a class="reward-link-button" href="/rss2.xml" title="订阅"><i class="scoicon sco-plant-fill"></i>订阅</a></div></div></div><div class="post-copyright__notice"><span class="post-copyright-info">本文是原创文章，采用<a target="_blank" rel="noopener external nofollow noreferrer" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">CC BY-NC-SA 4.0</a>协议，完整转载请注明来自<a href="/">秋澪的博客</a></span></div></div><div class="post-tools-right"><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E6%95%99%E7%A8%8B/"><span class="tags-punctuation"></span>教程<span class="tagsPageCount">28</span></a><a class="post-meta__tags" href="/tags/ROS/"><span class="tags-punctuation"></span>ROS<span class="tagsPageCount">1</span></a><a class="post-meta__tags" href="/tags/Ubuntu/"><span class="tags-punctuation"></span>Ubuntu<span class="tagsPageCount">1</span></a><a class="post-meta__tags" href="/tags/WSL/"><span class="tags-punctuation"></span>WSL<span class="tagsPageCount">1</span></a><a class="post-meta__tags" href="/tags/VMware/"><span class="tags-punctuation"></span>VMware<span class="tagsPageCount">1</span></a></div></div></div><nav class="needEndHide pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/posts/1008/"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">VPS基础配置</div></div></a></div><div class="next-post pull-right"><a href="/posts/1006/"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">个人图床搭建之Github篇</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="scoicon sco-star-smile-fill"></i><span>喜欢这篇的人也看了</span><div class="relatedPosts-link"><a onclick="event.preventDefault(); toRandomPost();" href="javascript:void(0);" rel="external nofollow" data-pjax-state="">随便逛逛</a></div></div><div class="relatedPosts-list"><div><a href="/posts/1035/" title="利用CloudFlare搭建镜像站"><img class="cover" data-lazy-src="https://img.akimio.top/Blog/2024/01/1705389355-65a62d2b0759a.webp" alt="cover"><div class="content is-center"><div class="title">利用CloudFlare搭建镜像站</div></div></a></div><div><a href="/posts/1034/" title="Docker入门教程"><img class="cover" data-lazy-src="https://img.akimio.top/Blog/2024/01/1704949049-659f753963b50.webp" alt="cover"><div class="content is-center"><div class="title">Docker入门教程</div></div></a></div></div></div><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="scoicon sco-chat-fill"></i><span> 评论</span><span></span></div><div class="comment-randomInfo"><a onclick="sco.addRandomCommentInfo()" href="javascript:void(0)" rel="external nofollow noreferrer">匿名评论</a></div><div class="comment-tips" id="comment-tips"><span>✅ 你无需删除空行，直接评论以获取最佳展示效果</span></div></div><div class="comment-wrap"><div id="comment"></div><script>async function initComment() {
+    var initOptions = Object.assign(
+        {"envId":"https://twikoo.akimio.top/","lang":"zh-CN","accessToken":null},
+        {
+            el: '#comment',
+            onCommentLoaded: function () {
+                GLOBAL_CONFIG.lightbox && utils.lightbox(document.querySelectorAll('#twikoo .tk-content img:not(.tk-owo-emotion)'))
+            },
+            lang: 'zh-CN',
+        }
+    )
+    await twikoo.init(initOptions)
+    if (true) {
+        var countOptions = Object.assign(
+            {"envId":"https://twikoo.akimio.top/","lang":"zh-CN","accessToken":null},
+            {
+                urls: [window.location.pathname],
+                includeReply: false
+            }
+        )
+        const res = await twikoo.getCommentsCount(countOptions)
+        try {
+            document.getElementById('twikoo-count').innerText = res[0].count
+            document.querySelector('.comment-headline span:last-child').innerText = ` (${res[0].count})`
+        } catch (e) {
+            document.getElementById('twikoo-count').innerText = '加载错误'
+        }
+    }
+}</script></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="card-content"><div class="card-info-avatar is-center"><div class="author-info__top-group"><div class="author-info__sayhi" id="author-info__sayhi" onclick="sco.changeSayHelloText()">sayhello.morning</div></div></div><div class="avatar-img-group"><img class="avatar-img" alt="头像" data-lazy-src="https://img.akimio.top/avatar/akimio.png"><div class="avatar-sticker"><img class="avatar-sticker-img" data-lazy-src="https://bu.dusays.com/2023/12/30/659011053e246.png" alt="心情贴纸"></div></div><div class="author-info__description_group"><div class="author-info__description"><b>一只喜欢七彩球的枯叶蝶</b></div><div class="author-info__description2">原博客地址：<b>blog.zuilang.tk</b></div></div><div class="author-info__bottom-group"><a class="author-info__bottom-group-left" href="/about/"><div class="author-info__name">秋澪</div><div class="author-info__desc">Akimio blog</div></a><div class="card-info-social-icons is-center"><a class="social-icon" target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/Akimio" title="Github"><i class="scoicon scoicon sco-github-line"></i></a><a class="social-icon" target="_blank" rel="noopener external nofollow noreferrer" href="https://space.bilibili.com/35466886" title="Bilibili"><i class="scoicon scoicon sco-bilibili-line"></i></a></div></div></div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="scoicon sco-menu-line"></i><span>文章目录</span></div><div class="toc-content" id="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-text">介绍 (资料来源百度百科&amp;维基百科)</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Ubuntu"><span class="toc-text">Ubuntu</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#wsl"><span class="toc-text">wsl</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ROS"><span class="toc-text">ROS</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-text">Ubuntu安装</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%89%A9%E7%90%86%E6%9C%BA%E5%AE%89%E8%A3%85%E5%AE%89%E8%A3%85Ubuntu"><span class="toc-text">物理机安装安装Ubuntu</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%8B%E8%BD%BDUbuntu%E9%95%9C%E5%83%8F"><span class="toc-text">下载Ubuntu镜像</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%8B%E8%BD%BD%E7%83%A7%E5%BD%95%E8%BD%AF%E4%BB%B6"><span class="toc-text">下载烧录软件</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Rufus"><span class="toc-text">Rufus</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#balenaEtcher"><span class="toc-text">balenaEtcher</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%83%A7%E5%BD%95%E9%95%9C%E5%83%8F"><span class="toc-text">烧录镜像</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9C%A8VMware%E8%99%9A%E6%8B%9F%E6%9C%BA%E4%B8%AD%E5%AE%89%E8%A3%85Ubuntu"><span class="toc-text">在VMware虚拟机中安装Ubuntu</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%8B%E8%BD%BDVMware"><span class="toc-text">下载VMware</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%8B%E8%BD%BDUbuntu%E9%95%9C%E5%83%8F-2"><span class="toc-text">下载Ubuntu镜像</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%9B%E5%BB%BA%E8%99%9A%E6%8B%9F%E6%9C%BA"><span class="toc-text">创建虚拟机</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Ubuntu%E9%85%8D%E7%BD%AE"><span class="toc-text">Ubuntu配置</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9C%A8Windows%E5%AD%90%E7%B3%BB%E7%BB%9F%E4%B8%AD%E5%AE%89%E8%A3%85"><span class="toc-text">在Windows子系统中安装</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%90%AF%E5%8A%A8Linux%E7%9A%84Windows%E5%AD%90%E7%B3%BB%E7%BB%9F%E5%8A%9F%E8%83%BD"><span class="toc-text">启动Linux的Windows子系统功能</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%89%E8%A3%85Ubuntu-Linux%E5%BA%94%E7%94%A8"><span class="toc-text">安装Ubuntu Linux应用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%85%8D%E7%BD%AEUbuntu%E7%9A%84%E7%94%A8%E6%88%B7"><span class="toc-text">配置Ubuntu的用户</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-text">安装ROS</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B0%8F%E7%99%BD%E4%B8%80%E9%94%AE%E5%AE%89%E8%A3%85%E8%84%9A%E6%9C%AC%EF%BC%88%E5%8F%AF%E8%83%BD%E4%BC%9A%E5%A4%B1%E6%95%88%EF%BC%89"><span class="toc-text">小白一键安装脚本（可能会失效）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%87%AA%E5%8A%A8%E8%84%9A%E6%9C%AC%E6%95%99%E7%A8%8B"><span class="toc-text">自动脚本教程</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%89%8B%E5%8A%A8%E5%AE%89%E8%A3%85ROS"><span class="toc-text">手动安装ROS</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A4%87%E4%BB%BD%E9%95%9C%E5%83%8F%E6%BA%90%E8%AE%BE%E7%BD%AE%E6%96%87%E4%BB%B6"><span class="toc-text">备份镜像源设置文件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BC%96%E8%BE%91%E9%95%9C%E5%83%8F%E6%BA%90%E8%AE%BE%E7%BD%AE%E6%96%87%E4%BB%B6"><span class="toc-text">编辑镜像源设置文件</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%B8%AD%E7%A7%91%E5%A4%A7%E6%BA%90"><span class="toc-text">中科大源</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%B8%85%E5%8D%8E%E6%BA%90"><span class="toc-text">清华源</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%98%BF%E9%87%8C%E6%BA%90"><span class="toc-text">阿里源</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%AE%BE%E7%BD%AEsource-lis"><span class="toc-text">设置source lis</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AE%98%E6%96%B9%E6%BA%90"><span class="toc-text">官方源</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%B8%AD%E7%A7%91%E5%A4%A7%E6%BA%90-2"><span class="toc-text">中科大源</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%AE%BE%E7%BD%AE%E5%AF%86%E9%92%A5"><span class="toc-text">设置密钥</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%89%E8%A3%85ROS"><span class="toc-text">安装ROS</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%9B%B4%E6%96%B0%E6%BA%90"><span class="toc-text">更新源</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AE%89%E8%A3%85-ROS"><span class="toc-text">安装 ROS</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%A3%80%E6%9F%A5ROS%E6%98%AF%E5%90%A6%E6%88%90%E5%8A%9F%E5%AE%89%E8%A3%85"><span class="toc-text">检查ROS是否成功安装</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%85%8D%E7%BD%AEROS%E7%8E%AF%E5%A2%83%E5%88%B0%E7%B3%BB%E7%BB%9F"><span class="toc-text">配置ROS环境到系统</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%A4%96%E7%BD%91%E4%BB%A3%E7%90%86%E7%8E%AF%E5%A2%83"><span class="toc-text">外网代理环境</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#hosts%E8%A7%A3%E6%9E%90"><span class="toc-text">hosts解析</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%88%9D%E5%A7%8B%E5%8C%96%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F"><span class="toc-text">初始化环境变量</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%AA%8C%E8%AF%81ROS"><span class="toc-text">验证ROS</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-text">署方式的优劣分析</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Ubuntu%E7%9A%84%E4%B8%89%E7%A7%8D%E9%83%A8%E7%BD%B2%E6%96%B9%E5%BC%8F"><span class="toc-text">Ubuntu的三种部署方式</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%9E%E4%BD%93%E6%9C%BA"><span class="toc-text">实体机</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%99%9A%E6%8B%9F%E6%9C%BA"><span class="toc-text">虚拟机</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#WSL%E5%AD%90%E7%B3%BB%E7%BB%9F"><span class="toc-text">WSL子系统</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ROS%E7%9A%84%E4%B8%A4%E7%A7%8D%E7%A7%8D%E9%83%A8%E7%BD%B2%E6%96%B9%E5%BC%8F"><span class="toc-text">ROS的两种种部署方式</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%89%8B%E5%8A%A8%E5%AE%89%E8%A3%85"><span class="toc-text">手动安装</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%87%AA%E5%8A%A8%E5%AE%89%E8%A3%85%E8%84%9A%E6%9C%AC"><span class="toc-text">自动安装脚本</span></a></li></ol></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="scoicon sco-map-line"></i><span>最近发布</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/posts/1036/" title="FastCDN说明文档"><img alt="FastCDN说明文档" data-lazy-src="https://img.akimio.top/Blog/2024/01/1705725058-65ab4c824e8bd.webp"></a><div class="content"><a class="title" href="/posts/1036/" title="FastCDN说明文档">FastCDN说明文档</a><a class="article-recent_post_categories" href="/posts/1036/">文档</a></div></div><div class="aside-list-item"><a class="thumbnail" href="/posts/1035/" title="利用CloudFlare搭建镜像站"><img alt="利用CloudFlare搭建镜像站" data-lazy-src="https://img.akimio.top/Blog/2024/01/1705389355-65a62d2b0759a.webp"></a><div class="content"><a class="title" href="/posts/1035/" title="利用CloudFlare搭建镜像站">利用CloudFlare搭建镜像站</a><a class="article-recent_post_categories" href="/posts/1035/">网络基建计划</a></div></div><div class="aside-list-item"><a class="thumbnail" href="/posts/1034/" title="Docker入门教程"><img alt="Docker入门教程" data-lazy-src="https://img.akimio.top/Blog/2024/01/1704949049-659f753963b50.webp"></a><div class="content"><a class="title" href="/posts/1034/" title="Docker入门教程">Docker入门教程</a><a class="article-recent_post_categories" href="/posts/1034/">学习笔记</a></div></div><div class="aside-list-item"><a class="thumbnail" href="/posts/1033/" title="UnlockMusic音乐解锁搭建教程"><img alt="UnlockMusic音乐解锁搭建教程" data-lazy-src="https://img.akimio.top/Blog/2023/12/1696081573-651826a504cc6.png"></a><div class="content"><a class="title" href="/posts/1033/" title="UnlockMusic音乐解锁搭建教程">UnlockMusic音乐解锁搭建教程</a><a class="article-recent_post_categories" href="/posts/1033/">网络基建计划</a></div></div><div class="aside-list-item"><a class="thumbnail" href="/posts/1032/" title="Excalidraw搭建教程"><img alt="Excalidraw搭建教程" data-lazy-src="https://img.akimio.top/Blog/2023/10/1697201324-65293cac786a0.webp"></a><div class="content"><a class="title" href="/posts/1032/" title="Excalidraw搭建教程">Excalidraw搭建教程</a><a class="article-recent_post_categories" href="/posts/1032/">网络基建计划</a></div></div></div></div></div></div></main><footer id="footer"><div id="sco-footer-bar"><div class="footer-logo"><span class="scoicon">秋澪Akimio的博客</span></div><div class="footer-bar-description">来自秋澪的博客 - Akimio blog的文章</div><a class="footer-bar-link" href="/">了解更多</a></div><div id="footer_deal"><a class="deal_link" target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/Akimio521" title="Github"><i class="scoicon scoicon sco-bilibili-line"></i></a><a class="deal_link" href="mailto:akimio2333@gmail.com" rel="external nofollow noreferrer" title="Mail"><i class="scoicon scoicon sco-mail-line"></i></a><div class="footer_mini_logo" id="footer_mini_logo" title="返回顶部" onclick="sco.toTop()"><img data-lazy-src="https://img.akimio.top/avatar/akimio.png" alt="返回顶部"></div><a class="deal_link" target="_blank" rel="noopener external nofollow noreferrer" href="https://space.bilibili.com/1329819902" title="Bilibili"><i class="scoicon scoicon sco-bilibili-line"></i></a><a class="deal_link" target="_blank" rel="noopener external nofollow noreferrer" href="http://www.coolapk.com/u/4951361" title="酷安"><i class="scoicon scoicon sco-douyin-fill"></i></a></div><div id="sco-footer"><div class="footer-group"><h3 class="footer-title">导航</h3><div class="footer-links"><a class="footer-item" href="/archives/" title="归档">归档</a><a class="footer-item" href="/categories/" title="分类">分类</a><a class="footer-item" href="/tags/" title="标签">标签</a></div></div><div class="footer-group"><h3 class="footer-title">服务</h3><div class="footer-links"><a class="footer-item" target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com" title="Github">Github</a><a class="footer-item" target="_blank" rel="noopener external nofollow noreferrer" href="https://vercel.com/" title="Vercel">Vercel</a><a class="footer-item" target="_blank" rel="noopener external nofollow noreferrer" href="https://www.cloudflare.com/" title="CloudFlare">CloudFlare</a></div></div><div class="footer-group"><h3 class="footer-title">订阅</h3><div class="footer-links"><a class="footer-item" href="/rss2.xml" title="RSS">RSS</a><a class="footer-item" href="/sitemap.xml" title="站点地图">站点地图</a><a class="footer-item" href="/baidusitemap.xml" title="百度站点地图">百度站点地图</a></div></div><div class="footer-group"><h3 class="footer-title">协议</h3><div class="footer-links"><a class="footer-item" href="/cookies/" title="Cookies">Cookies</a><a class="footer-item" href="/privacy/" title="用户协议">用户协议</a><a class="footer-item" href="/copyright/" title="版权协议">版权协议</a></div></div></div><div id="footer-bar"><div class="footer-bar-links"><div class="footer-bar-left"><div class="copyright">© 2023 - 2024 By&nbsp;<a class="footer-bar-link" href="/">秋澪</a></div></div><div class="footer-bar-right"><a class="footer-bar-link" target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/wleelw/hexo-theme-solitude" title="主题">主题</a><a class="footer-bar-link cc"><i class="scoicon sco-copyright-line"></i><i class="scoicon sco-creative-commons-by-line"></i><i class="scoicon sco-creative-commons-nc-line"></i><i class="scoicon sco-creative-commons-nd-line"></i></a></div></div></div><div class="comment-barrage needEndHide"></div></footer></div><!-- inject body--><div><script src="/js/main.js?v=1.4.7"></script><script src="/js/utils.js?v=1.4.7"></script><div id="rightMenu"><div class="rightMenu-group rightMenu-small"><div class="rightMenu-item" id="menu-backward"><i class="scoicon sco-arrow-left-line"></i></div><div class="rightMenu-item" id="menu-forward"><i class="scoicon sco-arrow-right-line"></i></div><div class="rightMenu-item" id="menu-refresh"><i class="scoicon sco-restart-line"></i></div><div class="rightMenu-item" id="menu-top"><i class="scoicon sco-arrow-up-line"></i></div></div><div class="rightMenu-group rightMenu-line rightMenuPlugin"><div class="rightMenu-item" id="menu-copytext"><i class="scoicon sco-copy-fill"></i><span>复制选中文本</span></div><div class="rightMenu-item" id="menu-pastetext"><i class="scoicon sco-clipboard-fill"></i><span>粘贴文本</span></div><a class="rightMenu-item" id="menu-commenttext"><i class="scoicon sco-chat-new-fill"></i><span>引用到评论</span></a><div class="rightMenu-item" id="menu-newwindow"><i class="scoicon sco-window-fill"></i><span>新窗口打开</span></div><div class="rightMenu-item" id="menu-copylink"><i class="scoicon sco-link-line"></i><span>复制链接地址</span></div><div class="rightMenu-item" id="menu-copyimg"><i class="scoicon sco-copy-fill"></i><span>复制此图片</span></div><div class="rightMenu-item" id="menu-downloadimg"><i class="scoicon sco-download-cloud-fill"></i><span>下载此图片</span></div><div class="rightMenu-item" id="menu-search"><i class="scoicon sco-search-line"></i><span>站内搜索</span></div><div class="rightMenu-item" id="menu-music-toggle"><i class="scoicon sco-play-fill"></i><span>播放音乐</span></div><div class="rightMenu-item" id="menu-music-back"><i class="scoicon sco-skip-back-fill"></i><span>切换到上一首</span></div><div class="rightMenu-item" id="menu-music-forward"><i class="scoicon sco-skip-forward-fill"></i><span>切换到下一首</span></div><div class="rightMenu-item" id="menu-music-playlist" onclick="window.open('https://music.163.com/#/playlist?id=8407304077', '_blank');"><i class="scoicon sco-play-list-2-line"></i><span>查看所有歌曲</span></div><div class="rightMenu-item" id="menu-music-copyMusicName"><i class="scoicon sco-copy-fill"></i><span>复制歌名</span></div></div><div class="rightMenu-group rightMenu-line rightMenuOther"><a class="rightMenu-item menu-Link" id="menu-randomPost"><i class="scoicon sco-signal-tower-fill"></i><span>随便逛逛</span></a><a class="rightMenu-item menu-link" href="/categories/"><i class="scoicon sco-checkbox-multiple-blank-fill"></i><span>文章分类</span></a><a class="rightMenu-item menu-link" href="/tags/"><i class="scoicon sco-price-tag-fill"></i><span>文章标签</span></a></div><div class="rightMenu-group rightMenu-line rightMenuOther"><div class="rightMenu-item" id="menu-copy"><i class="scoicon sco-external-link-fill"></i><span>复制地址</span></div><div class="rightMenu-item" id="menu-commentBarrage"><i class="scoicon sco-chat-fill"></i><span class="menu-commentBarrage-text">关闭热评</span></div><div class="rightMenu-item" id="menu-darkmode"><i class="scoicon sco-moon-clear-fill"></i><span class="menu-darkmode-text">深色模式</span></div><div class="rightMenu-item" id="menu-translate"><i class="scoicon sco-panben-line"></i><span>轉為繁體</span></div></div></div><div id="rightmenu-mask"></div><script src="/js/rightside.js?v=1.4.7"></script><script src="https://cdn.cbd.int/solitude-source/js/universe.min.js"></script><script>dark()
+</script><script src="/js/tw_cn.js?v=1.4.7"></script><script src="https://cdn.staticfile.org/pjax/0.2.8/pjax.min.js"></script><script src="https://cdn.staticfile.org/vanilla-lazyload/17.8.5/lazyload.iife.min.js"></script><script src="https://cdn.staticfile.org/node-snackbar/0.1.16/snackbar.min.js"></script><script src="https://cdn.staticfile.org/fancyapps-ui/5.0.33/fancybox/fancybox.umd.min.js"></script><script>const coverColorConfig = {
+    api: 'https://img2color.wzsco.top/api?img=',
+    time: 43200000,
+}</script><script src="/js/covercolor/api.js?v=1.4.7"></script><script src="https://cdn.staticfile.org/twikoo/1.6.31/twikoo.all.min.js"></script><script src="/js/comment/twikoo_commentBarrage.js?v=1.4.7"></script><script src="https://cdn.staticfile.org/pace/1.2.4/pace.min.js"></script><script src="https://cdn.staticfile.org/instantsearch.js/4.63.0/instantsearch.production.min.js"></script><script src="https://cdn.staticfile.org/algoliasearch/4.22.0/algoliasearch-lite.umd.min.js"></script></div><div id="js-pjax"><script async src="https://cdn.staticfile.org/busuanzi/2.3.0/bsz.pure.mini.min.js"></script><script id="config-diff">var PAGE_CONFIG = {
+    is_post: true,
+    is_page: false,
+    is_home: false,
+    page: 'post',
+    toc: true,
+    comment: true,
+}
+</script></div><!-- newest comment--><script>window.addEventListener('load', () => {
+    const changeContent = (content) => {
+        if (content === '') return content;
+
+        const replacements = [
+            {regex: /<img.*?src="(.*?)"?[^\>]+>/ig, replacement: '[图片]'},
+            {regex: /<a[^>]+?href=["']?([^"']+)["']?[^>]*>([^<]+)<\/a>/gi, replacement: '[链接]'},
+            {regex: /<pre><code>.*?<\/pre>/gi, replacement: '[代码]'},
+            {regex: /<[^>]+>/g, replacement: ""}
+        ];
+
+        content = replacements.reduce((str, {regex, replacement}) => str.replace(regex, replacement), content);
+
+        return content.length > 150 ? content.substring(0, 150) + '...' : content;
+    }
+
+    const getComment = () => {
+        const $dom = document.querySelector('#card-newest-comments .aside-list')
+
+        const runTwikoo = () => {
+            twikoo.getRecentComments({
+                envId: GLOBAL_CONFIG.comment.twikoo.url,
+                region: '',
+                pageSize: 6,
+                includeReply: true
+            }).then(function (res) {
+                const twikooArray = res.map(e => ({
+                    'content': changeContent(e.comment),
+                    'avatar': e.avatar,
+                    'nick': e.nick,
+                    'url': `${e.url}#${e.id}`,
+                    'date': new Date(e.created).toISOString()
+                }))
+                generateHtml(twikooArray)
+            }).catch(function (err) {
+                $dom.innerHTML = "无法获取评论，请确认相关配置是否正确"
+            })
+        }
+        runTwikoo()
+    }
+
+    const generateHtml = array => {
+        const $dom = document.querySelector('#card-newest-comments .aside-list')
+        $dom.innerHTML = array.length ? array.map(item => `
+            <div class='aside-list-item'>
+              <a href='${item.url}' class='thumbnail'>
+                <img data-lazy-src='${item.avatar}' alt='${item.nick}'>
+                <div class='name'><span>${item.nick}</span></div>
+              </a>
+              <div class='content'>
+                <a class='comment' href='${item.url}'>${item.content}</a>
+                <time class="datetime" datetime="${item.date}"></time>
+              </div>
+            </div>
+          `).join('') : '没有评论'
+        window.lazyLoadInstance && window.lazyLoadInstance.update()
+        window.pjax && window.pjax.refresh($dom)
+        changeTimeFormat()
+    }
+
+    const newestCommentInit = () => {
+        const $asideList = document.querySelector('#card-newest-comments .aside-list')
+        if ($asideList) {
+            getComment()
+        }
+    }
+
+    newestCommentInit()
+})</script><!-- pjax--><script>let pjaxSelectors = [
+    'title',
+    '#body-wrap',
+    '#site-config',
+    'meta[name="description"]',
+    '#js-pjax',
+    'meta[property^="og:"]',
+]
+
+const pjax = new Pjax({
+    elements: 'a:not([target="_blank"])',
+    selectors: pjaxSelectors,
+    cacheBust: false,
+    analytics: false,
+    scrollRestoration: false
+})
+
+document.querySelectorAll('script[data-pjax]').forEach(item => {
+    const newScript = document.createElement('script')
+    const content = item.text || item.textContent || item.innerHTML || ""
+    Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+    newScript.appendChild(document.createTextNode(content))
+    item.parentNode.replaceChild(newScript, item)
+})
+
+document.addEventListener('pjax:complete', () => {
+    window.refreshFn()
+})
+
+document.addEventListener('pjax:error', (e) => {
+    if (e.request.status === 404) {
+        pjax.loadUrl('/404.html')
+    }
+})</script><!-- theme--><script>initTheme = () => {
+    let isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches
+    const cachedMode = saveToLocal.get('theme');
+    if (cachedMode === undefined) {
+        const nowMode =
+            isDarkMode ? 'dark' : 'light'
+        document.documentElement.setAttribute('data-theme', nowMode);
+    } else {
+        document.documentElement.setAttribute('data-theme', cachedMode);
+    }
+}
+initTheme()</script><!-- search--><div id="algolia-search"><div class="search-dialog"><div class="algolia-navbar"><div class="search-dialog__title" id="algolia-search-title">搜索</div><div class="algolia-tips"><i class="scoicon sco-algolia-fill"></i><span class="algolia-tips-text">Algolia</span></div><span class="search-close-button"><i class="scoicon sco-close-fill"></i></span></div><div id="algolia-input-panel"><div id="algolia-search-input"></div></div><div id="search-results"><div id="algolia-hits"></div></div><div id="algolia-tips"><div id="algolia-pagination"></div><div id="algolia-stats"></div></div></div><div id="search-mask"></div></div><script src="/js/search/algolia.js?v=1.4.7"></script><!-- music--></body></html><script>const posts=["posts/1036/","posts/1035/","posts/1034/","posts/1033/","posts/1032/","posts/1031/","posts/1030/","posts/1029/","posts/1028/","posts/1027/","posts/1026/","posts/1025/","posts/1024/","posts/1023/","posts/1022/","posts/1021/","posts/1020/","posts/1019/","posts/1018/","posts/1017/","posts/1016/","posts/1015/","posts/1014/","posts/1013/","posts/1012/","posts/1011/","posts/1010/","posts/1009/","posts/1008/","posts/1007/","posts/1006/","posts/1005/","posts/1004/","posts/1003/","posts/1002/","posts/1001/","posts/1/"];function toRandomPost(){ pjax.loadUrl('/'+posts[Math.floor(Math.random()*posts.length)]); };</script>
