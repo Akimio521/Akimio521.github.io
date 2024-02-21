@@ -15,8 +15,38 @@
     <atom:link href="https://blog.akimio.top/rss2.xml" rel="self" type="application/rss+xml"/>
     
     <description>秋澪的个人博客</description>
-    <pubDate>Tue, 13 Feb 2024 09:58:56 GMT</pubDate>
+    <pubDate>Wed, 21 Feb 2024 14:44:16 GMT</pubDate>
     <generator>http://hexo.io/</generator>
+    
+    <item>
+      <title>Fcricle踩坑记录</title>
+      <link>https://blog.akimio.top/posts/1037/</link>
+      <guid>https://blog.akimio.top/posts/1037/</guid>
+      <pubDate>Wed, 21 Feb 2024 14:36:12 GMT</pubDate>
+      
+        
+        
+          
+          
+      <description>&lt;h1&gt;前言&lt;/h1&gt;
+&lt;p&gt;&lt;a href=&quot;https://fcircle-doc.yyyzyyyz.cn/#/&quot;&gt;Fcircle&lt;/a&gt;，无需担忧友链太多无暇一个一个访问，可以帮你快速整理出好友们新发的文章，如果你和我一样是一名站长，那么可以尝试部署一下这个项目：&lt;a</description>
+          
+        
+      
+      
+      
+      
+      <category domain="https://blog.akimio.top/categories/%E5%A4%87%E5%BF%98%E5%BD%95/">备忘录</category>
+      
+      
+      <category domain="https://blog.akimio.top/tags/%E6%95%99%E7%A8%8B/">教程</category>
+      
+      <category domain="https://blog.akimio.top/tags/Hexo/">Hexo</category>
+      
+      
+      <comments>https://blog.akimio.top/posts/1037/#disqus_thread</comments>
+      
+    </item>
     
     <item>
       <title>FastCDN说明文档</title>
@@ -150,7 +180,7 @@
     </item>
     
     <item>
-      <title>推一个自己的小项目——AutoFilm</title>
+      <title>AutoFilm说明文档</title>
       <link>https://blog.akimio.top/posts/1031/</link>
       <guid>https://blog.akimio.top/posts/1031/</guid>
       <pubDate>Mon, 02 Oct 2023 02:17:05 GMT</pubDate>
