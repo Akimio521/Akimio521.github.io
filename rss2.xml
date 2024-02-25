@@ -15,8 +15,31 @@
     <atom:link href="https://blog.akimio.top/rss2.xml" rel="self" type="application/rss+xml"/>
     
     <description>秋澪的个人博客</description>
-    <pubDate>Wed, 21 Feb 2024 14:44:16 GMT</pubDate>
+    <pubDate>Sun, 25 Feb 2024 10:13:17 GMT</pubDate>
     <generator>http://hexo.io/</generator>
+    
+    <item>
+      <title>利用CloudFlare搭建测速网站</title>
+      <link>https://blog.akimio.top/posts/1038/</link>
+      <guid>https://blog.akimio.top/posts/1038/</guid>
+      <pubDate>Sun, 25 Feb 2024 10:04:02 GMT</pubDate>
+      
+      <description>0成本自建一个专属测速站站</description>
+      
+      
+      
+      
+      <category domain="https://blog.akimio.top/categories/%E7%BD%91%E7%BB%9C%E5%9F%BA%E5%BB%BA%E8%AE%A1%E5%88%92/">网络基建计划</category>
+      
+      
+      <category domain="https://blog.akimio.top/tags/%E6%95%99%E7%A8%8B/">教程</category>
+      
+      <category domain="https://blog.akimio.top/tags/%E9%95%9C%E5%83%8F%E7%AB%99%E6%90%AD%E5%BB%BA/">镜像站搭建</category>
+      
+      
+      <comments>https://blog.akimio.top/posts/1038/#disqus_thread</comments>
+      
+    </item>
     
     <item>
       <title>Fcricle踩坑记录</title>
